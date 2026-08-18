@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office2021.OfficeExtLst
     /// </summary>
     public partial class Extension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2019/extlst", "ext");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2019/extlst", "CT_Extension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Extension class.
         /// </summary>
@@ -67,7 +74,7 @@ namespace DocumentFormat.OpenXml.Office2021.OfficeExtLst
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("oel:ext");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<Extension>()
                 .AddAttribute("uri", a => a.Uri, aBuilder =>

@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,16 +22,22 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is msink:context.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Ink.SourceLink" /> <c>&lt;msink:sourceLink></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Ink.DestinationLink" /> <c>&lt;msink:destinationLink></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty" /> <c>&lt;msink:property></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContextNode : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/ink/2010/main", "context");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/ink/2010/main", "CT_CtxNode");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextNode class.
         /// </summary>
@@ -275,10 +282,10 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("msink:context");
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Ink.SourceLink>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Ink.DestinationLink>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Ink.SourceLink.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Ink.SourceLink());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Ink.DestinationLink.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Ink.DestinationLink());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty());
             builder.AddElement<ContextNode>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -364,9 +371,9 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Ink.SourceLink), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Ink.DestinationLink), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Ink.ContextNodeProperty.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Ink.SourceLink.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Ink.DestinationLink.ElementType, 0, 0)
             };
         }
 
@@ -381,6 +388,12 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
     /// </summary>
     public partial class ContextNodeProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/ink/2010/main", "property");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/ink/2010/main", "CT_Property");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextNodeProperty class.
         /// </summary>
@@ -414,7 +427,7 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("msink:property");
+            builder.SetSchema(ElementType);
             builder.AddElement<ContextNodeProperty>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -433,6 +446,12 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
     /// </summary>
     public partial class SourceLink : ContextLinkType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/ink/2010/main", "sourceLink");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/ink/2010/main", "CT_CtxLink");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SourceLink class.
         /// </summary>
@@ -443,7 +462,7 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("msink:sourceLink");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -457,6 +476,12 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
     /// </summary>
     public partial class DestinationLink : ContextLinkType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/ink/2010/main", "destinationLink");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/ink/2010/main", "CT_CtxLink");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DestinationLink class.
         /// </summary>
@@ -467,7 +492,7 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("msink:destinationLink");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -481,6 +506,12 @@ namespace DocumentFormat.OpenXml.Office2010.Ink
     /// </summary>
     public abstract partial class ContextLinkType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/ink/2010/main", "CT_CtxLink");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextLinkType class.
         /// </summary>

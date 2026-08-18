@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -24,7 +25,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:colorsDef.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -33,9 +34,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle" /> <c>&lt;dgm:title></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel" /> <c>&lt;dgm:styleLbl></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorsDefinition : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "colorsDef");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ColorTransform");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorsDefinition class.
         /// </summary>
@@ -90,22 +97,22 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:colorsDef");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel());
             builder.AddElement<ColorsDefinition>()
                 .AddAttribute("uniqueId", a => a.UniqueId)
                 .AddAttribute("minVer", a => a.MinVersion);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformStyleLabel.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new AttributeValueSetConstraint(builder.CreateQName("dgm:minVer"), true, new string[] { "12.0" }));
         }
@@ -150,7 +157,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:colorsDefHdr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -158,9 +165,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription" /> <c>&lt;dgm:desc></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle" /> <c>&lt;dgm:title></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorsDefinitionHeader : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "colorsDefHdr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ColorTransformHeader");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorsDefinitionHeader class.
         /// </summary>
@@ -225,11 +238,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:colorsDefHdr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle());
             builder.AddElement<ColorsDefinitionHeader>()
                 .AddAttribute("uniqueId", a => a.UniqueId, aBuilder =>
                 {
@@ -239,10 +252,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("resId", a => a.ResourceId);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorDefinitionTitle.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformDescription.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategories.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -255,14 +268,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:colorsDefHdrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader" /> <c>&lt;dgm:colorsDefHdr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorsDefinitionHeaderList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "colorsDefHdrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ColorTransformHeaderLst");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorsDefinitionHeaderList class.
         /// </summary>
@@ -297,11 +316,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:colorsDefHdrLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorsDefinitionHeader.ElementType, 0, 0)
             };
         }
 
@@ -314,7 +333,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:dataModel.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Background" /> <c>&lt;dgm:bg></c></description></item>
@@ -323,9 +342,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList" /> <c>&lt;dgm:cxnLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.PointList" /> <c>&lt;dgm:ptLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataModelRoot : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "dataModel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DataModelRoot");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataModelRoot class.
         /// </summary>
@@ -360,19 +385,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:dataModel");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Background>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Whole>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PointList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Background());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Whole());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PointList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PointList), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Background), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Whole), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -380,65 +405,65 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Point List.</para>
         /// <para>Represents the following element tag in the schema: dgm:ptLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PointList? PointList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PointList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PointList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType);
         }
 
         /// <summary>
         /// <para>Connection List.</para>
         /// <para>Represents the following element tag in the schema: dgm:cxnLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList? ConnectionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType);
         }
 
         /// <summary>
         /// <para>Background Formatting.</para>
         /// <para>Represents the following element tag in the schema: dgm:bg.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Background? Background
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Background>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Background;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType);
         }
 
         /// <summary>
         /// <para>Whole E2O Formatting.</para>
         /// <para>Represents the following element tag in the schema: dgm:whole.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Whole? Whole
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Whole>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Whole;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType);
         }
 
         /// <summary>
         /// <para>DataModelExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList? DataModelExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -481,7 +506,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:layoutDef.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList" /> <c>&lt;dgm:catLst></c></description></item>
@@ -493,9 +518,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleData" /> <c>&lt;dgm:styleData></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorData" /> <c>&lt;dgm:clrData></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LayoutDefinition : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "layoutDef");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DiagramDefinition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutDefinition class.
         /// </summary>
@@ -560,29 +591,29 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:layoutDef");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Description>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Title>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.SampleData>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleData>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorData>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Description.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Description());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Title.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Title());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.SampleData.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.SampleData());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleData.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleData());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorData.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorData());
             builder.AddElement<LayoutDefinition>()
                 .AddAttribute("uniqueId", a => a.UniqueId)
                 .AddAttribute("minVer", a => a.MinVersion)
                 .AddAttribute("defStyle", a => a.DefaultStyle);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Title), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Description), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.SampleData), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleData), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorData), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Title.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Description.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.SampleData.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleData.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorData.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -626,7 +657,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:layoutDefHdr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -634,9 +665,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Description" /> <c>&lt;dgm:desc></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Title" /> <c>&lt;dgm:title></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LayoutDefinitionHeader : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "layoutDefHdr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DiagramDefinitionHeader");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutDefinitionHeader class.
         /// </summary>
@@ -711,11 +748,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:layoutDefHdr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Description>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Title>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Description.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Description());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Title.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Title());
             builder.AddElement<LayoutDefinitionHeader>()
                 .AddAttribute("uniqueId", a => a.UniqueId, aBuilder =>
                 {
@@ -726,10 +763,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("resId", a => a.ResourceId);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Title), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Description), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Title.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Description.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.CategoryList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -742,14 +779,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:layoutDefHdrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader" /> <c>&lt;dgm:layoutDefHdr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LayoutDefinitionHeaderList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "layoutDefHdrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DiagramDefinitionHeaderLst");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutDefinitionHeaderList class.
         /// </summary>
@@ -784,11 +827,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:layoutDefHdrLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutDefinitionHeader.ElementType, 0, 0)
             };
         }
 
@@ -803,6 +846,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class RelationshipIds : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "relIds");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_RelIds");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RelationshipIds class.
         /// </summary>
@@ -814,9 +863,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Explicit Relationship to Diagram Data Part</para>
         /// <para>Represents the following attribute in the schema: r:dm</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? DataPart
         {
             get => GetAttribute<StringValue>();
@@ -827,9 +876,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Explicit Relationship to Diagram Layout Definition Part</para>
         /// <para>Represents the following attribute in the schema: r:lo</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? LayoutPart
         {
             get => GetAttribute<StringValue>();
@@ -840,9 +889,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Explicit Relationship to Style Definition Part</para>
         /// <para>Represents the following attribute in the schema: r:qs</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? StylePart
         {
             get => GetAttribute<StringValue>();
@@ -853,9 +902,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Explicit Relationship to Diagram Colors Part</para>
         /// <para>Represents the following attribute in the schema: r:cs</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? ColorPart
         {
             get => GetAttribute<StringValue>();
@@ -865,7 +914,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:relIds");
+            builder.SetSchema(ElementType);
             builder.AddElement<RelationshipIds>()
                 .AddAttribute("r:dm", a => a.DataPart, aBuilder =>
                 {
@@ -899,7 +948,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleDef.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -909,9 +958,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle" /> <c>&lt;dgm:title></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel" /> <c>&lt;dgm:styleLbl></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleDefinition : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleDef");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_StyleDefinition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDefinition class.
         /// </summary>
@@ -966,24 +1021,24 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleDef");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel());
             builder.AddElement<StyleDefinition>()
                 .AddAttribute("uniqueId", a => a.UniqueId)
                 .AddAttribute("minVer", a => a.MinVersion);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabel.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1027,7 +1082,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleDefHdr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -1035,9 +1090,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription" /> <c>&lt;dgm:desc></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle" /> <c>&lt;dgm:title></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleDefinitionHeader : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleDefHdr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_StyleDefinitionHeader");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDefinitionHeader class.
         /// </summary>
@@ -1102,11 +1163,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleDefHdr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle());
             builder.AddElement<StyleDefinitionHeader>()
                 .AddAttribute("uniqueId", a => a.UniqueId, aBuilder =>
                 {
@@ -1116,10 +1177,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("resId", a => a.ResourceId);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionTitle.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleLabelDescription.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategories.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1132,14 +1193,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleDefHdrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader" /> <c>&lt;dgm:styleDefHdr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleDefinitionHeaderList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleDefHdrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_StyleDefinitionHeaderLst");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDefinitionHeaderList class.
         /// </summary>
@@ -1174,11 +1241,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleDefHdrLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDefinitionHeader.ElementType, 0, 0)
             };
         }
 
@@ -1193,6 +1260,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class ColorTransformCategory : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "cat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CTCategory");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorTransformCategory class.
         /// </summary>
@@ -1223,7 +1296,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:cat");
+            builder.SetSchema(ElementType);
             builder.AddElement<ColorTransformCategory>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -1245,7 +1318,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:fillClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1255,9 +1328,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FillColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "fillClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FillColorList class.
         /// </summary>
@@ -1292,19 +1371,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:fillClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1319,7 +1398,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:linClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1329,9 +1408,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LineColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "linClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LineColorList class.
         /// </summary>
@@ -1366,19 +1451,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:linClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1393,7 +1478,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:effectClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1403,9 +1488,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class EffectColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "effectClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EffectColorList class.
         /// </summary>
@@ -1440,19 +1531,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:effectClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1467,7 +1558,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:txLinClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1477,9 +1568,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextLineColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "txLinClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextLineColorList class.
         /// </summary>
@@ -1514,19 +1611,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:txLinClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1541,7 +1638,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:txFillClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1551,9 +1648,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextFillColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "txFillClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextFillColorList class.
         /// </summary>
@@ -1588,19 +1691,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:txFillClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1615,7 +1718,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:txEffectClrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1625,9 +1728,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextEffectColorList : ColorsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "txEffectClrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextEffectColorList class.
         /// </summary>
@@ -1662,19 +1771,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:txEffectClrLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.RgbColorModelHex), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HslColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SystemColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SchemeColor), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetColor), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, 1, 1)
                     }
                 }
             };
@@ -1689,7 +1798,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HslColor" /> <c>&lt;a:hslClr></c></description></item>
@@ -1699,9 +1808,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.RgbColorModelHex" /> <c>&lt;a:srgbClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SystemColor" /> <c>&lt;a:sysClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class ColorsType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Colors");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorsType class.
         /// </summary>
@@ -1756,12 +1871,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HslColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PresetColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.RgbColorModelHex>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SystemColor>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HslColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HslColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PresetColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PresetColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage.ElementType, static () => new DocumentFormat.OpenXml.Drawing.RgbColorModelPercentage());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Drawing.RgbColorModelHex());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SystemColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SystemColor());
             builder.AddElement<ColorsType>()
                 .AddAttribute("meth", a => a.Method, aBuilder =>
                 {
@@ -1779,14 +1894,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -1821,15 +1942,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:extLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -1846,6 +1967,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class ColorDefinitionTitle : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "title");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CTName");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorDefinitionTitle class.
         /// </summary>
@@ -1876,7 +2003,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:title");
+            builder.SetSchema(ElementType);
             builder.AddElement<ColorDefinitionTitle>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -1896,6 +2023,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class ColorTransformDescription : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "desc");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CTDescription");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorTransformDescription class.
         /// </summary>
@@ -1926,7 +2059,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:desc");
+            builder.SetSchema(ElementType);
             builder.AddElement<ColorTransformDescription>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -1944,14 +2077,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:catLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory" /> <c>&lt;dgm:cat></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorTransformCategories : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "catLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CTCategories");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorTransformCategories class.
         /// </summary>
@@ -1986,11 +2125,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:catLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ColorTransformCategory.ElementType, 0, 0)
             };
         }
 
@@ -2003,7 +2142,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleLbl.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -2014,9 +2153,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList" /> <c>&lt;dgm:txFillClrLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList" /> <c>&lt;dgm:txEffectClrLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorTransformStyleLabel : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleLbl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CTStyleLabel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorTransformStyleLabel class.
         /// </summary>
@@ -2061,14 +2206,14 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleLbl");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList());
             builder.AddElement<ColorTransformStyleLabel>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -2076,13 +2221,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2090,91 +2235,91 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Fill Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:fillClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList? FillColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.FillColorList.ElementType);
         }
 
         /// <summary>
         /// <para>Line Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:linClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList? LineColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.LineColorList.ElementType);
         }
 
         /// <summary>
         /// <para>Effect Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:effectClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList? EffectColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.EffectColorList.ElementType);
         }
 
         /// <summary>
         /// <para>Text Line Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:txLinClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList? TextLineColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.TextLineColorList.ElementType);
         }
 
         /// <summary>
         /// <para>Text Fill Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:txFillClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList? TextFillColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.TextFillColorList.ElementType);
         }
 
         /// <summary>
         /// <para>Text Effect Color List.</para>
         /// <para>Represents the following element tag in the schema: dgm:txEffectClrLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList? TextEffectColorList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.TextEffectColorList.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2186,7 +2331,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:pt.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -2194,9 +2339,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.TextBody" /> <c>&lt;dgm:t></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet" /> <c>&lt;dgm:prSet></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Point : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "pt");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Pt");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Point class.
         /// </summary>
@@ -2261,11 +2412,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:pt");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.TextBody>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.TextBody.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.TextBody());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet());
             builder.AddElement<Point>()
                 .AddAttribute("modelId", a => a.ModelId, aBuilder =>
                 {
@@ -2290,10 +2441,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.TextBody), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.TextBody.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2301,52 +2452,52 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Property Set.</para>
         /// <para>Represents the following element tag in the schema: dgm:prSet.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet? PropertySet
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PropertySet.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: dgm:spPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties? ShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Text Body.</para>
         /// <para>Represents the following element tag in the schema: dgm:t.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.TextBody? TextBody
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.TextBody>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.TextBody.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.TextBody;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.TextBody.ElementType);
         }
 
         /// <summary>
         /// <para>PtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList? PtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2358,14 +2509,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:cxn.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Connection : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "cxn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Cxn");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Connection class.
         /// </summary>
@@ -2490,8 +2647,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:cxn");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
             builder.AddElement<Connection>()
                 .AddAttribute("modelId", a => a.ModelId, aBuilder =>
                 {
@@ -2551,7 +2708,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("presId", a => a.PresentationId);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:modelId"), true, builder.CreateQName("dgm:cxnLst")));
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:parTransId"), true, null));
@@ -2561,13 +2718,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2579,14 +2736,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:constr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Constraint : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "constr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Constraint");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Constraint class.
         /// </summary>
@@ -2731,8 +2894,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:constr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
             builder.AddElement<Constraint>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -2769,7 +2932,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("fact", a => a.Fact);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2777,13 +2940,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2795,14 +2958,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:rule.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Rule : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "rule");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_NumericRule");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Rule class.
         /// </summary>
@@ -2907,8 +3076,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:rule");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
             builder.AddElement<Rule>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -2929,7 +3098,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("max", a => a.Max);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2937,13 +3106,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2957,6 +3126,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Adjust : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "adj");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Adj");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Adjust class.
         /// </summary>
@@ -2987,7 +3162,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:adj");
+            builder.SetSchema(ElementType);
             builder.AddElement<Adjust>()
                 .AddAttribute("idx", a => a.Index, aBuilder =>
                 {
@@ -3009,14 +3184,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:adjLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Adjust" /> <c>&lt;dgm:adj></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AdjustList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "adjLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_AdjLst");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AdjustList class.
         /// </summary>
@@ -3051,11 +3232,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:adjLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Adjust>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Adjust.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Adjust());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Adjust), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Adjust.ElementType, 0, 0)
             };
         }
 
@@ -3070,6 +3251,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Parameter : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "param");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Parameter");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Parameter class.
         /// </summary>
@@ -3100,7 +3287,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:param");
+            builder.SetSchema(ElementType);
             builder.AddElement<Parameter>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -3160,15 +3347,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:alg.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Parameter" /> <c>&lt;dgm:param></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Algorithm : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "alg");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Algorithm");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Algorithm class.
         /// </summary>
@@ -3223,9 +3416,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:alg");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Parameter>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Parameter.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Parameter());
             builder.AddElement<Algorithm>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -3235,8 +3428,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("rev", a => a.Revision);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Parameter), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Parameter.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -3249,15 +3442,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:shape.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList" /> <c>&lt;dgm:adjLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Shape : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "shape");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Shape");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Shape class.
         /// </summary>
@@ -3313,9 +3512,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Relationship to Image Part</para>
         /// <para>Represents the following attribute in the schema: r:blip</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Blip
         {
             get => GetAttribute<StringValue>();
@@ -3365,9 +3564,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:shape");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList());
             builder.AddElement<Shape>()
                 .AddAttribute("rot", a => a.Rotation)
                 .AddAttribute("type", a => a.Type, aBuilder =>
@@ -3385,8 +3584,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("blipPhldr", a => a.BlipPlaceholder);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new RelationshipTypeConstraint(builder.CreateQName("dgm:blip"), "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"));
             builder.AddConstraint(new RelationshipExistConstraint(builder.CreateQName("r:blip")));
@@ -3396,26 +3595,26 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Shape Adjust List.</para>
         /// <para>Represents the following element tag in the schema: dgm:adjLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList? AdjustList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.AdjustList.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3427,14 +3626,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:presOf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PresentationOf : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "presOf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_PresentationOf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PresentationOf class.
         /// </summary>
@@ -3529,8 +3734,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:presOf");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
             builder.AddElement<PresentationOf>()
                 .AddAttribute("axis", a => a.Axis)
                 .AddAttribute("ptType", a => a.PointType)
@@ -3540,7 +3745,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("step", a => a.Step);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -3548,13 +3753,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3566,14 +3771,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:constrLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Constraint" /> <c>&lt;dgm:constr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Constraints : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "constrLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Constraints");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Constraints class.
         /// </summary>
@@ -3608,11 +3819,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:constrLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Constraint>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Constraint.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Constraint());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Constraint), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Constraint.ElementType, 0, 0)
             };
         }
 
@@ -3625,14 +3836,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:ruleLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Rule" /> <c>&lt;dgm:rule></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RuleList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "ruleLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Rules");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RuleList class.
         /// </summary>
@@ -3667,11 +3884,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:ruleLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Rule>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Rule.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Rule());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Rule), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Rule.ElementType, 0, 0)
             };
         }
 
@@ -3684,7 +3901,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:varLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel" /> <c>&lt;dgm:animLvl></c></description></item>
@@ -3697,9 +3914,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart" /> <c>&lt;dgm:orgChart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles" /> <c>&lt;dgm:resizeHandles></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class VariableList : LayoutVariablePropertySetType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "varLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_LayoutVariablePropertySet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the VariableList class.
         /// </summary>
@@ -3734,18 +3957,18 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:varLst");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Direction), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Direction.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles.ElementType, 0, 1)
             };
         }
 
@@ -3758,7 +3981,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:presLayoutVars.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel" /> <c>&lt;dgm:animLvl></c></description></item>
@@ -3771,9 +3994,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart" /> <c>&lt;dgm:orgChart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles" /> <c>&lt;dgm:resizeHandles></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PresentationLayoutVariables : LayoutVariablePropertySetType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "presLayoutVars");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_LayoutVariablePropertySet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PresentationLayoutVariables class.
         /// </summary>
@@ -3808,18 +4037,18 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:presLayoutVars");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Direction), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Direction.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles.ElementType, 0, 1)
             };
         }
 
@@ -3832,7 +4061,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel" /> <c>&lt;dgm:animLvl></c></description></item>
@@ -3845,9 +4074,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart" /> <c>&lt;dgm:orgChart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles" /> <c>&lt;dgm:resizeHandles></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class LayoutVariablePropertySetType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_LayoutVariablePropertySet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutVariablePropertySetType class.
         /// </summary>
@@ -3882,132 +4117,132 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Direction>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Direction.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Direction());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles());
         }
 
         /// <summary>
         /// <para>Show Organization Chart User Interface.</para>
         /// <para>Represents the following element tag in the schema: dgm:orgChart.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart? OrganizationChart
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.OrganizationChart.ElementType);
         }
 
         /// <summary>
         /// <para>Maximum Children.</para>
         /// <para>Represents the following element tag in the schema: dgm:chMax.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren? MaxNumberOfChildren
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.MaxNumberOfChildren.ElementType);
         }
 
         /// <summary>
         /// <para>Preferred Number of Children.</para>
         /// <para>Represents the following element tag in the schema: dgm:chPref.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren? PreferredNumberOfChildren
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PreferredNumberOfChildren.ElementType);
         }
 
         /// <summary>
         /// <para>Show Insert Bullet.</para>
         /// <para>Represents the following element tag in the schema: dgm:bulletEnabled.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled? BulletEnabled
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.BulletEnabled.ElementType);
         }
 
         /// <summary>
         /// <para>Diagram Direction.</para>
         /// <para>Represents the following element tag in the schema: dgm:dir.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Direction? Direction
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Direction>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Direction.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Direction;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Direction.ElementType);
         }
 
         /// <summary>
         /// <para>Organization Chart Branch Style.</para>
         /// <para>Represents the following element tag in the schema: dgm:hierBranch.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch? HierarchyBranch
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.HierarchyBranch.ElementType);
         }
 
         /// <summary>
         /// <para>One by One Animation String.</para>
         /// <para>Represents the following element tag in the schema: dgm:animOne.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne? AnimateOneByOne
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.AnimateOneByOne.ElementType);
         }
 
         /// <summary>
         /// <para>Level Animation.</para>
         /// <para>Represents the following element tag in the schema: dgm:animLvl.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel? AnimationLevel
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.AnimationLevel.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Resize Style.</para>
         /// <para>Represents the following element tag in the schema: dgm:resizeHandles.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles? ResizeHandles
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ResizeHandles.ElementType);
         }
     }
 
@@ -4016,7 +4251,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:forEach.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -4029,9 +4264,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.RuleList" /> <c>&lt;dgm:ruleLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Shape" /> <c>&lt;dgm:shape></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ForEach : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "forEach");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ForEach");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ForEach class.
         /// </summary>
@@ -4146,16 +4387,16 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:forEach");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Choose>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Constraints>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ForEach>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.RuleList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Shape>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Choose());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Constraints());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ForEach());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.RuleList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Shape());
             builder.AddElement<ForEach>()
                 .AddAttribute("name", a => a.Name)
                 .AddAttribute("ref", a => a.Reference)
@@ -4167,15 +4408,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("step", a => a.Step);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Shape), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Choose), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:name"), true, null));
         }
@@ -4189,7 +4430,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:layoutNode.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -4203,9 +4444,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.RuleList" /> <c>&lt;dgm:ruleLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Shape" /> <c>&lt;dgm:shape></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LayoutNode : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "layoutNode");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_LayoutNode");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutNode class.
         /// </summary>
@@ -4280,17 +4527,17 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:layoutNode");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Choose>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Constraints>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ForEach>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.VariableList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.RuleList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Shape>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Choose());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Constraints());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ForEach());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.VariableList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.VariableList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.RuleList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Shape());
             builder.AddElement<LayoutNode>()
                 .AddAttribute("name", a => a.Name)
                 .AddAttribute("styleLbl", a => a.StyleLabel)
@@ -4301,16 +4548,16 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("moveWith", a => a.MoveWith);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Shape), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.VariableList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Choose), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.VariableList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:name"), true, null));
         }
@@ -4324,15 +4571,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:choose.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse" /> <c>&lt;dgm:else></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf" /> <c>&lt;dgm:if></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Choose : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "choose");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Choose");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Choose class.
         /// </summary>
@@ -4377,15 +4630,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:choose");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf());
             builder.AddElement<Choose>()
                 .AddAttribute("name", a => a.Name);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf), 1, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseIf.ElementType, 1, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramChooseElse.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:name"), true, null));
         }
@@ -4399,7 +4652,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:if.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -4412,9 +4665,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.RuleList" /> <c>&lt;dgm:ruleLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Shape" /> <c>&lt;dgm:shape></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DiagramChooseIf : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "if");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_When");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DiagramChooseIf class.
         /// </summary>
@@ -4559,16 +4818,16 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:if");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Choose>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Constraints>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ForEach>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.RuleList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Shape>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Choose());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Constraints());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ForEach());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.RuleList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Shape());
             builder.AddElement<DiagramChooseIf>()
                 .AddAttribute("name", a => a.Name)
                 .AddAttribute("axis", a => a.Axis)
@@ -4610,15 +4869,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Shape), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Choose), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:name"), true, null));
         }
@@ -4632,7 +4891,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:else.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -4645,9 +4904,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.RuleList" /> <c>&lt;dgm:ruleLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Shape" /> <c>&lt;dgm:shape></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DiagramChooseElse : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "else");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Otherwise");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DiagramChooseElse class.
         /// </summary>
@@ -4692,29 +4957,29 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:else");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Choose>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Constraints>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ForEach>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.RuleList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Shape>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Choose());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Constraints());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ForEach());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.RuleList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Shape());
             builder.AddElement<DiagramChooseElse>()
                 .AddAttribute("name", a => a.Name);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Shape), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Choose), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Algorithm.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Shape.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationOf.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Constraints.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.RuleList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ForEach.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.LayoutNode.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Choose.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("dgm:name"), true, null));
         }
@@ -4728,7 +4993,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:dataModel.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Background" /> <c>&lt;dgm:bg></c></description></item>
@@ -4737,9 +5002,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList" /> <c>&lt;dgm:cxnLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.PointList" /> <c>&lt;dgm:ptLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataModel : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "dataModel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DataModel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataModel class.
         /// </summary>
@@ -4774,19 +5045,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:dataModel");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Background>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Whole>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PointList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Background());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Whole());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PointList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PointList), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Background), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Whole), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -4794,65 +5065,65 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Point List.</para>
         /// <para>Represents the following element tag in the schema: dgm:ptLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PointList? PointList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PointList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PointList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PointList.ElementType);
         }
 
         /// <summary>
         /// <para>Connection List.</para>
         /// <para>Represents the following element tag in the schema: dgm:cxnLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList? ConnectionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ConnectionList.ElementType);
         }
 
         /// <summary>
         /// <para>Background Formatting.</para>
         /// <para>Represents the following element tag in the schema: dgm:bg.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Background? Background
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Background>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Background;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Background.ElementType);
         }
 
         /// <summary>
         /// <para>Whole E2O Formatting.</para>
         /// <para>Represents the following element tag in the schema: dgm:whole.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Whole? Whole
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Whole>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Whole;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Whole.ElementType);
         }
 
         /// <summary>
         /// <para>DataModelExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList? DataModelExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.DataModelExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4866,6 +5137,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Category : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "cat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Category");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Category class.
         /// </summary>
@@ -4896,7 +5173,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:cat");
+            builder.SetSchema(ElementType);
             builder.AddElement<Category>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -4920,6 +5197,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Title : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "title");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Name");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Title class.
         /// </summary>
@@ -4950,7 +5233,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:title");
+            builder.SetSchema(ElementType);
             builder.AddElement<Title>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -4970,6 +5253,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Description : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "desc");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Description");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Description class.
         /// </summary>
@@ -5000,7 +5289,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:desc");
+            builder.SetSchema(ElementType);
             builder.AddElement<Description>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -5018,14 +5307,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:catLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Category" /> <c>&lt;dgm:cat></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CategoryList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "catLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Categories");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CategoryList class.
         /// </summary>
@@ -5060,11 +5355,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:catLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Category>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Category.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Category());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Category), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Category.ElementType, 0, 0)
             };
         }
 
@@ -5077,7 +5372,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:style.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.FontReference" /> <c>&lt;a:fontRef></c></description></item>
@@ -5085,9 +5380,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.FillReference" /> <c>&lt;a:fillRef></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectReference" /> <c>&lt;a:effectRef></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Style : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "style");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_ShapeStyle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Style class.
         /// </summary>
@@ -5122,17 +5423,17 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:style");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FontReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LineReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FillReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectReference>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FontReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FontReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LineReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LineReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FillReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FillReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LineReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FillReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FontReference), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.LineReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.FillReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.FontReference.ElementType, 1, 1)
             };
         }
 
@@ -5140,52 +5441,52 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>LineReference.</para>
         /// <para>Represents the following element tag in the schema: a:lnRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.LineReference? LineReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.LineReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.LineReference.ElementType) as DocumentFormat.OpenXml.Drawing.LineReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.LineReference.ElementType);
         }
 
         /// <summary>
         /// <para>FillReference.</para>
         /// <para>Represents the following element tag in the schema: a:fillRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.FillReference? FillReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.FillReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.FillReference.ElementType) as DocumentFormat.OpenXml.Drawing.FillReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.FillReference.ElementType);
         }
 
         /// <summary>
         /// <para>EffectReference.</para>
         /// <para>Represents the following element tag in the schema: a:effectRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.EffectReference? EffectReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.EffectReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType) as DocumentFormat.OpenXml.Drawing.EffectReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.EffectReference.ElementType);
         }
 
         /// <summary>
         /// <para>Font Reference.</para>
         /// <para>Represents the following element tag in the schema: a:fontRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.FontReference? FontReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.FontReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.FontReference.ElementType) as DocumentFormat.OpenXml.Drawing.FontReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.FontReference.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5199,6 +5500,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class OrganizationChart : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "orgChart");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_OrgChart");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OrganizationChart class.
         /// </summary>
@@ -5219,7 +5526,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:orgChart");
+            builder.SetSchema(ElementType);
             builder.AddElement<OrganizationChart>()
                 .AddAttribute("val", a => a.Val);
         }
@@ -5235,6 +5542,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class MaxNumberOfChildren : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "chMax");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ChildMax");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MaxNumberOfChildren class.
         /// </summary>
@@ -5255,7 +5568,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:chMax");
+            builder.SetSchema(ElementType);
             builder.AddElement<MaxNumberOfChildren>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5274,6 +5587,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class PreferredNumberOfChildren : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "chPref");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ChildPref");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PreferredNumberOfChildren class.
         /// </summary>
@@ -5294,7 +5613,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:chPref");
+            builder.SetSchema(ElementType);
             builder.AddElement<PreferredNumberOfChildren>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5313,6 +5632,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class BulletEnabled : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "bulletEnabled");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_BulletEnabled");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BulletEnabled class.
         /// </summary>
@@ -5333,7 +5658,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:bulletEnabled");
+            builder.SetSchema(ElementType);
             builder.AddElement<BulletEnabled>()
                 .AddAttribute("val", a => a.Val);
         }
@@ -5349,6 +5674,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class Direction : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "dir");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_Direction");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Direction class.
         /// </summary>
@@ -5369,7 +5700,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:dir");
+            builder.SetSchema(ElementType);
             builder.AddElement<Direction>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5388,6 +5719,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class HierarchyBranch : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "hierBranch");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_HierBranchStyle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HierarchyBranch class.
         /// </summary>
@@ -5408,7 +5745,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:hierBranch");
+            builder.SetSchema(ElementType);
             builder.AddElement<HierarchyBranch>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5427,6 +5764,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class AnimateOneByOne : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "animOne");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_AnimOne");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AnimateOneByOne class.
         /// </summary>
@@ -5447,7 +5790,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:animOne");
+            builder.SetSchema(ElementType);
             builder.AddElement<AnimateOneByOne>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5466,6 +5809,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class AnimationLevel : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "animLvl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_AnimLvl");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AnimationLevel class.
         /// </summary>
@@ -5486,7 +5835,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:animLvl");
+            builder.SetSchema(ElementType);
             builder.AddElement<AnimationLevel>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5505,6 +5854,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class ResizeHandles : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "resizeHandles");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ResizeHandles");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ResizeHandles class.
         /// </summary>
@@ -5525,7 +5880,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:resizeHandles");
+            builder.SetSchema(ElementType);
             builder.AddElement<ResizeHandles>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
                 {
@@ -5544,6 +5899,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class StyleDisplayCategory : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "cat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SDCategory");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDisplayCategory class.
         /// </summary>
@@ -5574,7 +5935,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:cat");
+            builder.SetSchema(ElementType);
             builder.AddElement<StyleDisplayCategory>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -5596,7 +5957,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:scene3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Backdrop" /> <c>&lt;a:backdrop></c></description></item>
@@ -5604,9 +5965,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.LightRig" /> <c>&lt;a:lightRig></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Scene3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "scene3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Scene3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Scene3D class.
         /// </summary>
@@ -5641,17 +6008,17 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:scene3d");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Backdrop>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Camera>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LightRig>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Backdrop());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Camera.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Camera());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LightRig.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LightRig());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Camera), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LightRig), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Backdrop), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Camera.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.LightRig.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -5659,52 +6026,52 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Camera.</para>
         /// <para>Represents the following element tag in the schema: a:camera.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Camera? Camera
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Camera>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Camera.ElementType) as DocumentFormat.OpenXml.Drawing.Camera;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Camera.ElementType);
         }
 
         /// <summary>
         /// <para>Light Rig.</para>
         /// <para>Represents the following element tag in the schema: a:lightRig.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.LightRig? LightRig
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.LightRig>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.LightRig.ElementType) as DocumentFormat.OpenXml.Drawing.LightRig;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.LightRig.ElementType);
         }
 
         /// <summary>
         /// <para>Backdrop Plane.</para>
         /// <para>Represents the following element tag in the schema: a:backdrop.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Backdrop? Backdrop
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Backdrop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType) as DocumentFormat.OpenXml.Drawing.Backdrop;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Backdrop.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5716,7 +6083,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:sp3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BevelTop" /> <c>&lt;a:bevelT></c></description></item>
@@ -5725,9 +6092,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ContourColor" /> <c>&lt;a:contourClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Shape3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "sp3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Shape3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Shape3D class.
         /// </summary>
@@ -5802,12 +6175,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:sp3d");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BevelTop>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BevelBottom>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtrusionColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ContourColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BevelTop());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BevelBottom());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtrusionColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ContourColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.AddElement<Shape3D>()
                 .AddAttribute("z", a => a.Z, aBuilder =>
                 {
@@ -5827,11 +6200,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BevelTop), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BevelBottom), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtrusionColor), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ContourColor), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -5839,65 +6212,65 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Top Bevel.</para>
         /// <para>Represents the following element tag in the schema: a:bevelT.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BevelTop? BevelTop
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BevelTop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType) as DocumentFormat.OpenXml.Drawing.BevelTop;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BevelTop.ElementType);
         }
 
         /// <summary>
         /// <para>Bottom Bevel.</para>
         /// <para>Represents the following element tag in the schema: a:bevelB.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BevelBottom? BevelBottom
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BevelBottom>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType) as DocumentFormat.OpenXml.Drawing.BevelBottom;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType);
         }
 
         /// <summary>
         /// <para>Extrusion Color.</para>
         /// <para>Represents the following element tag in the schema: a:extrusionClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtrusionColor? ExtrusionColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtrusionColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType) as DocumentFormat.OpenXml.Drawing.ExtrusionColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType);
         }
 
         /// <summary>
         /// <para>Contour Color.</para>
         /// <para>Represents the following element tag in the schema: a:contourClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ContourColor? ContourColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ContourColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType) as DocumentFormat.OpenXml.Drawing.ContourColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ContourColor.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5909,15 +6282,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:txPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.FlatText" /> <c>&lt;a:flatTx></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Shape3DType" /> <c>&lt;a:sp3d></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "txPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_TextProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextProperties class.
         /// </summary>
@@ -5952,17 +6331,17 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:txPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FlatText>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Shape3DType>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FlatText.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FlatText());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Shape3DType());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Shape3DType), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FlatText), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.FlatText.ElementType, 1, 1)
                     }
                 }
             };
@@ -5972,26 +6351,26 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Apply 3D shape properties.</para>
         /// <para>Represents the following element tag in the schema: a:sp3d.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Shape3DType? Shape3DType
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Shape3DType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType) as DocumentFormat.OpenXml.Drawing.Shape3DType;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType);
         }
 
         /// <summary>
         /// <para>No text in 3D scene.</para>
         /// <para>Represents the following element tag in the schema: a:flatTx.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.FlatText? FlatText
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.FlatText>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.FlatText.ElementType) as DocumentFormat.OpenXml.Drawing.FlatText;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.FlatText.ElementType);
         }
 
         /// <inheritdoc/>
@@ -6005,6 +6384,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class StyleDefinitionTitle : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "title");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SDName");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDefinitionTitle class.
         /// </summary>
@@ -6035,7 +6420,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:title");
+            builder.SetSchema(ElementType);
             builder.AddElement<StyleDefinitionTitle>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -6055,6 +6440,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// </summary>
     public partial class StyleLabelDescription : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "desc");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SDDescription");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleLabelDescription class.
         /// </summary>
@@ -6085,7 +6476,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:desc");
+            builder.SetSchema(ElementType);
             builder.AddElement<StyleLabelDescription>()
                 .AddAttribute("lang", a => a.Language)
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -6103,14 +6494,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:catLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory" /> <c>&lt;dgm:cat></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleDisplayCategories : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "catLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SDCategories");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleDisplayCategories class.
         /// </summary>
@@ -6145,11 +6542,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:catLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.StyleDisplayCategory.ElementType, 0, 0)
             };
         }
 
@@ -6162,7 +6559,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleLbl.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList" /> <c>&lt;dgm:extLst></c></description></item>
@@ -6171,9 +6568,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Style" /> <c>&lt;dgm:style></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties" /> <c>&lt;dgm:txPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleLabel : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleLbl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_StyleLabel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleLabel class.
         /// </summary>
@@ -6218,12 +6621,12 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleLbl");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Style>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Style());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties());
             builder.AddElement<StyleLabel>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -6231,11 +6634,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Style), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -6243,65 +6646,65 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>3-D Scene.</para>
         /// <para>Represents the following element tag in the schema: dgm:scene3d.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D? Scene3D
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Scene3D.ElementType);
         }
 
         /// <summary>
         /// <para>3-D Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: dgm:sp3d.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D? Shape3D
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Shape3D.ElementType);
         }
 
         /// <summary>
         /// <para>Text Properties.</para>
         /// <para>Represents the following element tag in the schema: dgm:txPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties? TextProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.TextProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Style.</para>
         /// <para>Represents the following element tag in the schema: dgm:style.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Style? Style
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Style>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Style;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: dgm:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -6313,14 +6716,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:ptLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Point" /> <c>&lt;dgm:pt></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PointList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "ptLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_PtList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PointList class.
         /// </summary>
@@ -6355,11 +6764,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:ptLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Point>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Point.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Point());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Point), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Point.ElementType, 0, 0)
             };
         }
 
@@ -6372,14 +6781,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:cxnLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Connection" /> <c>&lt;dgm:cxn></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ConnectionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "cxnLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_CxnList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ConnectionList class.
         /// </summary>
@@ -6414,11 +6829,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:cxnLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Connection>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Connection.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Connection());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Connection), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Connection.ElementType, 0, 0)
             };
         }
 
@@ -6431,7 +6846,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:bg.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -6443,9 +6858,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.PatternFill" /> <c>&lt;a:pattFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Background : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "bg");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_BackgroundFormatting");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Background class.
         /// </summary>
@@ -6480,35 +6901,35 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:bg");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 }
             };
@@ -6523,16 +6944,22 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:whole.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectDag" /> <c>&lt;a:effectDag></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectList" /> <c>&lt;a:effectLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Outline" /> <c>&lt;a:ln></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Whole : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "whole");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_WholeE2oFormatting");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Whole class.
         /// </summary>
@@ -6567,19 +6994,19 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:whole");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Outline>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Outline.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Outline());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Outline), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Outline.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 }
             };
@@ -6589,13 +7016,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Outline.</para>
         /// <para>Represents the following element tag in the schema: a:ln.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Outline? Outline
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Outline>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Outline.ElementType) as DocumentFormat.OpenXml.Drawing.Outline;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Outline.ElementType);
         }
 
         /// <inheritdoc/>
@@ -6607,14 +7034,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.DataModelExtension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataModelExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_DataModelExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataModelExtensionList class.
         /// </summary>
@@ -6649,11 +7082,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:extLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.DataModelExtension>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.DataModelExtension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.DataModelExtension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.DataModelExtension), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.DataModelExtension.ElementType, 0, 0)
             };
         }
 
@@ -6666,15 +7099,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:prSet.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.Style" /> <c>&lt;dgm:style></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables" /> <c>&lt;dgm:presLayoutVars></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PropertySet : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "prSet");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_ElemPropSet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PropertySet class.
         /// </summary>
@@ -6989,9 +7428,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:prSet");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.Style>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.Style());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables());
             builder.AddElement<PropertySet>()
                 .AddAttribute("presAssocID", a => a.PresentationElementId, aBuilder =>
                 {
@@ -7030,8 +7469,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 .AddAttribute("custRadScaleInc", a => a.IncludeAngleScale);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.Style), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType, 0, 1)
             };
         }
 
@@ -7039,26 +7478,26 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Presentation Layout Variables.</para>
         /// <para>Represents the following element tag in the schema: dgm:presLayoutVars.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables? PresentationLayoutVariables
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.PresentationLayoutVariables.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Style.</para>
         /// <para>Represents the following element tag in the schema: dgm:style.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.Style? Style
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.Style>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.Style;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.Style.ElementType);
         }
 
         /// <inheritdoc/>
@@ -7070,7 +7509,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:spPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -7089,9 +7528,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Transform2D" /> <c>&lt;a:xfrm></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "spPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_ShapeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeProperties class.
         /// </summary>
@@ -7136,22 +7581,22 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:spPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.CustomGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Outline>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PresetGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Scene3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Shape3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Transform2D>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.CustomGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Outline.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Outline());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PresetGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Scene3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Shape3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Transform2D());
             builder.AddElement<ShapeProperties>()
                 .AddAttribute("bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -7159,39 +7604,39 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Transform2D), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.CustomGeometry), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetGeometry), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Outline), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Outline.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Scene3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Shape3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -7199,13 +7644,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>2D Transform for Individual Objects.</para>
         /// <para>Represents the following element tag in the schema: a:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Transform2D? Transform2D
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Transform2D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType) as DocumentFormat.OpenXml.Drawing.Transform2D;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Transform2D.ElementType);
         }
 
         /// <inheritdoc/>
@@ -7217,16 +7662,22 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:t.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BodyProperties" /> <c>&lt;a:bodyPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ListStyle" /> <c>&lt;a:lstStyle></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Paragraph" /> <c>&lt;a:p></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextBody : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "t");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_TextBody");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextBody class.
         /// </summary>
@@ -7261,15 +7712,15 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:t");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BodyProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ListStyle>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Paragraph>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BodyProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ListStyle());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Paragraph.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Paragraph());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BodyProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ListStyle), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Paragraph), 1, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Paragraph.ElementType, 1, 0)
             };
         }
 
@@ -7277,26 +7728,26 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Body Properties.</para>
         /// <para>Represents the following element tag in the schema: a:bodyPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BodyProperties? BodyProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BodyProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType) as DocumentFormat.OpenXml.Drawing.BodyProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Text List Styles.</para>
         /// <para>Represents the following element tag in the schema: a:lstStyle.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ListStyle? ListStyle
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ListStyle>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType) as DocumentFormat.OpenXml.Drawing.ListStyle;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ListStyle.ElementType);
         }
 
         /// <inheritdoc/>
@@ -7308,14 +7759,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.PtExtension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_PtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PtExtensionList class.
         /// </summary>
@@ -7350,11 +7807,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:extLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PtExtension>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PtExtension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PtExtension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PtExtension), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.PtExtension.ElementType, 0, 0)
             };
         }
 
@@ -7367,15 +7824,21 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:ext.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType" /> <c>&lt;dgm1612:lstStyle></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList" /> <c>&lt;dgm1611:autoBuNodeInfoLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DiagramDefinitionExtension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "ext");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DiagramDefinitionExtension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DiagramDefinitionExtension class.
         /// </summary>
@@ -7420,9 +7883,9 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:ext");
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType());
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList());
             builder.AddElement<DiagramDefinitionExtension>()
                 .AddAttribute("uri", a => a.Uri, aBuilder =>
                 {
@@ -7431,8 +7894,8 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList), 1, 1, version: FileFormatVersions.Office2019),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType), 1, 1, version: FileFormatVersions.Office2019),
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Diagram11.NumberDiagramInfoList.ElementType, 1, 1, version: FileFormatVersions.Office2019),
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Diagram12.TextListStyleType.ElementType, 1, 1, version: FileFormatVersions.Office2019),
                 new AnyParticle(0, 1)
             };
         }
@@ -7446,14 +7909,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:sampData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DataModel" /> <c>&lt;dgm:dataModel></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SampleData : SampleDataType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "sampData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SampleData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SampleData class.
         /// </summary>
@@ -7488,10 +7957,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:sampData");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType, 0, 1)
             };
         }
 
@@ -7504,14 +7973,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:styleData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DataModel" /> <c>&lt;dgm:dataModel></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StyleData : SampleDataType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "styleData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SampleData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleData class.
         /// </summary>
@@ -7546,10 +8021,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:styleData");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType, 0, 1)
             };
         }
 
@@ -7562,14 +8037,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:clrData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DataModel" /> <c>&lt;dgm:dataModel></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColorData : SampleDataType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "clrData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SampleData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorData class.
         /// </summary>
@@ -7604,10 +8085,10 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:clrData");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType, 0, 1)
             };
         }
 
@@ -7620,14 +8101,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DataModel" /> <c>&lt;dgm:dataModel></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class SampleDataType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_SampleData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SampleDataType class.
         /// </summary>
@@ -7672,7 +8159,7 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DataModel>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DataModel());
             builder.AddElement<SampleDataType>()
                 .AddAttribute("useDef", a => a.UseDefault);
         }
@@ -7681,13 +8168,13 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         /// <para>Data Model.</para>
         /// <para>Represents the following element tag in the schema: dgm:dataModel.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:dgm = http://schemas.openxmlformats.org/drawingml/2006/diagram
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Diagrams.DataModel? DataModel
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Diagrams.DataModel>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType) as DocumentFormat.OpenXml.Drawing.Diagrams.DataModel;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Diagrams.DataModel.ElementType);
         }
     }
 
@@ -7696,14 +8183,20 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is dgm:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension" /> <c>&lt;dgm:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DiagramDefinitionExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/diagram", "CT_DiagramDefinitionExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DiagramDefinitionExtensionList class.
         /// </summary>
@@ -7738,11 +8231,11 @@ namespace DocumentFormat.OpenXml.Drawing.Diagrams
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("dgm:extLst");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Diagrams.DiagramDefinitionExtension.ElementType, 0, 0)
             };
         }
 

@@ -3,7 +3,6 @@
 
 using DocumentFormat.OpenXml.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -200,7 +199,7 @@ namespace DocumentFormat.OpenXml
                 return false;
             }
 
-            var wasAdded = Metadata.Particle.Set(this, newChild, newChild.GetType());
+            var wasAdded = Metadata.Particle.Set(this, newChild);
 
             if (throwOnError && !wasAdded)
             {
@@ -535,6 +534,32 @@ namespace DocumentFormat.OpenXml
         #endregion
 
         /// <summary>
+        /// Determines whether the specified <see cref="OpenXmlElement"/> is a valid child element
+        /// for this <see cref="OpenXmlCompositeElement"/> according to the schema definition.
+        /// </summary>
+        /// <param name="element">The <see cref="OpenXmlElement"/> to validate as a child.</param>
+        /// <returns>
+        /// <c>true</c> if the specified element is a valid child; otherwise, <c>false</c>.
+        /// </returns>
+        public virtual bool IsValidChild(OpenXmlElement element)
+        {
+            if (element is null)
+            {
+                return false;
+            }
+
+            foreach (var elem in Metadata.Children.Elements)
+            {
+                if (elem.Type.Name.Equals(element.Metadata.Type.Name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Saves all of the current node's children to the specified XmlWriter.
         /// </summary>
         /// <param name="w">The XmlWriter at which to save the child nodes. </param>
@@ -770,12 +795,11 @@ namespace DocumentFormat.OpenXml
             }
         }
 
-        private protected TElement? GetElement<TElement>()
-            where TElement : OpenXmlElement => Metadata.Particle.Get<TElement>(this);
+        private protected OpenXmlElement? GetElement(in OpenXmlSchemaType type)
+            => Metadata.Particle.Get(this, type);
 
-        private protected bool SetElement<TElement>(TElement? value)
-            where TElement : OpenXmlElement
-            => Metadata.Particle.Set(this, value);
+        private protected bool SetElement(OpenXmlElement? value, OpenXmlSchemaType type)
+            => Metadata.Particle.Set(this, value, type);
 
         private void AddANode(OpenXmlElement node)
         {

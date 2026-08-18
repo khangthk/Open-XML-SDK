@@ -54,6 +54,10 @@ namespace DocumentFormat.OpenXml.Tests
 
             public const string HelloO14 = "TestFiles.HelloO14.docx";
 
+            public const string HelloWorldDocx = "TestFiles.HelloWorld.docx";
+
+            public const string HelloWorldFlatOpc = "TestFiles.HelloWorldFlatOpc.xml";
+
             public const string Hyperlink = "TestFiles.Hyperlink.docx";
 
             public const string Image = "TestFiles.Image.png";
@@ -123,6 +127,8 @@ namespace DocumentFormat.OpenXml.Tests
             public const string Of16_09_unknownelement_docx = "TestFiles.Of16-09-UnknownElement.docx";
 
             public const string Of16_10_symex_docx = "TestFiles.Of16-10-SymEx.docx";
+
+            public const string Encrypted_pptx = "TestFiles.encrypted_pptx.pptx";
         }
     }
 }

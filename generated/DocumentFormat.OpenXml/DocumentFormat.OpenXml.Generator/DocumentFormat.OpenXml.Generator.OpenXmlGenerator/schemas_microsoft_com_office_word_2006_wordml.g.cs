@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,7 +23,7 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:tcg.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.AllocatedCommands" /> <c>&lt;wne:acds></c></description></item>
@@ -30,9 +31,15 @@ namespace DocumentFormat.OpenXml.Office.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization" /> <c>&lt;wne:keymapsBad></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.Toolbars" /> <c>&lt;wne:toolbars></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TemplateCommandGroup : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "tcg");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Tcg");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TemplateCommandGroup class.
         /// </summary>
@@ -67,17 +74,17 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:tcg");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.AllocatedCommands>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.KeyMapCustomizations>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.Toolbars>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.AllocatedCommands.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.AllocatedCommands());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.KeyMapCustomizations.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.KeyMapCustomizations());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.Toolbars.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.Toolbars());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.KeyMapCustomizations), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.Toolbars), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.AllocatedCommands), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.KeyMapCustomizations.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.MismatchedKeyMapCustomization.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.Toolbars.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.AllocatedCommands.ElementType, 0, 0)
             };
         }
 
@@ -121,14 +128,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:mcds.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.Mcd" /> <c>&lt;wne:mcd></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Mcds : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "mcds");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Mcds");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Mcds class.
         /// </summary>
@@ -163,11 +176,11 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:mcds");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.Mcd>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.Mcd.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.Mcd());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.Mcd), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.Mcd.ElementType, 0, 0)
             };
         }
 
@@ -180,15 +193,21 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:vbaSuppData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.DocEvents" /> <c>&lt;wne:docEvents></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.Mcds" /> <c>&lt;wne:mcds></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class VbaSuppData : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "vbaSuppData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_VbaSuppData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the VbaSuppData class.
         /// </summary>
@@ -223,13 +242,13 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:vbaSuppData");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.DocEvents>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.Mcds>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.DocEvents.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.DocEvents());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.Mcds.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.Mcds());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.DocEvents), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.Mcds), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.DocEvents.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.Mcds.ElementType, 0, 1)
             };
         }
 
@@ -237,26 +256,26 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>DocEvents.</para>
         /// <para>Represents the following element tag in the schema: wne:docEvents.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.DocEvents? DocEvents
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.DocEvents>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.DocEvents.ElementType) as DocumentFormat.OpenXml.Office.Word.DocEvents;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.DocEvents.ElementType);
         }
 
         /// <summary>
         /// <para>Mcds.</para>
         /// <para>Represents the following element tag in the schema: wne:mcds.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.Mcds? Mcds
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.Mcds>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.Mcds.ElementType) as DocumentFormat.OpenXml.Office.Word.Mcds;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.Mcds.ElementType);
         }
 
         /// <inheritdoc/>
@@ -299,14 +318,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:recipients.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord" /> <c>&lt;wne:recipientData></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class MailMergeRecipients : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "recipients");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_HashedRecipients");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MailMergeRecipients class.
         /// </summary>
@@ -341,11 +366,11 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:recipients");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord), 1, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.SingleDataSourceRecord.ElementType, 1, 0)
             };
         }
 
@@ -360,6 +385,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class FixedCommandKeyboardCustomization : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "fci");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Fci");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FixedCommandKeyboardCustomization class.
         /// </summary>
@@ -371,9 +402,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>fciName</para>
         /// <para>Represents the following attribute in the schema: wne:fciName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? CommandName
         {
             get => GetAttribute<StringValue>();
@@ -384,9 +415,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>fciIndex</para>
         /// <para>Represents the following attribute in the schema: wne:fciIndex</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? CommandIndex
         {
             get => GetAttribute<HexBinaryValue>();
@@ -397,9 +428,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>swArg</para>
         /// <para>Represents the following attribute in the schema: wne:swArg</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Argument
         {
             get => GetAttribute<HexBinaryValue>();
@@ -409,7 +440,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:fci");
+            builder.SetSchema(ElementType);
             builder.AddElement<FixedCommandKeyboardCustomization>()
                 .AddAttribute("wne:fciName", a => a.CommandName)
                 .AddAttribute("wne:fciIndex", a => a.CommandIndex, aBuilder =>
@@ -433,6 +464,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class MacroKeyboardCustomization : MacroWllType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "macro");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_MacroWll");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MacroKeyboardCustomization class.
         /// </summary>
@@ -443,7 +480,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:macro");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -457,6 +494,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class WllMacroKeyboardCustomization : MacroWllType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "wll");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_MacroWll");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WllMacroKeyboardCustomization class.
         /// </summary>
@@ -467,7 +510,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:wll");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -481,6 +524,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public abstract partial class MacroWllType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_MacroWll");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MacroWllType class.
         /// </summary>
@@ -492,9 +541,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>macroName</para>
         /// <para>Represents the following attribute in the schema: wne:macroName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? MacroName
         {
             get => GetAttribute<StringValue>();
@@ -516,6 +565,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class AllocatedCommandKeyboardCustomization : AcceleratorKeymapType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "acd");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_AcdKeymap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AllocatedCommandKeyboardCustomization class.
         /// </summary>
@@ -526,7 +581,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:acd");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -540,6 +595,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class AllocatedCommandManifestEntry : AcceleratorKeymapType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "acdEntry");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_AcdKeymap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AllocatedCommandManifestEntry class.
         /// </summary>
@@ -550,7 +611,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:acdEntry");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -564,6 +625,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public abstract partial class AcceleratorKeymapType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_AcdKeymap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AcceleratorKeymapType class.
         /// </summary>
@@ -575,9 +642,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>acdName</para>
         /// <para>Represents the following attribute in the schema: wne:acdName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? AcceleratorName
         {
             get => GetAttribute<StringValue>();
@@ -599,6 +666,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class CharacterInsertion : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "wch");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_LongHexNumber");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CharacterInsertion class.
         /// </summary>
@@ -610,9 +683,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>val</para>
         /// <para>Represents the following attribute in the schema: wne:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Val
         {
             get => GetAttribute<HexBinaryValue>();
@@ -622,7 +695,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:wch");
+            builder.SetSchema(ElementType);
             builder.AddElement<CharacterInsertion>()
                 .AddAttribute("wne:val", a => a.Val, aBuilder =>
                 {
@@ -640,7 +713,7 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:keymap.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization" /> <c>&lt;wne:acd></c></description></item>
@@ -649,9 +722,15 @@ namespace DocumentFormat.OpenXml.Office.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization" /> <c>&lt;wne:macro></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization" /> <c>&lt;wne:wll></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class KeyMapEntry : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "keymap");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Keymap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the KeyMapEntry class.
         /// </summary>
@@ -687,9 +766,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>chmPrimary</para>
         /// <para>Represents the following attribute in the schema: wne:chmPrimary</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? CharacterMapPrimary
         {
             get => GetAttribute<HexBinaryValue>();
@@ -700,9 +779,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>chmSecondary</para>
         /// <para>Represents the following attribute in the schema: wne:chmSecondary</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? CharacterMapSecondary
         {
             get => GetAttribute<HexBinaryValue>();
@@ -713,9 +792,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>kcmPrimary</para>
         /// <para>Represents the following attribute in the schema: wne:kcmPrimary</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? KeyCodePrimary
         {
             get => GetAttribute<HexBinaryValue>();
@@ -726,9 +805,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>kcmSecondary</para>
         /// <para>Represents the following attribute in the schema: wne:kcmSecondary</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? KeyCodeSecondary
         {
             get => GetAttribute<HexBinaryValue>();
@@ -739,9 +818,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>mask</para>
         /// <para>Represents the following attribute in the schema: wne:mask</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public OnOffValue? Mask
         {
             get => GetAttribute<OnOffValue>();
@@ -751,12 +830,12 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:keymap");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.CharacterInsertion>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.CharacterInsertion.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.CharacterInsertion());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization());
             builder.AddElement<KeyMapEntry>()
                 .AddAttribute("wne:chmPrimary", a => a.CharacterMapPrimary, aBuilder =>
                 {
@@ -777,11 +856,11 @@ namespace DocumentFormat.OpenXml.Office.Word
                 .AddAttribute("wne:mask", a => a.Mask);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.CharacterInsertion), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.CharacterInsertion.ElementType, 1, 1)
             };
         }
 
@@ -789,65 +868,65 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>FixedCommandKeyboardCustomization.</para>
         /// <para>Represents the following element tag in the schema: wne:fci.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization? FixedCommandKeyboardCustomization
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization.ElementType) as DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.FixedCommandKeyboardCustomization.ElementType);
         }
 
         /// <summary>
         /// <para>MacroKeyboardCustomization.</para>
         /// <para>Represents the following element tag in the schema: wne:macro.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization? MacroKeyboardCustomization
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization.ElementType) as DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.MacroKeyboardCustomization.ElementType);
         }
 
         /// <summary>
         /// <para>AllocatedCommandKeyboardCustomization.</para>
         /// <para>Represents the following element tag in the schema: wne:acd.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization? AllocatedCommandKeyboardCustomization
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization.ElementType) as DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.AllocatedCommandKeyboardCustomization.ElementType);
         }
 
         /// <summary>
         /// <para>WllMacroKeyboardCustomization.</para>
         /// <para>Represents the following element tag in the schema: wne:wll.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization? WllMacroKeyboardCustomization
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization.ElementType) as DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.WllMacroKeyboardCustomization.ElementType);
         }
 
         /// <summary>
         /// <para>CharacterInsertion.</para>
         /// <para>Represents the following element tag in the schema: wne:wch.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.CharacterInsertion? CharacterInsertion
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.CharacterInsertion>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.CharacterInsertion.ElementType) as DocumentFormat.OpenXml.Office.Word.CharacterInsertion;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.CharacterInsertion.ElementType);
         }
 
         /// <inheritdoc/>
@@ -861,6 +940,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class AllocatedCommand : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "acd");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Acd");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AllocatedCommand class.
         /// </summary>
@@ -872,9 +957,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>argValue</para>
         /// <para>Represents the following attribute in the schema: wne:argValue</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? ArgumentValue
         {
             get => GetAttribute<StringValue>();
@@ -885,9 +970,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>fciBasedOn</para>
         /// <para>Represents the following attribute in the schema: wne:fciBasedOn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? CommandBasedOn
         {
             get => GetAttribute<StringValue>();
@@ -898,9 +983,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>fciIndexBasedOn</para>
         /// <para>Represents the following attribute in the schema: wne:fciIndexBasedOn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? CommandIndexBasedOn
         {
             get => GetAttribute<HexBinaryValue>();
@@ -911,9 +996,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>acdName</para>
         /// <para>Represents the following attribute in the schema: wne:acdName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? AcceleratorName
         {
             get => GetAttribute<StringValue>();
@@ -923,7 +1008,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:acd");
+            builder.SetSchema(ElementType);
             builder.AddElement<AllocatedCommand>()
                 .AddAttribute("wne:argValue", a => a.ArgumentValue)
                 .AddAttribute("wne:fciBasedOn", a => a.CommandBasedOn)
@@ -945,6 +1030,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class Mcd : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "mcd");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Mcd");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Mcd class.
         /// </summary>
@@ -956,9 +1047,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>macroName</para>
         /// <para>Represents the following attribute in the schema: wne:macroName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? MacroName
         {
             get => GetAttribute<StringValue>();
@@ -969,9 +1060,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>name</para>
         /// <para>Represents the following attribute in the schema: wne:name</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? Name
         {
             get => GetAttribute<StringValue>();
@@ -982,9 +1073,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>menuHelp</para>
         /// <para>Represents the following attribute in the schema: wne:menuHelp</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? MenuHelp
         {
             get => GetAttribute<StringValue>();
@@ -995,9 +1086,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>bEncrypt</para>
         /// <para>Represents the following attribute in the schema: wne:bEncrypt</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? BEncrypt
         {
             get => GetAttribute<HexBinaryValue>();
@@ -1008,9 +1099,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>cmg</para>
         /// <para>Represents the following attribute in the schema: wne:cmg</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Cmg
         {
             get => GetAttribute<HexBinaryValue>();
@@ -1020,7 +1111,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:mcd");
+            builder.SetSchema(ElementType);
             builder.AddElement<Mcd>()
                 .AddAttribute("wne:macroName", a => a.MacroName)
                 .AddAttribute("wne:name", a => a.Name)
@@ -1049,6 +1140,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocNewXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocNew");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocNewXsdString class.
         /// </summary>
@@ -1072,7 +1169,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocNew");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1086,6 +1183,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocOpenXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocOpen");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocOpenXsdString class.
         /// </summary>
@@ -1109,7 +1212,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocOpen");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1123,6 +1226,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocCloseXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocClose");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocCloseXsdString class.
         /// </summary>
@@ -1146,7 +1255,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocClose");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1160,6 +1269,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocSyncXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocSync");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocSyncXsdString class.
         /// </summary>
@@ -1183,7 +1298,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocSync");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1197,6 +1312,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocXmlAfterInsertXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocXmlAfterInsert");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocXmlAfterInsertXsdString class.
         /// </summary>
@@ -1220,7 +1341,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocXmlAfterInsert");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1234,6 +1355,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocXmlBeforeDeleteXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocXmlBeforeDelete");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocXmlBeforeDeleteXsdString class.
         /// </summary>
@@ -1257,7 +1384,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocXmlBeforeDelete");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1271,6 +1398,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocContentControlAfterInsertXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocContentControlAfterInsert");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocContentControlAfterInsertXsdString class.
         /// </summary>
@@ -1294,7 +1427,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocContentControlAfterInsert");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1308,6 +1441,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocContentControlBeforeDeleteXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocContentControlBeforeDelete");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocContentControlBeforeDeleteXsdString class.
         /// </summary>
@@ -1331,7 +1470,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocContentControlBeforeDelete");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1345,6 +1484,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocContentControlOnExistXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocContentControlOnExit");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocContentControlOnExistXsdString class.
         /// </summary>
@@ -1368,7 +1513,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocContentControlOnExit");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1382,6 +1527,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocContentControlOnEnterXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocContentControlOnEnter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocContentControlOnEnterXsdString class.
         /// </summary>
@@ -1405,7 +1556,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocContentControlOnEnter");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1419,6 +1570,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocStoreUpdateXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocStoreUpdate");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocStoreUpdateXsdString class.
         /// </summary>
@@ -1442,7 +1599,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocStoreUpdate");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1456,6 +1613,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocContentControlUpdateXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocContentControlContentUpdate");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocContentControlUpdateXsdString class.
         /// </summary>
@@ -1479,7 +1642,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocContentControlContentUpdate");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1493,6 +1656,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class EventDocBuildingBlockAfterInsertXsdString : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "eventDocBuildingBlockAfterInsert");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EventDocBuildingBlockAfterInsertXsdString class.
         /// </summary>
@@ -1516,7 +1685,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:eventDocBuildingBlockAfterInsert");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1528,7 +1697,7 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:docEvents.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString" /> <c>&lt;wne:eventDocNew></c></description></item>
@@ -1545,9 +1714,15 @@ namespace DocumentFormat.OpenXml.Office.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString" /> <c>&lt;wne:eventDocContentControlContentUpdate></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString" /> <c>&lt;wne:eventDocBuildingBlockAfterInsert></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DocEvents : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "docEvents");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_DocEvents");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DocEvents class.
         /// </summary>
@@ -1582,35 +1757,35 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:docEvents");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString.ElementType, 0, 1)
             };
         }
 
@@ -1618,169 +1793,169 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>EventDocNewXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocNew.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString? EventDocNewXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocNewXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocOpenXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocOpen.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString? EventDocOpenXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocOpenXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocCloseXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocClose.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString? EventDocCloseXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocCloseXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocSyncXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocSync.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString? EventDocSyncXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocSyncXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocXmlAfterInsertXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocXmlAfterInsert.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString? EventDocXmlAfterInsertXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocXmlAfterInsertXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocXmlBeforeDeleteXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocXmlBeforeDelete.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString? EventDocXmlBeforeDeleteXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocXmlBeforeDeleteXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocContentControlAfterInsertXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocContentControlAfterInsert.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString? EventDocContentControlAfterInsertXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocContentControlAfterInsertXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocContentControlBeforeDeleteXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocContentControlBeforeDelete.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString? EventDocContentControlBeforeDeleteXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocContentControlBeforeDeleteXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocContentControlOnExistXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocContentControlOnExit.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString? EventDocContentControlOnExistXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnExistXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocContentControlOnEnterXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocContentControlOnEnter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString? EventDocContentControlOnEnterXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocContentControlOnEnterXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocStoreUpdateXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocStoreUpdate.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString? EventDocStoreUpdateXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocStoreUpdateXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocContentControlUpdateXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocContentControlContentUpdate.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString? EventDocContentControlUpdateXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocContentControlUpdateXsdString.ElementType);
         }
 
         /// <summary>
         /// <para>EventDocBuildingBlockAfterInsertXsdString.</para>
         /// <para>Represents the following element tag in the schema: wne:eventDocBuildingBlockAfterInsert.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString? EventDocBuildingBlockAfterInsertXsdString
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString.ElementType) as DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.EventDocBuildingBlockAfterInsertXsdString.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1792,14 +1967,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:acdManifest.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry" /> <c>&lt;wne:acdEntry></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AllocatedCommandManifest : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "acdManifest");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_AcdManifest");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AllocatedCommandManifest class.
         /// </summary>
@@ -1834,11 +2015,11 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:acdManifest");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifestEntry.ElementType, 0, 0)
             };
         }
 
@@ -1853,6 +2034,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class ToolbarData : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "toolbarData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Rel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ToolbarData class.
         /// </summary>
@@ -1864,9 +2051,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>id</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -1876,7 +2063,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:toolbarData");
+            builder.SetSchema(ElementType);
             builder.AddElement<ToolbarData>()
                 .AddAttribute("r:id", a => a.Id, aBuilder =>
                 {
@@ -1893,14 +2080,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:keymaps.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.KeyMapEntry" /> <c>&lt;wne:keymap></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class KeyMapCustomizations : KeymapsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "keymaps");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Keymaps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the KeyMapCustomizations class.
         /// </summary>
@@ -1935,10 +2128,10 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:keymaps");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.KeyMapEntry), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.KeyMapEntry.ElementType, 0, 0)
             };
         }
 
@@ -1951,14 +2144,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:keymapsBad.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.KeyMapEntry" /> <c>&lt;wne:keymap></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class MismatchedKeyMapCustomization : KeymapsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "keymapsBad");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Keymaps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MismatchedKeyMapCustomization class.
         /// </summary>
@@ -1993,10 +2192,10 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:keymapsBad");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.KeyMapEntry), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.KeyMapEntry.ElementType, 0, 0)
             };
         }
 
@@ -2009,14 +2208,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.KeyMapEntry" /> <c>&lt;wne:keymap></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class KeymapsType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Keymaps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the KeymapsType class.
         /// </summary>
@@ -2051,7 +2256,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.KeyMapEntry>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.KeyMapEntry.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.KeyMapEntry());
         }
     }
 
@@ -2060,15 +2265,21 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:toolbars.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest" /> <c>&lt;wne:acdManifest></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.ToolbarData" /> <c>&lt;wne:toolbarData></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Toolbars : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "toolbars");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Toolbars");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Toolbars class.
         /// </summary>
@@ -2103,13 +2314,13 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:toolbars");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.ToolbarData>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.ToolbarData.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.ToolbarData());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.ToolbarData), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.AllocatedCommandManifest.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.ToolbarData.ElementType, 0, 0)
             };
         }
 
@@ -2122,14 +2333,20 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:acds.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.AllocatedCommand" /> <c>&lt;wne:acd></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AllocatedCommands : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "acds");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_Acds");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AllocatedCommands class.
         /// </summary>
@@ -2164,11 +2381,11 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:acds");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.AllocatedCommand>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.AllocatedCommand.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.AllocatedCommand());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.AllocatedCommand), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.AllocatedCommand.ElementType, 0, 0)
             };
         }
 
@@ -2183,6 +2400,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class RecordIncluded : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "active");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RecordIncluded class.
         /// </summary>
@@ -2194,9 +2417,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>val</para>
         /// <para>Represents the following attribute in the schema: wne:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public OnOffValue? Val
         {
             get => GetAttribute<OnOffValue>();
@@ -2206,7 +2429,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:active");
+            builder.SetSchema(ElementType);
             builder.AddElement<RecordIncluded>()
                 .AddAttribute("wne:val", a => a.Val);
         }
@@ -2222,6 +2445,12 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// </summary>
     public partial class RecordHashCode : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "hash");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_DecimalNumber");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RecordHashCode class.
         /// </summary>
@@ -2233,9 +2462,9 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>val</para>
         /// <para>Represents the following attribute in the schema: wne:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne=http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Val
         {
             get => GetAttribute<IntegerValue>();
@@ -2245,7 +2474,7 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:hash");
+            builder.SetSchema(ElementType);
             builder.AddElement<RecordHashCode>()
                 .AddAttribute("wne:val", a => a.Val, aBuilder =>
                 {
@@ -2262,15 +2491,21 @@ namespace DocumentFormat.OpenXml.Office.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is wne:recipientData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.RecordHashCode" /> <c>&lt;wne:hash></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Word.RecordIncluded" /> <c>&lt;wne:active></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SingleDataSourceRecord : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2006/wordml", "recipientData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2006/wordml", "CT_HashedRecipientData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SingleDataSourceRecord class.
         /// </summary>
@@ -2305,13 +2540,13 @@ namespace DocumentFormat.OpenXml.Office.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("wne:recipientData");
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.RecordHashCode>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Word.RecordIncluded>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.RecordHashCode.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.RecordHashCode());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Word.RecordIncluded.ElementType, static () => new DocumentFormat.OpenXml.Office.Word.RecordIncluded());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.RecordIncluded), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Word.RecordHashCode), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.RecordIncluded.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Word.RecordHashCode.ElementType, 1, 1)
             };
         }
 
@@ -2319,26 +2554,26 @@ namespace DocumentFormat.OpenXml.Office.Word
         /// <para>RecordIncluded.</para>
         /// <para>Represents the following element tag in the schema: wne:active.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.RecordIncluded? RecordIncluded
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.RecordIncluded>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.RecordIncluded.ElementType) as DocumentFormat.OpenXml.Office.Word.RecordIncluded;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.RecordIncluded.ElementType);
         }
 
         /// <summary>
         /// <para>RecordHashCode.</para>
         /// <para>Represents the following element tag in the schema: wne:hash.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:wne = http://schemas.microsoft.com/office/word/2006/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Word.RecordHashCode? RecordHashCode
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Word.RecordHashCode>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Word.RecordHashCode.ElementType) as DocumentFormat.OpenXml.Office.Word.RecordHashCode;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Word.RecordHashCode.ElementType);
         }
 
         /// <inheritdoc/>

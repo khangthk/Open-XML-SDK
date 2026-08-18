@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -24,14 +25,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotCaches.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.PivotCache" /> <c>&lt;x:pivotCache></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotCaches : OpenXmlPivotCachesElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotCaches");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_PivotCaches");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotCaches class.
         /// </summary>
@@ -66,11 +73,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotCaches");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.PivotCache), 1, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.PivotCache.ElementType, 1, 0)
             };
         }
 
@@ -83,14 +90,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineCachePivotCaches.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.PivotCache" /> <c>&lt;x:pivotCache></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineCachePivotCaches : OpenXmlPivotCachesElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineCachePivotCaches");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_PivotCaches");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCachePivotCaches class.
         /// </summary>
@@ -125,11 +138,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineCachePivotCaches");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.PivotCache), 1, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.PivotCache.ElementType, 1, 0)
             };
         }
 
@@ -142,14 +155,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.PivotCache" /> <c>&lt;x:pivotCache></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class OpenXmlPivotCachesElement : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_PivotCaches");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OpenXmlPivotCachesElement class.
         /// </summary>
@@ -184,7 +203,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.PivotCache>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.PivotCache.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.PivotCache());
         }
     }
 
@@ -193,14 +212,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotTableReferences.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference" /> <c>&lt;x15:pivotTableReference></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotTableReferences : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTableReferences");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotTableReferences");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotTableReferences class.
         /// </summary>
@@ -235,12 +260,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTableReferences");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.PivotTableReference.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -255,6 +280,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class QueryTable : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "queryTable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_QueryTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the QueryTable class.
         /// </summary>
@@ -295,7 +326,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:queryTable");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<QueryTable>()
                 .AddAttribute("clipped", a => a.Clipped)
@@ -312,14 +343,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:webExtensions.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.WebExtension" /> <c>&lt;x15:webExtension></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "webExtensions");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_WebExtensions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensions class.
         /// </summary>
@@ -354,12 +391,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:webExtensions");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.WebExtension>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.WebExtension.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.WebExtension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.WebExtension), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.WebExtension.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -372,14 +409,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineCacheRefs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference" /> <c>&lt;x15:timelineCacheRef></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineCacheReferences : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineCacheRefs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineCacheRefs");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCacheReferences class.
         /// </summary>
@@ -414,12 +457,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineCacheRefs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineCacheReference.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -432,14 +475,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineRefs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineReference" /> <c>&lt;x15:timelineRef></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineReferences : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineRefs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineRefs");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineReferences class.
         /// </summary>
@@ -474,12 +523,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineRefs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineReference>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineReference.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineReference), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineReference.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -494,6 +543,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class WorkbookProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "workbookPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_WorkbookPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WorkbookProperties class.
         /// </summary>
@@ -514,7 +569,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:workbookPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<WorkbookProperties>()
                 .AddAttribute("chartTrackingRefBase", a => a.ChartTrackingReferenceBase);
@@ -529,14 +584,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineStyles.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle" /> <c>&lt;x15:timelineStyle></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineStyles : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineStyles");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineStyles");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineStyles class.
         /// </summary>
@@ -581,9 +642,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineStyles");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle());
             builder.AddElement<TimelineStyles>()
                 .AddAttribute("defaultTimelineStyle", a => a.DefaultTimelineStyle, aBuilder =>
                 {
@@ -591,7 +652,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle), 0, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyle.ElementType, 0, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -604,14 +665,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:dxfs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat" /> <c>&lt;x:dxf></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DifferentialFormats : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dxfs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_Dxfs");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DifferentialFormats class.
         /// </summary>
@@ -656,14 +723,14 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dxfs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat());
             builder.AddElement<DifferentialFormats>()
                 .AddAttribute("count", a => a.Count);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.DifferentialFormat.ElementType, 0, 0)
             };
         }
 
@@ -676,7 +743,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:connection.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TextProperties" /> <c>&lt;x15:textPr></c></description></item>
@@ -685,9 +752,15 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties" /> <c>&lt;x15:oledbPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.RangeProperties" /> <c>&lt;x15:rangePr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Connection : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "connection");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_Connection");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Connection class.
         /// </summary>
@@ -772,13 +845,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:connection");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TextProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.RangeProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TextProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TextProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.RangeProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.RangeProperties());
             builder.AddElement<Connection>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -790,11 +863,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("usedByAddin", a => a.UsedByAddin);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TextProperties), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.RangeProperties), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TextProperties.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.RangeProperties.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -802,65 +875,65 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>TextProperties.</para>
         /// <para>Represents the following element tag in the schema: x15:textPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.TextProperties? TextProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.TextProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.TextProperties.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.TextProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.TextProperties.ElementType);
         }
 
         /// <summary>
         /// <para>ModelTextProperties.</para>
         /// <para>Represents the following element tag in the schema: x15:modelTextPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties? ModelTextProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ModelTextProperties.ElementType);
         }
 
         /// <summary>
         /// <para>RangeProperties.</para>
         /// <para>Represents the following element tag in the schema: x15:rangePr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.RangeProperties? RangeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.RangeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.RangeProperties.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.RangeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.RangeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>OleDbPrpoperties.</para>
         /// <para>Represents the following element tag in the schema: x15:oledbPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties? OleDbPrpoperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.OleDbPrpoperties.ElementType);
         }
 
         /// <summary>
         /// <para>DataFeedProperties.</para>
         /// <para>Represents the following element tag in the schema: x15:dataFeedPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties? DataFeedProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.DataFeedProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -874,6 +947,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class CalculatedMember : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "calculatedMember");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_CalculatedMember");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CalculatedMember class.
         /// </summary>
@@ -914,7 +993,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:calculatedMember");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<CalculatedMember>()
                 .AddAttribute("measureGroup", a => a.MeasureGroup)
@@ -931,15 +1010,21 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotTableUISettings.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity" /> <c>&lt;x15:activeTabTopLevelEntity></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotTableUISettings : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTableUISettings");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotTableUISettings");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotTableUISettings class.
         /// </summary>
@@ -994,17 +1079,17 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTableUISettings");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity());
             builder.AddElement<PivotTableUISettings>()
                 .AddAttribute("sourceDataName", a => a.SourceDataName)
                 .AddAttribute("relNeededHidden", a => a.RelNeededHidden);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity), 0, 0, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.FieldListActiveTabTopLevelEntity.ElementType, 0, 0, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -1019,6 +1104,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class PivotFilter : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotFilter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotFilter");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotFilter class.
         /// </summary>
@@ -1039,7 +1130,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotFilter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<PivotFilter>()
                 .AddAttribute("useWholeDay", a => a.UseWholeDay, aBuilder =>
@@ -1057,14 +1148,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:cachedUniqueNames.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName" /> <c>&lt;x15:cachedUniqueName></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CachedUniqueNames : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "cachedUniqueNames");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_CachedUniqueNames");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CachedUniqueNames class.
         /// </summary>
@@ -1099,12 +1196,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:cachedUniqueNames");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.CachedUniqueName.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -1119,6 +1216,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class CacheHierarchy : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "cacheHierarchy");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_CacheHierarchy");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CacheHierarchy class.
         /// </summary>
@@ -1139,7 +1242,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:cacheHierarchy");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<CacheHierarchy>()
                 .AddAttribute("aggregatedColumn", a => a.AggregatedColumn, aBuilder =>
@@ -1159,6 +1262,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class TimelinePivotCacheDefinition : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelinePivotCacheDefinition");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelinePivotCacheDefinition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelinePivotCacheDefinition class.
         /// </summary>
@@ -1179,7 +1288,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelinePivotCacheDefinition");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<TimelinePivotCacheDefinition>()
                 .AddAttribute("timelineData", a => a.TimelineData);
@@ -1196,6 +1305,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class PivotCacheIdVersion : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotCacheIdVersion");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotCacheIdVersion");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotCacheIdVersion class.
         /// </summary>
@@ -1226,7 +1341,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotCacheIdVersion");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<PivotCacheIdVersion>()
                 .AddAttribute("cacheIdSupportedVersion", a => a.CacheIdSupportedVersion, aBuilder =>
@@ -1248,16 +1363,22 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:dataModel.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships" /> <c>&lt;x15:modelRelationships></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ModelTables" /> <c>&lt;x15:modelTables></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataModel : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dataModel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DataModel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataModel class.
         /// </summary>
@@ -1302,18 +1423,18 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dataModel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ModelTables>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ModelTables.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ModelTables());
             builder.AddElement<DataModel>()
                 .AddAttribute("minVersionLoad", a => a.MinVersionLoad);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ModelTables), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ModelTables.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -1321,39 +1442,39 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>ModelTables.</para>
         /// <para>Represents the following element tag in the schema: x15:modelTables.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ModelTables? ModelTables
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ModelTables>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ModelTables.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ModelTables;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ModelTables.ElementType);
         }
 
         /// <summary>
         /// <para>ModelRelationships.</para>
         /// <para>Represents the following element tag in the schema: x15:modelRelationships.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships? ModelRelationships
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ModelRelationships.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1365,14 +1486,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotTableData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.PivotRow" /> <c>&lt;x15:pivotRow></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotTableData : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTableData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotTableData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotTableData class.
         /// </summary>
@@ -1437,9 +1564,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTableData");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.PivotRow>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.PivotRow.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.PivotRow());
             builder.AddElement<PivotTableData>()
                 .AddAttribute("rowCount", a => a.RowCount)
                 .AddAttribute("columnCount", a => a.ColumnCount)
@@ -1451,7 +1578,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
             {
                 new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.PivotRow), 1, 0, version: FileFormatVersions.Office2013)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.PivotRow.ElementType, 1, 0, version: FileFormatVersions.Office2013)
                 }
             };
         }
@@ -1467,6 +1594,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class PivotCacheDecoupled : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotCacheDecoupled");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotCacheDecoupled");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotCacheDecoupled class.
         /// </summary>
@@ -1487,7 +1620,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotCacheDecoupled");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<PivotCacheDecoupled>()
                 .AddAttribute("decoupled", a => a.Decoupled);
@@ -1504,6 +1637,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class DataField : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dataField");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DataField");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataField class.
         /// </summary>
@@ -1524,7 +1663,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dataField");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<DataField>()
                 .AddAttribute("isCountDistinct", a => a.IsCountDistinct);
@@ -1541,6 +1680,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class MovingPeriodState : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "movingPeriodState");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_MovingPeriodState");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MovingPeriodState class.
         /// </summary>
@@ -1601,7 +1746,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:movingPeriodState");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<MovingPeriodState>()
                 .AddAttribute("referenceDateBegin", a => a.ReferenceDateBegin, aBuilder =>
@@ -1635,14 +1780,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:slicerCaches.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Excel.SlicerCache" /> <c>&lt;x14:slicerCache></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SlicerCaches : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "slicerCaches");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2009/9/main", "CT_SlicerCaches");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SlicerCaches class.
         /// </summary>
@@ -1677,12 +1828,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:slicerCaches");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Excel.SlicerCache>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Excel.SlicerCache.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Excel.SlicerCache());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Excel.SlicerCache), 1, 0, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Excel.SlicerCache.ElementType, 1, 0, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -1695,14 +1846,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:tableSlicerCache.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TableSlicerCache : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "tableSlicerCache");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TableSlicerCache");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TableSlicerCache class.
         /// </summary>
@@ -1787,9 +1944,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:tableSlicerCache");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
             builder.AddElement<TableSlicerCache>()
                 .AddAttribute("tableId", a => a.TableId, aBuilder =>
                 {
@@ -1804,7 +1961,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("crossFilter", a => a.CrossFilter);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -1812,13 +1969,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1830,14 +1987,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:slicerCacheHideItemsWithNoData.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName" /> <c>&lt;x15:slicerCacheOlapLevelName></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SlicerCacheHideItemsWithNoData : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "slicerCacheHideItemsWithNoData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SlicerCacheHideNoData");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SlicerCacheHideItemsWithNoData class.
         /// </summary>
@@ -1882,14 +2045,14 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:slicerCacheHideItemsWithNoData");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName());
             builder.AddElement<SlicerCacheHideItemsWithNoData>()
                 .AddAttribute("count", a => a.Count);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName), 0, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.SlicerCacheOlapLevelName.ElementType, 0, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -1902,14 +2065,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:slicerCachePivotTables.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable" /> <c>&lt;x14:pivotTable></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SlicerCachePivotTables : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "slicerCachePivotTables");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2009/9/main", "CT_SlicerCachePivotTables");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SlicerCachePivotTables class.
         /// </summary>
@@ -1944,12 +2113,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:slicerCachePivotTables");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable), 1, 0, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Excel.SlicerCachePivotTable.ElementType, 1, 0, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -1962,7 +2131,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:survey.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
@@ -1971,9 +2140,15 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr" /> <c>&lt;x15:descriptionPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions" /> <c>&lt;x15:questions></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Survey : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "survey");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_Survey");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Survey class.
         /// </summary>
@@ -2048,13 +2223,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:survey");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions());
             builder.AddElement<Survey>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2069,11 +2244,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("description", a => a.Description);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2081,65 +2256,65 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>SurveyPrSurveyElementPr.</para>
         /// <para>Represents the following element tag in the schema: x15:surveyPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr? SurveyPrSurveyElementPr
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.SurveyPrSurveyElementPr.ElementType);
         }
 
         /// <summary>
         /// <para>TitlePrSurveyElementPr.</para>
         /// <para>Represents the following element tag in the schema: x15:titlePr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr? TitlePrSurveyElementPr
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.TitlePrSurveyElementPr.ElementType);
         }
 
         /// <summary>
         /// <para>DescriptionPrSurveyElementPr.</para>
         /// <para>Represents the following element tag in the schema: x15:descriptionPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr? DescriptionPrSurveyElementPr
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.DescriptionPrSurveyElementPr.ElementType);
         }
 
         /// <summary>
         /// <para>SurveyQuestions.</para>
         /// <para>Represents the following element tag in the schema: x15:questions.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions? SurveyQuestions
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestions.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2151,14 +2326,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelines.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.Timeline" /> <c>&lt;x15:timeline></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Timelines : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelines");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_Timelines");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Timelines class.
         /// </summary>
@@ -2193,12 +2374,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelines");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.Timeline>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.Timeline.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.Timeline());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.Timeline), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.Timeline.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2242,16 +2423,22 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineCacheDefinition.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables" /> <c>&lt;x15:pivotTables></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineState" /> <c>&lt;x15:state></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineCacheDefinition : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineCacheDefinition");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineCacheDefinition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCacheDefinition class.
         /// </summary>
@@ -2306,11 +2493,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineCacheDefinition");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineState>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineState.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineState());
             builder.AddElement<TimelineCacheDefinition>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -2322,9 +2509,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineState), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineState.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2332,39 +2519,39 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>TimelineCachePivotTables.</para>
         /// <para>Represents the following element tag in the schema: x15:pivotTables.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables? TimelineCachePivotTables
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTables.ElementType);
         }
 
         /// <summary>
         /// <para>TimelineState.</para>
         /// <para>Represents the following element tag in the schema: x15:state.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.TimelineState? TimelineState
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.TimelineState>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.TimelineState.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.TimelineState;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.TimelineState.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2409,6 +2596,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class PivotTableReference : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTableReference");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotTableReference");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotTableReference class.
         /// </summary>
@@ -2420,9 +2613,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>id, this property is only available in Office 2013 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -2432,7 +2625,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTableReference");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<PivotTableReference>()
                 .AddAttribute("r:id", a => a.Id, aBuilder =>
@@ -2450,14 +2643,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:webExtension.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Excel.Formula" /> <c>&lt;xne:f></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "webExtension");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_WebExtension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtension class.
         /// </summary>
@@ -2502,9 +2701,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:webExtension");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Excel.Formula>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Excel.Formula.ElementType, static () => new DocumentFormat.OpenXml.Office.Excel.Formula());
             builder.AddElement<WebExtension>()
                 .AddAttribute("appRef", a => a.ApplicationReference, aBuilder =>
                 {
@@ -2512,7 +2711,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Excel.Formula), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Excel.Formula.ElementType, 1, 1)
             };
         }
 
@@ -2520,13 +2719,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>Formula.</para>
         /// <para>Represents the following element tag in the schema: xne:f.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xne = http://schemas.microsoft.com/office/excel/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Excel.Formula? Formula
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Excel.Formula>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Excel.Formula.ElementType) as DocumentFormat.OpenXml.Office.Excel.Formula;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Excel.Formula.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2540,6 +2739,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class TimelineCacheReference : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineCacheRef");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineCacheRef");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCacheReference class.
         /// </summary>
@@ -2551,9 +2756,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>id, this property is only available in Office 2013 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -2563,7 +2768,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineCacheRef");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<TimelineCacheReference>()
                 .AddAttribute("r:id", a => a.Id, aBuilder =>
@@ -2583,6 +2788,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class TimelineReference : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineRef");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineRef");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineReference class.
         /// </summary>
@@ -2594,9 +2805,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>id, this property is only available in Office 2013 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -2606,7 +2817,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineRef");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<TimelineReference>()
                 .AddAttribute("r:id", a => a.Id, aBuilder =>
@@ -2624,14 +2835,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineStyle.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements" /> <c>&lt;x15:timelineStyleElements></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineStyle : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineStyle");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineStyle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineStyle class.
         /// </summary>
@@ -2676,9 +2893,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineStyle");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements());
             builder.AddElement<TimelineStyle>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -2686,7 +2903,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2694,13 +2911,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>TimelineStyleElements.</para>
         /// <para>Represents the following element tag in the schema: x15:timelineStyleElements.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements? TimelineStyleElements
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElements.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2714,6 +2931,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class TimelineStyleElement : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineStyleElement");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineStyleElement");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineStyleElement class.
         /// </summary>
@@ -2744,7 +2967,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineStyleElement");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<TimelineStyleElement>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
@@ -2763,14 +2986,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timelineStyleElements.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement" /> <c>&lt;x15:timelineStyleElement></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineStyleElements : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timelineStyleElements");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineStyleElements");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineStyleElements class.
         /// </summary>
@@ -2805,12 +3034,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timelineStyleElements");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineStyleElement.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2825,6 +3054,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class DbTable : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dbTable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DbTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DbTable class.
         /// </summary>
@@ -2845,7 +3080,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dbTable");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<DbTable>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
@@ -2863,14 +3098,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:dbTables.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.DbTable" /> <c>&lt;x15:dbTable></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DbTables : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dbTables");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DbTables");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DbTables class.
         /// </summary>
@@ -2905,12 +3146,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dbTables");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DbTable>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DbTable.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DbTable());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DbTable), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DbTable.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -2925,6 +3166,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class DbCommand : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dbCommand");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DbCommand");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DbCommand class.
         /// </summary>
@@ -2945,7 +3192,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dbCommand");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<DbCommand>()
                 .AddAttribute("text", a => a.Text, aBuilder =>
@@ -2963,14 +3210,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:textPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.TextFields" /> <c>&lt;x:textFields></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "textPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_TextPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextProperties class.
         /// </summary>
@@ -3165,9 +3418,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:textPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.TextFields>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.TextFields.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.TextFields());
             builder.AddElement<TextProperties>()
                 .AddAttribute("prompt", a => a.Prompt)
                 .AddAttribute("fileType", a => a.FileType)
@@ -3187,7 +3440,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("delimiter", a => a.Delimiter);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.TextFields), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.TextFields.ElementType, 0, 1)
             };
         }
 
@@ -3195,13 +3448,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>TextFields.</para>
         /// <para>Represents the following element tag in the schema: x:textFields.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.TextFields? TextFields
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.TextFields>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.TextFields.ElementType) as DocumentFormat.OpenXml.Spreadsheet.TextFields;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.TextFields.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3215,6 +3468,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class ModelTextProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "modelTextPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_ModelTextPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelTextProperties class.
         /// </summary>
@@ -3235,7 +3494,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:modelTextPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<ModelTextProperties>()
                 .AddAttribute("headers", a => a.Headers);
@@ -3252,6 +3511,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class RangeProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "rangePr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_RangePr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RangeProperties class.
         /// </summary>
@@ -3272,7 +3537,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:rangePr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<RangeProperties>()
                 .AddAttribute("sourceName", a => a.SourceName, aBuilder =>
@@ -3290,15 +3555,21 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:oledbPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.DbCommand" /> <c>&lt;x15:dbCommand></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.DbTables" /> <c>&lt;x15:dbTables></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OleDbPrpoperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "oledbPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_OledbPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OleDbPrpoperties class.
         /// </summary>
@@ -3343,16 +3614,16 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:oledbPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DbCommand>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DbTables>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DbCommand.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DbCommand());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DbTables());
             builder.AddElement<OleDbPrpoperties>()
                 .AddAttribute("connection", a => a.Connection);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DbTables), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DbCommand), 1, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DbCommand.ElementType, 1, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -3360,26 +3631,26 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>DbTables.</para>
         /// <para>Represents the following element tag in the schema: x15:dbTables.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.DbTables? DbTables
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.DbTables>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.DbTables;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType);
         }
 
         /// <summary>
         /// <para>DbCommand.</para>
         /// <para>Represents the following element tag in the schema: x15:dbCommand.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.DbCommand? DbCommand
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.DbCommand>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.DbCommand.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.DbCommand;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.DbCommand.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3391,14 +3662,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:dataFeedPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.DbTables" /> <c>&lt;x15:dbTables></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataFeedProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "dataFeedPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_DataFeedPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataFeedProperties class.
         /// </summary>
@@ -3443,9 +3720,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:dataFeedPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.DbTables>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.DbTables());
             builder.AddElement<DataFeedProperties>()
                 .AddAttribute("connection", a => a.Connection, aBuilder =>
                 {
@@ -3453,7 +3730,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.DbTables), 1, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType, 1, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -3461,13 +3738,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>DbTables.</para>
         /// <para>Represents the following element tag in the schema: x15:dbTables.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.DbTables? DbTables
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.DbTables>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.DbTables;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.DbTables.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3481,6 +3758,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class FieldListActiveTabTopLevelEntity : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "activeTabTopLevelEntity");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_FieldListActiveTabTopLevelEntity");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FieldListActiveTabTopLevelEntity class.
         /// </summary>
@@ -3511,7 +3794,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:activeTabTopLevelEntity");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<FieldListActiveTabTopLevelEntity>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
@@ -3530,14 +3813,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Extension" /> <c>&lt;x:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_ExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -3572,16 +3861,16 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -3598,6 +3887,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class CachedUniqueName : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "cachedUniqueName");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_CachedUniqueName");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CachedUniqueName class.
         /// </summary>
@@ -3628,7 +3923,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:cachedUniqueName");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<CachedUniqueName>()
                 .AddAttribute("index", a => a.Index, aBuilder =>
@@ -3652,6 +3947,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class ModelTable : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "modelTable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_ModelTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelTable class.
         /// </summary>
@@ -3692,7 +3993,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:modelTable");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<ModelTable>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -3720,6 +4021,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class ModelRelationship : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "modelRelationship");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_ModelRelationship");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelRelationship class.
         /// </summary>
@@ -3770,7 +4077,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:modelRelationship");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<ModelRelationship>()
                 .AddAttribute("fromTable", a => a.FromTable, aBuilder =>
@@ -3800,14 +4107,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:modelTables.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ModelTable" /> <c>&lt;x15:modelTable></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ModelTables : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "modelTables");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_ModelTables");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelTables class.
         /// </summary>
@@ -3842,12 +4155,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:modelTables");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ModelTable>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ModelTable.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ModelTable());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ModelTable), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ModelTable.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -3860,14 +4173,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:modelRelationships.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship" /> <c>&lt;x15:modelRelationship></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ModelRelationships : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "modelRelationships");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_ModelRelationships");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelRelationships class.
         /// </summary>
@@ -3902,12 +4221,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:modelRelationships");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ModelRelationship.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -3920,15 +4239,21 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:c.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.Xstring" /> <c>&lt;x15:v></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra" /> <c>&lt;x15:x></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotValueCell : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "c");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotValueCell");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotValueCell class.
         /// </summary>
@@ -3983,17 +4308,17 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:c");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.Xstring>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.Xstring.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.Xstring());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra());
             builder.AddElement<PivotValueCell>()
                 .AddAttribute("i", a => a.Item)
                 .AddAttribute("t", a => a.Text);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.Xstring), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.Xstring.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4001,26 +4326,26 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>Xstring.</para>
         /// <para>Represents the following element tag in the schema: x15:v.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.Xstring? Xstring
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.Xstring>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.Xstring.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.Xstring;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.Xstring.ElementType);
         }
 
         /// <summary>
         /// <para>PivotValueCellExtra.</para>
         /// <para>Represents the following element tag in the schema: x15:x.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra? PivotValueCellExtra
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.PivotValueCellExtra.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4034,6 +4359,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class Xstring : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "v");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "ST_Xstring");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Xstring class.
         /// </summary>
@@ -4057,7 +4388,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:v");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
         }
 
@@ -4072,6 +4403,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class PivotValueCellExtra : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "x");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotValueCellExtra");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotValueCellExtra class.
         /// </summary>
@@ -4152,7 +4489,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:x");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<PivotValueCellExtra>()
                 .AddAttribute("in", a => a.FormatIndex)
@@ -4179,14 +4516,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotTableServerFormats.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ServerFormat" /> <c>&lt;x15:serverFormat></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotTableServerFormats : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTableServerFormats");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotTableServerFormats");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotTableServerFormats class.
         /// </summary>
@@ -4231,9 +4574,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTableServerFormats");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ServerFormat>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ServerFormat.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ServerFormat());
             builder.AddElement<PivotTableServerFormats>()
                 .AddAttribute("count", a => a.Count, aBuilder =>
                 {
@@ -4241,7 +4584,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ServerFormat), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ServerFormat.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4256,6 +4599,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class ServerFormat : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "serverFormat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_ServerFormat");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ServerFormat class.
         /// </summary>
@@ -4286,7 +4635,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:serverFormat");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<ServerFormat>()
                 .AddAttribute("culture", a => a.Culture)
@@ -4304,6 +4653,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class SlicerCacheOlapLevelName : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "slicerCacheOlapLevelName");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SlicerCacheOlapLevelName");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SlicerCacheOlapLevelName class.
         /// </summary>
@@ -4334,7 +4689,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:slicerCacheOlapLevelName");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<SlicerCacheOlapLevelName>()
                 .AddAttribute("uniqueName", a => a.UniqueName, aBuilder =>
@@ -4356,14 +4711,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:surveyPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SurveyPrSurveyElementPr : OpenXmlSurveyElementPrElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "surveyPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SurveyPrSurveyElementPr class.
         /// </summary>
@@ -4398,11 +4759,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:surveyPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4415,14 +4776,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:titlePr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TitlePrSurveyElementPr : OpenXmlSurveyElementPrElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "titlePr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TitlePrSurveyElementPr class.
         /// </summary>
@@ -4457,11 +4824,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:titlePr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4474,14 +4841,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:descriptionPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DescriptionPrSurveyElementPr : OpenXmlSurveyElementPrElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "descriptionPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DescriptionPrSurveyElementPr class.
         /// </summary>
@@ -4516,11 +4889,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:descriptionPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4533,14 +4906,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:questionsPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class QuestionsPrSurveyElementPr : OpenXmlSurveyElementPrElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "questionsPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the QuestionsPrSurveyElementPr class.
         /// </summary>
@@ -4575,11 +4954,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:questionsPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4592,14 +4971,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:questionPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class QuestionPrSurveyElementPr : OpenXmlSurveyElementPrElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "questionPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the QuestionPrSurveyElementPr class.
         /// </summary>
@@ -4634,11 +5019,11 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:questionPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4651,14 +5036,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class OpenXmlSurveyElementPrElement : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyElementPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OpenXmlSurveyElementPrElement class.
         /// </summary>
@@ -4773,7 +5164,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
             builder.AddElement<OpenXmlSurveyElementPrElement>()
                 .AddAttribute("cssClass", a => a.CssClass)
                 .AddAttribute("bottom", a => a.Bottom)
@@ -4789,13 +5180,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
     }
 
@@ -4804,15 +5195,21 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:questions.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr" /> <c>&lt;x15:questionsPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion" /> <c>&lt;x15:question></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SurveyQuestions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "questions");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyQuestions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SurveyQuestions class.
         /// </summary>
@@ -4847,14 +5244,14 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:questions");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.SurveyQuestion.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -4862,13 +5259,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>QuestionsPrSurveyElementPr.</para>
         /// <para>Represents the following element tag in the schema: x15:questionsPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr? QuestionsPrSurveyElementPr
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.QuestionsPrSurveyElementPr.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4880,15 +5277,21 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:question.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr" /> <c>&lt;x15:questionPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SurveyQuestion : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "question");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_SurveyQuestion");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SurveyQuestion class.
         /// </summary>
@@ -5013,10 +5416,10 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:question");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr());
             builder.AddElement<SurveyQuestion>()
                 .AddAttribute("binding", a => a.Binding, aBuilder =>
                 {
@@ -5032,8 +5435,8 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("rowSource", a => a.RowSource);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -5041,26 +5444,26 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>QuestionPrSurveyElementPr.</para>
         /// <para>Represents the following element tag in the schema: x15:questionPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr? QuestionPrSurveyElementPr
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.QuestionPrSurveyElementPr.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5072,14 +5475,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:timeline.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Timeline : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "timeline");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_Timeline");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Timeline class.
         /// </summary>
@@ -5224,9 +5633,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:timeline");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
             builder.AddElement<Timeline>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -5253,7 +5662,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("style", a => a.Style);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("x15:name"), 1, 1000) { Application = ApplicationType.Excel, Version = FileFormatVersions.Office2013 });
         }
@@ -5262,13 +5671,13 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5282,6 +5691,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class TimelineCachePivotTable : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineCachePivotTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCachePivotTable class.
         /// </summary>
@@ -5312,7 +5727,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTable");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<TimelineCachePivotTable>()
                 .AddAttribute("tabId", a => a.TabId, aBuilder =>
@@ -5336,6 +5751,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class SelectionTimelineRange : TimelineRange
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "selection");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineRange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SelectionTimelineRange class.
         /// </summary>
@@ -5346,7 +5767,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:selection");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
         }
 
@@ -5361,6 +5782,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public partial class BoundsTimelineRange : TimelineRange
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "bounds");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineRange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BoundsTimelineRange class.
         /// </summary>
@@ -5371,7 +5798,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:bounds");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
         }
 
@@ -5386,6 +5813,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// </summary>
     public abstract partial class TimelineRange : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineRange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineRange class.
         /// </summary>
@@ -5433,16 +5866,22 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:autoFilter.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.ExtensionList" /> <c>&lt;x:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.FilterColumn" /> <c>&lt;x:filterColumn></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.SortState" /> <c>&lt;x:sortState></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AutoFilter : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "autoFilter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_AutoFilter");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AutoFilter class.
         /// </summary>
@@ -5487,18 +5926,18 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:autoFilter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.FilterColumn>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.SortState>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.FilterColumn.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.FilterColumn());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.SortState.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.SortState());
             builder.AddElement<AutoFilter>()
                 .AddAttribute("ref", a => a.Reference);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.FilterColumn), 0, 0),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.SortState), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.FilterColumn.ElementType, 0, 0),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.SortState.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -5511,14 +5950,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotTables.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable" /> <c>&lt;x15:pivotTable></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineCachePivotTables : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotTables");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineCachePivotTables");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineCachePivotTables class.
         /// </summary>
@@ -5553,12 +5998,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotTables");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.TimelineCachePivotTable.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -5571,7 +6016,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:state.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.ExtensionList" /> <c>&lt;x15:extLst></c></description></item>
@@ -5579,9 +6024,15 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange" /> <c>&lt;x15:selection></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange" /> <c>&lt;x15:bounds></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TimelineState : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "state");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_TimelineState");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TimelineState class.
         /// </summary>
@@ -5696,12 +6147,12 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:state");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange());
             builder.AddElement<TimelineState>()
                 .AddAttribute("singleRangeFilterState", a => a.SingleRangeFilterState)
                 .AddAttribute("minimalRefreshVersion", a => a.MinimalRefreshVersion, aBuilder =>
@@ -5725,10 +6176,10 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 .AddAttribute("filterPivotName", a => a.FilterPivotName);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -5736,52 +6187,52 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         /// <para>SelectionTimelineRange.</para>
         /// <para>Represents the following element tag in the schema: x15:selection.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange? SelectionTimelineRange
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.SelectionTimelineRange.ElementType);
         }
 
         /// <summary>
         /// <para>BoundsTimelineRange.</para>
         /// <para>Represents the following element tag in the schema: x15:bounds.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange? BoundsTimelineRange
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.BoundsTimelineRange.ElementType);
         }
 
         /// <summary>
         /// <para>MovingPeriodState.</para>
         /// <para>Represents the following element tag in the schema: x15:movingPeriodState.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState? MovingPeriodState
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.MovingPeriodState.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x15:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x15 = http://schemas.microsoft.com/office/spreadsheetml/2010/11/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.Excel.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.Excel.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.Excel.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.Excel.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5793,14 +6244,20 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x15:pivotRow.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell" /> <c>&lt;x15:c></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotRow : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "pivotRow");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2010/11/main", "CT_PivotRow");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotRow class.
         /// </summary>
@@ -5855,9 +6312,9 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x15:pivotRow");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell.ElementType, static () => new DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell());
             builder.AddElement<PivotRow>()
                 .AddAttribute("r", a => a.Reference)
                 .AddAttribute("count", a => a.Count, aBuilder =>
@@ -5866,7 +6323,7 @@ namespace DocumentFormat.OpenXml.Office2013.Excel
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell), 1, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.Excel.PivotValueCell.ElementType, 1, 0, version: FileFormatVersions.Office2013)
             };
         }
 

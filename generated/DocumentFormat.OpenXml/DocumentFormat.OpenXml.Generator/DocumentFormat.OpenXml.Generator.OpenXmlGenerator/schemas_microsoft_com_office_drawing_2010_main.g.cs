@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -25,6 +26,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class CameraTool : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "cameraTool");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_CameraTool");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CameraTool class.
         /// </summary>
@@ -55,7 +62,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:cameraTool");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<CameraTool>()
                 .AddAttribute("cellRange", a => a.CellRange)
@@ -74,6 +81,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class CompatExtension : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "compatExt");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_CompatExt");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompatExtension class.
         /// </summary>
@@ -94,7 +107,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:compatExt");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<CompatExtension>()
                 .AddAttribute("spid", a => a.ShapeId);
@@ -112,6 +125,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class IsCanvas : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "isCanvas");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_IsGvmlCanvas");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the IsCanvas class.
         /// </summary>
@@ -132,7 +151,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:isCanvas");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<IsCanvas>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -150,16 +169,22 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:contentPart.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList" /> <c>&lt;a14:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Transform2D" /> <c>&lt;a14:xfrm></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties" /> <c>&lt;a14:nvContentPartPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GvmlContentPart : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "contentPart");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_GvmlContentPart");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GvmlContentPart class.
         /// </summary>
@@ -205,9 +230,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>id, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? RelationshipId
         {
             get => GetAttribute<StringValue>();
@@ -217,11 +242,11 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:contentPart");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Transform2D>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Transform2D.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Transform2D());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties());
             builder.AddElement<GvmlContentPart>()
                 .AddAttribute("bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -233,9 +258,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Transform2D), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Transform2D.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -243,39 +268,39 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>NonVisualContentPartProperties.</para>
         /// <para>Represents the following element tag in the schema: a14:nvContentPartPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties? NonVisualContentPartProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.NonVisualContentPartProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Transform2D.</para>
         /// <para>Represents the following element tag in the schema: a14:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Transform2D? Transform2D
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Transform2D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Transform2D.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Transform2D;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Transform2D.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a14:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -289,6 +314,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ShadowObscured : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "shadowObscured");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_ShadowObscured");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShadowObscured class.
         /// </summary>
@@ -309,7 +340,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:shadowObscured");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ShadowObscured>()
                 .AddAttribute("val", a => a.Val);
@@ -324,7 +355,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:hiddenFill.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -334,9 +365,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.PatternFill" /> <c>&lt;a:pattFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HiddenFillProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "hiddenFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_FillProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenFillProperties class.
         /// </summary>
@@ -371,26 +408,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:hiddenFill");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 }
             };
@@ -400,78 +437,78 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>NoFill.</para>
         /// <para>Represents the following element tag in the schema: a:noFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NoFill? NoFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NoFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NoFill.ElementType) as DocumentFormat.OpenXml.Drawing.NoFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NoFill.ElementType);
         }
 
         /// <summary>
         /// <para>SolidFill.</para>
         /// <para>Represents the following element tag in the schema: a:solidFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.SolidFill? SolidFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.SolidFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType) as DocumentFormat.OpenXml.Drawing.SolidFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.SolidFill.ElementType);
         }
 
         /// <summary>
         /// <para>GradientFill.</para>
         /// <para>Represents the following element tag in the schema: a:gradFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.GradientFill? GradientFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType) as DocumentFormat.OpenXml.Drawing.GradientFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.GradientFill.ElementType);
         }
 
         /// <summary>
         /// <para>BlipFill.</para>
         /// <para>Represents the following element tag in the schema: a:blipFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BlipFill? BlipFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType) as DocumentFormat.OpenXml.Drawing.BlipFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BlipFill.ElementType);
         }
 
         /// <summary>
         /// <para>Pattern Fill.</para>
         /// <para>Represents the following element tag in the schema: a:pattFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.PatternFill? PatternFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType) as DocumentFormat.OpenXml.Drawing.PatternFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.PatternFill.ElementType);
         }
 
         /// <summary>
         /// <para>Group Fill.</para>
         /// <para>Represents the following element tag in the schema: a:grpFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.GroupFill? GroupFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType) as DocumentFormat.OpenXml.Drawing.GroupFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.GroupFill.ElementType);
         }
 
         /// <inheritdoc/>
@@ -483,7 +520,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:hiddenLine.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.CustomDash" /> <c>&lt;a:custDash></c></description></item>
@@ -499,9 +536,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.PresetDash" /> <c>&lt;a:prstDash></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HiddenLineProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "hiddenLine");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_LineProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenLineProperties class.
         /// </summary>
@@ -576,20 +619,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:hiddenLine");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.CustomDash>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HeadEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.TailEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LineJoinBevel>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Miter>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Round>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LinePropertiesExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PresetDash>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.CustomDash.ElementType, static () => new DocumentFormat.OpenXml.Drawing.CustomDash());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HeadEnd.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HeadEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.TailEnd.ElementType, static () => new DocumentFormat.OpenXml.Drawing.TailEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LineJoinBevel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LineJoinBevel());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Miter.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Miter());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Round.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Round());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LinePropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LinePropertiesExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PresetDash.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PresetDash());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
             builder.AddElement<HiddenLineProperties>()
                 .AddAttribute("w", a => a.Width, aBuilder =>
                 {
@@ -613,32 +656,32 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetDash), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.CustomDash), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetDash.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.CustomDash.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Round), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LineJoinBevel), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Miter), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Round.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.LineJoinBevel.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Miter.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HeadEnd), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.TailEnd), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LinePropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HeadEnd.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.TailEnd.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.LinePropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -651,15 +694,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:hiddenEffects.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectDag" /> <c>&lt;a:effectDag></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectList" /> <c>&lt;a:effectLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HiddenEffectsProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "hiddenEffects");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_EffectProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenEffectsProperties class.
         /// </summary>
@@ -694,18 +743,18 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:hiddenEffects");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 }
             };
@@ -715,26 +764,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>Effect Container.</para>
         /// <para>Represents the following element tag in the schema: a:effectLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.EffectList? EffectList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.EffectList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.EffectList.ElementType) as DocumentFormat.OpenXml.Drawing.EffectList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.EffectList.ElementType);
         }
 
         /// <summary>
         /// <para>Effect Container.</para>
         /// <para>Represents the following element tag in the schema: a:effectDag.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.EffectDag? EffectDag
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType) as DocumentFormat.OpenXml.Drawing.EffectDag;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.EffectDag.ElementType);
         }
 
         /// <inheritdoc/>
@@ -746,7 +795,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:hiddenScene3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Backdrop" /> <c>&lt;a:backdrop></c></description></item>
@@ -754,9 +803,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.LightRig" /> <c>&lt;a:lightRig></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HiddenScene3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "hiddenScene3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Scene3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenScene3D class.
         /// </summary>
@@ -791,18 +846,18 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:hiddenScene3d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Backdrop>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Camera>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LightRig>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Backdrop());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Camera.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Camera());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LightRig.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LightRig());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Camera), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LightRig), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Backdrop), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Camera.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.LightRig.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -810,52 +865,52 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>Camera.</para>
         /// <para>Represents the following element tag in the schema: a:camera.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Camera? Camera
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Camera>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Camera.ElementType) as DocumentFormat.OpenXml.Drawing.Camera;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Camera.ElementType);
         }
 
         /// <summary>
         /// <para>Light Rig.</para>
         /// <para>Represents the following element tag in the schema: a:lightRig.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.LightRig? LightRig
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.LightRig>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.LightRig.ElementType) as DocumentFormat.OpenXml.Drawing.LightRig;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.LightRig.ElementType);
         }
 
         /// <summary>
         /// <para>Backdrop Plane.</para>
         /// <para>Represents the following element tag in the schema: a:backdrop.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Backdrop? Backdrop
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Backdrop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Backdrop.ElementType) as DocumentFormat.OpenXml.Drawing.Backdrop;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Backdrop.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -867,7 +922,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:hiddenSp3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BevelTop" /> <c>&lt;a:bevelT></c></description></item>
@@ -876,9 +931,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ContourColor" /> <c>&lt;a:contourClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HiddenShape3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "hiddenSp3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Shape3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenShape3D class.
         /// </summary>
@@ -953,13 +1014,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:hiddenSp3d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BevelTop>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BevelBottom>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtrusionColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ContourColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BevelTop());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BevelBottom());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtrusionColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ContourColor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.AddElement<HiddenShape3D>()
                 .AddAttribute("z", a => a.Z, aBuilder =>
                 {
@@ -979,11 +1040,11 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BevelTop), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BevelBottom), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtrusionColor), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ContourColor), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -991,65 +1052,65 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>Top Bevel.</para>
         /// <para>Represents the following element tag in the schema: a:bevelT.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BevelTop? BevelTop
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BevelTop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BevelTop.ElementType) as DocumentFormat.OpenXml.Drawing.BevelTop;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BevelTop.ElementType);
         }
 
         /// <summary>
         /// <para>Bottom Bevel.</para>
         /// <para>Represents the following element tag in the schema: a:bevelB.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BevelBottom? BevelBottom
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BevelBottom>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType) as DocumentFormat.OpenXml.Drawing.BevelBottom;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BevelBottom.ElementType);
         }
 
         /// <summary>
         /// <para>Extrusion Color.</para>
         /// <para>Represents the following element tag in the schema: a:extrusionClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtrusionColor? ExtrusionColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtrusionColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType) as DocumentFormat.OpenXml.Drawing.ExtrusionColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtrusionColor.ElementType);
         }
 
         /// <summary>
         /// <para>Contour Color.</para>
         /// <para>Represents the following element tag in the schema: a:contourClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ContourColor? ContourColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ContourColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ContourColor.ElementType) as DocumentFormat.OpenXml.Drawing.ContourColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ContourColor.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1061,14 +1122,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:imgProps.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer" /> <c>&lt;a14:imgLayer></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ImageProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "imgProps");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_Photo");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ImageProperties class.
         /// </summary>
@@ -1103,12 +1170,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:imgProps");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer), 1, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer.ElementType, 1, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -1116,13 +1183,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>ImageLayer.</para>
         /// <para>Represents the following element tag in the schema: a14:imgLayer.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer? ImageLayer
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ImageLayer.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1136,6 +1203,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class UseLocalDpi : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "useLocalDpi");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_UseLocalDpi");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the UseLocalDpi class.
         /// </summary>
@@ -1156,7 +1229,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:useLocalDpi");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<UseLocalDpi>()
                 .AddAttribute("val", a => a.Val);
@@ -1173,6 +1246,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class TextMath : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "m");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_TextMath");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextMath class.
         /// </summary>
@@ -1183,7 +1262,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:m");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1196,14 +1275,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OfficeArtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OfficeArtExtensionList class.
         /// </summary>
@@ -1238,16 +1323,16 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -1262,14 +1347,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:cpLocks.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList" /> <c>&lt;a14:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContentPartLocks : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "cpLocks");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_ContentPartLocking");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContentPartLocks class.
         /// </summary>
@@ -1404,9 +1495,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:cpLocks");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList());
             builder.AddElement<ContentPartLocks>()
                 .AddAttribute("noGrp", a => a.NoGrouping)
                 .AddAttribute("noSelect", a => a.NoSelection)
@@ -1420,7 +1511,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 .AddAttribute("noChangeShapeType", a => a.NoChangeShapeType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -1428,13 +1519,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a14:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1448,6 +1539,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ForegroundMark : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "foregroundMark");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectBackgroundRemovalForegroundMark");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ForegroundMark class.
         /// </summary>
@@ -1498,7 +1595,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:foregroundMark");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ForegroundMark>()
                 .AddAttribute("x1", a => a.FirstXCoordinate, aBuilder =>
@@ -1534,6 +1631,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class BackgroundMark : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "backgroundMark");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectBackgroundRemovalBackgroundMark");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackgroundMark class.
         /// </summary>
@@ -1584,7 +1687,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:backgroundMark");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackgroundMark>()
                 .AddAttribute("x1", a => a.FirstXCoordinate, aBuilder =>
@@ -1620,6 +1723,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticBlur : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticBlur");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectBlur");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticBlur class.
         /// </summary>
@@ -1640,7 +1749,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticBlur");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticBlur>()
                 .AddAttribute("radius", a => a.Radius, aBuilder =>
@@ -1660,6 +1769,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticCement : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticCement");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectCement");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticCement class.
         /// </summary>
@@ -1690,7 +1805,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticCement");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticCement>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1714,6 +1829,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticChalkSketch : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticChalkSketch");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectChalkSketch");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticChalkSketch class.
         /// </summary>
@@ -1744,7 +1865,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticChalkSketch");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticChalkSketch>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1768,6 +1889,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticCrisscrossEtching : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticCrisscrossEtching");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectCrisscrossEtching");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticCrisscrossEtching class.
         /// </summary>
@@ -1798,7 +1925,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticCrisscrossEtching");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticCrisscrossEtching>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1822,6 +1949,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticCutout : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticCutout");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectCutout");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticCutout class.
         /// </summary>
@@ -1852,7 +1985,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticCutout");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticCutout>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1876,6 +2009,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticFilmGrain : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticFilmGrain");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectFilmGrain");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticFilmGrain class.
         /// </summary>
@@ -1906,7 +2045,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticFilmGrain");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticFilmGrain>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1930,6 +2069,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticGlass : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticGlass");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectGlass");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticGlass class.
         /// </summary>
@@ -1960,7 +2105,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticGlass");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticGlass>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -1984,6 +2129,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticGlowDiffused : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticGlowDiffused");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectGlowDiffused");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticGlowDiffused class.
         /// </summary>
@@ -2014,7 +2165,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticGlowDiffused");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticGlowDiffused>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2038,6 +2189,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticGlowEdges : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticGlowEdges");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectGlowEdges");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticGlowEdges class.
         /// </summary>
@@ -2068,7 +2225,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticGlowEdges");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticGlowEdges>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2092,6 +2249,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticLightScreen : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticLightScreen");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectLightScreen");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticLightScreen class.
         /// </summary>
@@ -2122,7 +2285,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticLightScreen");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticLightScreen>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2146,6 +2309,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticLineDrawing : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticLineDrawing");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectLineDrawing");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticLineDrawing class.
         /// </summary>
@@ -2176,7 +2345,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticLineDrawing");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticLineDrawing>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2200,6 +2369,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticMarker : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticMarker");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectMarker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticMarker class.
         /// </summary>
@@ -2230,7 +2405,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticMarker");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticMarker>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2254,6 +2429,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticMosaicBubbles : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticMosiaicBubbles");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectMosiaicBubbles");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticMosaicBubbles class.
         /// </summary>
@@ -2284,7 +2465,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticMosiaicBubbles");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticMosaicBubbles>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2308,6 +2489,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPaintStrokes : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPaintStrokes");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPaintStrokes");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPaintStrokes class.
         /// </summary>
@@ -2338,7 +2525,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPaintStrokes");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPaintStrokes>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2362,6 +2549,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPaintBrush : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPaintBrush");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPaintBrush");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPaintBrush class.
         /// </summary>
@@ -2392,7 +2585,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPaintBrush");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPaintBrush>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2416,6 +2609,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPastelsSmooth : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPastelsSmooth");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPastelsSmooth");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPastelsSmooth class.
         /// </summary>
@@ -2446,7 +2645,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPastelsSmooth");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPastelsSmooth>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2470,6 +2669,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPencilGrayscale : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPencilGrayscale");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPencilGrayscale");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPencilGrayscale class.
         /// </summary>
@@ -2500,7 +2705,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPencilGrayscale");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPencilGrayscale>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2524,6 +2729,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPencilSketch : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPencilSketch");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPencilSketch");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPencilSketch class.
         /// </summary>
@@ -2554,7 +2765,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPencilSketch");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPencilSketch>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2578,6 +2789,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPhotocopy : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPhotocopy");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPhotocopy");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPhotocopy class.
         /// </summary>
@@ -2608,7 +2825,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPhotocopy");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPhotocopy>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2632,6 +2849,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticPlasticWrap : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticPlasticWrap");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectPlasticWrap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticPlasticWrap class.
         /// </summary>
@@ -2662,7 +2885,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticPlasticWrap");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticPlasticWrap>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2686,6 +2909,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticTexturizer : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticTexturizer");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectTexturizer");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticTexturizer class.
         /// </summary>
@@ -2716,7 +2945,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticTexturizer");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticTexturizer>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2740,6 +2969,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ArtisticWatercolorSponge : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "artisticWatercolorSponge");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectWatercolorSponge");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArtisticWatercolorSponge class.
         /// </summary>
@@ -2770,7 +3005,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:artisticWatercolorSponge");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ArtisticWatercolorSponge>()
                 .AddAttribute("trans", a => a.Transparancy, aBuilder =>
@@ -2792,15 +3027,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:backgroundRemoval.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark" /> <c>&lt;a14:backgroundMark></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark" /> <c>&lt;a14:foregroundMark></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackgroundRemoval : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "backgroundRemoval");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectBackgroundRemoval");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackgroundRemoval class.
         /// </summary>
@@ -2875,10 +3116,10 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:backgroundRemoval");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark());
             builder.AddElement<BackgroundRemoval>()
                 .AddAttribute("t", a => a.MarqueeTop, aBuilder =>
                 {
@@ -2902,8 +3143,8 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark), 0, 0, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark), 0, 0, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ForegroundMark.ElementType, 0, 0, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundMark.ElementType, 0, 0, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -2918,6 +3159,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class BrightnessContrast : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "brightnessContrast");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectBrightnessContrast");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BrightnessContrast class.
         /// </summary>
@@ -2948,7 +3195,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:brightnessContrast");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BrightnessContrast>()
                 .AddAttribute("bright", a => a.Bright, aBuilder =>
@@ -2972,6 +3219,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class ColorTemperature : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "colorTemperature");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectColorTemperature");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorTemperature class.
         /// </summary>
@@ -2992,7 +3245,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:colorTemperature");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ColorTemperature>()
                 .AddAttribute("colorTemp", a => a.ColorTemperatureValue, aBuilder =>
@@ -3012,6 +3265,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class Saturation : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "saturation");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectSaturation");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Saturation class.
         /// </summary>
@@ -3032,7 +3291,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:saturation");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Saturation>()
                 .AddAttribute("sat", a => a.SaturationAmount, aBuilder =>
@@ -3052,6 +3311,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// </summary>
     public partial class SharpenSoften : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "sharpenSoften");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffectSharpenSoften");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SharpenSoften class.
         /// </summary>
@@ -3072,7 +3337,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:sharpenSoften");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<SharpenSoften>()
                 .AddAttribute("amount", a => a.Amount, aBuilder =>
@@ -3090,7 +3355,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:imgEffect.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval" /> <c>&lt;a14:backgroundRemoval></c></description></item>
@@ -3121,9 +3386,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer" /> <c>&lt;a14:artisticTexturizer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge" /> <c>&lt;a14:artisticWatercolorSponge></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ImageEffect : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "imgEffect");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureEffect");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ImageEffect class.
         /// </summary>
@@ -3168,66 +3439,66 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:imgEffect");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Saturation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Saturation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Saturation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge());
             builder.AddElement<ImageEffect>()
                 .AddAttribute("visible", a => a.Visible);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Saturation), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften), 1, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Saturation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften.ElementType, 1, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3235,351 +3506,351 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>ArtisticBlur.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticBlur.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur? ArtisticBlur
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticBlur.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticCement.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticCement.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement? ArtisticCement
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCement.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticChalkSketch.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticChalkSketch.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch? ArtisticChalkSketch
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticChalkSketch.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticCrisscrossEtching.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticCrisscrossEtching.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching? ArtisticCrisscrossEtching
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCrisscrossEtching.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticCutout.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticCutout.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout? ArtisticCutout
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticCutout.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticFilmGrain.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticFilmGrain.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain? ArtisticFilmGrain
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticFilmGrain.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticGlass.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticGlass.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass? ArtisticGlass
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlass.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticGlowDiffused.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticGlowDiffused.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused? ArtisticGlowDiffused
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowDiffused.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticGlowEdges.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticGlowEdges.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges? ArtisticGlowEdges
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticGlowEdges.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticLightScreen.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticLightScreen.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen? ArtisticLightScreen
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLightScreen.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticLineDrawing.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticLineDrawing.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing? ArtisticLineDrawing
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticLineDrawing.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticMarker.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticMarker.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker? ArtisticMarker
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMarker.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticMosaicBubbles.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticMosiaicBubbles.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles? ArtisticMosaicBubbles
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticMosaicBubbles.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPaintStrokes.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPaintStrokes.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes? ArtisticPaintStrokes
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintStrokes.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPaintBrush.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPaintBrush.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush? ArtisticPaintBrush
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPaintBrush.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPastelsSmooth.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPastelsSmooth.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth? ArtisticPastelsSmooth
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPastelsSmooth.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPencilGrayscale.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPencilGrayscale.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale? ArtisticPencilGrayscale
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilGrayscale.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPencilSketch.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPencilSketch.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch? ArtisticPencilSketch
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPencilSketch.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPhotocopy.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPhotocopy.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy? ArtisticPhotocopy
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPhotocopy.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticPlasticWrap.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticPlasticWrap.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap? ArtisticPlasticWrap
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticPlasticWrap.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticTexturizer.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticTexturizer.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer? ArtisticTexturizer
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticTexturizer.ElementType);
         }
 
         /// <summary>
         /// <para>ArtisticWatercolorSponge.</para>
         /// <para>Represents the following element tag in the schema: a14:artisticWatercolorSponge.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge? ArtisticWatercolorSponge
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ArtisticWatercolorSponge.ElementType);
         }
 
         /// <summary>
         /// <para>BackgroundRemoval.</para>
         /// <para>Represents the following element tag in the schema: a14:backgroundRemoval.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval? BackgroundRemoval
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.BackgroundRemoval.ElementType);
         }
 
         /// <summary>
         /// <para>BrightnessContrast.</para>
         /// <para>Represents the following element tag in the schema: a14:brightnessContrast.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast? BrightnessContrast
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.BrightnessContrast.ElementType);
         }
 
         /// <summary>
         /// <para>ColorTemperature.</para>
         /// <para>Represents the following element tag in the schema: a14:colorTemperature.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature? ColorTemperature
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ColorTemperature.ElementType);
         }
 
         /// <summary>
         /// <para>Saturation.</para>
         /// <para>Represents the following element tag in the schema: a14:saturation.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Saturation? Saturation
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Saturation>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Saturation.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Saturation;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Saturation.ElementType);
         }
 
         /// <summary>
         /// <para>SharpenSoften.</para>
         /// <para>Represents the following element tag in the schema: a14:sharpenSoften.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften? SharpenSoften
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.SharpenSoften.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3591,14 +3862,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:imgLayer.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect" /> <c>&lt;a14:imgEffect></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ImageLayer : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "imgLayer");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_PictureLayer");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ImageLayer class.
         /// </summary>
@@ -3634,9 +3911,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>embed, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: r:embed</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Embed
         {
             get => GetAttribute<StringValue>();
@@ -3646,14 +3923,14 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:imgLayer");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect());
             builder.AddElement<ImageLayer>()
                 .AddAttribute("r:embed", a => a.Embed);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect), 0, 0, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ImageEffect.ElementType, 0, 0, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3666,16 +3943,22 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:cNvPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnClick" /> <c>&lt;a:hlinkClick></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnHover" /> <c>&lt;a:hlinkHover></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "cNvPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualDrawingProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualDrawingProperties class.
         /// </summary>
@@ -3760,11 +4043,11 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:cNvPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnClick());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnHover());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList());
             builder.AddElement<NonVisualDrawingProperties>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -3779,9 +4062,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
                 .AddAttribute("title", a => a.Title);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -3789,39 +4072,39 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>Hyperlink associated with clicking or selecting the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkClick.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnClick? HyperlinkOnClick
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnClick;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType);
         }
 
         /// <summary>
         /// <para>Hyperlink associated with hovering over the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkHover.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnHover? HyperlinkOnHover
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnHover;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType);
         }
 
         /// <summary>
         /// <para>Future extension.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList? NonVisualDrawingPropertiesExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3833,15 +4116,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:cNvContentPartPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList" /> <c>&lt;a14:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks" /> <c>&lt;a14:cpLocks></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualInkContentPartProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "cNvContentPartPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_NonVisualInkContentPartProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualInkContentPartProperties class.
         /// </summary>
@@ -3886,16 +4175,16 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:cNvContentPartPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks());
             builder.AddElement<NonVisualInkContentPartProperties>()
                 .AddAttribute("isComment", a => a.IsComment);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3903,26 +4192,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>ContentPartLocks.</para>
         /// <para>Represents the following element tag in the schema: a14:cpLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks? ContentPartLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a14:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3934,15 +4223,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:nvContentPartPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties" /> <c>&lt;a14:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties" /> <c>&lt;a14:cNvContentPartPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualContentPartProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "nvContentPartPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_GvmlContentPartNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualContentPartProperties class.
         /// </summary>
@@ -3977,14 +4272,14 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:nvContentPartPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3992,26 +4287,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>NonVisualDrawingProperties.</para>
         /// <para>Represents the following element tag in the schema: a14:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>NonVisualInkContentPartProperties.</para>
         /// <para>Represents the following element tag in the schema: a14:cNvContentPartPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties? NonVisualInkContentPartProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.NonVisualInkContentPartProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4023,15 +4318,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a14:xfrm.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Offset" /> <c>&lt;a:off></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extents" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Transform2D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/main", "xfrm");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Transform2D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Transform2D class.
         /// </summary>
@@ -4096,18 +4397,18 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a14:xfrm");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Offset>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extents>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Offset.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Offset());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extents.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extents());
             builder.AddElement<Transform2D>()
                 .AddAttribute("rot", a => a.Rotation)
                 .AddAttribute("flipH", a => a.HorizontalFlip)
                 .AddAttribute("flipV", a => a.VerticalFlip);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Offset), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extents), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Offset.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Extents.ElementType, 0, 1)
             };
         }
 
@@ -4115,26 +4416,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing
         /// <para>Offset.</para>
         /// <para>Represents the following element tag in the schema: a:off.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Offset? Offset
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Offset>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Offset.ElementType) as DocumentFormat.OpenXml.Drawing.Offset;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Offset.ElementType);
         }
 
         /// <summary>
         /// <para>Extents.</para>
         /// <para>Represents the following element tag in the schema: a:ext.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Extents? Extents
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Extents>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Extents.ElementType) as DocumentFormat.OpenXml.Drawing.Extents;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Extents.ElementType);
         }
 
         /// <inheritdoc/>

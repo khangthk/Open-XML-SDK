@@ -29,12 +29,18 @@ namespace DocumentFormat.OpenXml.Validation
         }
 
         /// <summary>
-        /// Validate the specified document.
+        /// Validates the specified Open XML package against the provided validation settings.
         /// </summary>
-        /// <param name="document">The document to be validated.</param>
-        /// <param name="settings">The settings to be used during validation.</param>
-        /// <param name="token"></param>
-        /// <returns>Return results in ValidationResult.</returns>
+        /// <param name="document">The <see cref="OpenXmlPackage"/> to be validated.</param>
+        /// <param name="settings">The <see cref="ValidationSettings"/> to use during validation.</param>
+        /// <param name="token">A <see cref="CancellationToken"/> to observe while waiting for the validation to complete.</param>
+        /// <returns>
+        /// A list of <see cref="ValidationErrorInfo"/> objects that represent the validation errors found in the package.
+        /// If no errors are found, the list will be empty.
+        /// </returns>
+        /// <remarks>
+        /// <para><b>Note:</b> This method can only validate transitional Open XML documents. Strict documents are not supported.</para>
+        /// </remarks>
         public List<ValidationErrorInfo> Validate(OpenXmlPackage document, ValidationSettings settings, CancellationToken token)
         {
             var context = new ValidationContext(document.Features.GetNamespaceResolver(), settings, _cache, token);
@@ -57,12 +63,18 @@ namespace DocumentFormat.OpenXml.Validation
         }
 
         /// <summary>
-        /// Validate the specified part.
+        /// Validates the specified Open XML part against the provided validation settings.
         /// </summary>
-        /// <param name="part">The OpenXmlPart to be validated.</param>
-        /// <param name="settings">The settings to be used during validation.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <param name="part">The <see cref="OpenXmlPart"/> to be validated.</param>
+        /// <param name="settings">The <see cref="ValidationSettings"/> to use during validation.</param>
+        /// <param name="token">A <see cref="CancellationToken"/> to observe while waiting for the validation to complete.</param>
+        /// <returns>
+        /// A list of <see cref="ValidationErrorInfo"/> objects that represent the validation errors found in the part.
+        /// If no errors are found, the list will be empty.
+        /// </returns>
+        /// <remarks>
+        /// <para><b>Note:</b> This method can only validate transitional Open XML documents. Strict documents are not supported.</para>
+        /// </remarks>
         public List<ValidationErrorInfo> Validate(OpenXmlPart part, ValidationSettings settings, CancellationToken token)
         {
             var context = new ValidationContext(part.Features.GetNamespaceResolver(), settings, _cache, token);
@@ -93,6 +105,19 @@ namespace DocumentFormat.OpenXml.Validation
                     if (part.PartRootElement is not null)
                     {
                         Validate(context);
+                    }
+                    else if (part.IsEmptyPart())
+                    {
+                        context.AddError(new ValidationErrorInfo
+                        {
+                            ErrorType = ValidationErrorType.Schema,
+                            Id = "Sch_MissingPartRootElement",
+                            Part = part,
+                            Description = SR.Format(ValidationResources.Sch_MissingPartRootElement, part.Uri),
+                        });
+
+                        // The part's root element is empty, so no more errors in this part. Release the DOM to GC memory
+                        part.UnloadRootElement();
                     }
 
                     if (!partRootElementLoaded && context.Errors.Count == lastErrorCount)

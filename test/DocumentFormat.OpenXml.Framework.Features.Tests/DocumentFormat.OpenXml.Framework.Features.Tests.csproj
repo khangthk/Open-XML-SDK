@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>$(TestTargetFrameworks)</TargetFrameworks>
     <IsTestProject>true</IsTestProject>
-    <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
     <IncludeFrameworkShims>true</IncludeFrameworkShims>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DocumentFormat.OpenXml.Features\DocumentFormat.OpenXml.Features.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSubstitute" />
+    <PackageReference Include="System.Collections.Immutable" />
   </ItemGroup>
 
 </Project>

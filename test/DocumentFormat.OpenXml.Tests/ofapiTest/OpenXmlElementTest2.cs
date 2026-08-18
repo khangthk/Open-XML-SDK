@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using DocumentFormat.OpenXml.Framework;
 using DocumentFormat.OpenXml.Framework.Metadata;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Validation.Schema;
@@ -200,21 +201,84 @@ namespace DocumentFormat.OpenXml.Tests
         {
             public ChildElement Child
             {
-                get => GetElement<ChildElement>();
-                set => SetElement(value);
+                get => GetElement(ChildElement.ElementType) as ChildElement;
+                set => SetElement(value, ChildElement.ElementType);
             }
 
             internal override void ConfigureMetadata(ElementMetadata.Builder builder)
             {
                 builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                 {
-                    new ElementParticle(typeof(ChildElement), 0, 1),
+                    new ElementParticle(ChildElement.ElementType, 0, 1),
                 };
             }
         }
 
         private class ChildElement : OpenXmlLeafElement
         {
+            public static OpenXmlSchemaType ElementType => new(new("http://testns", "child"), new("http://testns", "child"));
+
+            internal override void ConfigureMetadata(ElementMetadata.Builder builder)
+            {
+                base.ConfigureMetadata(builder);
+                builder.SetSchema(ElementType);
+            }
+        }
+
+        /// <summary>
+        /// A test for OpenXmlElement.GetOrAddFirstChild.
+        /// </summary>
+        [Fact]
+        public void GetOrAddFirstChildTest()
+        {
+            Paragraph p = new();
+            Run r = p.GetOrAddFirstChild<Run>();
+            Assert.NotNull(r);
+            Assert.Same(r, p.GetFirstChild<Run>());
+
+            var r2 = p.GetOrAddFirstChild<Run>();
+            Assert.Same(r, r2);
+        }
+
+        [Fact]
+        public void IsValidChild_ValidChild_ReturnsTrue()
+        {
+            // Arrange
+            Paragraph parentElement = new();
+            Run validChild = new();
+
+            // Act
+            bool result = parentElement.IsValidChild(validChild);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsValidChild_InvalidChild_ReturnsFalse()
+        {
+            // Arrange
+            Paragraph parentElement = new();
+            Table invalidChild = new();
+
+            // Act
+            bool result = parentElement.IsValidChild(invalidChild);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsValidChild_NullChild_ReturnsFalse()
+        {
+            // Arrange
+            Paragraph parentElement = new();
+
+            // Act
+            bool result = parentElement.IsValidChild(null);
+
+            // Assert
+            Assert.False(result);
         }
     }
 }

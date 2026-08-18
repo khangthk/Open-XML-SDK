@@ -12,7 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Xunit;
-using Xunit.Abstractions;
 
 using static DocumentFormat.OpenXml.Framework.Tests.TestUtility;
 
@@ -59,7 +58,9 @@ namespace DocumentFormat.OpenXml.Framework.Tests
             // Act/Assert
             foreach (var rootType in allTypedParts)
             {
+#nullable disable
                 var root = ((OpenXmlElement)Activator.CreateInstance(rootType))!;
+#nullable enable
                 Assert.True(feature.TryCreate(root.QName, out var created));
                 Assert.IsType(rootType, created);
             }
@@ -103,7 +104,7 @@ namespace DocumentFormat.OpenXml.Framework.Tests
                 _features = package.Select(p => p.Features.GetRequired<IRootElementFeature>()).ToArray();
             }
 
-            public bool TryCreate(in OpenXmlQualifiedName qname, [NotNullWhen(true)] out OpenXmlElement element)
+            public bool TryCreate(in OpenXmlQualifiedName qname, [NotNullWhen(true)] out OpenXmlElement? element)
             {
                 foreach (var feature in _features)
                 {
@@ -132,8 +133,10 @@ namespace DocumentFormat.OpenXml.Framework.Tests
                 {
                     if (type.GetConstructor(Cached.Array<Type>()) is not null)
                     {
+#nullable disable
                         var instance = (OpenXmlElement)Activator.CreateInstance(type);
-                        return instance.Metadata.Children;
+#nullable enable
+                        return instance!.Metadata.Children;
                     }
                     else
                     {
@@ -141,28 +144,26 @@ namespace DocumentFormat.OpenXml.Framework.Tests
                     }
                 }
 
-                Children = GetLookup().Elements.Select(t => new ChildData
-                {
-                    Name = t.QName.Name,
-                    Namespace = t.QName.Namespace.Uri,
-                });
+                Children = GetLookup().Elements.Select(t => new OpenXmlTypeProxy(t.Type));
             }
 
-            public string Element { get; set; }
+            public string? Element { get; set; }
 
-            public IEnumerable<ChildData> Children { get; set; }
+            public IEnumerable<OpenXmlTypeProxy>? Children { get; set; }
 
-            public override bool Equals(object obj) => Equals(obj as LookupData);
+            public override bool Equals(object? obj) => Equals(obj as LookupData);
 
-            public bool Equals(LookupData other)
+            public bool Equals(LookupData? other)
             {
-                if (other is null)
+                if ((other is null) || (other.Children is null) || (Children is null))
                 {
                     return false;
                 }
 
                 if (!string.Equals(Element, other.Element, StringComparison.Ordinal) || !Children.SequenceEqual(other.Children))
                 {
+                    var c1 = Children.ToList();
+                    var c2 = other.Children.ToList();
                     System.Diagnostics.Debugger.Break();
                 }
 
@@ -171,23 +172,31 @@ namespace DocumentFormat.OpenXml.Framework.Tests
             }
 
             public override int GetHashCode() => throw new NotImplementedException();
+        }
 
-            public class ChildData : IEquatable<ChildData>
+        private class OpenXmlTypeProxy : IEquatable<OpenXmlTypeProxy>
+        {
+            public OpenXmlTypeProxy()
             {
-                public string Name { get; set; }
-
-                public string Namespace { get; set; }
-
-                public bool Equals(ChildData other)
-                {
-                    return string.Equals(Name, other.Name, StringComparison.Ordinal)
-                        && string.Equals(Namespace, other.Namespace, StringComparison.Ordinal);
-                }
-
-                public override int GetHashCode() => throw new NotImplementedException();
-
-                public override bool Equals(object obj) => Equals(obj as ChildData);
             }
+
+            public OpenXmlTypeProxy(OpenXmlSchemaType type)
+            {
+                Name = type.Name;
+                Type = type.Type;
+            }
+
+            public OpenXmlQualifiedName Name { get; set; }
+
+            public OpenXmlQualifiedName Type { get; set; }
+
+            public bool Equals(OpenXmlTypeProxy? other) => other is not null && Name.Equals(other.Name) && Type.Equals(other.Type);
+
+            public override bool Equals(object? obj) => obj is OpenXmlTypeProxy other && Equals(other);
+
+            public override int GetHashCode() => Name.GetHashCode() ^ Type.GetHashCode();
+
+            public override string ToString() => $"{Type}/{Name}";
         }
     }
 }

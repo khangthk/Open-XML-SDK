@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -23,7 +24,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:webextension.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot" /> <c>&lt;we:snapshot></c></description></item>
@@ -33,9 +34,15 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference" /> <c>&lt;we:reference></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList" /> <c>&lt;we:alternateReferences></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtension : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "webextension");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtension class.
         /// </summary>
@@ -90,14 +97,14 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:webextension");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList());
             builder.AddElement<WebExtension>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -106,12 +113,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
                 .AddAttribute("frozen", a => a.Frozen);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot), 0, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot.ElementType, 0, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("we:id"), 1, 1000) { Application = ApplicationType.Word | ApplicationType.Excel, Version = FileFormatVersions.Office2013 });
         }
@@ -120,78 +127,78 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>WebExtensionStoreReference.</para>
         /// <para>Represents the following element tag in the schema: we:reference.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference? WebExtensionStoreReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType);
         }
 
         /// <summary>
         /// <para>WebExtensionReferenceList.</para>
         /// <para>Represents the following element tag in the schema: we:alternateReferences.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList? WebExtensionReferenceList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionReferenceList.ElementType);
         }
 
         /// <summary>
         /// <para>WebExtensionPropertyBag.</para>
         /// <para>Represents the following element tag in the schema: we:properties.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag? WebExtensionPropertyBag
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionPropertyBag.ElementType);
         }
 
         /// <summary>
         /// <para>WebExtensionBindingList.</para>
         /// <para>Represents the following element tag in the schema: we:bindings.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList? WebExtensionBindingList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBindingList.ElementType);
         }
 
         /// <summary>
         /// <para>Snapshot.</para>
         /// <para>Represents the following element tag in the schema: we:snapshot.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot? Snapshot
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.Snapshot.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: we:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -236,6 +243,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// </summary>
     public partial class WebExtensionReference : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "webextensionref");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_WebExtensionPartRef");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionReference class.
         /// </summary>
@@ -247,9 +260,9 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>id, this property is only available in Office 2013 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -259,7 +272,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:webextensionref");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<WebExtensionReference>()
                 .AddAttribute("r:id", a => a.Id, aBuilder =>
@@ -279,6 +292,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// </summary>
     public partial class WebExtensionProperty : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "property");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionProperty class.
         /// </summary>
@@ -309,7 +328,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:property");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
             builder.AddElement<WebExtensionProperty>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
@@ -331,14 +350,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OfficeArtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OfficeArtExtensionList class.
         /// </summary>
@@ -373,16 +398,16 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -397,14 +422,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:binding.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList" /> <c>&lt;we:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensionBinding : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "binding");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionBinding");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionBinding class.
         /// </summary>
@@ -469,9 +500,9 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:binding");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList());
             builder.AddElement<WebExtensionBinding>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -487,7 +518,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -495,13 +526,13 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: we:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -513,14 +544,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:reference.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList" /> <c>&lt;we:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensionStoreReference : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "reference");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionReference");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionStoreReference class.
         /// </summary>
@@ -595,9 +632,9 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:reference");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList());
             builder.AddElement<WebExtensionStoreReference>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -611,7 +648,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
                 .AddAttribute("storeType", a => a.StoreType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2013)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("we:id"), 1, 1000) { Application = ApplicationType.Word | ApplicationType.Excel, Version = FileFormatVersions.Office2013 });
         }
@@ -620,13 +657,13 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: we:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:we = http://schemas.microsoft.com/office/webextensions/webextension/2010/11
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.WebExtension.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -638,14 +675,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:alternateReferences.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference" /> <c>&lt;we:reference></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensionReferenceList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "alternateReferences");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionReferenceList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionReferenceList class.
         /// </summary>
@@ -680,12 +723,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:alternateReferences");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference), 0, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionStoreReference.ElementType, 0, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -698,14 +741,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:properties.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty" /> <c>&lt;we:property></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensionPropertyBag : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "properties");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionPropertyBag");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionPropertyBag class.
         /// </summary>
@@ -740,12 +789,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:properties");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty), 0, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionProperty.ElementType, 0, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -758,14 +807,20 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:bindings.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding" /> <c>&lt;we:binding></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WebExtensionBindingList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "bindings");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "CT_OsfWebExtensionBindingList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WebExtensionBindingList class.
         /// </summary>
@@ -800,12 +855,12 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:bindings");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding.ElementType, static () => new DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding), 0, 0, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.WebExtension.WebExtensionBinding.ElementType, 0, 0, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -818,7 +873,7 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is we:snapshot.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.AlphaBiLevel" /> <c>&lt;a:alphaBiLevel></c></description></item>
@@ -840,9 +895,15 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.LuminanceEffect" /> <c>&lt;a:lum></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.TintEffect" /> <c>&lt;a:tint></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Snapshot : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/webextensions/webextension/2010/11", "snapshot");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Blip");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Snapshot class.
         /// </summary>
@@ -878,9 +939,9 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>Embedded Picture Reference</para>
         /// <para>Represents the following attribute in the schema: r:embed</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Embed
         {
             get => GetAttribute<StringValue>();
@@ -891,9 +952,9 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         /// <para>Linked Picture Reference</para>
         /// <para>Represents the following attribute in the schema: r:link</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Link
         {
             get => GetAttribute<StringValue>();
@@ -913,26 +974,26 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("we:snapshot");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaBiLevel>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaCeiling>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaFloor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaInverse>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaModulationEffect>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaModulationFixed>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.AlphaReplace>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BiLevel>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Blur>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ColorChange>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ColorReplacement>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Duotone>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FillOverlay>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Grayscale>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Hsl>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LuminanceEffect>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.TintEffect>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaBiLevel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaBiLevel());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaCeiling.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaCeiling());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaFloor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaFloor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaInverse.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaInverse());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaModulationEffect.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaModulationEffect());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaModulationFixed.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaModulationFixed());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.AlphaReplace.ElementType, static () => new DocumentFormat.OpenXml.Drawing.AlphaReplace());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BiLevel.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BiLevel());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Blur.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Blur());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ColorChange.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ColorChange());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ColorReplacement.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ColorReplacement());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Duotone.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Duotone());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FillOverlay.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FillOverlay());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Grayscale.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Grayscale());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Hsl.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Hsl());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LuminanceEffect.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LuminanceEffect());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.TintEffect.ElementType, static () => new DocumentFormat.OpenXml.Drawing.TintEffect());
             builder.AddElement<Snapshot>()
                 .AddAttribute("r:embed", a => a.Embed)
                 .AddAttribute("r:link", a => a.Link)
@@ -944,25 +1005,25 @@ namespace DocumentFormat.OpenXml.Office2013.WebExtension
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaBiLevel), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaCeiling), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaFloor), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaInverse), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaModulationEffect), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaModulationFixed), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.AlphaReplace), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BiLevel), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Blur), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ColorChange), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ColorReplacement), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Duotone), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FillOverlay), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Grayscale), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Hsl), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LuminanceEffect), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.TintEffect), 1, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaBiLevel.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaCeiling.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaFloor.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaInverse.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaModulationEffect.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaModulationFixed.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.AlphaReplace.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.BiLevel.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.Blur.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ColorChange.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ColorReplacement.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.Duotone.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.FillOverlay.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.Grayscale.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.Hsl.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.LuminanceEffect.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.TintEffect.ElementType, 1, 1)
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipExtensionList.ElementType, 0, 1)
             };
         }
 

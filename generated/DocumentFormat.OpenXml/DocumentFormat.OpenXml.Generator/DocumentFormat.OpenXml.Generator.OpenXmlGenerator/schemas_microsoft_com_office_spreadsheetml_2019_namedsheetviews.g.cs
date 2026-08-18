@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -24,15 +25,21 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:namedSheetViews.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList" /> <c>&lt;xnsv:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView" /> <c>&lt;xnsv:namedSheetView></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NamedSheetViews : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "namedSheetViews");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_NamedSheetViews");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NamedSheetViews class.
         /// </summary>
@@ -67,14 +74,14 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:namedSheetViews");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView), 0, 0, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NamedSheetView.ElementType, 0, 0, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -118,15 +125,21 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:namedSheetView.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList" /> <c>&lt;xnsv:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter" /> <c>&lt;xnsv:nsvFilter></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NamedSheetView : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "namedSheetView");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_NamedSheetView");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NamedSheetView class.
         /// </summary>
@@ -181,10 +194,10 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:namedSheetView");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter());
             builder.AddElement<NamedSheetView>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -197,8 +210,8 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter), 0, 0, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.NsvFilter.ElementType, 0, 0, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -211,14 +224,20 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Extension" /> <c>&lt;x:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_ExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -253,16 +272,16 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -277,16 +296,22 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:nsvFilter.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList" /> <c>&lt;xnsv:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter" /> <c>&lt;xnsv:columnFilter></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules" /> <c>&lt;xnsv:sortRules></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NsvFilter : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "nsvFilter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_NsvFilter");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NsvFilter class.
         /// </summary>
@@ -351,11 +376,11 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:nsvFilter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules());
             builder.AddElement<NsvFilter>()
                 .AddAttribute("filterId", a => a.FilterId, aBuilder =>
                 {
@@ -366,9 +391,9 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
                 .AddAttribute("tableId", a => a.TableId);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter), 0, 0, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules), 0, 1, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ColumnFilter.ElementType, 0, 0, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRules.ElementType, 0, 1, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -381,16 +406,22 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:columnFilter.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType" /> <c>&lt;xnsv:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList" /> <c>&lt;xnsv:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn" /> <c>&lt;xnsv:filter></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColumnFilter : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "columnFilter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_ColumnFilter");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColumnFilter class.
         /// </summary>
@@ -445,11 +476,11 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:columnFilter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn());
             builder.AddElement<ColumnFilter>()
                 .AddAttribute("colId", a => a.ColId, aBuilder =>
                 {
@@ -461,9 +492,9 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType), 0, 1, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn), 0, 0, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.FilterColumn.ElementType, 0, 0, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -471,13 +502,13 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         /// <para>DifferentialFormatType.</para>
         /// <para>Represents the following element tag in the schema: xnsv:dxf.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xnsv = http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType? DifferentialFormatType
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType) as DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType);
         }
 
         /// <inheritdoc/>
@@ -489,15 +520,21 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:sortRules.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList" /> <c>&lt;xnsv:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule" /> <c>&lt;xnsv:sortRule></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SortRules : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "sortRules");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_SortRules");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SortRules class.
         /// </summary>
@@ -552,17 +589,17 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:sortRules");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule());
             builder.AddElement<SortRules>()
                 .AddAttribute("sortMethod", a => a.SortMethod)
                 .AddAttribute("caseSensitive", a => a.CaseSensitive);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule), 0, 64, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortRule.ElementType, 0, 64, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -575,7 +612,7 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:dxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Border" /> <c>&lt;x:border></c></description></item>
@@ -586,9 +623,15 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Font" /> <c>&lt;x:font></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.NumberingFormat" /> <c>&lt;x:numFmt></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DifferentialFormatType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "dxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_Dxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DifferentialFormatType class.
         /// </summary>
@@ -623,24 +666,24 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:dxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Border>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Alignment>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Protection>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Fill>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Font>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.NumberingFormat>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Border());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Alignment());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Protection());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Fill());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Font());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.NumberingFormat());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Font), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Fill), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Alignment), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Border), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Protection), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -648,91 +691,91 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         /// <para>Font Properties.</para>
         /// <para>Represents the following element tag in the schema: x:font.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Font? Font
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Font>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Font;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Font.ElementType);
         }
 
         /// <summary>
         /// <para>Number Format.</para>
         /// <para>Represents the following element tag in the schema: x:numFmt.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.NumberingFormat? NumberingFormat
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.NumberingFormat>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType) as DocumentFormat.OpenXml.Spreadsheet.NumberingFormat;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType);
         }
 
         /// <summary>
         /// <para>Fill.</para>
         /// <para>Represents the following element tag in the schema: x:fill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Fill? Fill
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Fill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Fill;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType);
         }
 
         /// <summary>
         /// <para>Alignment.</para>
         /// <para>Represents the following element tag in the schema: x:alignment.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Alignment? Alignment
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Alignment>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Alignment;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType);
         }
 
         /// <summary>
         /// <para>Border Properties.</para>
         /// <para>Represents the following element tag in the schema: x:border.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Border? Border
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Border>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Border;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Border.ElementType);
         }
 
         /// <summary>
         /// <para>Protection Properties.</para>
         /// <para>Represents the following element tag in the schema: x:protection.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Protection? Protection
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Protection>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Protection;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType);
         }
 
         /// <summary>
         /// <para>Future Feature Data Storage Area.</para>
         /// <para>Represents the following element tag in the schema: x:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType) as DocumentFormat.OpenXml.Spreadsheet.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -744,7 +787,7 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:filter.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.ColorFilter" /> <c>&lt;x:colorFilter></c></description></item>
@@ -757,9 +800,15 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Excel.CustomFilters" /> <c>&lt;x14:customFilters></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Excel.IconFilter" /> <c>&lt;x14:iconFilter></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FilterColumn : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "filter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_FilterColumn");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FilterColumn class.
         /// </summary>
@@ -824,17 +873,17 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:filter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ColorFilter>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.CustomFilters>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.DynamicFilter>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Filters>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.IconFilter>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Top10>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Excel.CustomFilters>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Excel.IconFilter>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.ColorFilter.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.ColorFilter());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.CustomFilters.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.CustomFilters());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.DynamicFilter.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.DynamicFilter());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Filters.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Filters());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.IconFilter.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.IconFilter());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Top10.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Top10());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Excel.CustomFilters.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Excel.CustomFilters());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Excel.IconFilter.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Excel.IconFilter());
             builder.AddElement<FilterColumn>()
                 .AddAttribute("colId", a => a.ColumnId, aBuilder =>
                 {
@@ -844,15 +893,15 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
                 .AddAttribute("showButton", a => a.ShowButton);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Filters), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Top10), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Excel.CustomFilters), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.CustomFilters), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.DynamicFilter), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ColorFilter), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Excel.IconFilter), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.IconFilter), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Filters.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Top10.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Excel.CustomFilters.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.CustomFilters.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.DynamicFilter.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.ColorFilter.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Excel.IconFilter.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.IconFilter.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -860,117 +909,117 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         /// <para>Filter Criteria.</para>
         /// <para>Represents the following element tag in the schema: x:filters.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Filters? Filters
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Filters>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Filters.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Filters;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Filters.ElementType);
         }
 
         /// <summary>
         /// <para>Top 10.</para>
         /// <para>Represents the following element tag in the schema: x:top10.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Top10? Top10
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Top10>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Top10.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Top10;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Top10.ElementType);
         }
 
         /// <summary>
         /// <para>CustomFilters14.</para>
         /// <para>Represents the following element tag in the schema: x14:customFilters.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x14 = http://schemas.microsoft.com/office/spreadsheetml/2009/9/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Excel.CustomFilters? CustomFilters14
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Excel.CustomFilters>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Excel.CustomFilters.ElementType) as DocumentFormat.OpenXml.Office2010.Excel.CustomFilters;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Excel.CustomFilters.ElementType);
         }
 
         /// <summary>
         /// <para>Custom Filters.</para>
         /// <para>Represents the following element tag in the schema: x:customFilters.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.CustomFilters? CustomFilters
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.CustomFilters>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.CustomFilters.ElementType) as DocumentFormat.OpenXml.Spreadsheet.CustomFilters;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.CustomFilters.ElementType);
         }
 
         /// <summary>
         /// <para>Dynamic Filter.</para>
         /// <para>Represents the following element tag in the schema: x:dynamicFilter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.DynamicFilter? DynamicFilter
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.DynamicFilter>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.DynamicFilter.ElementType) as DocumentFormat.OpenXml.Spreadsheet.DynamicFilter;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.DynamicFilter.ElementType);
         }
 
         /// <summary>
         /// <para>Color Filter Criteria.</para>
         /// <para>Represents the following element tag in the schema: x:colorFilter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.ColorFilter? ColorFilter
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ColorFilter>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.ColorFilter.ElementType) as DocumentFormat.OpenXml.Spreadsheet.ColorFilter;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.ColorFilter.ElementType);
         }
 
         /// <summary>
         /// <para>IconFilter14.</para>
         /// <para>Represents the following element tag in the schema: x14:iconFilter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x14 = http://schemas.microsoft.com/office/spreadsheetml/2009/9/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Excel.IconFilter? IconFilter14
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Excel.IconFilter>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Excel.IconFilter.ElementType) as DocumentFormat.OpenXml.Office2010.Excel.IconFilter;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Excel.IconFilter.ElementType);
         }
 
         /// <summary>
         /// <para>Icon Filter.</para>
         /// <para>Represents the following element tag in the schema: x:iconFilter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.IconFilter? IconFilter
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.IconFilter>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.IconFilter.ElementType) as DocumentFormat.OpenXml.Spreadsheet.IconFilter;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.IconFilter.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: x:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType) as DocumentFormat.OpenXml.Spreadsheet.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -982,16 +1031,22 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xnsv:sortRule.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType" /> <c>&lt;xnsv:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition" /> <c>&lt;xnsv:sortCondition></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition" /> <c>&lt;xnsv:richSortCondition></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SortRule : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "sortRule");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "CT_SortRule");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SortRule class.
         /// </summary>
@@ -1046,11 +1101,11 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:sortRule");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition.ElementType, static () => new DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition());
             builder.AddElement<SortRule>()
                 .AddAttribute("colId", a => a.ColId, aBuilder =>
                 {
@@ -1062,11 +1117,11 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType), 0, 1, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Office2021),
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition), 0, 1, version: FileFormatVersions.Office2021),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition), 0, 1, version: FileFormatVersions.Office2021)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.SortCondition.ElementType, 0, 1, version: FileFormatVersions.Office2021),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.RichSortCondition.ElementType, 0, 1, version: FileFormatVersions.Office2021)
                 }
             };
         }
@@ -1075,13 +1130,13 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         /// <para>DifferentialFormatType.</para>
         /// <para>Represents the following element tag in the schema: xnsv:dxf.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xnsv = http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType? DifferentialFormatType
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType) as DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews.DifferentialFormatType.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1095,6 +1150,12 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// </summary>
     public partial class SortCondition : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "sortCondition");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2009/9/main", "CT_SortCondition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SortCondition class.
         /// </summary>
@@ -1175,7 +1236,7 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:sortCondition");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<SortCondition>()
                 .AddAttribute("descending", a => a.Descending)
@@ -1201,6 +1262,12 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
     /// </summary>
     public partial class RichSortCondition : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2019/namedsheetviews", "richSortCondition");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2017/richdata2", "CT_RichSortCondition");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RichSortCondition class.
         /// </summary>
@@ -1291,7 +1358,7 @@ namespace DocumentFormat.OpenXml.Office2021.Excel.NamedSheetViews
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xnsv:richSortCondition");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<RichSortCondition>()
                 .AddAttribute("richSortKey", a => a.RichSortKey)

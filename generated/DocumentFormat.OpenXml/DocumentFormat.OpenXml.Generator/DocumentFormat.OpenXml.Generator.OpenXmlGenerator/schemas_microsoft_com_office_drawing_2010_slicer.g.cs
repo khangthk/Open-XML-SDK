@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -22,14 +23,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is sle:slicer.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList" /> <c>&lt;sle:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Slicer : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/slicer", "slicer");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/slicer", "CT_Slicer");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Slicer class.
         /// </summary>
@@ -74,9 +81,9 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("sle:slicer");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList());
             builder.AddElement<Slicer>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {
@@ -84,7 +91,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -92,13 +99,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: sle:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:sle = http://schemas.microsoft.com/office/drawing/2010/slicer
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Slicer.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -110,14 +117,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is sle:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OfficeArtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/slicer", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OfficeArtExtensionList class.
         /// </summary>
@@ -152,16 +165,16 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Slicer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("sle:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };

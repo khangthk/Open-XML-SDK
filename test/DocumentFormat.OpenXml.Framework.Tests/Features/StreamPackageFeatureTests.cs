@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using DocumentFormat.OpenXml.Builder;
+using DocumentFormat.OpenXml.Framework;
 using DocumentFormat.OpenXml.Packaging;
 using NSubstitute;
 using System;
@@ -9,6 +10,8 @@ using System.IO;
 using System.IO.Packaging;
 using System.Linq;
 using Xunit;
+
+using static DocumentFormat.OpenXml.Tests.TestAssets;
 
 namespace DocumentFormat.OpenXml.Features.Tests;
 
@@ -397,6 +400,48 @@ public class StreamPackageFeatureTests
 
         // Assert
         Assert.Same(relationshipBefore, relationshipAfter);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void OpenInvalidStreamFailsGracefully(bool isOwned)
+    {
+        // Arrange
+        var stream = new DisposingWatcherInvalidStream([1, 2, 3, 4]);
+
+        // Act
+        Assert.Throws<FileFormatException>(() => new StreamPackageFeature(stream, PackageOpenMode.Read, isOwned: isOwned));
+
+        // Assert
+        Assert.Equal(isOwned, stream.IsDisposed);
+    }
+
+    private sealed class DisposingWatcherInvalidStream : DelegatingStream
+    {
+        public DisposingWatcherInvalidStream(byte[] bytes)
+            : base(new MemoryStream(bytes))
+        {
+        }
+
+        public bool IsDisposed { get; private set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            IsDisposed = true;
+            base.Dispose(disposing);
+        }
+    }
+
+    [Fact]
+    public void ThrowsForEncryptedOfficeFile()
+    {
+        using (Stream stream = GetStream(TestFiles.Encrypted_pptx, false))
+        {
+            // Act & Assert
+            var ex = Assert.Throws<OpenXmlPackageException>(() => new StreamPackageFeature(stream, PackageOpenMode.Read, isOwned: true));
+            Assert.Equal(ExceptionMessages.EncryptedPackageNotSupported, ex.Message);
+        }
     }
 
     private static readonly PartInfo Part1 = new(new("/part1", UriKind.Relative), "type1/content");

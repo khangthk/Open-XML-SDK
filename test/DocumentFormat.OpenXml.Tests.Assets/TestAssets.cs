@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Xunit;
 
 namespace DocumentFormat.OpenXml.Tests
 {
@@ -51,7 +50,10 @@ namespace DocumentFormat.OpenXml.Tests
             var stream = assembly.GetManifestResourceStream($"DocumentFormat.OpenXml.Tests.Assets.assets.{name}");
             var names = assembly.GetManifestResourceNames().OrderBy(t => t).ToList();
 
-            Assert.NotNull(stream);
+            if (stream is null)
+            {
+                throw new InvalidOperationException($"Could not find stream '{name}' for test");
+            }
 
             return stream;
         }
@@ -67,6 +69,26 @@ namespace DocumentFormat.OpenXml.Tests
             var stream = GetStream(name);
 
             return isEditable ? stream.AsMemoryStream() : stream;
+        }
+
+        /// <summary>
+        /// Extracts an embedded test resource to a temporary file and returns its file path.
+        /// </summary>
+        /// <param name="resourceName">The name of the embedded resource to extract.</param>
+        /// <returns>The full path to the temporary file containing the resource data.</returns>
+        /// <remarks>
+        /// The caller is responsible for deleting the temporary file after use.
+        /// </remarks>
+        public static string GetTestFilePath(string resourceName)
+        {
+            string tempPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + Path.GetExtension(resourceName));
+
+            using (Stream stream = GetStream(resourceName, false))
+            using (FileStream fileStream = File.Create(tempPath))
+            {
+                stream.CopyTo(fileStream);
+                return tempPath;
+            }
         }
 
         private static Stream AsMemoryStream(this Stream stream)

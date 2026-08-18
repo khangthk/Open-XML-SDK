@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office.ContentType
     /// </summary>
     public partial class ContentTypeSchema : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/metadata/contentType", "contentTypeSchema");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/metadata/contentType", "CT_ContentTypeSchema");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContentTypeSchema class.
         /// </summary>
@@ -58,9 +65,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>_</para>
         /// <para>Represents the following attribute in the schema: ct:_</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ct=http://schemas.microsoft.com/office/2006/metadata/contentType
-        /// </remark>
+        /// </remarks>
         public StringValue? UnderScore
         {
             get => GetAttribute<StringValue>();
@@ -71,9 +78,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>_</para>
         /// <para>Represents the following attribute in the schema: ma:_</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? ReservedAttributeString
         {
             get => GetAttribute<StringValue>();
@@ -84,9 +91,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>contentTypeName</para>
         /// <para>Represents the following attribute in the schema: ma:contentTypeName</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? ContentTypeName
         {
             get => GetAttribute<StringValue>();
@@ -97,9 +104,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>contentTypeID</para>
         /// <para>Represents the following attribute in the schema: ma:contentTypeID</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? ContentTypeID
         {
             get => GetAttribute<StringValue>();
@@ -110,9 +117,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>contentTypeVersion</para>
         /// <para>Represents the following attribute in the schema: ma:contentTypeVersion</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public Int32Value? ContentTypeVersion
         {
             get => GetAttribute<Int32Value>();
@@ -123,9 +130,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>contentTypeDescription</para>
         /// <para>Represents the following attribute in the schema: ma:contentTypeDescription</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? ContentTypeDescription
         {
             get => GetAttribute<StringValue>();
@@ -136,9 +143,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>contentTypeScope</para>
         /// <para>Represents the following attribute in the schema: ma:contentTypeScope</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? ContentTypeScope
         {
             get => GetAttribute<StringValue>();
@@ -149,9 +156,9 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         /// <para>versionID</para>
         /// <para>Represents the following attribute in the schema: ma:versionID</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ma=http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes
-        /// </remark>
+        /// </remarks>
         public StringValue? VersionID
         {
             get => GetAttribute<StringValue>();
@@ -161,7 +168,7 @@ namespace DocumentFormat.OpenXml.Office.ContentType
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ct:contentTypeSchema");
+            builder.SetSchema(ElementType);
             builder.AddElement<ContentTypeSchema>()
                 .AddAttribute("ct:_", a => a.UnderScore)
                 .AddAttribute("ma:_", a => a.ReservedAttributeString)

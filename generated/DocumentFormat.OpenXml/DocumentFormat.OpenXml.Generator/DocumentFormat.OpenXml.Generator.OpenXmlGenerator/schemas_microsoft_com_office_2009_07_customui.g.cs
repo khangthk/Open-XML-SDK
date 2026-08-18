@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -24,6 +25,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ControlCloneRegular : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "control");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ControlCloneRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ControlCloneRegular class.
         /// </summary>
@@ -294,7 +301,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:control");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ControlCloneRegular>()
                 .AddAttribute("idQ", a => a.QualifiedId, aBuilder =>
@@ -403,6 +410,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ButtonRegular : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ButtonRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ButtonRegular class.
         /// </summary>
@@ -713,7 +726,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ButtonRegular>()
                 .AddAttribute("onAction", a => a.OnAction, aBuilder =>
@@ -839,6 +852,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class CheckBox : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "checkBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_CheckBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CheckBox class.
         /// </summary>
@@ -1089,7 +1108,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:checkBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<CheckBox>()
                 .AddAttribute("getPressed", a => a.GetPressed, aBuilder =>
@@ -1193,15 +1212,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:gallery.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Item" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GalleryRegular : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "gallery");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_GalleryRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GalleryRegular class.
         /// </summary>
@@ -1726,10 +1751,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:gallery");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Item>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Item());
             builder.AddElement<GalleryRegular>()
                 .AddAttribute("description", a => a.Description, aBuilder =>
                 {
@@ -1909,8 +1934,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Item), 0, 1000, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 0, 16, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, 0, 1000, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 0, 16, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -1927,6 +1952,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ToggleButtonRegular : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "toggleButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ToggleButtonRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ToggleButtonRegular class.
         /// </summary>
@@ -2247,7 +2278,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:toggleButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ToggleButtonRegular>()
                 .AddAttribute("getPressed", a => a.GetPressed, aBuilder =>
@@ -2375,6 +2406,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class MenuSeparator : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menuSeparator");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_MenuSeparator");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MenuSeparator class.
         /// </summary>
@@ -2475,7 +2512,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menuSeparator");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<MenuSeparator>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -2525,16 +2562,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:splitButton.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular" /> <c>&lt;mso14:menu></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SplitButtonRegular : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "splitButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_SplitButtonRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SplitButtonRegular class.
         /// </summary>
@@ -2729,11 +2772,11 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:splitButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton());
             builder.AddElement<SplitButtonRegular>()
                 .AddAttribute("enabled", a => a.Enabled)
                 .AddAttribute("getEnabled", a => a.GetEnabled, aBuilder =>
@@ -2796,10 +2839,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     },
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -2813,7 +2856,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -2826,9 +2869,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class MenuRegular : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_MenuRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MenuRegular class.
         /// </summary>
@@ -3163,17 +3212,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<MenuRegular>()
                 .AddAttribute("itemSize", a => a.ItemSize)
                 .AddAttribute("description", a => a.Description, aBuilder =>
@@ -3290,21 +3339,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                         {
                             new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                             {
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator), 1, 1, version: FileFormatVersions.Office2010)
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                             }
                         },
                         new CompositeParticle.Builder(ParticleType.Group, 1, 1, version: FileFormatVersions.Office2010)
                         {
                             new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                             {
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                             }
                         }
                     }
@@ -3323,6 +3372,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class DynamicMenuRegular : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "dynamicMenu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_DynamicMenuRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DynamicMenuRegular class.
         /// </summary>
@@ -3643,7 +3698,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:dynamicMenu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<DynamicMenuRegular>()
                 .AddAttribute("description", a => a.Description, aBuilder =>
@@ -3767,16 +3822,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:splitButton.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle" /> <c>&lt;mso14:menu></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SplitButtonWithTitle : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "splitButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_SplitButtonWithTitle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SplitButtonWithTitle class.
         /// </summary>
@@ -3971,11 +4032,11 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:splitButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton());
             builder.AddElement<SplitButtonWithTitle>()
                 .AddAttribute("enabled", a => a.Enabled)
                 .AddAttribute("getEnabled", a => a.GetEnabled, aBuilder =>
@@ -4038,10 +4099,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     },
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -4055,7 +4116,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -4068,9 +4129,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class MenuWithTitle : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_MenuWithTitle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MenuWithTitle class.
         /// </summary>
@@ -4405,17 +4472,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<MenuWithTitle>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -4532,21 +4599,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                         {
                             new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                             {
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator), 1, 1, version: FileFormatVersions.Office2010)
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                             }
                         },
                         new CompositeParticle.Builder(ParticleType.Group, 1, 1, version: FileFormatVersions.Office2010)
                         {
                             new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                             {
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonWithTitle.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuWithTitle.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                             }
                         }
                     }
@@ -4565,6 +4632,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class MenuSeparatorNoTitle : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menuSeparator");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_MenuSeparatorNoTitle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MenuSeparatorNoTitle class.
         /// </summary>
@@ -4645,7 +4718,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menuSeparator");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<MenuSeparatorNoTitle>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -4689,6 +4762,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ControlClone : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "control");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ControlClone");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ControlClone class.
         /// </summary>
@@ -4999,7 +5078,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:control");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ControlClone>()
                 .AddAttribute("size", a => a.Size)
@@ -5121,6 +5200,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class LabelControl : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "labelControl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_LabelControl");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LabelControl class.
         /// </summary>
@@ -5331,7 +5416,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:labelControl");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<LabelControl>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -5418,6 +5503,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class Button : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Button");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Button class.
         /// </summary>
@@ -5748,7 +5839,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Button>()
                 .AddAttribute("size", a => a.Size)
@@ -5879,6 +5970,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ToggleButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "toggleButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ToggleButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ToggleButton class.
         /// </summary>
@@ -6219,7 +6316,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:toggleButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ToggleButton>()
                 .AddAttribute("size", a => a.Size)
@@ -6352,6 +6449,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class EditBox : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "editBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_EditBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EditBox class.
         /// </summary>
@@ -6672,7 +6775,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:editBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<EditBox>()
                 .AddAttribute("enabled", a => a.Enabled)
@@ -6798,14 +6901,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:comboBox.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Item" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ComboBox : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "comboBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ComboBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ComboBox class.
         /// </summary>
@@ -7230,9 +7339,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:comboBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Item>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Item());
             builder.AddElement<ComboBox>()
                 .AddAttribute("showItemImage", a => a.ShowItemImage)
                 .AddAttribute("getItemCount", a => a.GetItemCount, aBuilder =>
@@ -7376,7 +7485,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Item), 0, 1000, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -7390,15 +7499,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:dropDown.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Item" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DropDownRegular : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "dropDown");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_DropDownRegular");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropDownRegular class.
         /// </summary>
@@ -7823,10 +7938,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:dropDown");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Item>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Item());
             builder.AddElement<DropDownRegular>()
                 .AddAttribute("onAction", a => a.OnAction, aBuilder =>
                 {
@@ -7970,8 +8085,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Item), 0, 1000, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 0, 16, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, 0, 1000, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 0, 16, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -7985,15 +8100,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:gallery.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Item" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Gallery : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "gallery");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Gallery");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Gallery class.
         /// </summary>
@@ -8538,10 +8659,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:gallery");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Item>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Item());
             builder.AddElement<Gallery>()
                 .AddAttribute("size", a => a.Size)
                 .AddAttribute("getSize", a => a.GetSize, aBuilder =>
@@ -8728,8 +8849,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Item), 0, 1000, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 0, 16, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Item.ElementType, 0, 1000, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 0, 16, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -8745,7 +8866,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -8758,9 +8879,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Menu : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Menu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Menu class.
         /// </summary>
@@ -9115,17 +9242,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<Menu>()
                 .AddAttribute("size", a => a.Size)
                 .AddAttribute("getSize", a => a.GetSize, aBuilder =>
@@ -9249,21 +9376,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator), 1, 1, version: FileFormatVersions.Office2010)
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                                 }
                             },
                             new CompositeParticle.Builder(ParticleType.Group, 1, 1, version: FileFormatVersions.Office2010)
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                                 }
                             }
                         }
@@ -9283,6 +9410,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class DynamicMenu : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "dynamicMenu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_DynamicMenu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DynamicMenu class.
         /// </summary>
@@ -9623,7 +9756,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:dynamicMenu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<DynamicMenu>()
                 .AddAttribute("size", a => a.Size)
@@ -9752,16 +9885,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:splitButton.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular" /> <c>&lt;mso14:menu></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SplitButton : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "splitButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_SplitButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SplitButton class.
         /// </summary>
@@ -9976,11 +10115,11 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:splitButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton());
             builder.AddElement<SplitButton>()
                 .AddAttribute("size", a => a.Size)
                 .AddAttribute("getSize", a => a.GetSize, aBuilder =>
@@ -10050,10 +10189,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.VisibleToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         },
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -10068,7 +10207,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:box.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Box" /> <c>&lt;mso14:box></c></description></item>
@@ -10086,9 +10225,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Box : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "box");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Box");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Box class.
         /// </summary>
@@ -10223,22 +10368,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:box");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Box>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Button>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.EditBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Gallery>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Menu>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Box.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Box());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Button.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Button());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.EditBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Gallery());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Menu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Menu());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton());
             builder.AddElement<Box>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -10278,20 +10423,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Button), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Menu), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Box), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Button.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Menu.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Box.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -10305,7 +10450,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:buttonGroup.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -10317,9 +10462,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ButtonGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "buttonGroup");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ButtonGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ButtonGroup class.
         /// </summary>
@@ -10444,16 +10595,16 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:buttonGroup");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Separator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Separator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<ButtonGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -10492,14 +10643,14 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Separator), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -10515,6 +10666,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageMenuButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageMenuButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageMenuButton class.
         /// </summary>
@@ -10705,7 +10862,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageMenuButton>()
                 .AddAttribute("description", a => a.Description, aBuilder =>
@@ -10786,6 +10943,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageMenuCheckBox : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "checkBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageMenuCheckBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageMenuCheckBox class.
         /// </summary>
@@ -10946,7 +11109,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:checkBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageMenuCheckBox>()
                 .AddAttribute("description", a => a.Description, aBuilder =>
@@ -11014,14 +11177,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup" /> <c>&lt;mso14:menuGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageSubMenu : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageSubMenu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageSubMenu class.
         /// </summary>
@@ -11216,9 +11385,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup());
             builder.AddElement<BackstageSubMenu>()
                 .AddAttribute("description", a => a.Description, aBuilder =>
                 {
@@ -11284,7 +11453,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -11301,6 +11470,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageMenuToggleButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "toggleButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageMenuToggleButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageMenuToggleButton class.
         /// </summary>
@@ -11491,7 +11666,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:toggleButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageMenuToggleButton>()
                 .AddAttribute("image", a => a.Image, aBuilder =>
@@ -11573,6 +11748,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageGroupButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageGroupButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageGroupButton class.
         /// </summary>
@@ -11803,7 +11984,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageGroupButton>()
                 .AddAttribute("expand", a => a.Expand)
@@ -11894,6 +12075,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageCheckBox : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "checkBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageCheckBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageCheckBox class.
         /// </summary>
@@ -12104,7 +12291,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:checkBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageCheckBox>()
                 .AddAttribute("expand", a => a.Expand)
@@ -12191,6 +12378,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageEditBox : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "editBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageEditBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageEditBox class.
         /// </summary>
@@ -12371,7 +12564,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:editBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageEditBox>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -12441,14 +12634,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:dropDown.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageDropDown : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "dropDown");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageDropDown");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageDropDown class.
         /// </summary>
@@ -12713,9 +12912,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:dropDown");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem());
             builder.AddElement<BackstageDropDown>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -12799,7 +12998,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -12812,14 +13011,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:radioGroup.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem" /> <c>&lt;mso14:radioButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RadioGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "radioGroup");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_RadioGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RadioGroup class.
         /// </summary>
@@ -13034,9 +13239,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:radioGroup");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem());
             builder.AddElement<RadioGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -13100,7 +13305,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.RadioButtonBackstageItem.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -13113,14 +13318,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:comboBox.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem" /> <c>&lt;mso14:item></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageComboBox : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "comboBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageComboBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageComboBox class.
         /// </summary>
@@ -13345,9 +13556,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:comboBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem());
             builder.AddElement<BackstageComboBox>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -13415,7 +13626,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ItemBackstageItem.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -13430,6 +13641,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class Hyperlink : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "hyperlink");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Hyperlink");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Hyperlink class.
         /// </summary>
@@ -13670,7 +13887,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:hyperlink");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Hyperlink>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -13766,6 +13983,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageLabelControl : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "labelControl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageLabelControl");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageLabelControl class.
         /// </summary>
@@ -13896,7 +14119,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:labelControl");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageLabelControl>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -13943,7 +14166,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:groupBox.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox" /> <c>&lt;mso14:checkBox></c></description></item>
@@ -13958,9 +14181,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer" /> <c>&lt;mso14:layoutContainer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup" /> <c>&lt;mso14:radioGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GroupBox : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "groupBox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_GroupBox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GroupBox class.
         /// </summary>
@@ -14055,19 +14284,19 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:groupBox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup());
             builder.AddElement<GroupBox>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -14096,17 +14325,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -14121,7 +14350,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:layoutContainer.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox" /> <c>&lt;mso14:checkBox></c></description></item>
@@ -14136,9 +14365,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer" /> <c>&lt;mso14:layoutContainer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup" /> <c>&lt;mso14:radioGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LayoutContainer : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "layoutContainer");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_LayoutContainer");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LayoutContainer class.
         /// </summary>
@@ -14233,19 +14468,19 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:layoutContainer");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup());
             builder.AddElement<LayoutContainer>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -14268,17 +14503,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -14295,6 +14530,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ImageControl : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "imageControl");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ImageControl");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ImageControl class.
         /// </summary>
@@ -14425,7 +14666,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:imageControl");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ImageControl>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -14481,16 +14722,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:group.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls" /> <c>&lt;mso14:topItems></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls" /> <c>&lt;mso14:bottomItems></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem" /> <c>&lt;mso14:primaryItem></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "group");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageGroup class.
         /// </summary>
@@ -14705,11 +14952,11 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:group");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem());
             builder.AddElement<BackstageGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -14778,10 +15025,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem), 0, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.PrimaryItem.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TopItemsGroupControls.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BottomItemsGroupControls.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -14794,14 +15041,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:taskGroup.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory" /> <c>&lt;mso14:category></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TaskGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "taskGroup");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskGroup class.
         /// </summary>
@@ -15006,9 +15259,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:taskGroup");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory());
             builder.AddElement<TaskGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -15071,7 +15324,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 .AddAttribute("allowedTaskSizes", a => a.AllowedTaskSizes);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory), 0, 100, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupCategory.ElementType, 0, 100, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -15084,7 +15337,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -15097,9 +15350,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class MenuRoot : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_MenuRoot");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MenuRoot class.
         /// </summary>
@@ -15164,17 +15423,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<MenuRoot>()
                 .AddAttribute("title", a => a.Title, aBuilder =>
                 {
@@ -15193,21 +15452,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     },
                     new CompositeParticle.Builder(ParticleType.Group, 1, 1, version: FileFormatVersions.Office2010)
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -15223,7 +15482,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:customUI.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Backstage" /> <c>&lt;mso14:backstage></c></description></item>
@@ -15231,9 +15490,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus" /> <c>&lt;mso14:contextMenus></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon" /> <c>&lt;mso14:ribbon></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CustomUI : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "customUI");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_CustomUI");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomUI class.
         /// </summary>
@@ -15288,12 +15553,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:customUI");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Backstage>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Commands>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Backstage.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Backstage());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Commands.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Commands());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon());
             builder.AddElement<CustomUI>()
                 .AddAttribute("onLoad", a => a.OnLoad, aBuilder =>
                 {
@@ -15305,10 +15570,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Commands), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Backstage), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Commands.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Backstage.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -15316,52 +15581,52 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>Commands.</para>
         /// <para>Represents the following element tag in the schema: mso14:commands.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.Commands? Commands
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.Commands>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.Commands.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.Commands;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.Commands.ElementType);
         }
 
         /// <summary>
         /// <para>Ribbon.</para>
         /// <para>Represents the following element tag in the schema: mso14:ribbon.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon? Ribbon
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.Ribbon.ElementType);
         }
 
         /// <summary>
         /// <para>Backstage.</para>
         /// <para>Represents the following element tag in the schema: mso14:backstage.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.Backstage? Backstage
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.Backstage>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.Backstage.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.Backstage;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.Backstage.ElementType);
         }
 
         /// <summary>
         /// <para>ContextMenus.</para>
         /// <para>Represents the following element tag in the schema: mso14:contextMenus.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus? ContextMenus
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenus.ElementType);
         }
 
         /// <inheritdoc/>
@@ -15406,6 +15671,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class Item : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "item");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Item");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Item class.
         /// </summary>
@@ -15476,7 +15747,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:item");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Item>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -15516,6 +15787,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class VisibleButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_VisibleButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the VisibleButton class.
         /// </summary>
@@ -15806,7 +16083,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<VisibleButton>()
                 .AddAttribute("onAction", a => a.OnAction, aBuilder =>
@@ -15927,6 +16204,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class VisibleToggleButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "toggleButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_VisibleToggleButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the VisibleToggleButton class.
         /// </summary>
@@ -16227,7 +16510,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:toggleButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<VisibleToggleButton>()
                 .AddAttribute("getPressed", a => a.GetPressed, aBuilder =>
@@ -16350,6 +16633,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class Separator : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "separator");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Separator");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Separator class.
         /// </summary>
@@ -16450,7 +16739,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:separator");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Separator>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -16497,14 +16786,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:dialogBoxLauncher.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DialogBoxLauncher : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "dialogBoxLauncher");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_DialogLauncher");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DialogBoxLauncher class.
         /// </summary>
@@ -16539,12 +16834,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:dialogBoxLauncher");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -16552,13 +16847,13 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>ButtonRegular.</para>
         /// <para>Represents the following element tag in the schema: mso14:button.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular? ButtonRegular
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType);
         }
 
         /// <inheritdoc/>
@@ -16570,7 +16865,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:group.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Box" /> <c>&lt;mso14:box></c></description></item>
@@ -16590,9 +16885,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Group : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "group");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Group");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Group class.
         /// </summary>
@@ -16857,24 +17158,24 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:group");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Box>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Button>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DialogBoxLauncher>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.EditBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Gallery>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Menu>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Separator>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Box.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Box());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Button.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Button());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DialogBoxLauncher.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DialogBoxLauncher());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.EditBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Gallery());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Menu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Menu());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Separator());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton());
             builder.AddElement<Group>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -16969,26 +17270,26 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                         {
                             new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                             {
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Button), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Menu), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Box), 1, 1, version: FileFormatVersions.Office2010),
-                                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup), 1, 1, version: FileFormatVersions.Office2010)
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlClone.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Button.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.EditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DropDownRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Gallery.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Menu.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenu.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Box.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                             }
                         },
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Separator), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DialogBoxLauncher), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DialogBoxLauncher.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -17003,6 +17304,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ControlCloneQat : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "control");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ControlCloneQat");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ControlCloneQat class.
         /// </summary>
@@ -17313,7 +17620,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:control");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ControlCloneQat>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -17433,16 +17740,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:sharedControls.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat" /> <c>&lt;mso14:control></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Separator" /> <c>&lt;mso14:separator></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SharedControlsQatItems : QatItemsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "sharedControls");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_QatItems");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SharedControlsQatItems class.
         /// </summary>
@@ -17477,15 +17790,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:sharedControls");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Separator), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -17499,16 +17812,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:documentControls.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat" /> <c>&lt;mso14:control></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Separator" /> <c>&lt;mso14:separator></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DocumentControlsQatItems : QatItemsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "documentControls");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_QatItems");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DocumentControlsQatItems class.
         /// </summary>
@@ -17543,15 +17862,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:documentControls");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Separator), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -17565,16 +17884,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat" /> <c>&lt;mso14:control></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Separator" /> <c>&lt;mso14:separator></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class QatItemsType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_QatItems");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the QatItemsType class.
         /// </summary>
@@ -17609,9 +17934,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Separator>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneQat());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Separator.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Separator());
         }
     }
 
@@ -17620,14 +17945,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:tab.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Group" /> <c>&lt;mso14:group></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Tab : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "tab");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Tab");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Tab class.
         /// </summary>
@@ -17802,9 +18133,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:tab");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Group>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Group.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Group());
             builder.AddElement<Tab>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -17863,7 +18194,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 100)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Group), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Group.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -17877,14 +18208,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:tabSet.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Tab" /> <c>&lt;mso14:tab></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TabSet : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "tabSet");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TabSet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TabSet class.
         /// </summary>
@@ -17949,9 +18286,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:tabSet");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Tab>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Tab.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Tab());
             builder.AddElement<TabSet>()
                 .AddAttribute("idMso", a => a.IdMso, aBuilder =>
                 {
@@ -17965,7 +18302,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Tab), 0, 50, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Tab.ElementType, 0, 50, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -17980,6 +18317,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class Command : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "command");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Command");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Command class.
         /// </summary>
@@ -18030,7 +18373,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:command");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Command>()
                 .AddAttribute("onAction", a => a.OnAction, aBuilder =>
@@ -18057,15 +18400,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:qat.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems" /> <c>&lt;mso14:sharedControls></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems" /> <c>&lt;mso14:documentControls></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class QuickAccessToolbar : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "qat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Qat");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the QuickAccessToolbar class.
         /// </summary>
@@ -18100,14 +18449,14 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:qat");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -18115,26 +18464,26 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>SharedControlsQatItems.</para>
         /// <para>Represents the following element tag in the schema: mso14:sharedControls.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems? SharedControlsQatItems
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.SharedControlsQatItems.ElementType);
         }
 
         /// <summary>
         /// <para>DocumentControlsQatItems.</para>
         /// <para>Represents the following element tag in the schema: mso14:documentControls.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems? DocumentControlsQatItems
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.DocumentControlsQatItems.ElementType);
         }
 
         /// <inheritdoc/>
@@ -18146,14 +18495,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:tabs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Tab" /> <c>&lt;mso14:tab></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Tabs : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "tabs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Tabs");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Tabs class.
         /// </summary>
@@ -18188,12 +18543,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:tabs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Tab>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Tab.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Tab());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Tab), 1, 100, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Tab.ElementType, 1, 100, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -18206,14 +18561,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:contextualTabs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TabSet" /> <c>&lt;mso14:tabSet></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContextualTabs : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "contextualTabs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ContextualTabs");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextualTabs class.
         /// </summary>
@@ -18248,12 +18609,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:contextualTabs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TabSet>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TabSet.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TabSet());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TabSet), 1, 100, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TabSet.ElementType, 1, 100, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -18266,7 +18627,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:contextMenu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular" /> <c>&lt;mso14:button></c></description></item>
@@ -18279,9 +18640,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular" /> <c>&lt;mso14:splitButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular" /> <c>&lt;mso14:toggleButton></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContextMenu : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "contextMenu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ContextMenu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextMenu class.
         /// </summary>
@@ -18326,17 +18693,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:contextMenu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparatorNoTitle>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparatorNoTitle.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparatorNoTitle());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular());
             builder.AddElement<ContextMenu>()
                 .AddAttribute("idMso", a => a.IdMso, aBuilder =>
                 {
@@ -18350,15 +18717,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparatorNoTitle), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ControlCloneRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.CheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GalleryRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ToggleButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SplitButtonRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.DynamicMenuRegular.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.MenuSeparatorNoTitle.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -18376,6 +18743,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class ItemBackstageItem : BackstageItemType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "item");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageItem");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ItemBackstageItem class.
         /// </summary>
@@ -18386,7 +18759,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:item");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -18401,6 +18774,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class RadioButtonBackstageItem : BackstageItemType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "radioButton");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageItem");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RadioButtonBackstageItem class.
         /// </summary>
@@ -18411,7 +18790,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:radioButton");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -18426,6 +18805,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public abstract partial class BackstageItemType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageItem");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageItemType class.
         /// </summary>
@@ -18489,6 +18874,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageRegularButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageRegularButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageRegularButton class.
         /// </summary>
@@ -18699,7 +19090,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageRegularButton>()
                 .AddAttribute("screentip", a => a.Screentip, aBuilder =>
@@ -18786,14 +19177,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menu.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup" /> <c>&lt;mso14:menuGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstagePrimaryMenu : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstagePrimaryMenu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstagePrimaryMenu class.
         /// </summary>
@@ -19008,9 +19405,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menu");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup());
             builder.AddElement<BackstagePrimaryMenu>()
                 .AddAttribute("screentip", a => a.Screentip, aBuilder =>
                 {
@@ -19084,7 +19481,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -19099,7 +19496,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:menuGroup.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton" /> <c>&lt;mso14:button></c></description></item>
@@ -19107,9 +19504,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton" /> <c>&lt;mso14:toggleButton></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu" /> <c>&lt;mso14:menu></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageMenuGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "menuGroup");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageMenuGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageMenuGroup class.
         /// </summary>
@@ -19204,12 +19607,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:menuGroup");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuCheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuCheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuCheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu());
             builder.AddElement<BackstageMenuGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -19240,10 +19643,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuCheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuCheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageSubMenu.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageMenuToggleButton.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -19259,15 +19662,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:primaryItem.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu" /> <c>&lt;mso14:menu></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton" /> <c>&lt;mso14:button></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PrimaryItem : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "primaryItem");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_PrimaryItem");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PrimaryItem class.
         /// </summary>
@@ -19302,14 +19711,14 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:primaryItem");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -19317,26 +19726,26 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>BackstageRegularButton.</para>
         /// <para>Represents the following element tag in the schema: mso14:button.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton? BackstageRegularButton
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.BackstageRegularButton.ElementType);
         }
 
         /// <summary>
         /// <para>BackstagePrimaryMenu.</para>
         /// <para>Represents the following element tag in the schema: mso14:menu.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu? BackstagePrimaryMenu
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.BackstagePrimaryMenu.ElementType);
         }
 
         /// <inheritdoc/>
@@ -19348,7 +19757,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:topItems.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox" /> <c>&lt;mso14:checkBox></c></description></item>
@@ -19363,9 +19772,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer" /> <c>&lt;mso14:layoutContainer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup" /> <c>&lt;mso14:radioGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TopItemsGroupControls : GroupControlsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "topItems");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_GroupControls");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TopItemsGroupControls class.
         /// </summary>
@@ -19400,7 +19815,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:topItems");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
             {
@@ -19408,17 +19823,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -19433,7 +19848,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:bottomItems.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox" /> <c>&lt;mso14:checkBox></c></description></item>
@@ -19448,9 +19863,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer" /> <c>&lt;mso14:layoutContainer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup" /> <c>&lt;mso14:radioGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BottomItemsGroupControls : GroupControlsType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "bottomItems");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_GroupControls");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BottomItemsGroupControls class.
         /// </summary>
@@ -19485,7 +19906,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:bottomItems");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
             {
@@ -19493,17 +19914,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -19518,7 +19939,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox" /> <c>&lt;mso14:checkBox></c></description></item>
@@ -19533,9 +19954,15 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer" /> <c>&lt;mso14:layoutContainer></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup" /> <c>&lt;mso14:radioGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class GroupControlsType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_GroupControls");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GroupControlsType class.
         /// </summary>
@@ -19570,17 +19997,17 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageCheckBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageComboBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageDropDown());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageEditBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroupButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageLabelControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.GroupBox());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Hyperlink());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ImageControl());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.LayoutContainer());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.RadioGroup());
         }
     }
 
@@ -19589,14 +20016,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:category.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask" /> <c>&lt;mso14:task></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TaskGroupCategory : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "category");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskGroupCategory");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskGroupCategory class.
         /// </summary>
@@ -19751,9 +20184,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:category");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask());
             builder.AddElement<TaskGroupCategory>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -19802,7 +20235,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroupTask.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -19817,6 +20250,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class TaskGroupTask : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "task");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskGroupTask");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskGroupTask class.
         /// </summary>
@@ -20057,7 +20496,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:task");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<TaskGroupTask>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -20154,14 +20593,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:category.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask" /> <c>&lt;mso14:task></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TaskFormGroupCategory : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "category");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskFormGroupCategory");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskFormGroupCategory class.
         /// </summary>
@@ -20316,9 +20761,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:category");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask());
             builder.AddElement<TaskFormGroupCategory>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -20367,7 +20812,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupTask.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -20380,14 +20825,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:task.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup" /> <c>&lt;mso14:group></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TaskFormGroupTask : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "task");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskFormGroupTask");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskFormGroupTask class.
         /// </summary>
@@ -20632,9 +21083,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:task");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup());
             builder.AddElement<TaskFormGroupTask>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -20716,7 +21167,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup), 0, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, 0, 1000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -20729,14 +21180,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:taskFormGroup.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory" /> <c>&lt;mso14:category></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TaskFormGroup : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "taskFormGroup");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_TaskFormGroup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TaskFormGroup class.
         /// </summary>
@@ -20901,9 +21358,9 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:taskFormGroup");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory());
             builder.AddElement<TaskFormGroup>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -20950,7 +21407,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 .AddAttribute("allowedTaskSizes", a => a.AllowedTaskSizes);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory), 0, 100, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroupCategory.ElementType, 0, 100, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -20963,16 +21420,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:firstColumn.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup" /> <c>&lt;mso14:group></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup" /> <c>&lt;mso14:taskFormGroup></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup" /> <c>&lt;mso14:taskGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageGroups : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "firstColumn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageGroups");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageGroups class.
         /// </summary>
@@ -21007,16 +21470,16 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:firstColumn");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskFormGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 },
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
                 {
@@ -21024,8 +21487,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup), 1, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -21041,15 +21504,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:secondColumn.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup" /> <c>&lt;mso14:group></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup" /> <c>&lt;mso14:taskGroup></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SimpleGroups : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "secondColumn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_SimpleGroups");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SimpleGroups class.
         /// </summary>
@@ -21084,18 +21553,18 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:secondColumn");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 1000)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.TaskGroup.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -21110,15 +21579,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:tab.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups" /> <c>&lt;mso14:firstColumn></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups" /> <c>&lt;mso14:secondColumn></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BackstageTab : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "tab");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageTab");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageTab class.
         /// </summary>
@@ -21383,10 +21858,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:tab");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups());
             builder.AddElement<BackstageTab>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -21476,8 +21951,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -21485,26 +21960,26 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>BackstageGroups.</para>
         /// <para>Represents the following element tag in the schema: mso14:firstColumn.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups? BackstageGroups
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.BackstageGroups.ElementType);
         }
 
         /// <summary>
         /// <para>SimpleGroups.</para>
         /// <para>Represents the following element tag in the schema: mso14:secondColumn.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups? SimpleGroups
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.SimpleGroups.ElementType);
         }
 
         /// <inheritdoc/>
@@ -21518,6 +21993,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// </summary>
     public partial class BackstageFastCommandButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "button");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_BackstageFastCommandButton");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BackstageFastCommandButton class.
         /// </summary>
@@ -21738,7 +22219,7 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:button");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<BackstageFastCommandButton>()
                 .AddAttribute("idMso", a => a.IdMso, aBuilder =>
@@ -21829,14 +22310,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:commands.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Command" /> <c>&lt;mso14:command></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Commands : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "commands");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Commands");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Commands class.
         /// </summary>
@@ -21871,12 +22358,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:commands");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Command>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Command.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Command());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Command), 1, 5000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Command.ElementType, 1, 5000, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -21889,16 +22376,22 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:ribbon.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs" /> <c>&lt;mso14:contextualTabs></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar" /> <c>&lt;mso14:qat></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.Tabs" /> <c>&lt;mso14:tabs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Ribbon : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "ribbon");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Ribbon");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Ribbon class.
         /// </summary>
@@ -21943,18 +22436,18 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:ribbon");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.Tabs>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.Tabs.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.Tabs());
             builder.AddElement<Ribbon>()
                 .AddAttribute("startFromScratch", a => a.StartFromScratch);
             builder.Particle = new CompositeParticle.Builder(ParticleType.All, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.Tabs), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.Tabs.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -21962,39 +22455,39 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         /// <para>QuickAccessToolbar.</para>
         /// <para>Represents the following element tag in the schema: mso14:qat.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar? QuickAccessToolbar
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.QuickAccessToolbar.ElementType);
         }
 
         /// <summary>
         /// <para>Tabs.</para>
         /// <para>Represents the following element tag in the schema: mso14:tabs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.Tabs? Tabs
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.Tabs>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.Tabs.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.Tabs;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.Tabs.ElementType);
         }
 
         /// <summary>
         /// <para>ContextualTabs.</para>
         /// <para>Represents the following element tag in the schema: mso14:contextualTabs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:mso14 = http://schemas.microsoft.com/office/2009/07/customui
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs? ContextualTabs
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs.ElementType) as DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.CustomUI.ContextualTabs.ElementType);
         }
 
         /// <inheritdoc/>
@@ -22006,15 +22499,21 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:backstage.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton" /> <c>&lt;mso14:button></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab" /> <c>&lt;mso14:tab></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Backstage : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "backstage");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_Backstage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Backstage class.
         /// </summary>
@@ -22069,10 +22568,10 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:backstage");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab());
             builder.AddElement<Backstage>()
                 .AddAttribute("onShow", a => a.OnShow, aBuilder =>
                 {
@@ -22086,8 +22585,8 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 255)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab), 1, 1, version: FileFormatVersions.Office2010),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageTab.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.BackstageFastCommandButton.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -22101,14 +22600,20 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is mso14:contextMenus.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu" /> <c>&lt;mso14:contextMenu></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContextMenus : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2009/07/customui", "contextMenus");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2009/07/customui", "CT_ContextMenus");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextMenus class.
         /// </summary>
@@ -22143,12 +22648,12 @@ namespace DocumentFormat.OpenXml.Office2010.CustomUI
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("mso14:contextMenus");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu.ElementType, static () => new DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu), 1, 1000, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.CustomUI.ContextMenu.ElementType, 1, 1000, version: FileFormatVersions.Office2010)
             };
         }
 

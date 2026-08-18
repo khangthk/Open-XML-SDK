@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,14 +23,20 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p202:designTagLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag" /> <c>&lt;p202:designTag></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DesignerTagList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "designTagLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "CT_DesignerTagList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DesignerTagList class.
         /// </summary>
@@ -64,12 +71,12 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p202:designTagLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag.ElementType, static () => new DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag), 0, 0, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTag.ElementType, 0, 0, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -82,15 +89,21 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p202:designPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList" /> <c>&lt;p202:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList" /> <c>&lt;p202:designTagLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DesignerDrawingProps : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "designPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "CT_DesignerDrawingProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DesignerDrawingProps class.
         /// </summary>
@@ -135,16 +148,16 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p202:designPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList());
             builder.AddElement<DesignerDrawingProps>()
                 .AddAttribute("edtDesignElem", a => a.EdtDesignElem);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList), 0, 1, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList.ElementType, 0, 1, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -152,26 +165,26 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
         /// <para>DesignerTagList.</para>
         /// <para>Represents the following element tag in the schema: p202:designTagLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p202 = http://schemas.microsoft.com/office/powerpoint/2020/02/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList? DesignerTagList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList.ElementType) as DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.DesignerTagList.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: p202:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p202 = http://schemas.microsoft.com/office/powerpoint/2020/02/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2021.PowerPoint.Designer.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -185,6 +198,12 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
     /// </summary>
     public partial class DesignerTag : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "designTag");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "CT_DesignerTag");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DesignerTag class.
         /// </summary>
@@ -215,7 +234,7 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p202:designTag");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<DesignerTag>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
@@ -237,14 +256,20 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p202:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Presentation.Extension" /> <c>&lt;p:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2020/02/main", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/presentationml/2006/main", "CT_ExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -279,16 +304,16 @@ namespace DocumentFormat.OpenXml.Office2021.PowerPoint.Designer
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p202:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Presentation.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Presentation.Extension.ElementType, static () => new DocumentFormat.OpenXml.Presentation.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Presentation.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Presentation.Extension.ElementType, 0, 0)
                     }
                 }
             };

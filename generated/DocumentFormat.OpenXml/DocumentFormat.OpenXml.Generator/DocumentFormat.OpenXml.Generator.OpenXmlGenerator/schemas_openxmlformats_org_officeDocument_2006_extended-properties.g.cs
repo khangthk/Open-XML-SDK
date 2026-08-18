@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,7 +23,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ap:Properties.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature" /> <c>&lt;ap:DigSig></c></description></item>
@@ -53,9 +54,15 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     ///   <item><description><see cref="DocumentFormat.OpenXml.ExtendedProperties.Application" /> <c>&lt;ap:Application></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion" /> <c>&lt;ap:AppVersion></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Properties : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Properties");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_Properties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Properties class.
         /// </summary>
@@ -90,63 +97,63 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:Properties");
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.SharedDocument>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Pages>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Words>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Characters>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Lines>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Paragraphs>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Slides>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Notes>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.TotalTime>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Template>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Manager>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Company>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.Application>();
-            builder.AddChild<DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.SharedDocument.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.SharedDocument());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Pages.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Pages());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Words.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Words());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Characters.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Characters());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Lines.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Lines());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Paragraphs.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Paragraphs());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Slides.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Slides());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Notes.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Notes());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.TotalTime.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.TotalTime());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Template.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Template());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Manager.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Manager());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Company.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Company());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.Application.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.Application());
+            builder.AddChild(DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion.ElementType, static () => new DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion());
             builder.Particle = new CompositeParticle.Builder(ParticleType.All, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Template), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Manager), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Company), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Pages), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Words), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Characters), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Lines), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Paragraphs), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Slides), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Notes), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.TotalTime), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.SharedDocument), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.Application), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Template.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Manager.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Company.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Pages.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Words.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Characters.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Lines.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Paragraphs.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Slides.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Notes.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.TotalTime.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.SharedDocument.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.Application.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity.ElementType, 0, 1)
             };
         }
 
@@ -154,351 +161,351 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         /// <para>Name of Document Template.</para>
         /// <para>Represents the following element tag in the schema: ap:Template.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Template? Template
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Template>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Template.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Template;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Template.ElementType);
         }
 
         /// <summary>
         /// <para>Name of Manager.</para>
         /// <para>Represents the following element tag in the schema: ap:Manager.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Manager? Manager
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Manager>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Manager.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Manager;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Manager.ElementType);
         }
 
         /// <summary>
         /// <para>Name of Company.</para>
         /// <para>Represents the following element tag in the schema: ap:Company.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Company? Company
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Company>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Company.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Company;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Company.ElementType);
         }
 
         /// <summary>
         /// <para>Total Number of Pages.</para>
         /// <para>Represents the following element tag in the schema: ap:Pages.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Pages? Pages
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Pages>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Pages.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Pages;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Pages.ElementType);
         }
 
         /// <summary>
         /// <para>Word Count.</para>
         /// <para>Represents the following element tag in the schema: ap:Words.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Words? Words
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Words>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Words.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Words;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Words.ElementType);
         }
 
         /// <summary>
         /// <para>Total Number of Characters.</para>
         /// <para>Represents the following element tag in the schema: ap:Characters.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Characters? Characters
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Characters>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Characters.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Characters;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Characters.ElementType);
         }
 
         /// <summary>
         /// <para>Intended Format of Presentation.</para>
         /// <para>Represents the following element tag in the schema: ap:PresentationFormat.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat? PresentationFormat
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.PresentationFormat.ElementType);
         }
 
         /// <summary>
         /// <para>Number of Lines.</para>
         /// <para>Represents the following element tag in the schema: ap:Lines.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Lines? Lines
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Lines>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Lines.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Lines;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Lines.ElementType);
         }
 
         /// <summary>
         /// <para>Total Number of Paragraphs.</para>
         /// <para>Represents the following element tag in the schema: ap:Paragraphs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Paragraphs? Paragraphs
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Paragraphs>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Paragraphs.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Paragraphs;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Paragraphs.ElementType);
         }
 
         /// <summary>
         /// <para>Slides Metadata Element.</para>
         /// <para>Represents the following element tag in the schema: ap:Slides.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Slides? Slides
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Slides>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Slides.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Slides;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Slides.ElementType);
         }
 
         /// <summary>
         /// <para>Number of Slides Containing Notes.</para>
         /// <para>Represents the following element tag in the schema: ap:Notes.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Notes? Notes
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Notes>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Notes.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Notes;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Notes.ElementType);
         }
 
         /// <summary>
         /// <para>Total Edit Time Metadata Element.</para>
         /// <para>Represents the following element tag in the schema: ap:TotalTime.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.TotalTime? TotalTime
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.TotalTime>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.TotalTime.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.TotalTime;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.TotalTime.ElementType);
         }
 
         /// <summary>
         /// <para>Number of Hidden Slides.</para>
         /// <para>Represents the following element tag in the schema: ap:HiddenSlides.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides? HiddenSlides
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.HiddenSlides.ElementType);
         }
 
         /// <summary>
         /// <para>Total Number of Multimedia Clips.</para>
         /// <para>Represents the following element tag in the schema: ap:MMClips.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips? MultimediaClips
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.MultimediaClips.ElementType);
         }
 
         /// <summary>
         /// <para>Thumbnail Display Mode.</para>
         /// <para>Represents the following element tag in the schema: ap:ScaleCrop.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop? ScaleCrop
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.ScaleCrop.ElementType);
         }
 
         /// <summary>
         /// <para>Heading Pairs.</para>
         /// <para>Represents the following element tag in the schema: ap:HeadingPairs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs? HeadingPairs
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.HeadingPairs.ElementType);
         }
 
         /// <summary>
         /// <para>Part Titles.</para>
         /// <para>Represents the following element tag in the schema: ap:TitlesOfParts.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts? TitlesOfParts
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.TitlesOfParts.ElementType);
         }
 
         /// <summary>
         /// <para>Links Up-to-Date.</para>
         /// <para>Represents the following element tag in the schema: ap:LinksUpToDate.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate? LinksUpToDate
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.LinksUpToDate.ElementType);
         }
 
         /// <summary>
         /// <para>Number of Characters (With Spaces).</para>
         /// <para>Represents the following element tag in the schema: ap:CharactersWithSpaces.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces? CharactersWithSpaces
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.CharactersWithSpaces.ElementType);
         }
 
         /// <summary>
         /// <para>Shared Document.</para>
         /// <para>Represents the following element tag in the schema: ap:SharedDoc.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.SharedDocument? SharedDocument
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.SharedDocument>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.SharedDocument.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.SharedDocument;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.SharedDocument.ElementType);
         }
 
         /// <summary>
         /// <para>Relative Hyperlink Base.</para>
         /// <para>Represents the following element tag in the schema: ap:HyperlinkBase.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase? HyperlinkBase
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.HyperlinkBase.ElementType);
         }
 
         /// <summary>
         /// <para>Hyperlink List.</para>
         /// <para>Represents the following element tag in the schema: ap:HLinks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList? HyperlinkList
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.HyperlinkList.ElementType);
         }
 
         /// <summary>
         /// <para>Hyperlinks Changed.</para>
         /// <para>Represents the following element tag in the schema: ap:HyperlinksChanged.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged? HyperlinksChanged
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.HyperlinksChanged.ElementType);
         }
 
         /// <summary>
         /// <para>Digital Signature.</para>
         /// <para>Represents the following element tag in the schema: ap:DigSig.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature? DigitalSignature
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.DigitalSignature.ElementType);
         }
 
         /// <summary>
         /// <para>Application Name.</para>
         /// <para>Represents the following element tag in the schema: ap:Application.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.Application? Application
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.Application>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.Application.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.Application;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.Application.ElementType);
         }
 
         /// <summary>
         /// <para>Application Version.</para>
         /// <para>Represents the following element tag in the schema: ap:AppVersion.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion? ApplicationVersion
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.ApplicationVersion.ElementType);
         }
 
         /// <summary>
         /// <para>Document Security.</para>
         /// <para>Represents the following element tag in the schema: ap:DocSecurity.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ap = http://schemas.openxmlformats.org/officeDocument/2006/extended-properties
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity? DocumentSecurity
         {
-            get => GetElement<DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity.ElementType) as DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity;
+            set => SetElement(value, DocumentFormat.OpenXml.ExtendedProperties.DocumentSecurity.ElementType);
         }
 
         /// <inheritdoc/>
@@ -543,6 +550,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Template : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Template");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Template class.
         /// </summary>
@@ -566,7 +579,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:Template");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -580,6 +593,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Manager : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Manager");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Manager class.
         /// </summary>
@@ -603,7 +622,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:Manager");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -617,6 +636,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Company : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Company");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Company class.
         /// </summary>
@@ -640,7 +665,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:Company");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -654,6 +679,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class PresentationFormat : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "PresentationFormat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PresentationFormat class.
         /// </summary>
@@ -677,7 +708,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:PresentationFormat");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -691,6 +722,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class HyperlinkBase : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "HyperlinkBase");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HyperlinkBase class.
         /// </summary>
@@ -714,7 +751,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:HyperlinkBase");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -728,6 +765,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Application : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Application");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Application class.
         /// </summary>
@@ -751,7 +794,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:Application");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -765,6 +808,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class ApplicationVersion : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "AppVersion");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ApplicationVersion class.
         /// </summary>
@@ -788,7 +837,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:AppVersion");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -802,6 +851,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Pages : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Pages");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Pages class.
         /// </summary>
@@ -826,7 +881,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Pages");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -840,6 +895,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Words : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Words");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Words class.
         /// </summary>
@@ -864,7 +925,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Words");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -878,6 +939,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Characters : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Characters");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Characters class.
         /// </summary>
@@ -902,7 +969,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Characters");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -916,6 +983,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Lines : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Lines");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Lines class.
         /// </summary>
@@ -940,7 +1013,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Lines");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -954,6 +1027,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Paragraphs : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Paragraphs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Paragraphs class.
         /// </summary>
@@ -978,7 +1057,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Paragraphs");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -992,6 +1071,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Slides : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Slides");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Slides class.
         /// </summary>
@@ -1016,7 +1101,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Slides");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1030,6 +1115,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class Notes : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "Notes");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Notes class.
         /// </summary>
@@ -1054,7 +1145,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:Notes");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1068,6 +1159,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class TotalTime : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "TotalTime");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TotalTime class.
         /// </summary>
@@ -1092,7 +1189,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:TotalTime");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1106,6 +1203,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class HiddenSlides : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "HiddenSlides");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HiddenSlides class.
         /// </summary>
@@ -1130,7 +1233,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:HiddenSlides");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1144,6 +1247,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class MultimediaClips : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "MMClips");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MultimediaClips class.
         /// </summary>
@@ -1168,7 +1277,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:MMClips");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1182,6 +1291,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class CharactersWithSpaces : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CharactersWithSpaces");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CharactersWithSpaces class.
         /// </summary>
@@ -1206,7 +1321,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:CharactersWithSpaces");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1220,6 +1335,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class DocumentSecurity : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "DocSecurity");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "int");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DocumentSecurity class.
         /// </summary>
@@ -1244,7 +1365,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<Int32Value>(NumberValidator.Instance);
-            builder.SetSchema("ap:DocSecurity");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1258,6 +1379,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class ScaleCrop : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "ScaleCrop");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "boolean");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ScaleCrop class.
         /// </summary>
@@ -1282,7 +1409,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<BooleanValue>(NumberValidator.Instance);
-            builder.SetSchema("ap:ScaleCrop");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1296,6 +1423,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class LinksUpToDate : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "LinksUpToDate");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "boolean");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LinksUpToDate class.
         /// </summary>
@@ -1320,7 +1453,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<BooleanValue>(NumberValidator.Instance);
-            builder.SetSchema("ap:LinksUpToDate");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1334,6 +1467,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class SharedDocument : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "SharedDoc");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "boolean");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SharedDocument class.
         /// </summary>
@@ -1358,7 +1497,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<BooleanValue>(NumberValidator.Instance);
-            builder.SetSchema("ap:SharedDoc");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1372,6 +1511,12 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// </summary>
     public partial class HyperlinksChanged : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "HyperlinksChanged");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "boolean");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HyperlinksChanged class.
         /// </summary>
@@ -1396,7 +1541,7 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<BooleanValue>(NumberValidator.Instance);
-            builder.SetSchema("ap:HyperlinksChanged");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1408,14 +1553,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ap:HeadingPairs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTVector" /> <c>&lt;vt:vector></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HeadingPairs : VectorVariantType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "HeadingPairs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_VectorVariant");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HeadingPairs class.
         /// </summary>
@@ -1450,10 +1601,10 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:HeadingPairs");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTVector), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, 1, 1)
             };
         }
 
@@ -1466,14 +1617,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ap:HLinks.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTVector" /> <c>&lt;vt:vector></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HyperlinkList : VectorVariantType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "HLinks");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_VectorVariant");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HyperlinkList class.
         /// </summary>
@@ -1508,10 +1665,10 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:HLinks");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTVector), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, 1, 1)
             };
         }
 
@@ -1524,14 +1681,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTVector" /> <c>&lt;vt:vector></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class VectorVariantType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_VectorVariant");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the VectorVariantType class.
         /// </summary>
@@ -1566,20 +1729,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTVector>();
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTVector());
         }
 
         /// <summary>
         /// <para>Vector.</para>
         /// <para>Represents the following element tag in the schema: vt:vector.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTVector? VTVector
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTVector>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTVector;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType);
         }
     }
 
@@ -1588,14 +1751,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ap:TitlesOfParts.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTVector" /> <c>&lt;vt:vector></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TitlesOfParts : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "TitlesOfParts");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_VectorLpstr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TitlesOfParts class.
         /// </summary>
@@ -1630,11 +1799,11 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:TitlesOfParts");
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTVector>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTVector());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTVector), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, 1, 1)
             };
         }
 
@@ -1642,13 +1811,13 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         /// <para>Vector.</para>
         /// <para>Represents the following element tag in the schema: vt:vector.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTVector? VTVector
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTVector>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTVector;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1660,14 +1829,20 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ap:DigSig.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTBlob" /> <c>&lt;vt:blob></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DigitalSignature : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "DigSig");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/extended-properties", "CT_DigSigBlob");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DigitalSignature class.
         /// </summary>
@@ -1702,11 +1877,11 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ap:DigSig");
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTBlob>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTBlob());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTBlob), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType, 1, 1)
             };
         }
 
@@ -1714,13 +1889,13 @@ namespace DocumentFormat.OpenXml.ExtendedProperties
         /// <para>Binary Blob.</para>
         /// <para>Represents the following element tag in the schema: vt:blob.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTBlob? VTBlob
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTBlob>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTBlob;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType);
         }
 
         /// <inheritdoc/>

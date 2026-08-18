@@ -4,7 +4,6 @@
 using DocumentFormat.OpenXml.Tests.GuideClass;
 using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace DocumentFormat.OpenXml.Tests.GuideTest
 {
@@ -23,8 +22,8 @@ namespace DocumentFormat.OpenXml.Tests.GuideTest
                 GeneratedDocument.CreatePackage(stream);
                 var testEntities = new TestEntities(stream);
 
-                testEntities.EditElement(stream, Log);
-                testEntities.VerifyElement(stream, Log);
+                testEntities.EditElement(stream, Output);
+                testEntities.VerifyElement(stream, Output);
             }
         }
 
@@ -36,11 +35,11 @@ namespace DocumentFormat.OpenXml.Tests.GuideTest
                 GeneratedDocument.CreatePackage(stream);
                 var testEntities = new TestEntities(stream);
 
-                testEntities.DeleteElement(stream, Log);
-                testEntities.VerifyDeletedElement(stream, Log);
+                testEntities.DeleteElement(stream, Output);
+                testEntities.VerifyDeletedElement(stream, Output);
 
-                testEntities.AddElement(stream, Log);
-                testEntities.VerifyAddedElemenet(stream, Log);
+                testEntities.AddElement(stream, Output);
+                testEntities.VerifyAddedElemenet(stream, Output);
             }
         }
     }

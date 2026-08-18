@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace DocumentFormat.OpenXml.Framework.Tests;
 
@@ -51,7 +50,7 @@ public class ObjectSizeTests
 
     private static string GetTypeName(Type type)
     {
-        return type.FullName.Substring(type.FullName.IndexOf('+') + 1).Replace('+', '.');
+        return type.FullName!.Substring(type.FullName.IndexOf('+') + 1).Replace('+', '.');
     }
 
     private sealed class TestOpenXmlElement : OpenXmlElement

@@ -4,9 +4,7 @@ Open XML SDK
 
 > [!NOTE]
 >  
-> [v3.0.0](https://www.nuget.org/packages/DocumentFormat.OpenXml/3.0.0) refactors and addresses some technical debt while retaining source compatibility as much as possible. You should be able to update your package and recompile with limited changes. However, binary compatibility was not a goal and will break that for some changes which are documented. PRs that introduced such changes are marked with a `breaking-change` label and were added to a list to help migrating to v3.0.0.
->
-> Please see the [v3.0.0 milestone](https://github.com/OfficeDev/Open-XML-SDK/milestone/1) for issues and PRs that are included. For discussions, please join us at [this issue](https://github.com/OfficeDev/Open-XML-SDK/issues/1270).
+> 3.0.0 introduced breaking changes and you should be able to update your package and recompile with limited changes. Please see the [v3.0.0 milestone](https://github.com/OfficeDev/Open-XML-SDK/milestone/1) for issues and PRs that were included.
 
 
 > [!IMPORTANT]
@@ -16,13 +14,19 @@ Open XML SDK
 [![Build Status](https://office.visualstudio.com/OC/_apis/build/status/OpenXmlSdk/OfficeDev.Open-XML-SDK?branchName=main)](https://office.visualstudio.com/OC/_build/latest?definitionId=7420&branchName=main)
 [![Backend Status](https://ointprotocol.visualstudio.com/OInteropTools/_apis/build/status/OpenXML-Schemas?branchName=main)](https://ointprotocol.visualstudio.com/OInteropTools/_build/latest?definitionId=21&branchName=main)
 
-The Open XML SDK provides tools for working with Office Word, Excel, and PowerPoint documents. It supports scenarios such as:
+The Open XML SDK is a framework for working with Microsoft Office Word, Excel, and PowerPoint documents. It includes APIs for low-level operations related to OPC packages, Flat OPC files, and Open XML markup in two forms (i.e., strongly-typed classes and LINQ to XML). It is designed to closely follow the Microsoft Office implementation of the ISO 29500 standard, but was not intended to directly provide higher-level abstractions or productivity tools.
+
+These APIs enable scenarios such as:
 
 - High-performance generation of word-processing documents, spreadsheets, and presentations.
 - Document modification, such as adding, updating, and removing content and metadata.
-- Search and replace content using regular expressions.
+- Searching and replacing content using regular expressions.
 - Splitting up (shredding) a file into multiple files, and combining multiple files into a single file.
 - Updating cached data and embedded spreadsheets for charts in Word/PowerPoint.
+
+
+Prerequisite for using the Open XML SDK: detailed knowledge of the relevant formats (https://learn.microsoft.com/en-us/openspecs/office_standards/ms-offstandlp) and standards (https://standards.iso.org/ittf/PubliclyAvailableStandards/index.html - search for 29500)
+
 
 <!-- omit in toc -->
 # Table of Contents
@@ -39,12 +43,12 @@ The Open XML SDK provides tools for working with Office Word, Excel, and PowerPo
 
 The official release NuGet packages for Open XML SDK are on NuGet.org:
 
-| Package | Download | Prerelease |
+| Package | Stable | Prerelease |
 |---------|----------|------------|
-| DocumentFormat.OpenXml.Framework | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Framework.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Framework) | [![NuGet](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Framework.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Framework) |
-| DocumentFormat.OpenXml | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml) | [![NuGet](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml)  |
-| DocumentFormat.OpenXml.Linq | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Linq.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Linq) | [![NuGet](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Linq.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Linq) |
-| DocumentFormat.OpenXml.Features | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Features.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Features) | [![NuGet](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Features.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Features)  |
+| DocumentFormat.OpenXml.Framework | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Framework.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Framework) | [![NuGet Absolute Latest](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Framework.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Framework/absoluteLatest) |
+| DocumentFormat.OpenXml | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml) | [![NuGet Absolute Latest](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml/absoluteLatest)  |
+| DocumentFormat.OpenXml.Linq | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Linq.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Linq) | [![NuGet Absolute Latest](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Linq.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Linq/absoluteLatest) |
+| DocumentFormat.OpenXml.Features | [![NuGet](https://img.shields.io/nuget/v/DocumentFormat.OpenXml.Features.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Features) | [![NuGet Absolute Latest](https://img.shields.io/nuget/vpre/DocumentFormat.OpenXml.Features.svg)](https://www.nuget.org/packages/DocumentFormat.OpenXml.Features/absoluteLatest)  |
 
 ## Daily Builds
 
@@ -60,16 +64,6 @@ The NuGet package for the latest builds of the Open XML SDK is available as a cu
 ```
 
 For latests changes, please see the [changelog](CHANGELOG.md)
-
-## Framework Support
-
-The package currently supports the following targets:
-
-- .NET Framework 3.5, 4.0, 4.6
-- .NET Standard 2.0
-- .NET 6.0
-
-For details on platform support, including other runtimes such as Mono and Unity, please see the docs at https://docs.microsoft.com/en-us/dotnet/standard/net-standard.
 
 # Known Issues
 
@@ -93,7 +87,7 @@ Please see [Open XML SDK](https://learn.microsoft.com/en-us/office/open-xml/open
 - **[Open XML SDK 2.5 Productivity Tool](https://github.com/OfficeDev/Open-XML-SDK/releases/tag/v2.5)**: The Productivity Tool provides viewing and code generation compatible with the Open XML SDK 2.5.
 - **[Open XML Powertools](https://github.com/EricWhiteDev/Open-Xml-PowerTools)**: This provides example code and guidance for implementing a wide range of Open XML scenarios.
 - **[ClosedXml](https://github.com/closedxml/closedxml)**: This library provides a simplified object model on top of the OpenXml SDK for manipulating and creating Excel documents.
-- **[OfficeIMO](https://github.com/EvotecIT/OfficeIMO)**: This library provides a simplified object model on top of the OpenXml SDK manipulating and creating Word documents.
+- **[OfficeIMO](https://github.com/EvotecIT/OfficeIMO)**: This library provides a simplified object model on top of the OpenXml SDK for manipulating and creating Word, Excel, PowerPoint documents with support for Markdown, Html and Pdf, and Visio. 
 - **[OpenXML-Office](https://github.com/DraviaVemal/OpenXML-Office)**: This nuget library provides a simplified object model on top of the OpenXml SDK manipulating and creating PPT and Excel documents.
 - **[Serialize.OpenXml.CodeGen](https://github.com/rmboggs/Serialize.OpenXml.CodeGen)**: This is a tool that converts an OpenXml document into the .NET code required to create it.
 - **[Html2OpenXml](https://github.com/onizet/html2openxml)**: This is a tool that takes HTML and converts it to an OpenXml document.

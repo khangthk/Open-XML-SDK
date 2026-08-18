@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,14 +23,20 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is sl:schemaLibrary.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema" /> <c>&lt;sl:schema></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SchemaLibrary : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/schemaLibrary/2006/main", "schemaLibrary");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/schemaLibrary/2006/main", "CT_SchemaLibrary");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SchemaLibrary class.
         /// </summary>
@@ -64,11 +71,11 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("sl:schemaLibrary");
-            builder.AddChild<DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema.ElementType, static () => new DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.CustomXmlSchemaReferences.Schema.ElementType, 0, 0)
             };
         }
 
@@ -83,6 +90,12 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
     /// </summary>
     public partial class Schema : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/schemaLibrary/2006/main", "schema");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/schemaLibrary/2006/main", "CT_Schema");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Schema class.
         /// </summary>
@@ -94,9 +107,9 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
         /// <para>Custom XML Schema Namespace</para>
         /// <para>Represents the following attribute in the schema: sl:uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:sl=http://schemas.openxmlformats.org/schemaLibrary/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Uri
         {
             get => GetAttribute<StringValue>();
@@ -107,9 +120,9 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
         /// <para>Resource File Location</para>
         /// <para>Represents the following attribute in the schema: sl:manifestLocation</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:sl=http://schemas.openxmlformats.org/schemaLibrary/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? ManifestLocation
         {
             get => GetAttribute<StringValue>();
@@ -120,9 +133,9 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
         /// <para>Custom XML Schema Location</para>
         /// <para>Represents the following attribute in the schema: sl:schemaLocation</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:sl=http://schemas.openxmlformats.org/schemaLibrary/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? SchemaLocation
         {
             get => GetAttribute<StringValue>();
@@ -132,7 +145,7 @@ namespace DocumentFormat.OpenXml.CustomXmlSchemaReferences
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("sl:schema");
+            builder.SetSchema(ElementType);
             builder.AddElement<Schema>()
                 .AddAttribute("sl:uri", a => a.Uri)
                 .AddAttribute("sl:manifestLocation", a => a.ManifestLocation)

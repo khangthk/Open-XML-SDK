@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office.MetaAttributes
     /// </summary>
     public partial class Dummy : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes", "DummyContentTypeElement");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes", "CT_Dummy");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Dummy class.
         /// </summary>
@@ -203,7 +210,7 @@ namespace DocumentFormat.OpenXml.Office.MetaAttributes
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ma:DummyContentTypeElement");
+            builder.SetSchema(ElementType);
             builder.AddElement<Dummy>()
                 .AddAttribute("decimals", a => a.Decimals)
                 .AddAttribute("default", a => a.Default)

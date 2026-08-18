@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,15 +23,21 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is pc2:cmMkLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList" /> <c>&lt;pc:sldMkLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker" /> <c>&lt;pc2:cmMK></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CommentV2MonikerList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "cmMkLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "CT_CommentV2MonikerList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CommentV2MonikerList class.
         /// </summary>
@@ -65,14 +72,14 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pc2:cmMkLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList.ElementType, static () => new DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList());
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList), 1, 1, version: FileFormatVersions.Office2016),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker), 1, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList.ElementType, 1, 1, version: FileFormatVersions.Office2016),
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -80,26 +87,26 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         /// <para>SlideMonikerList.</para>
         /// <para>Represents the following element tag in the schema: pc:sldMkLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pc = http://schemas.microsoft.com/office/powerpoint/2013/main/command
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList? SlideMonikerList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList.ElementType) as DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2016.Presentation.Command.SlideMonikerList.ElementType);
         }
 
         /// <summary>
         /// <para>CommentV2Moniker.</para>
         /// <para>Represents the following element tag in the schema: pc2:cmMK.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pc2 = http://schemas.microsoft.com/office/powerpoint/2019/9/main/command
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker? CommentV2Moniker
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2Moniker.ElementType);
         }
 
         /// <inheritdoc/>
@@ -111,15 +118,21 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is pc2:cmRplyMkLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker" /> <c>&lt;pc2:cmRplyMk></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList" /> <c>&lt;pc2:cmMkLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CommentReplyV2MonikerList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "cmRplyMkLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "CT_CommentReplyV2MonikerList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CommentReplyV2MonikerList class.
         /// </summary>
@@ -154,14 +167,14 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pc2:cmRplyMkLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker());
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker), 1, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -169,26 +182,26 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         /// <para>CommentV2MonikerList.</para>
         /// <para>Represents the following element tag in the schema: pc2:cmMkLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pc2 = http://schemas.microsoft.com/office/powerpoint/2019/9/main/command
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList? CommentV2MonikerList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentV2MonikerList.ElementType);
         }
 
         /// <summary>
         /// <para>CommentReplyV2Moniker.</para>
         /// <para>Represents the following element tag in the schema: pc2:cmRplyMk.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pc2 = http://schemas.microsoft.com/office/powerpoint/2019/9/main/command
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker? CommentReplyV2Moniker
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command.CommentReplyV2Moniker.ElementType);
         }
 
         /// <inheritdoc/>
@@ -202,6 +215,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
     /// </summary>
     public partial class CommentV2Moniker : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "cmMK");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "CT_CommentV2Moniker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CommentV2Moniker class.
         /// </summary>
@@ -222,7 +241,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pc2:cmMK");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<CommentV2Moniker>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -243,6 +262,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
     /// </summary>
     public partial class CommentReplyV2Moniker : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "cmRplyMk");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2019/9/main/command", "CT_CommentReplyV2Moniker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CommentReplyV2Moniker class.
         /// </summary>
@@ -263,7 +288,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2019.Main.Command
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pc2:cmRplyMk");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<CommentReplyV2Moniker>()
                 .AddAttribute("id", a => a.Id, aBuilder =>

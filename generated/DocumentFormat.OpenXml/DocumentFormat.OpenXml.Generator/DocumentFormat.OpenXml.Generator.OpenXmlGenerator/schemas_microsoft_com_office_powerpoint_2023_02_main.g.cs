@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,14 +23,20 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p232:phTypeExt.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB" /> <c>&lt;p232:type></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PlaceholderTypeExtension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "phTypeExt");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "CT_PlaceholderTypeExtension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PlaceholderTypeExtension class.
         /// </summary>
@@ -64,12 +71,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p232:phTypeExt");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB), 1, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -77,13 +84,13 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         /// <para>PlaceholderTypeACB.</para>
         /// <para>Represents the following element tag in the schema: p232:type.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p232 = http://schemas.microsoft.com/office/powerpoint/2023/02/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB? PlaceholderTypeACB
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.PlaceholderTypeACB.ElementType);
         }
 
         /// <inheritdoc/>
@@ -97,6 +104,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
     /// </summary>
     public partial class CameoEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "cameo");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/presentationml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CameoEmpty class.
         /// </summary>
@@ -107,7 +120,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p232:cameo");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -122,6 +135,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
     /// </summary>
     public partial class UnknownEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "unknown");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/presentationml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the UnknownEmpty class.
         /// </summary>
@@ -132,7 +151,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p232:unknown");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -147,6 +166,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
     /// </summary>
     public abstract partial class EmptyType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/presentationml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EmptyType class.
         /// </summary>
@@ -165,15 +190,21 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p232:type.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty" /> <c>&lt;p232:cameo></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty" /> <c>&lt;p232:unknown></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PlaceholderTypeACB : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "type");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2023/02/main", "CT_PlaceholderTypeACB");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PlaceholderTypeACB class.
         /// </summary>
@@ -208,16 +239,16 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p232:type");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty), 1, 1, version: FileFormatVersions.Microsoft365),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty), 1, 1, version: FileFormatVersions.Microsoft365)
+                    new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                    new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
                 }
             };
         }
@@ -226,26 +257,26 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main
         /// <para>CameoEmpty.</para>
         /// <para>Represents the following element tag in the schema: p232:cameo.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p232 = http://schemas.microsoft.com/office/powerpoint/2023/02/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty? CameoEmpty
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.CameoEmpty.ElementType);
         }
 
         /// <summary>
         /// <para>UnknownEmpty.</para>
         /// <para>Represents the following element tag in the schema: p232:unknown.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p232 = http://schemas.microsoft.com/office/powerpoint/2023/02/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty? UnknownEmpty
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main.UnknownEmpty.ElementType);
         }
 
         /// <inheritdoc/>

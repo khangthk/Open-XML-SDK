@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Xunit.Abstractions;
+using Xunit;
 
 namespace DocumentFormat.OpenXml.Tests
 {
@@ -110,9 +110,7 @@ namespace DocumentFormat.OpenXml.Tests
                 }
             }
 
-            Log.VerifyTrue(
-                elements.Count > 0,
-                string.Format(
+            Assert.True(elements.Count > 0, string.Format(
                     "Elements [{0}] are detected in [{1}]",
                     typeof(TElement).ToString(),
                     package.Package.PackageProperties.Title));

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddedPartIsNotAllowed" xml:space="preserve">
-    <value>The part cannot be added here.</value>
-  </data>
   <data name="CannotChangeDocumentType" xml:space="preserve">
     <value>Cannot change the document type.</value>
   </data>
@@ -239,9 +236,6 @@
   </data>
   <data name="MultipleRelationshipsToSamePart" xml:space="preserve">
     <value>There are more than one relationship references that target the specified part.</value>
-  </data>
-  <data name="NoMainPart" xml:space="preserve">
-    <value>The specified package is invalid. The main part is missing.</value>
   </data>
   <data name="NonCompositeNoChild" xml:space="preserve">
     <value>Non-composite elements do not have child elements.</value>
@@ -413,5 +407,16 @@
   </data>
   <data name="FailedToOpenPackage" xml:space="preserve">
     <value>Package could not be opened for stream. See inner exception for details and be aware that there are behavior differences in stream support between .NET Framework and Core.</value>
+  </data>
+  <data name="AddedPartIsNotAllowed" xml:space="preserve">
+    <value>The part cannot be added here.</value>
+  </data>
+  <data name="EncryptedPackageNotSupported" xml:space="preserve">
+    <value>Encrypted packages are not supported.</value>
+  </data>
+  <data name="SpecifiedPartNotFound" xml:space="preserve">
+    <value> Part: {0} doesn't exist in the package.
+
+Original Message:{1}</value>
   </data>
 </root>

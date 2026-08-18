@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,16 +23,22 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:FeaturePropertyBags.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList" /> <c>&lt;xfpb:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions" /> <c>&lt;xfpb:bagExt></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag" /> <c>&lt;xfpb:bag></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FeaturePropertyBags : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "FeaturePropertyBags");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_FeaturePropertyBags");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FeaturePropertyBags class.
         /// </summary>
@@ -76,18 +83,18 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:FeaturePropertyBags");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag());
             builder.AddElement<FeaturePropertyBags>()
                 .AddAttribute("count", a => a.Count);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions), 0, 0, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag), 0, 0, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions.ElementType, 0, 0, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag.ElementType, 0, 0, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -131,16 +138,22 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:fpbs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList" /> <c>&lt;xfpb:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions" /> <c>&lt;xfpb:bagExt></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag" /> <c>&lt;xfpb:bag></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FpbsFeaturePropertyBags : OpenXmlFeaturePropertyBagsElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "fpbs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_FeaturePropertyBags");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FpbsFeaturePropertyBags class.
         /// </summary>
@@ -175,13 +188,13 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:fpbs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions), 0, 0, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag), 0, 0, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions.ElementType, 0, 0, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag.ElementType, 0, 0, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -194,16 +207,22 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList" /> <c>&lt;xfpb:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions" /> <c>&lt;xfpb:bagExt></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag" /> <c>&lt;xfpb:bag></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class OpenXmlFeaturePropertyBagsElement : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_FeaturePropertyBags");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OpenXmlFeaturePropertyBagsElement class.
         /// </summary>
@@ -248,9 +267,9 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagExtensions());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FeaturePropertyBag());
             builder.AddElement<OpenXmlFeaturePropertyBagsElement>()
                 .AddAttribute("count", a => a.Count);
         }
@@ -263,6 +282,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class XfComplement : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "xfComplement");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_XfComplement");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the XfComplement class.
         /// </summary>
@@ -283,7 +308,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:xfComplement");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<XfComplement>()
                 .AddAttribute("i", a => a.I, aBuilder =>
@@ -303,6 +328,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class DXFComplement : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "DXFComplement");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_DXFComplement");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DXFComplement class.
         /// </summary>
@@ -323,7 +354,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:DXFComplement");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<DXFComplement>()
                 .AddAttribute("i", a => a.I, aBuilder =>
@@ -341,15 +372,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:revdxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RevDxf : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "revdxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_RevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RevDxf class.
         /// </summary>
@@ -384,14 +421,14 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:revdxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -399,26 +436,26 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         /// <para>FpbsFeaturePropertyBags.</para>
         /// <para>Represents the following element tag in the schema: xfpb:fpbs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xfpb = http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags? FpbsFeaturePropertyBags
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType) as DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType);
         }
 
         /// <summary>
         /// <para>DifferentialFormatType.</para>
         /// <para>Represents the following element tag in the schema: xfpb:dxf.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xfpb = http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType? DifferentialFormatType
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType) as DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType);
         }
 
         /// <inheritdoc/>
@@ -430,15 +467,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:headerRowRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HeaderRowRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "headerRowRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HeaderRowRevDxfTableRevDxf class.
         /// </summary>
@@ -473,12 +516,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:headerRowRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -491,15 +534,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:dataRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "dataRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataRevDxfTableRevDxf class.
         /// </summary>
@@ -534,12 +583,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:dataRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -552,15 +601,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:totalsRowRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TotalsRowRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "totalsRowRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TotalsRowRevDxfTableRevDxf class.
         /// </summary>
@@ -595,12 +650,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:totalsRowRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -613,15 +668,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:headerRowBorderRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class HeaderRowBorderRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "headerRowBorderRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HeaderRowBorderRevDxfTableRevDxf class.
         /// </summary>
@@ -656,12 +717,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:headerRowBorderRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -674,15 +735,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:tableBorderRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TableBorderRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "tableBorderRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TableBorderRevDxfTableRevDxf class.
         /// </summary>
@@ -717,12 +784,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:tableBorderRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -735,15 +802,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:totalsRowBorderRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TotalsRowBorderRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "totalsRowBorderRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TotalsRowBorderRevDxfTableRevDxf class.
         /// </summary>
@@ -778,12 +851,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:totalsRowBorderRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -796,15 +869,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:columnHeaderRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColumnHeaderRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "columnHeaderRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColumnHeaderRevDxfTableRevDxf class.
         /// </summary>
@@ -839,12 +918,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:columnHeaderRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -857,15 +936,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:columnBodyRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColumnBodyRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "columnBodyRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColumnBodyRevDxfTableRevDxf class.
         /// </summary>
@@ -900,12 +985,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:columnBodyRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -918,15 +1003,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:columnTotalsRevDxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ColumnTotalsRevDxfTableRevDxf : OpenXmlTableRevDxfElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "columnTotalsRevDxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColumnTotalsRevDxfTableRevDxf class.
         /// </summary>
@@ -961,12 +1052,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:columnTotalsRevDxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -979,15 +1070,21 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType" /> <c>&lt;xfpb:dxf></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags" /> <c>&lt;xfpb:fpbs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class OpenXmlTableRevDxfElement : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_TableRevDxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OpenXmlTableRevDxfElement class.
         /// </summary>
@@ -1022,34 +1119,34 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags());
         }
 
         /// <summary>
         /// <para>FpbsFeaturePropertyBags.</para>
         /// <para>Represents the following element tag in the schema: xfpb:fpbs.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xfpb = http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags? FpbsFeaturePropertyBags
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType) as DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.FpbsFeaturePropertyBags.ElementType);
         }
 
         /// <summary>
         /// <para>DifferentialFormatType.</para>
         /// <para>Represents the following element tag in the schema: xfpb:dxf.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xfpb = http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType? DifferentialFormatType
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType) as DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DifferentialFormatType.ElementType);
         }
     }
 
@@ -1058,14 +1155,20 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:bagExt.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList" /> <c>&lt;xfpb:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BagExtensions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "bagExt");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_BagExtensions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BagExtensions class.
         /// </summary>
@@ -1100,12 +1203,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:bagExt");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -1113,13 +1216,13 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: xfpb:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:xfpb = http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1131,7 +1234,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:bag.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty" /> <c>&lt;xfpb:a></c></description></item>
@@ -1142,9 +1245,15 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty" /> <c>&lt;xfpb:rel></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty" /> <c>&lt;xfpb:s></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FeaturePropertyBag : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "bag");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_FeaturePropertyBag");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FeaturePropertyBag class.
         /// </summary>
@@ -1219,15 +1328,15 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:bag");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BoolFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DecimalFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.IntFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BoolFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BoolFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DecimalFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DecimalFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.IntFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.IntFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty());
             builder.AddElement<FeaturePropertyBag>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -1238,13 +1347,13 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
                 .AddAttribute("att", a => a.Att);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.IntFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BoolFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DecimalFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty), 1, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.ArrayFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BagFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.IntFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.StringFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.BoolFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.DecimalFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelFeatureProperty.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -1257,14 +1366,20 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Extension" /> <c>&lt;x:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_ExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -1299,16 +1414,16 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -1323,7 +1438,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:a.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean" /> <c>&lt;xfpb:b></c></description></item>
@@ -1333,9 +1448,15 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring" /> <c>&lt;xfpb:rel></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt" /> <c>&lt;xfpb:bagId></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ArrayFeatureProperty : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "a");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_ArrayFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ArrayFeatureProperty class.
         /// </summary>
@@ -1380,14 +1501,14 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:a");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsddouble>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdinteger>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.SXsdstring>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsddouble.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsddouble());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdinteger.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdinteger());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.SXsdstring.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.SXsdstring());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring());
+            builder.AddChild(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt.ElementType, static () => new DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt());
             builder.AddElement<ArrayFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
                 {
@@ -1395,12 +1516,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdinteger), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.SXsdstring), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsddouble), 1, 1, version: FileFormatVersions.Microsoft365),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring), 1, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.XsdunsignedInt.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdinteger.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.SXsdstring.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsdboolean.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.Xsddouble.ElementType, 1, 1, version: FileFormatVersions.Microsoft365),
+                new ElementParticle(DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag.RelXsdstring.ElementType, 1, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -1415,6 +1536,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class BagFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "bagId");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_BagFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BagFeatureProperty class.
         /// </summary>
@@ -1448,7 +1575,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:bagId");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<BagFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1468,6 +1595,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class IntFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "i");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_IntFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the IntFeatureProperty class.
         /// </summary>
@@ -1501,7 +1634,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:i");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<IntFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1521,6 +1654,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class StringFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "s");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_StringFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StringFeatureProperty class.
         /// </summary>
@@ -1554,7 +1693,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:s");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<StringFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1574,6 +1713,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class BoolFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "b");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_BoolFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BoolFeatureProperty class.
         /// </summary>
@@ -1607,7 +1752,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:b");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<BoolFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1627,6 +1772,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class DecimalFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_DecimalFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DecimalFeatureProperty class.
         /// </summary>
@@ -1660,7 +1811,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<DecimalFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1680,6 +1831,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class RelFeatureProperty : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "rel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "CT_RelFeatureProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RelFeatureProperty class.
         /// </summary>
@@ -1713,7 +1870,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:rel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
             builder.AddElement<RelFeatureProperty>()
                 .AddAttribute("k", a => a.K, aBuilder =>
@@ -1731,7 +1888,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is xfpb:dxf.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Border" /> <c>&lt;x:border></c></description></item>
@@ -1742,9 +1899,15 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.Font" /> <c>&lt;x:font></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Spreadsheet.NumberingFormat" /> <c>&lt;x:numFmt></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DifferentialFormatType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "dxf");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "CT_Dxf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DifferentialFormatType class.
         /// </summary>
@@ -1779,24 +1942,24 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:dxf");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Border>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Alignment>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Protection>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Fill>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.Font>();
-            builder.AddChild<DocumentFormat.OpenXml.Spreadsheet.NumberingFormat>();
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Border());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Alignment());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Protection());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Fill());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.Font());
+            builder.AddChild(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType, static () => new DocumentFormat.OpenXml.Spreadsheet.NumberingFormat());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Font), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Fill), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Alignment), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Border), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.Protection), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Spreadsheet.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1804,91 +1967,91 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         /// <para>Font Properties.</para>
         /// <para>Represents the following element tag in the schema: x:font.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Font? Font
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Font>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Font.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Font;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Font.ElementType);
         }
 
         /// <summary>
         /// <para>Number Format.</para>
         /// <para>Represents the following element tag in the schema: x:numFmt.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.NumberingFormat? NumberingFormat
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.NumberingFormat>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType) as DocumentFormat.OpenXml.Spreadsheet.NumberingFormat;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.NumberingFormat.ElementType);
         }
 
         /// <summary>
         /// <para>Fill.</para>
         /// <para>Represents the following element tag in the schema: x:fill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Fill? Fill
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Fill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Fill;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Fill.ElementType);
         }
 
         /// <summary>
         /// <para>Alignment.</para>
         /// <para>Represents the following element tag in the schema: x:alignment.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Alignment? Alignment
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Alignment>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Alignment;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Alignment.ElementType);
         }
 
         /// <summary>
         /// <para>Border Properties.</para>
         /// <para>Represents the following element tag in the schema: x:border.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Border? Border
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Border>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Border.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Border;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Border.ElementType);
         }
 
         /// <summary>
         /// <para>Protection Properties.</para>
         /// <para>Represents the following element tag in the schema: x:protection.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.Protection? Protection
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.Protection>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType) as DocumentFormat.OpenXml.Spreadsheet.Protection;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.Protection.ElementType);
         }
 
         /// <summary>
         /// <para>Future Feature Data Storage Area.</para>
         /// <para>Represents the following element tag in the schema: x:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:x = http://schemas.openxmlformats.org/spreadsheetml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Spreadsheet.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Spreadsheet.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType) as DocumentFormat.OpenXml.Spreadsheet.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Spreadsheet.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1902,6 +2065,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class XsdunsignedInt : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "bagId");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "unsignedInt");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the XsdunsignedInt class.
         /// </summary>
@@ -1926,7 +2095,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<UInt32Value>(NumberValidator.Instance);
-            builder.SetSchema("xfpb:bagId");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -1941,6 +2110,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class Xsdinteger : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "i");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "integer");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Xsdinteger class.
         /// </summary>
@@ -1965,7 +2140,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<IntegerValue>(NumberValidator.Instance);
-            builder.SetSchema("xfpb:i");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -1980,6 +2155,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class SXsdstring : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "s");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SXsdstring class.
         /// </summary>
@@ -2003,7 +2184,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:s");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -2018,6 +2199,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class RelXsdstring : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "rel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RelXsdstring class.
         /// </summary>
@@ -2041,7 +2228,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("xfpb:rel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -2056,6 +2243,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class Xsdboolean : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "b");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "boolean");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Xsdboolean class.
         /// </summary>
@@ -2080,7 +2273,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<BooleanValue>(NumberValidator.Instance);
-            builder.SetSchema("xfpb:b");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 
@@ -2095,6 +2288,12 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
     /// </summary>
     public partial class Xsddouble : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2022/featurepropertybag", "d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "double");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Xsddouble class.
         /// </summary>
@@ -2119,7 +2318,7 @@ namespace DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<DoubleValue>(NumberValidator.Instance);
-            builder.SetSchema("xfpb:d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
         }
 

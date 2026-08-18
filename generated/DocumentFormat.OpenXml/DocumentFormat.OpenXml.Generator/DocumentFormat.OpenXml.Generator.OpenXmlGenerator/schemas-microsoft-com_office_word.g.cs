@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class TopBorder : BorderType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "bordertop");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Border");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TopBorder class.
         /// </summary>
@@ -33,7 +40,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:bordertop");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -47,6 +54,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class LeftBorder : BorderType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "borderleft");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Border");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LeftBorder class.
         /// </summary>
@@ -57,7 +70,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:borderleft");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -71,6 +84,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class RightBorder : BorderType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "borderright");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Border");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RightBorder class.
         /// </summary>
@@ -81,7 +100,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:borderright");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -95,6 +114,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class BottomBorder : BorderType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "borderbottom");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Border");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BottomBorder class.
         /// </summary>
@@ -105,7 +130,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:borderbottom");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -119,6 +144,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public abstract partial class BorderType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Border");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BorderType class.
         /// </summary>
@@ -176,6 +207,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class TextWrap : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "wrap");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_Wrap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextWrap class.
         /// </summary>
@@ -226,7 +263,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:wrap");
+            builder.SetSchema(ElementType);
             builder.AddElement<TextWrap>()
                 .AddAttribute("type", a => a.Type)
                 .AddAttribute("side", a => a.Side)
@@ -245,6 +282,12 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
     /// </summary>
     public partial class AnchorLock : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:word", "anchorlock");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:word", "CT_AnchorLock");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AnchorLock class.
         /// </summary>
@@ -255,7 +298,7 @@ namespace DocumentFormat.OpenXml.Vml.Wordprocessing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w10:anchorlock");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>

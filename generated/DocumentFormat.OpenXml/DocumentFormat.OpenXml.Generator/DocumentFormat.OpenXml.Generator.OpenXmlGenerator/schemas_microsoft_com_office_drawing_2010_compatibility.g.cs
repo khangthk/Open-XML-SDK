@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.LegacyCompatibility
     /// </summary>
     public partial class CompatibilityShape : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2010/compatibility", "compatSp");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/compatibility", "CT_CompatShape");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompatibilityShape class.
         /// </summary>
@@ -43,7 +50,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.LegacyCompatibility
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("com14:compatSp");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<CompatibilityShape>()
                 .AddAttribute("spid", a => a.ShapeId, aBuilder =>

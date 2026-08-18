@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,14 +22,20 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ax:ocx.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty" /> <c>&lt;ax:ocxPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ActiveXControlData : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/activeX", "ocx");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/activeX", "CT_Ocx");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ActiveXControlData class.
         /// </summary>
@@ -64,9 +71,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>classid</para>
         /// <para>Represents the following attribute in the schema: ax:classid</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public StringValue? ActiveXControlClassId
         {
             get => GetAttribute<StringValue>();
@@ -77,9 +84,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>license</para>
         /// <para>Represents the following attribute in the schema: ax:license</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public StringValue? License
         {
             get => GetAttribute<StringValue>();
@@ -90,9 +97,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>id</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -103,9 +110,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>persistence</para>
         /// <para>Represents the following attribute in the schema: ax:persistence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office.ActiveX.PersistenceValues>? Persistence
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office.ActiveX.PersistenceValues>>();
@@ -115,8 +122,8 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ax:ocx");
-            builder.AddChild<DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty());
             builder.AddElement<ActiveXControlData>()
                 .AddAttribute("ax:classid", a => a.ActiveXControlClassId, aBuilder =>
                 {
@@ -130,7 +137,7 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty.ElementType, 0, 0)
             };
         }
 
@@ -143,15 +150,21 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ax:ocxPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.ActiveX.SharedComFont" /> <c>&lt;ax:font></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture" /> <c>&lt;ax:picture></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ActiveXObjectProperty : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/activeX", "ocxPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/activeX", "CT_OcxPr");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ActiveXObjectProperty class.
         /// </summary>
@@ -187,9 +200,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>name</para>
         /// <para>Represents the following attribute in the schema: ax:name</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public StringValue? Name
         {
             get => GetAttribute<StringValue>();
@@ -200,9 +213,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>value</para>
         /// <para>Represents the following attribute in the schema: ax:value</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public StringValue? Value
         {
             get => GetAttribute<StringValue>();
@@ -212,9 +225,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ax:ocxPr");
-            builder.AddChild<DocumentFormat.OpenXml.Office.ActiveX.SharedComFont>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.ActiveX.SharedComFont.ElementType, static () => new DocumentFormat.OpenXml.Office.ActiveX.SharedComFont());
+            builder.AddChild(DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture.ElementType, static () => new DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture());
             builder.AddElement<ActiveXObjectProperty>()
                 .AddAttribute("ax:name", a => a.Name, aBuilder =>
                 {
@@ -225,8 +238,8 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office.ActiveX.SharedComFont), 0, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture), 0, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.Office.ActiveX.SharedComFont.ElementType, 0, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture.ElementType, 0, 1)
                 }
             };
         }
@@ -235,26 +248,26 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>SharedComFont.</para>
         /// <para>Represents the following element tag in the schema: ax:font.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax = http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.ActiveX.SharedComFont? SharedComFont
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.ActiveX.SharedComFont>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.ActiveX.SharedComFont.ElementType) as DocumentFormat.OpenXml.Office.ActiveX.SharedComFont;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.ActiveX.SharedComFont.ElementType);
         }
 
         /// <summary>
         /// <para>SharedComPicture.</para>
         /// <para>Represents the following element tag in the schema: ax:picture.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax = http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture? SharedComPicture
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture.ElementType) as DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.ActiveX.SharedComPicture.ElementType);
         }
 
         /// <inheritdoc/>
@@ -266,14 +279,20 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ax:font.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty" /> <c>&lt;ax:ocxPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SharedComFont : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/activeX", "font");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/activeX", "CT_Font");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SharedComFont class.
         /// </summary>
@@ -309,9 +328,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>persistence</para>
         /// <para>Represents the following attribute in the schema: ax:persistence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:ax=http://schemas.microsoft.com/office/2006/activeX
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office.ActiveX.PersistenceValues>? Persistence
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office.ActiveX.PersistenceValues>>();
@@ -322,9 +341,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>id</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -334,14 +353,14 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ax:font");
-            builder.AddChild<DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty.ElementType, static () => new DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty());
             builder.AddElement<SharedComFont>()
                 .AddAttribute("ax:persistence", a => a.Persistence)
                 .AddAttribute("r:id", a => a.Id);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Office.ActiveX.ActiveXObjectProperty.ElementType, 0, 0)
             };
         }
 
@@ -356,6 +375,12 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
     /// </summary>
     public partial class SharedComPicture : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/activeX", "picture");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/activeX", "CT_Picture");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SharedComPicture class.
         /// </summary>
@@ -367,9 +392,9 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         /// <para>id</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -379,7 +404,7 @@ namespace DocumentFormat.OpenXml.Office.ActiveX
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ax:picture");
+            builder.SetSchema(ElementType);
             builder.AddElement<SharedComPicture>()
                 .AddAttribute("r:id", a => a.Id);
         }

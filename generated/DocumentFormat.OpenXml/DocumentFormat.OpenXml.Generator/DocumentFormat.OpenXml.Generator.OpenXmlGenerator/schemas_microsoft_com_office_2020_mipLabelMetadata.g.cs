@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,15 +22,21 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is clbl:labelList.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList" /> <c>&lt;clbl:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel" /> <c>&lt;clbl:label></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ClassificationLabelList : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "labelList");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "CT_ClassificationLabelList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ClassificationLabelList class.
         /// </summary>
@@ -64,14 +71,14 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("clbl:labelList");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel.ElementType, static () => new DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel), 0, 0, version: FileFormatVersions.Office2021),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList), 0, 1, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationLabel.ElementType, 0, 0, version: FileFormatVersions.Office2021),
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2021)
             };
         }
 
@@ -117,6 +124,12 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
     /// </summary>
     public partial class ClassificationExtension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "ext");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "CT_ClassificationExtension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ClassificationExtension class.
         /// </summary>
@@ -161,7 +174,7 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("clbl:ext");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<ClassificationExtension>()
                 .AddAttribute("uri", a => a.Uri, aBuilder =>
@@ -186,6 +199,12 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
     /// </summary>
     public partial class ClassificationLabel : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "label");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "CT_ClassificationLabel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ClassificationLabel class.
         /// </summary>
@@ -286,7 +305,7 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("clbl:label");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<ClassificationLabel>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -325,14 +344,20 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
     /// <para>This class is available in Office 2021 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is clbl:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension" /> <c>&lt;clbl:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ClassificationExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2020/mipLabelMetadata", "CT_ClassificationExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ClassificationExtensionList class.
         /// </summary>
@@ -367,12 +392,12 @@ namespace DocumentFormat.OpenXml.Office2021.MipLabelMetaData
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("clbl:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
-            builder.AddChild<DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension.ElementType, static () => new DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension), 0, 0, version: FileFormatVersions.Office2021)
+                new ElementParticle(DocumentFormat.OpenXml.Office2021.MipLabelMetaData.ClassificationExtension.ElementType, 0, 0, version: FileFormatVersions.Office2021)
             };
         }
 

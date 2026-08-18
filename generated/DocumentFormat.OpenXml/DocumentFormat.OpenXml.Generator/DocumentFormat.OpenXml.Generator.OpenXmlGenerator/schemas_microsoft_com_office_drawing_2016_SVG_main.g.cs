@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.SVG
     /// </summary>
     public partial class SVGBlip : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2016/SVG/main", "svgBlip");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2016/SVG/main", "CT_SVGBlip");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SVGBlip class.
         /// </summary>
@@ -34,9 +41,9 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.SVG
         /// <para>Embedded Picture Reference</para>
         /// <para>Represents the following attribute in the schema: r:embed</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Embed
         {
             get => GetAttribute<StringValue>();
@@ -47,9 +54,9 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.SVG
         /// <para>Linked Picture Reference</para>
         /// <para>Represents the following attribute in the schema: r:link</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Link
         {
             get => GetAttribute<StringValue>();
@@ -59,7 +66,7 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.SVG
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("asvg:svgBlip");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
             builder.AddElement<SVGBlip>()
                 .AddAttribute("r:embed", a => a.Embed)

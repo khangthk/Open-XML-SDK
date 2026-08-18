@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -22,7 +23,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is c14:pivotOptions.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter" /> <c>&lt;c14:dropZoneFilter></c></description></item>
@@ -31,9 +32,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries" /> <c>&lt;c14:dropZoneSeries></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible" /> <c>&lt;c14:dropZonesVisible></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PivotOptions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "pivotOptions");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_PivotOptions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PivotOptions class.
         /// </summary>
@@ -68,20 +75,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:pivotOptions");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -89,65 +96,65 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         /// <para>DropZoneFilter.</para>
         /// <para>Represents the following element tag in the schema: c14:dropZoneFilter.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter? DropZoneFilter
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneFilter.ElementType);
         }
 
         /// <summary>
         /// <para>DropZoneCategories.</para>
         /// <para>Represents the following element tag in the schema: c14:dropZoneCategories.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories? DropZoneCategories
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneCategories.ElementType);
         }
 
         /// <summary>
         /// <para>DropZoneData.</para>
         /// <para>Represents the following element tag in the schema: c14:dropZoneData.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData? DropZoneData
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneData.ElementType);
         }
 
         /// <summary>
         /// <para>DropZoneSeries.</para>
         /// <para>Represents the following element tag in the schema: c14:dropZoneSeries.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries? DropZoneSeries
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZoneSeries.ElementType);
         }
 
         /// <summary>
         /// <para>DropZonesVisible.</para>
         /// <para>Represents the following element tag in the schema: c14:dropZonesVisible.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible? DropZonesVisible
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.DropZonesVisible.ElementType);
         }
 
         /// <inheritdoc/>
@@ -159,15 +166,21 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is c14:sketchOptions.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode" /> <c>&lt;c14:inSketchMode></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton" /> <c>&lt;c14:showSketchBtn></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SketchOptions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "sketchOptions");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_SketchOptions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SketchOptions class.
         /// </summary>
@@ -202,14 +215,14 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:sketchOptions");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -217,26 +230,26 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         /// <para>InSketchMode.</para>
         /// <para>Represents the following element tag in the schema: c14:inSketchMode.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode? InSketchMode
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.InSketchMode.ElementType);
         }
 
         /// <summary>
         /// <para>ShowSketchButton.</para>
         /// <para>Represents the following element tag in the schema: c14:showSketchBtn.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton? ShowSketchButton
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShowSketchButton.ElementType);
         }
 
         /// <inheritdoc/>
@@ -248,14 +261,20 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is c14:invertSolidFillFmt.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties" /> <c>&lt;c14:spPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class InvertSolidFillFormat : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "invertSolidFillFmt");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_InvertSolidFillFmt");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the InvertSolidFillFormat class.
         /// </summary>
@@ -290,12 +309,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:invertSolidFillFmt");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties), 1, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -303,13 +322,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         /// <para>ShapeProperties.</para>
         /// <para>Represents the following element tag in the schema: c14:spPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c14 = http://schemas.microsoft.com/office/drawing/2007/8/2/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties? ShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.Charts.ShapeProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -323,6 +342,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class Style : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "style");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_Style");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Style class.
         /// </summary>
@@ -343,7 +368,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:style");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Style>()
                 .AddAttribute("val", a => a.Val, aBuilder =>
@@ -362,7 +387,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is c14:spPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -381,9 +406,15 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Transform2D" /> <c>&lt;a:xfrm></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "spPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_ShapeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeProperties class.
         /// </summary>
@@ -428,23 +459,23 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:spPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.CustomGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Outline>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PresetGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Scene3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Shape3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Transform2D>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.CustomGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Outline.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Outline());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PresetGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Scene3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Shape3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Transform2D());
             builder.AddElement<ShapeProperties>()
                 .AddAttribute("bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -452,39 +483,39 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Transform2D), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.CustomGeometry), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetGeometry), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Outline), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Outline.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Scene3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Shape3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -492,13 +523,13 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         /// <para>2D Transform for Individual Objects.</para>
         /// <para>Represents the following element tag in the schema: a:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Transform2D? Transform2D
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Transform2D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType) as DocumentFormat.OpenXml.Drawing.Transform2D;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Transform2D.ElementType);
         }
 
         /// <inheritdoc/>
@@ -512,6 +543,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class DropZoneFilter : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "dropZoneFilter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropZoneFilter class.
         /// </summary>
@@ -522,7 +559,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:dropZoneFilter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -537,6 +574,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class DropZoneCategories : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "dropZoneCategories");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropZoneCategories class.
         /// </summary>
@@ -547,7 +590,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:dropZoneCategories");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -562,6 +605,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class DropZoneData : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "dropZoneData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropZoneData class.
         /// </summary>
@@ -572,7 +621,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:dropZoneData");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -587,6 +636,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class DropZoneSeries : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "dropZoneSeries");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropZoneSeries class.
         /// </summary>
@@ -597,7 +652,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:dropZoneSeries");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -612,6 +667,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class DropZonesVisible : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "dropZonesVisible");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DropZonesVisible class.
         /// </summary>
@@ -622,7 +683,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:dropZonesVisible");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -637,6 +698,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class InSketchMode : BooleanFalseType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "inSketchMode");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the InSketchMode class.
         /// </summary>
@@ -647,7 +714,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:inSketchMode");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -662,6 +729,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public abstract partial class BooleanFalseType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BooleanFalseType class.
         /// </summary>
@@ -694,6 +767,12 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
     /// </summary>
     public partial class ShowSketchButton : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "showSketchBtn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2007/8/2/chart", "CT_BooleanTrue");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShowSketchButton class.
         /// </summary>
@@ -714,7 +793,7 @@ namespace DocumentFormat.OpenXml.Office2010.Drawing.Charts
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c14:showSketchBtn");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<ShowSketchButton>()
                 .AddAttribute("val", a => a.Val);

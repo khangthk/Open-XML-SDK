@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,14 +22,20 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
     /// <para>This class is available in Office 2016 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x16:modelTimeGroupings.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping" /> <c>&lt;x16:modelTimeGrouping></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ModelTimeGroupings : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "modelTimeGroupings");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "CT_ModelTimeGroupings");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelTimeGroupings class.
         /// </summary>
@@ -63,12 +70,12 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x16:modelTimeGroupings");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2016;
-            builder.AddChild<DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping.ElementType, static () => new DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping), 1, 0, version: FileFormatVersions.Office2016)
+                new ElementParticle(DocumentFormat.OpenXml.Office2016.ExcelAc.ModelTimeGrouping.ElementType, 1, 0, version: FileFormatVersions.Office2016)
             };
         }
 
@@ -81,14 +88,20 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
     /// <para>This class is available in Office 2016 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is x16:modelTimeGrouping.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn" /> <c>&lt;x16:calculatedTimeColumn></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ModelTimeGrouping : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "modelTimeGrouping");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "CT_ModelTimeGrouping");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ModelTimeGrouping class.
         /// </summary>
@@ -153,9 +166,9 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x16:modelTimeGrouping");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2016;
-            builder.AddChild<DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn.ElementType, static () => new DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn());
             builder.AddElement<ModelTimeGrouping>()
                 .AddAttribute("tableName", a => a.TableName, aBuilder =>
                 {
@@ -171,7 +184,7 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn), 1, 0, version: FileFormatVersions.Office2016)
+                new ElementParticle(DocumentFormat.OpenXml.Office2016.ExcelAc.CalculatedTimeColumn.ElementType, 1, 0, version: FileFormatVersions.Office2016)
             };
         }
 
@@ -186,6 +199,12 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
     /// </summary>
     public partial class CalculatedTimeColumn : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "calculatedTimeColumn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/spreadsheetml/2014/11/main", "CT_CalculatedTimeColumn");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CalculatedTimeColumn class.
         /// </summary>
@@ -236,7 +255,7 @@ namespace DocumentFormat.OpenXml.Office2016.ExcelAc
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("x16:calculatedTimeColumn");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2016;
             builder.AddElement<CalculatedTimeColumn>()
                 .AddAttribute("columnName", a => a.ColumnName, aBuilder =>

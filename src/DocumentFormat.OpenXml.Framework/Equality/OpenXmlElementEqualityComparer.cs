@@ -6,7 +6,6 @@ using DocumentFormat.OpenXml.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace DocumentFormat.OpenXml
 {
@@ -141,14 +140,25 @@ namespace DocumentFormat.OpenXml
 
                 if (x.ExtendedAttributes != null && y.ExtendedAttributes != null)
                 {
-                    if (x.ExtendedAttributes.Count() != y.ExtendedAttributes.Count())
-                    {
-                        return false;
-                    }
+                    using var xe = x.ExtendedAttributes.GetEnumerator();
+                    using var ye = y.ExtendedAttributes.GetEnumerator();
 
-                    for (int i = 0; i < x.ExtendedAttributes.Count(); i++)
+                    while (true)
                     {
-                        if (!x.ExtendedAttributes.ElementAt(i).Equals(y.ExtendedAttributes.ElementAt(i)))
+                        var xMoved = xe.MoveNext();
+                        var yMoved = ye.MoveNext();
+
+                        if (xMoved != yMoved)
+                        {
+                            return false; // different count
+                        }
+
+                        if (!xMoved)
+                        {
+                            break; // both exhausted
+                        }
+
+                        if (!xe.Current.Equals(ye.Current))
                         {
                             return false;
                         }
@@ -215,8 +225,8 @@ namespace DocumentFormat.OpenXml
 
         private static bool PrefixAndQNameEqual(OpenXmlElement x, OpenXmlElement y, OpenXmlElementEqualityOptions options)
         {
-            OpenXmlQualifiedName tQName = x.ParsedState.Metadata.QName;
-            OpenXmlQualifiedName oQName = y.ParsedState.Metadata.QName;
+            OpenXmlQualifiedName tQName = x.ParsedState.Metadata.Type.Name;
+            OpenXmlQualifiedName oQName = y.ParsedState.Metadata.Type.Name;
 
             if (!tQName.Equals(oQName))
             {

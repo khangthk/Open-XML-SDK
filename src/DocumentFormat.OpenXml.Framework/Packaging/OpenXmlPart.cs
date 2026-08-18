@@ -43,8 +43,19 @@ namespace DocumentFormat.OpenXml.Packaging
 
             SetPackage(openXmlPackage, parent);
 
-            // TODO: should we delay load?
-            var part = _openXmlPackage.Features.GetRequired<IPackageFeature>().Package.GetPart(uriTarget);
+            IPackagePart? part = null;
+            try
+            {
+                // TODO: should we delay load?
+                part = _openXmlPackage.Features.GetRequired<IPackageFeature>().Package.GetPart(uriTarget);
+            }
+            catch (InvalidOperationException ex)
+            {
+                var errorMessage = SR.Format(
+                    ExceptionMessages.SpecifiedPartNotFound,
+                    uriTarget.OriginalString, ex.Message);
+                throw new InvalidOperationException(errorMessage);
+            }
 
             Features.Set<IPackagePartFeature>(new PackagePartFeature(part));
 
@@ -236,9 +247,10 @@ namespace DocumentFormat.OpenXml.Packaging
         /// <param name="mode">The I/O mode to be used to open the content stream.</param>
         /// <returns>The content stream of the part. </returns>
         public Stream GetStream(FileMode mode)
-        {
-            return GetStream(mode, Features.GetRequired<IPackageFeature>().Package.FileOpenAccess);
-        }
+            => GetStream(mode, unloadRootOnChange: true);
+
+        internal Stream GetStream(FileMode mode, bool unloadRootOnChange)
+            => GetStream(mode, Features.GetRequired<IPackageFeature>().Package.FileOpenAccess, unloadRootOnChange);
 
         /// <summary>
         /// Returns the part content stream that was opened using a specified FileMode and FileAccess.
@@ -247,20 +259,26 @@ namespace DocumentFormat.OpenXml.Packaging
         /// <param name="access">The access permissions to be used to open the content stream.</param>
         /// <returns>The content stream of the part. </returns>
         public Stream GetStream(FileMode mode, FileAccess access)
+            => GetStream(mode, access, true);
+
+        internal Stream GetStream(FileMode mode, FileAccess access, bool unloadRootOnChange)
         {
             ThrowIfObjectDisposed();
 
             var stream = PackagePart.GetStream(mode, access);
 
-            if (mode is FileMode.Create || stream.Length == 0)
+            if (unloadRootOnChange)
             {
-                UnloadRootElement();
-                return new UnloadingRootElementStream(this, stream);
-            }
+                if (mode is FileMode.Create || stream.Length == 0)
+                {
+                    UnloadRootElement();
+                    return new UnloadingRootElementStream(this, stream);
+                }
 
-            if (stream.CanWrite)
-            {
-                return new UnloadingRootElementStream(this, stream);
+                if (stream.CanWrite)
+                {
+                    return new UnloadingRootElementStream(this, stream);
+                }
             }
 
             return stream;
@@ -441,6 +459,19 @@ namespace DocumentFormat.OpenXml.Packaging
             return true;
         }
 
+        internal override bool IsEmptyPart()
+        {
+            if (!Uri.ToString().EndsWith(".xml", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return false;
+            }
+
+            using (Stream stream = GetStream())
+            {
+                return stream.Length == 0;
+            }
+        }
+
         #endregion
 
         #region internal methods
@@ -476,6 +507,9 @@ namespace DocumentFormat.OpenXml.Packaging
                 var events = Features.Get<IPartRootEventsFeature>();
                 events?.OnChange(EventType.Creating, this);
 
+                // Accessed before stream as it may cause the stream to reload
+                var strictRelationshipFound = OpenXmlPackage.StrictRelationshipFound;
+
                 using (Stream stream = GetStream(FileMode.OpenOrCreate, FileAccess.Read))
                 {
                     if (stream.Length < 4)
@@ -494,7 +528,7 @@ namespace DocumentFormat.OpenXml.Packaging
                         // OpenXmlReaderWriterTest.bug247883() unit test fails.
                         var rootElement = new T { OpenXmlPart = this };
 
-                        if (rootElement.LoadFromPart(this, stream))
+                        if (rootElement.LoadFromPart(this, stream, strictRelationshipFound))
                         {
                             // associate the root element with this part.
                             InternalRootElement = rootElement;

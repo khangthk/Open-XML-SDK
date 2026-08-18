@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office2021.Word.ExtensionList
     /// </summary>
     public partial class Extension : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2018/wordml", "ext");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2018/wordml", "CT_Extension");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Extension class.
         /// </summary>
@@ -58,9 +65,9 @@ namespace DocumentFormat.OpenXml.Office2021.Word.ExtensionList
         /// <para>uri, this property is only available in Office 2021 and later.</para>
         /// <para>Represents the following attribute in the schema: w16cur:uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w16cur=http://schemas.microsoft.com/office/word/2018/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? Uri
         {
             get => GetAttribute<StringValue>();
@@ -70,7 +77,7 @@ namespace DocumentFormat.OpenXml.Office2021.Word.ExtensionList
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w16cur:ext");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2021;
             builder.AddElement<Extension>()
                 .AddAttribute("w16cur:uri", a => a.Uri, aBuilder =>

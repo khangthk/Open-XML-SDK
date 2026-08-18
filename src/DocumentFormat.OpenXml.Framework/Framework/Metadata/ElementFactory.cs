@@ -6,21 +6,18 @@ using System.Diagnostics;
 
 namespace DocumentFormat.OpenXml.Framework.Metadata
 {
-    [DebuggerDisplay("{Namespace}:{Name}")]
+    [DebuggerDisplay("{QName,nq}")]
     internal sealed class ElementFactory
     {
         private readonly Func<OpenXmlElement> _factory;
 
-        public ElementFactory(Type? type, in OpenXmlQualifiedName qname, Func<OpenXmlElement> factory)
+        public ElementFactory(in OpenXmlSchemaType type, Func<OpenXmlElement> factory)
         {
             Type = type;
-            QName = qname;
             _factory = factory;
         }
 
-        public Type? Type { get; }
-
-        public OpenXmlQualifiedName QName { get; }
+        public OpenXmlSchemaType Type { get; }
 
         public OpenXmlElement Create() => _factory();
 
@@ -29,14 +26,7 @@ namespace DocumentFormat.OpenXml.Framework.Metadata
         {
             var instance = new T();
 
-            return new ElementFactory(typeof(T), instance.Metadata.QName, static () => new T());
-        }
-
-        public static ElementFactory Create(Type type, Func<OpenXmlElement> factory)
-        {
-            var instance = factory();
-
-            return new ElementFactory(type, instance.Metadata.QName, factory);
+            return new ElementFactory(instance.Metadata.Type, static () => new T());
         }
     }
 }

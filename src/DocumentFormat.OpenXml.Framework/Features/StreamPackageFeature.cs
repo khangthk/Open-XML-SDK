@@ -50,7 +50,22 @@ internal class StreamPackageFeature : PackageFeatureBase, IDisposable, IPackageS
         Mode = initialMode == FileMode.Create ? Mode = FileMode.Open : initialMode;
         Access = openMode == PackageOpenMode.Read ? FileAccess.Read : FileAccess.ReadWrite;
 
-        InitializePackage(initialMode, Access);
+        try
+        {
+            InitializePackage(initialMode, Access);
+        }
+        catch when (isOwned)
+        {
+            if (_stream is not null && OpenXmlPackage.IsEncryptedOfficeFile(_stream))
+            {
+                _stream.Dispose();
+                throw new OpenXmlPackageException(ExceptionMessages.EncryptedPackageNotSupported);
+            }
+
+            _stream?.Dispose();
+            throw;
+        }
+
         _isOwned = isOwned;
     }
 

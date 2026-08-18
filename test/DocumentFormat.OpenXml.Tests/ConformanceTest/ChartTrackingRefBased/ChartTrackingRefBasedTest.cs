@@ -4,7 +4,6 @@
 using DocumentFormat.OpenXml.Tests.ChartTrackingRefBasedClass;
 using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace DocumentFormat.OpenXml.Tests.ChartTrackingRefBased
 {
@@ -24,8 +23,8 @@ namespace DocumentFormat.OpenXml.Tests.ChartTrackingRefBased
 
                 var testEntities = new TestEntities(stream);
 
-                testEntities.EditElements(stream, Log);
-                testEntities.VerifyElements(stream, Log);
+                testEntities.EditElements(stream, Output);
+                testEntities.VerifyElements(stream, Output);
             }
         }
 
@@ -37,11 +36,11 @@ namespace DocumentFormat.OpenXml.Tests.ChartTrackingRefBased
                 GeneratedDocument.CreatePackage(stream);
 
                 var testEntities = new TestEntities(stream);
-                testEntities.DeleteElements(stream, Log);
-                testEntities.VerifyDeleteElements(stream, Log);
+                testEntities.DeleteElements(stream, Output);
+                testEntities.VerifyDeleteElements(stream, Output);
 
-                testEntities.AddElements(stream, Log);
-                testEntities.VerifyAddElements(stream, Log);
+                testEntities.AddElements(stream, Output);
+                testEntities.VerifyAddElements(stream, Output);
             }
         }
     }

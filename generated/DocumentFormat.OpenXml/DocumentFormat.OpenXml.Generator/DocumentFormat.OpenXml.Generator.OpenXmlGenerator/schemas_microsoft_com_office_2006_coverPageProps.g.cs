@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,7 +22,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cppr:CoverPageProperties.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate" /> <c>&lt;cppr:PublishDate></c></description></item>
@@ -31,9 +32,15 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber" /> <c>&lt;cppr:CompanyFax></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress" /> <c>&lt;cppr:CompanyEmail></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CoverPageProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CoverPageProperties");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CT_CoverPageProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CoverPageProperties class.
         /// </summary>
@@ -68,21 +75,21 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:CoverPageProperties");
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber>();
-            builder.AddChild<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate());
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract());
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress());
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber());
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber());
+            builder.AddChild(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress.ElementType, static () => new DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress.ElementType, 1, 1)
             };
         }
 
@@ -90,78 +97,78 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         /// <para>PublishDate.</para>
         /// <para>Represents the following element tag in the schema: cppr:PublishDate.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate? PublishDate
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.PublishDate.ElementType);
         }
 
         /// <summary>
         /// <para>DocumentAbstract.</para>
         /// <para>Represents the following element tag in the schema: cppr:Abstract.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract? DocumentAbstract
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.DocumentAbstract.ElementType);
         }
 
         /// <summary>
         /// <para>CompanyAddress.</para>
         /// <para>Represents the following element tag in the schema: cppr:CompanyAddress.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress? CompanyAddress
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.CompanyAddress.ElementType);
         }
 
         /// <summary>
         /// <para>CompanyPhoneNumber.</para>
         /// <para>Represents the following element tag in the schema: cppr:CompanyPhone.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber? CompanyPhoneNumber
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.CompanyPhoneNumber.ElementType);
         }
 
         /// <summary>
         /// <para>CompanyFaxNumber.</para>
         /// <para>Represents the following element tag in the schema: cppr:CompanyFax.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber? CompanyFaxNumber
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.CompanyFaxNumber.ElementType);
         }
 
         /// <summary>
         /// <para>CompanyEmailAddress.</para>
         /// <para>Represents the following element tag in the schema: cppr:CompanyEmail.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cppr = http://schemas.microsoft.com/office/2006/coverPageProps
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress? CompanyEmailAddress
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress.ElementType) as DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.CoverPageProps.CompanyEmailAddress.ElementType);
         }
 
         /// <inheritdoc/>
@@ -175,6 +182,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class PublishDate : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "PublishDate");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "ST_PublishDate");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PublishDate class.
         /// </summary>
@@ -198,7 +211,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:PublishDate");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -212,6 +225,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class DocumentAbstract : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "Abstract");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DocumentAbstract class.
         /// </summary>
@@ -235,7 +254,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:Abstract");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -249,6 +268,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class CompanyAddress : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CompanyAddress");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompanyAddress class.
         /// </summary>
@@ -272,7 +297,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:CompanyAddress");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -286,6 +311,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class CompanyPhoneNumber : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CompanyPhone");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompanyPhoneNumber class.
         /// </summary>
@@ -309,7 +340,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:CompanyPhone");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -323,6 +354,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class CompanyFaxNumber : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CompanyFax");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompanyFaxNumber class.
         /// </summary>
@@ -346,7 +383,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:CompanyFax");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -360,6 +397,12 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
     /// </summary>
     public partial class CompanyEmailAddress : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/2006/coverPageProps", "CompanyEmail");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CompanyEmailAddress class.
         /// </summary>
@@ -383,7 +426,7 @@ namespace DocumentFormat.OpenXml.Office.CoverPageProps
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cppr:CompanyEmail");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>

@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -25,6 +26,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class DerivedFrom : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "derived-from");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_DerivedFrom");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DerivedFrom class.
         /// </summary>
@@ -55,7 +62,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:derived-from");
+            builder.SetSchema(ElementType);
             builder.AddElement<DerivedFrom>()
                 .AddAttribute("resource", a => a.Resource, aBuilder =>
                 {
@@ -76,6 +83,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class Info : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "info");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Info");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Info class.
         /// </summary>
@@ -120,7 +133,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:info");
+            builder.SetSchema(ElementType);
             builder.AddElement<Info>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -141,15 +154,21 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:lattice.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Arc" /> <c>&lt;emma:arc></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Node" /> <c>&lt;emma:node></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Lattice : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "lattice");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Lattice");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Lattice class.
         /// </summary>
@@ -205,9 +224,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-uri</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? TimeReference
         {
             get => GetAttribute<StringValue>();
@@ -218,9 +237,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-anchor-point</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-anchor-point</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>? TimeReferenceAnchorPoint
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>>();
@@ -230,9 +249,9 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:lattice");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Arc>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Node>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Arc.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Arc());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Node.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Node());
             builder.AddElement<Lattice>()
                 .AddAttribute("initial", a => a.Initial, aBuilder =>
                 {
@@ -247,8 +266,8 @@ namespace DocumentFormat.OpenXml.EMMA
                 .AddAttribute("emma:time-ref-anchor-point", a => a.TimeReferenceAnchorPoint);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Arc), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Node), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Arc.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Node.ElementType, 1, 1)
             };
         }
 
@@ -263,6 +282,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class Literal : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "literal");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Literal");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Literal class.
         /// </summary>
@@ -286,7 +311,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:literal");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -298,7 +323,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:interpretation.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.DerivedFrom" /> <c>&lt;emma:derived-from></c></description></item>
@@ -307,9 +332,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Literal" /> <c>&lt;emma:literal></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Ink.ContextNode" /> <c>&lt;msink:context></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Interpretation : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "interpretation");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Interpretation");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Interpretation class.
         /// </summary>
@@ -355,9 +386,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>tokens</para>
         /// <para>Represents the following attribute in the schema: emma:tokens</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Tokens
         {
             get => GetAttribute<StringValue>();
@@ -368,9 +399,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>process</para>
         /// <para>Represents the following attribute in the schema: emma:process</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Process
         {
             get => GetAttribute<StringValue>();
@@ -381,9 +412,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>lang</para>
         /// <para>Represents the following attribute in the schema: emma:lang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Language
         {
             get => GetAttribute<StringValue>();
@@ -394,9 +425,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal</para>
         /// <para>Represents the following attribute in the schema: emma:signal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Signal
         {
             get => GetAttribute<StringValue>();
@@ -407,9 +438,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal-size</para>
         /// <para>Represents the following attribute in the schema: emma:signal-size</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? SignalSize
         {
             get => GetAttribute<IntegerValue>();
@@ -420,9 +451,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>media-type</para>
         /// <para>Represents the following attribute in the schema: emma:media-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MediaType
         {
             get => GetAttribute<StringValue>();
@@ -433,9 +464,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -446,9 +477,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>source</para>
         /// <para>Represents the following attribute in the schema: emma:source</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Source
         {
             get => GetAttribute<StringValue>();
@@ -459,9 +490,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>start</para>
         /// <para>Represents the following attribute in the schema: emma:start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? Start
         {
             get => GetAttribute<UInt64Value>();
@@ -472,9 +503,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>end</para>
         /// <para>Represents the following attribute in the schema: emma:end</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? End
         {
             get => GetAttribute<UInt64Value>();
@@ -485,9 +516,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-uri</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? TimeReference
         {
             get => GetAttribute<StringValue>();
@@ -498,9 +529,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-anchor-point</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-anchor-point</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>? TimeReferenceAnchorPoint
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>>();
@@ -511,9 +542,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>offset-to-start</para>
         /// <para>Represents the following attribute in the schema: emma:offset-to-start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? OffsetToStart
         {
             get => GetAttribute<IntegerValue>();
@@ -524,9 +555,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>duration</para>
         /// <para>Represents the following attribute in the schema: emma:duration</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Duration
         {
             get => GetAttribute<IntegerValue>();
@@ -537,9 +568,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -550,9 +581,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -563,9 +594,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>function</para>
         /// <para>Represents the following attribute in the schema: emma:function</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Function
         {
             get => GetAttribute<StringValue>();
@@ -576,9 +607,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>verbal</para>
         /// <para>Represents the following attribute in the schema: emma:verbal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Verbal
         {
             get => GetAttribute<BooleanValue>();
@@ -589,9 +620,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -602,9 +633,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>grammar-ref</para>
         /// <para>Represents the following attribute in the schema: emma:grammar-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? GrammarRef
         {
             get => GetAttribute<StringValue>();
@@ -615,9 +646,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-info-ref</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-info-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndpointInfoRef
         {
             get => GetAttribute<StringValue>();
@@ -628,9 +659,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>model-ref</para>
         /// <para>Represents the following attribute in the schema: emma:model-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? ModelRef
         {
             get => GetAttribute<StringValue>();
@@ -641,9 +672,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>dialog-turn</para>
         /// <para>Represents the following attribute in the schema: emma:dialog-turn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? DialogTurn
         {
             get => GetAttribute<StringValue>();
@@ -654,9 +685,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>no-input</para>
         /// <para>Represents the following attribute in the schema: emma:no-input</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? NoInput
         {
             get => GetAttribute<BooleanValue>();
@@ -667,9 +698,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>uninterpreted</para>
         /// <para>Represents the following attribute in the schema: emma:uninterpreted</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Uninterpreted
         {
             get => GetAttribute<BooleanValue>();
@@ -679,12 +710,12 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:interpretation");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.DerivedFrom>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Lattice>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Literal>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Ink.ContextNode>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, static () => new DocumentFormat.OpenXml.EMMA.DerivedFrom());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Lattice.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Lattice());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Literal.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Literal());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Ink.ContextNode.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Ink.ContextNode());
             builder.AddElement<Interpretation>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -726,11 +757,11 @@ namespace DocumentFormat.OpenXml.EMMA
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.DerivedFrom), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Lattice), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Literal), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Ink.ContextNode), 0, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Lattice.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Literal.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.Ink.ContextNode.ElementType, 0, 1)
                 }
             };
             builder.AddConstraint(new AttributeValuePatternConstraint(builder.CreateQName("emma:id"), @"[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}") { Version = FileFormatVersions.Office2010 });
@@ -746,7 +777,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:one-of.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.DerivedFrom" /> <c>&lt;emma:derived-from></c></description></item>
@@ -756,9 +787,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.OneOf" /> <c>&lt;emma:one-of></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Sequence" /> <c>&lt;emma:sequence></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OneOf : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "one-of");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_OneOf");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OneOf class.
         /// </summary>
@@ -814,9 +851,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>tokens</para>
         /// <para>Represents the following attribute in the schema: emma:tokens</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Tokens
         {
             get => GetAttribute<StringValue>();
@@ -827,9 +864,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>process</para>
         /// <para>Represents the following attribute in the schema: emma:process</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Process
         {
             get => GetAttribute<StringValue>();
@@ -840,9 +877,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>lang</para>
         /// <para>Represents the following attribute in the schema: emma:lang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Language
         {
             get => GetAttribute<StringValue>();
@@ -853,9 +890,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal</para>
         /// <para>Represents the following attribute in the schema: emma:signal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Signal
         {
             get => GetAttribute<StringValue>();
@@ -866,9 +903,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal-size</para>
         /// <para>Represents the following attribute in the schema: emma:signal-size</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? SignalSize
         {
             get => GetAttribute<IntegerValue>();
@@ -879,9 +916,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>media-type</para>
         /// <para>Represents the following attribute in the schema: emma:media-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MediaType
         {
             get => GetAttribute<StringValue>();
@@ -892,9 +929,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -905,9 +942,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>source</para>
         /// <para>Represents the following attribute in the schema: emma:source</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Source
         {
             get => GetAttribute<StringValue>();
@@ -918,9 +955,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>start</para>
         /// <para>Represents the following attribute in the schema: emma:start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? Start
         {
             get => GetAttribute<UInt64Value>();
@@ -931,9 +968,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>end</para>
         /// <para>Represents the following attribute in the schema: emma:end</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? End
         {
             get => GetAttribute<UInt64Value>();
@@ -944,9 +981,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-uri</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? TimeReference
         {
             get => GetAttribute<StringValue>();
@@ -957,9 +994,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-anchor-point</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-anchor-point</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>? TimeReferenceAnchorPoint
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>>();
@@ -970,9 +1007,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>offset-to-start</para>
         /// <para>Represents the following attribute in the schema: emma:offset-to-start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? OffsetToStart
         {
             get => GetAttribute<IntegerValue>();
@@ -983,9 +1020,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>duration</para>
         /// <para>Represents the following attribute in the schema: emma:duration</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Duration
         {
             get => GetAttribute<IntegerValue>();
@@ -996,9 +1033,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -1009,9 +1046,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -1022,9 +1059,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>function</para>
         /// <para>Represents the following attribute in the schema: emma:function</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Function
         {
             get => GetAttribute<StringValue>();
@@ -1035,9 +1072,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>verbal</para>
         /// <para>Represents the following attribute in the schema: emma:verbal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Verbal
         {
             get => GetAttribute<BooleanValue>();
@@ -1048,9 +1085,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -1061,9 +1098,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>grammar-ref</para>
         /// <para>Represents the following attribute in the schema: emma:grammar-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? GrammarRef
         {
             get => GetAttribute<StringValue>();
@@ -1074,9 +1111,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-info-ref</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-info-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndpointInfoRef
         {
             get => GetAttribute<StringValue>();
@@ -1087,9 +1124,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>model-ref</para>
         /// <para>Represents the following attribute in the schema: emma:model-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? ModelRef
         {
             get => GetAttribute<StringValue>();
@@ -1100,9 +1137,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>dialog-turn</para>
         /// <para>Represents the following attribute in the schema: emma:dialog-turn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? DialogTurn
         {
             get => GetAttribute<StringValue>();
@@ -1112,13 +1149,13 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:one-of");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.DerivedFrom>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Group>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Interpretation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.OneOf>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Sequence>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, static () => new DocumentFormat.OpenXml.EMMA.DerivedFrom());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Group.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Group());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Interpretation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, static () => new DocumentFormat.OpenXml.EMMA.OneOf());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Sequence());
             builder.AddElement<OneOf>()
                 .AddAttribute("disjunction-type", a => a.DisjunctionType)
                 .AddAttribute("id", a => a.Id, aBuilder =>
@@ -1159,12 +1196,12 @@ namespace DocumentFormat.OpenXml.EMMA
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.DerivedFrom), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Interpretation), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.OneOf), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Group), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Sequence), 1, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Group.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, 1, 1)
                 }
             };
             builder.AddConstraint(new AttributeValueSetConstraint(builder.CreateQName("emma:disjunction-type"), true, new string[] { "recognition" }) { Version = FileFormatVersions.Office2010 });
@@ -1179,7 +1216,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:group.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.DerivedFrom" /> <c>&lt;emma:derived-from></c></description></item>
@@ -1190,9 +1227,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.OneOf" /> <c>&lt;emma:one-of></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Sequence" /> <c>&lt;emma:sequence></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Group : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "group");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Group");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Group class.
         /// </summary>
@@ -1238,9 +1281,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>tokens</para>
         /// <para>Represents the following attribute in the schema: emma:tokens</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Tokens
         {
             get => GetAttribute<StringValue>();
@@ -1251,9 +1294,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>process</para>
         /// <para>Represents the following attribute in the schema: emma:process</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Process
         {
             get => GetAttribute<StringValue>();
@@ -1264,9 +1307,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>lang</para>
         /// <para>Represents the following attribute in the schema: emma:lang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Language
         {
             get => GetAttribute<StringValue>();
@@ -1277,9 +1320,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal</para>
         /// <para>Represents the following attribute in the schema: emma:signal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Signal
         {
             get => GetAttribute<StringValue>();
@@ -1290,9 +1333,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal-size</para>
         /// <para>Represents the following attribute in the schema: emma:signal-size</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? SignalSize
         {
             get => GetAttribute<IntegerValue>();
@@ -1303,9 +1346,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>media-type</para>
         /// <para>Represents the following attribute in the schema: emma:media-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MediaType
         {
             get => GetAttribute<StringValue>();
@@ -1316,9 +1359,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -1329,9 +1372,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>source</para>
         /// <para>Represents the following attribute in the schema: emma:source</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Source
         {
             get => GetAttribute<StringValue>();
@@ -1342,9 +1385,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>start</para>
         /// <para>Represents the following attribute in the schema: emma:start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? Start
         {
             get => GetAttribute<UInt64Value>();
@@ -1355,9 +1398,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>end</para>
         /// <para>Represents the following attribute in the schema: emma:end</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? End
         {
             get => GetAttribute<UInt64Value>();
@@ -1368,9 +1411,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-uri</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? TimeReference
         {
             get => GetAttribute<StringValue>();
@@ -1381,9 +1424,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-anchor-point</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-anchor-point</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>? TimeReferenceAnchorPoint
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>>();
@@ -1394,9 +1437,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>offset-to-start</para>
         /// <para>Represents the following attribute in the schema: emma:offset-to-start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? OffsetToStart
         {
             get => GetAttribute<IntegerValue>();
@@ -1407,9 +1450,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>duration</para>
         /// <para>Represents the following attribute in the schema: emma:duration</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Duration
         {
             get => GetAttribute<IntegerValue>();
@@ -1420,9 +1463,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -1433,9 +1476,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -1446,9 +1489,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>function</para>
         /// <para>Represents the following attribute in the schema: emma:function</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Function
         {
             get => GetAttribute<StringValue>();
@@ -1459,9 +1502,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>verbal</para>
         /// <para>Represents the following attribute in the schema: emma:verbal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Verbal
         {
             get => GetAttribute<BooleanValue>();
@@ -1472,9 +1515,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -1485,9 +1528,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>grammar-ref</para>
         /// <para>Represents the following attribute in the schema: emma:grammar-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? GrammarRef
         {
             get => GetAttribute<StringValue>();
@@ -1498,9 +1541,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-info-ref</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-info-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndpointInfoRef
         {
             get => GetAttribute<StringValue>();
@@ -1511,9 +1554,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>model-ref</para>
         /// <para>Represents the following attribute in the schema: emma:model-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? ModelRef
         {
             get => GetAttribute<StringValue>();
@@ -1524,9 +1567,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>dialog-turn</para>
         /// <para>Represents the following attribute in the schema: emma:dialog-turn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? DialogTurn
         {
             get => GetAttribute<StringValue>();
@@ -1536,14 +1579,14 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:group");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.DerivedFrom>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Group>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.GroupInfo>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Interpretation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.OneOf>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Sequence>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, static () => new DocumentFormat.OpenXml.EMMA.DerivedFrom());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Group.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Group());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.GroupInfo.ElementType, static () => new DocumentFormat.OpenXml.EMMA.GroupInfo());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Interpretation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, static () => new DocumentFormat.OpenXml.EMMA.OneOf());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Sequence());
             builder.AddElement<Group>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -1583,13 +1626,13 @@ namespace DocumentFormat.OpenXml.EMMA
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.DerivedFrom), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.GroupInfo), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Interpretation), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.OneOf), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Group), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Sequence), 1, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.GroupInfo.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Group.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, 1, 1)
                 }
             };
         }
@@ -1603,7 +1646,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:sequence.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.DerivedFrom" /> <c>&lt;emma:derived-from></c></description></item>
@@ -1613,9 +1656,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.OneOf" /> <c>&lt;emma:one-of></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Sequence" /> <c>&lt;emma:sequence></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Sequence : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "sequence");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Sequence");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Sequence class.
         /// </summary>
@@ -1661,9 +1710,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>tokens</para>
         /// <para>Represents the following attribute in the schema: emma:tokens</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Tokens
         {
             get => GetAttribute<StringValue>();
@@ -1674,9 +1723,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>process</para>
         /// <para>Represents the following attribute in the schema: emma:process</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Process
         {
             get => GetAttribute<StringValue>();
@@ -1687,9 +1736,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>lang</para>
         /// <para>Represents the following attribute in the schema: emma:lang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Language
         {
             get => GetAttribute<StringValue>();
@@ -1700,9 +1749,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal</para>
         /// <para>Represents the following attribute in the schema: emma:signal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Signal
         {
             get => GetAttribute<StringValue>();
@@ -1713,9 +1762,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>signal-size</para>
         /// <para>Represents the following attribute in the schema: emma:signal-size</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? SignalSize
         {
             get => GetAttribute<IntegerValue>();
@@ -1726,9 +1775,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>media-type</para>
         /// <para>Represents the following attribute in the schema: emma:media-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MediaType
         {
             get => GetAttribute<StringValue>();
@@ -1739,9 +1788,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -1752,9 +1801,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>source</para>
         /// <para>Represents the following attribute in the schema: emma:source</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Source
         {
             get => GetAttribute<StringValue>();
@@ -1765,9 +1814,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>start</para>
         /// <para>Represents the following attribute in the schema: emma:start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? Start
         {
             get => GetAttribute<UInt64Value>();
@@ -1778,9 +1827,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>end</para>
         /// <para>Represents the following attribute in the schema: emma:end</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? End
         {
             get => GetAttribute<UInt64Value>();
@@ -1791,9 +1840,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-uri</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-uri</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? TimeReference
         {
             get => GetAttribute<StringValue>();
@@ -1804,9 +1853,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>time-ref-anchor-point</para>
         /// <para>Represents the following attribute in the schema: emma:time-ref-anchor-point</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>? TimeReferenceAnchorPoint
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.AnchorPointValues>>();
@@ -1817,9 +1866,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>offset-to-start</para>
         /// <para>Represents the following attribute in the schema: emma:offset-to-start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? OffsetToStart
         {
             get => GetAttribute<IntegerValue>();
@@ -1830,9 +1879,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>duration</para>
         /// <para>Represents the following attribute in the schema: emma:duration</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Duration
         {
             get => GetAttribute<IntegerValue>();
@@ -1843,9 +1892,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -1856,9 +1905,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -1869,9 +1918,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>function</para>
         /// <para>Represents the following attribute in the schema: emma:function</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Function
         {
             get => GetAttribute<StringValue>();
@@ -1882,9 +1931,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>verbal</para>
         /// <para>Represents the following attribute in the schema: emma:verbal</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Verbal
         {
             get => GetAttribute<BooleanValue>();
@@ -1895,9 +1944,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -1908,9 +1957,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>grammar-ref</para>
         /// <para>Represents the following attribute in the schema: emma:grammar-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? GrammarRef
         {
             get => GetAttribute<StringValue>();
@@ -1921,9 +1970,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-info-ref</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-info-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndpointInfoRef
         {
             get => GetAttribute<StringValue>();
@@ -1934,9 +1983,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>model-ref</para>
         /// <para>Represents the following attribute in the schema: emma:model-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? ModelRef
         {
             get => GetAttribute<StringValue>();
@@ -1947,9 +1996,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>dialog-turn</para>
         /// <para>Represents the following attribute in the schema: emma:dialog-turn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? DialogTurn
         {
             get => GetAttribute<StringValue>();
@@ -1959,13 +2008,13 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:sequence");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.DerivedFrom>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Group>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Interpretation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.OneOf>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Sequence>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, static () => new DocumentFormat.OpenXml.EMMA.DerivedFrom());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Group.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Group());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Interpretation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, static () => new DocumentFormat.OpenXml.EMMA.OneOf());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Sequence());
             builder.AddElement<Sequence>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2005,12 +2054,12 @@ namespace DocumentFormat.OpenXml.EMMA
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.DerivedFrom), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Interpretation), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.OneOf), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Group), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Sequence), 1, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.DerivedFrom.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Group.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, 1, 1)
                 }
             };
         }
@@ -2026,6 +2075,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class GroupInfo : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "group-info");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_GroupInfo");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GroupInfo class.
         /// </summary>
@@ -2070,7 +2125,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:group-info");
+            builder.SetSchema(ElementType);
             builder.AddElement<GroupInfo>()
                 .AddAttribute("ref", a => a.Reference, aBuilder =>
                 {
@@ -2091,7 +2146,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:derivation.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Group" /> <c>&lt;emma:group></c></description></item>
@@ -2099,9 +2154,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.OneOf" /> <c>&lt;emma:one-of></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Sequence" /> <c>&lt;emma:sequence></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Derivation : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "derivation");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Derivation");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Derivation class.
         /// </summary>
@@ -2136,17 +2197,17 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:derivation");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Group>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Interpretation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.OneOf>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Sequence>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Group.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Group());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Interpretation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, static () => new DocumentFormat.OpenXml.EMMA.OneOf());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Sequence());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Interpretation), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.OneOf), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Sequence), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Group), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Group.ElementType, 1, 1)
             };
         }
 
@@ -2161,6 +2222,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class Grammar : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "grammar");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Grammar");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Grammar class.
         /// </summary>
@@ -2191,7 +2258,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:grammar");
+            builder.SetSchema(ElementType);
             builder.AddElement<Grammar>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2216,6 +2283,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class Model : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "model");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Model");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Model class.
         /// </summary>
@@ -2270,7 +2343,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:model");
+            builder.SetSchema(ElementType);
             builder.AddElement<Model>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2296,14 +2369,20 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:endpoint-info.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.EndPoint" /> <c>&lt;emma:endpoint></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class EndPointInfo : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "endpoint-info");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_EndPointInfo");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EndPointInfo class.
         /// </summary>
@@ -2348,8 +2427,8 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:endpoint-info");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.EndPoint>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.EndPoint.ElementType, static () => new DocumentFormat.OpenXml.EMMA.EndPoint());
             builder.AddElement<EndPointInfo>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2358,7 +2437,7 @@ namespace DocumentFormat.OpenXml.EMMA
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.EndPoint), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.EndPoint.ElementType, 1, 1)
             };
         }
 
@@ -2373,6 +2452,12 @@ namespace DocumentFormat.OpenXml.EMMA
     /// </summary>
     public partial class EndPoint : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "endpoint");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_EndPoint");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EndPoint class.
         /// </summary>
@@ -2418,9 +2503,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-role</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-role</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.EMMA.EndPointRoleValues>? EndpointRole
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.EMMA.EndPointRoleValues>>();
@@ -2431,9 +2516,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-address</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-address</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndPointAddress
         {
             get => GetAttribute<StringValue>();
@@ -2444,9 +2529,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>message-id</para>
         /// <para>Represents the following attribute in the schema: emma:message-id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MessageId
         {
             get => GetAttribute<StringValue>();
@@ -2457,9 +2542,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>port-num</para>
         /// <para>Represents the following attribute in the schema: emma:port-num</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? PortNumber
         {
             get => GetAttribute<IntegerValue>();
@@ -2470,9 +2555,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>port-type</para>
         /// <para>Represents the following attribute in the schema: emma:port-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? PortType
         {
             get => GetAttribute<StringValue>();
@@ -2483,9 +2568,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>endpoint-pair-ref</para>
         /// <para>Represents the following attribute in the schema: emma:endpoint-pair-ref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? EndpointPairRef
         {
             get => GetAttribute<StringValue>();
@@ -2496,9 +2581,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>service-name</para>
         /// <para>Represents the following attribute in the schema: emma:service-name</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? ServiceName
         {
             get => GetAttribute<StringValue>();
@@ -2509,9 +2594,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>media-type</para>
         /// <para>Represents the following attribute in the schema: emma:media-type</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? MediaType
         {
             get => GetAttribute<StringValue>();
@@ -2522,9 +2607,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -2535,9 +2620,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -2547,7 +2632,7 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:endpoint");
+            builder.SetSchema(ElementType);
             builder.AddElement<EndPoint>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2579,14 +2664,20 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:node.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Info" /> <c>&lt;emma:info></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Node : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "node");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Node");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Node class.
         /// </summary>
@@ -2632,9 +2723,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -2645,9 +2736,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -2657,8 +2748,8 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:node");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
             builder.AddElement<Node>()
                 .AddAttribute("node-number", a => a.NodeNumber, aBuilder =>
                 {
@@ -2675,7 +2766,7 @@ namespace DocumentFormat.OpenXml.EMMA
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1)
             };
         }
 
@@ -2688,14 +2779,20 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:arc.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Info" /> <c>&lt;emma:info></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Arc : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "arc");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Arc");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Arc class.
         /// </summary>
@@ -2751,9 +2848,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>start</para>
         /// <para>Represents the following attribute in the schema: emma:start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? Start
         {
             get => GetAttribute<UInt64Value>();
@@ -2764,9 +2861,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>end</para>
         /// <para>Represents the following attribute in the schema: emma:end</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public UInt64Value? End
         {
             get => GetAttribute<UInt64Value>();
@@ -2777,9 +2874,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>offset-to-start</para>
         /// <para>Represents the following attribute in the schema: emma:offset-to-start</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? OffsetToStart
         {
             get => GetAttribute<IntegerValue>();
@@ -2790,9 +2887,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>duration</para>
         /// <para>Represents the following attribute in the schema: emma:duration</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public IntegerValue? Duration
         {
             get => GetAttribute<IntegerValue>();
@@ -2803,9 +2900,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>confidence</para>
         /// <para>Represents the following attribute in the schema: emma:confidence</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Confidence
         {
             get => GetAttribute<DecimalValue>();
@@ -2816,9 +2913,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>cost</para>
         /// <para>Represents the following attribute in the schema: emma:cost</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public DecimalValue? Cost
         {
             get => GetAttribute<DecimalValue>();
@@ -2829,9 +2926,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>lang</para>
         /// <para>Represents the following attribute in the schema: emma:lang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Language
         {
             get => GetAttribute<StringValue>();
@@ -2842,9 +2939,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>medium</para>
         /// <para>Represents the following attribute in the schema: emma:medium</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>? Medium
         {
             get => GetAttribute<ListValue<EnumValue<DocumentFormat.OpenXml.EMMA.MediumValues>>>();
@@ -2855,9 +2952,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>mode</para>
         /// <para>Represents the following attribute in the schema: emma:mode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public ListValue<StringValue>? Mode
         {
             get => GetAttribute<ListValue<StringValue>>();
@@ -2868,9 +2965,9 @@ namespace DocumentFormat.OpenXml.EMMA
         /// <para>source</para>
         /// <para>Represents the following attribute in the schema: emma:source</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:emma=http://www.w3.org/2003/04/emma
-        /// </remark>
+        /// </remarks>
         public StringValue? Source
         {
             get => GetAttribute<StringValue>();
@@ -2880,8 +2977,8 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:arc");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
             builder.AddElement<Arc>()
                 .AddAttribute("from", a => a.From, aBuilder =>
                 {
@@ -2911,7 +3008,7 @@ namespace DocumentFormat.OpenXml.EMMA
                 .AddAttribute("emma:source", a => a.Source);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1)
             };
         }
 
@@ -2924,7 +3021,7 @@ namespace DocumentFormat.OpenXml.EMMA
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is emma:emma.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Derivation" /> <c>&lt;emma:derivation></c></description></item>
@@ -2937,9 +3034,15 @@ namespace DocumentFormat.OpenXml.EMMA
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.OneOf" /> <c>&lt;emma:one-of></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.EMMA.Sequence" /> <c>&lt;emma:sequence></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Emma : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://www.w3.org/2003/04/emma", "emma");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2003/04/emma", "CT_Emma");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Emma class.
         /// </summary>
@@ -2984,16 +3087,16 @@ namespace DocumentFormat.OpenXml.EMMA
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("emma:emma");
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Derivation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.EndPointInfo>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Grammar>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Group>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Info>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Interpretation>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Model>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.OneOf>();
-            builder.AddChild<DocumentFormat.OpenXml.EMMA.Sequence>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Derivation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Derivation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.EndPointInfo.ElementType, static () => new DocumentFormat.OpenXml.EMMA.EndPointInfo());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Grammar.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Grammar());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Group.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Group());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Info.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Info());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Interpretation());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Model.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Model());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, static () => new DocumentFormat.OpenXml.EMMA.OneOf());
+            builder.AddChild(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, static () => new DocumentFormat.OpenXml.EMMA.Sequence());
             builder.AddElement<Emma>()
                 .AddAttribute("version", a => a.Version, aBuilder =>
                 {
@@ -3003,15 +3106,15 @@ namespace DocumentFormat.OpenXml.EMMA
             {
                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Derivation), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Grammar), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Model), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.EndPointInfo), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Info), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Interpretation), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.OneOf), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Group), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.EMMA.Sequence), 1, 1)
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Derivation.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Grammar.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Model.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.EndPointInfo.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Info.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Interpretation.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.OneOf.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Group.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.EMMA.Sequence.ElementType, 1, 1)
                 }
             };
         }

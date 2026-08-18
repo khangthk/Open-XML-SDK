@@ -199,7 +199,7 @@ namespace DocumentFormat.OpenXml.Tests
                 {
                     var firstText = document.MainDocumentPart.Document.Descendants<Text>().First();
                     Assert.Equal("Hello World", firstText.Text);
-                    Assert.True(document.MainDocumentPart.Document.Descendants<w.Drawing>().Count() == 1, "Drawing isn't added to main part.");
+                    Assert.Single(document.MainDocumentPart.Document.Descendants<w.Drawing>());
                     Assert.True(document.MainDocumentPart.GetPartById("rId6") is ImagePart);
                 }
             }
@@ -568,6 +568,26 @@ namespace DocumentFormat.OpenXml.Tests
             using var doc = PresentationDocument.Open(stream, isEditable: false);
 
             Assert.Equal(PresentationDocumentType.Template, doc.DocumentType);
+        }
+
+        [Fact]
+        public void DocumentTypeUsesDefault()
+        {
+            // Arrange
+            using var ms = new MemoryStream();
+
+            // Note - if a main part is not created, then no type is persisted
+            using (var emptySpreadsheet = SpreadsheetDocument.Create(ms, SpreadsheetDocumentType.MacroEnabledTemplate))
+            {
+            }
+
+            ms.Position = 0;
+
+            // Assert/Act
+            using (var result = SpreadsheetDocument.Open(ms, true))
+            {
+                Assert.Equal(default, result.DocumentType);
+            }
         }
 
         /// <summary>

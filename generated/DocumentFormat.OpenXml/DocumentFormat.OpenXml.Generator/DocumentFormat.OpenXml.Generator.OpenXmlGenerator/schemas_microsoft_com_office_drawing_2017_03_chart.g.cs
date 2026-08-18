@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,14 +22,20 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
     /// <para>This class is available in Office 2019 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is c16r3:dataDisplayOptions16.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse" /> <c>&lt;c16r3:dispNaAsBlank></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class DataDisplayOptions16 : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2017/03/chart", "dataDisplayOptions16");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2017/03/chart", "CT_DataDisplayOptions16");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DataDisplayOptions16 class.
         /// </summary>
@@ -63,12 +70,12 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c16r3:dataDisplayOptions16");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse), 0, 1, version: FileFormatVersions.Office2019)
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse.ElementType, 0, 1, version: FileFormatVersions.Office2019)
             };
         }
 
@@ -76,13 +83,13 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
         /// <para>BooleanFalse.</para>
         /// <para>Represents the following element tag in the schema: c16r3:dispNaAsBlank.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c16r3 = http://schemas.microsoft.com/office/drawing/2017/03/chart
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse? BooleanFalse
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse.ElementType) as DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2019.Drawing.Chart.BooleanFalse.ElementType);
         }
 
         /// <inheritdoc/>
@@ -96,6 +103,12 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
     /// </summary>
     public partial class BooleanFalse : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2017/03/chart", "dispNaAsBlank");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2017/03/chart", "CT_BooleanFalse");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BooleanFalse class.
         /// </summary>
@@ -107,9 +120,9 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
         /// <para>val, this property is only available in Office 2019 and later.</para>
         /// <para>Represents the following attribute in the schema: c16r3:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:c16r3=http://schemas.microsoft.com/office/drawing/2017/03/chart
-        /// </remark>
+        /// </remarks>
         public BooleanValue? Val
         {
             get => GetAttribute<BooleanValue>();
@@ -119,7 +132,7 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Chart
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("c16r3:dispNaAsBlank");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
             builder.AddElement<BooleanFalse>()
                 .AddAttribute("c16r3:val", a => a.Val, aBuilder =>

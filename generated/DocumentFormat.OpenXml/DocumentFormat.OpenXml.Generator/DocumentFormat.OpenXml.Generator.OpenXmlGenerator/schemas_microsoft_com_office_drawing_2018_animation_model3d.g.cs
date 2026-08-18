@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -23,15 +24,21 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
     /// <para>This class is available in Office 2019 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a3danim:embedAnim.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList" /> <c>&lt;a3danim:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties" /> <c>&lt;a3danim:animPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class EmbeddedAnimation : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "embedAnim");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "CT_EmbeddedAnimation");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EmbeddedAnimation class.
         /// </summary>
@@ -76,10 +83,10 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a3danim:embedAnim");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties());
             builder.AddElement<EmbeddedAnimation>()
                 .AddAttribute("animId", a => a.AnimId, aBuilder =>
                 {
@@ -87,8 +94,8 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties), 1, 1, version: FileFormatVersions.Office2019),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2019)
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties.ElementType, 1, 1, version: FileFormatVersions.Office2019),
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2019)
             };
         }
 
@@ -96,26 +103,26 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         /// <para>AnimationProperties.</para>
         /// <para>Represents the following element tag in the schema: a3danim:animPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a3danim = http://schemas.microsoft.com/office/drawing/2018/animation/model3d
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties? AnimationProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties.ElementType) as DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.AnimationProperties.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a3danim:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a3danim = http://schemas.microsoft.com/office/drawing/2018/animation/model3d
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -129,6 +136,12 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
     /// </summary>
     public partial class PosterFrame : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "posterFrame");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "CT_PosterFrame");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PosterFrame class.
         /// </summary>
@@ -159,7 +172,7 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a3danim:posterFrame");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
             builder.AddElement<PosterFrame>()
                 .AddAttribute("animId", a => a.AnimId, aBuilder =>
@@ -181,14 +194,20 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
     /// <para>This class is available in Office 2019 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a3danim:animPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList" /> <c>&lt;aanim:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AnimationProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "animPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2018/animation", "CT_AnimationProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AnimationProperties class.
         /// </summary>
@@ -293,9 +312,9 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a3danim:animPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
-            builder.AddChild<DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList());
             builder.AddElement<AnimationProperties>()
                 .AddAttribute("name", a => a.Name)
                 .AddAttribute("length", a => a.Length, aBuilder =>
@@ -316,7 +335,7 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
                 .AddAttribute("end", a => a.End);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2019)
+                new ElementParticle(DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2019)
             };
         }
 
@@ -324,13 +343,13 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: aanim:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:aanim = http://schemas.microsoft.com/office/drawing/2018/animation
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2019.Drawing.Animation.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -342,14 +361,20 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
     /// <para>This class is available in Office 2019 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is a3danim:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OfficeArtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/drawing/2018/animation/model3d", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OfficeArtExtensionList class.
         /// </summary>
@@ -384,16 +409,16 @@ namespace DocumentFormat.OpenXml.Office2019.Drawing.Animation.Model3D
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("a3danim:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2019;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };

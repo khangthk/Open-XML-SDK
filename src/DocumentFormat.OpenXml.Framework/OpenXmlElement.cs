@@ -318,12 +318,12 @@ namespace DocumentFormat.OpenXml
         /// <summary>
         /// Gets the namespace URI of the current element.
         /// </summary>
-        public virtual string NamespaceUri => Metadata.QName.Namespace.Uri;
+        public virtual string NamespaceUri => Metadata.Type.Name.Namespace.Uri;
 
         /// <summary>
         /// Gets the local name of the current element.
         /// </summary>
-        public virtual string LocalName => Metadata.QName.Name;
+        public virtual string LocalName => Metadata.Type.Name.Name;
 
         internal OpenXmlQualifiedName QName => new(NamespaceUri, LocalName);
 
@@ -543,7 +543,7 @@ namespace DocumentFormat.OpenXml
             if (HasAttributes)
             {
                 var resolver = Features.GetNamespaceResolver();
-                var attributes = new List<OpenXmlAttribute>();
+                var attributes = new List<OpenXmlAttribute>(ParsedState.Attributes.Length);
 
                 foreach (var attribute in ParsedState.Attributes)
                 {
@@ -796,10 +796,29 @@ namespace DocumentFormat.OpenXml
         /// Finds the first child element in type T.
         /// </summary>
         /// <typeparam name="T">Type of element.</typeparam>
-        /// <returns></returns>
+        /// <returns>The first child element of type T or null</returns>
         public T? GetFirstChild<T>()
             where T : OpenXmlElement
             => ChildElements.First<T>();
+
+        /// <summary>
+        /// Finds the first child element of <typeparam ref="T"/> or adds a new element if it does not exist.
+        /// </summary>
+        /// <typeparam name="T">Type of element.</typeparam>
+        /// <returns>The new or existing OpenXmlElement</returns>
+        public T GetOrAddFirstChild<T>()
+            where T : OpenXmlElement, new()
+        {
+            var child = GetFirstChild<T>();
+
+            if (child is null)
+            {
+                child = new T();
+                AppendChild(child);
+            }
+
+            return child;
+        }
 
         /// <summary>
         /// Gets the OpenXmlElement element that immediately precedes the current OpenXmlElement element.
@@ -1814,7 +1833,7 @@ namespace DocumentFormat.OpenXml
                 newElement = ElementFactory(qname);
 
                 // try AlternateContent
-                if (newElement is null && AlternateContent.InternalQName.Equals(qname))
+                if (newElement is null && AlternateContent.ElementQName.Equals(qname))
                 {
                     newElement = new AlternateContent();
                 }
@@ -1917,9 +1936,19 @@ namespace DocumentFormat.OpenXml
         // Copy child elements from the container.
         internal void CopyChildren(OpenXmlElement container, bool deep)
         {
-            foreach (var element in container.ChildElements)
+            var child = container.FirstChild;
+
+            while (child is not null)
             {
-                Append(element.CloneNode(deep));
+                var next = child.NextSibling();
+
+                // Use AppendChild rather than Append: with a single OpenXmlElement argument the
+                // Append(params OpenXmlElement[]) overload allocates a 1-element array per child.
+                // For deep clones over a wide subtree those add up to a meaningful share of the
+                // CloneNode(true) allocation profile.
+                AppendChild(child.CloneNode(deep));
+
+                child = next;
             }
         }
 

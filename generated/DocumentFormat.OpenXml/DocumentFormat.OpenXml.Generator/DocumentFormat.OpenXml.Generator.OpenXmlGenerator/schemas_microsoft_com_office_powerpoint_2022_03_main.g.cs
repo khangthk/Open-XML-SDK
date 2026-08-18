@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -22,14 +23,20 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p223:reactions.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction" /> <c>&lt;p223:rxn></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Reactions : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "reactions");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "CT_Reactions");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Reactions class.
         /// </summary>
@@ -64,12 +71,12 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p223:reactions");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction), 0, 0, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.Reaction.ElementType, 0, 0, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -82,14 +89,20 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p223:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Presentation.Extension" /> <c>&lt;p:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/presentationml/2006/main", "CT_ExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtensionList class.
         /// </summary>
@@ -124,16 +137,16 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p223:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Presentation.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Presentation.Extension.ElementType, static () => new DocumentFormat.OpenXml.Presentation.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Presentation.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Presentation.Extension.ElementType, 0, 0)
                     }
                 }
             };
@@ -148,14 +161,20 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p223:instance.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList" /> <c>&lt;p223:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ReactionInstance : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "instance");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "CT_ReactionInstance");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ReactionInstance class.
         /// </summary>
@@ -210,9 +229,9 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p223:instance");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList());
             builder.AddElement<ReactionInstance>()
                 .AddAttribute("time", a => a.Time, aBuilder =>
                 {
@@ -225,7 +244,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList), 0, 1, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList.ElementType, 0, 1, version: FileFormatVersions.Microsoft365)
             };
         }
 
@@ -233,13 +252,13 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: p223:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:p223 = http://schemas.microsoft.com/office/powerpoint/2022/03/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList.ElementType) as DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -251,14 +270,20 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
     /// <para>This class is available in Microsoft365 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is p223:rxn.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance" /> <c>&lt;p223:instance></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Reaction : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "rxn");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2022/03/main", "CT_Reaction");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Reaction class.
         /// </summary>
@@ -303,9 +328,9 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("p223:rxn");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Microsoft365;
-            builder.AddChild<DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance>();
+            builder.AddChild(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance.ElementType, static () => new DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance());
             builder.AddElement<Reaction>()
                 .AddAttribute("type", a => a.Type, aBuilder =>
                 {
@@ -313,7 +338,7 @@ namespace DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance), 0, 0, version: FileFormatVersions.Microsoft365)
+                new ElementParticle(DocumentFormat.OpenXml.Office.PowerPoint.Y2022.M03.Main.ReactionInstance.ElementType, 0, 0, version: FileFormatVersions.Microsoft365)
             };
         }
 

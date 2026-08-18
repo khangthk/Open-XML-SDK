@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,14 +24,20 @@ namespace DocumentFormat.OpenXml.CustomProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is op:Properties.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty" /> <c>&lt;op:property></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Properties : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/custom-properties", "Properties");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/custom-properties", "CT_Properties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Properties class.
         /// </summary>
@@ -65,11 +72,11 @@ namespace DocumentFormat.OpenXml.CustomProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("op:Properties");
-            builder.AddChild<DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty.ElementType, static () => new DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.CustomProperties.CustomDocumentProperty.ElementType, 0, 0)
             };
         }
 
@@ -113,7 +120,7 @@ namespace DocumentFormat.OpenXml.CustomProperties
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is op:property.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTArray" /> <c>&lt;vt:array></c></description></item>
@@ -151,9 +158,15 @@ namespace DocumentFormat.OpenXml.CustomProperties
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64" /> <c>&lt;vt:ui8></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort" /> <c>&lt;vt:ui2></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class CustomDocumentProperty : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/custom-properties", "property");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/custom-properties", "CT_Property");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomDocumentProperty class.
         /// </summary>
@@ -228,41 +241,41 @@ namespace DocumentFormat.OpenXml.CustomProperties
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("op:property");
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTArray>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTClipboardData>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTNull>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTVector>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTVStreamData>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTClassId>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTCurrency>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTError>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTBlob>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTOBlob>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTStreamData>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTOStreamData>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTStorage>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTOStorage>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTBool>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTByte>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTDate>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTFileTime>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTDecimal>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTDouble>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTFloat>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTInt32>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTInteger>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTInt64>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTShort>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTLPSTR>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTLPWSTR>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTBString>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64>();
-            builder.AddChild<DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTArray.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTArray());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTClipboardData.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTClipboardData());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTEmpty.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTNull.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTNull());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTVector());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTVStreamData.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTVStreamData());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTClassId.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTClassId());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTCurrency.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTCurrency());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTError.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTError());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTBlob());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTOBlob.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTOBlob());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTStreamData.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTStreamData());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTOStreamData.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTOStreamData());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTStorage.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTStorage());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTOStorage.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTOStorage());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTBool.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTBool());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTByte.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTByte());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTDate.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTDate());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTFileTime.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTFileTime());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTDecimal.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTDecimal());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTDouble.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTDouble());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTFloat.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTFloat());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTInt32.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTInt32());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTInteger.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTInteger());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTInt64.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTInt64());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTShort.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTShort());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTLPSTR.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTLPSTR());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTLPWSTR.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTLPWSTR());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTBString.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTBString());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64());
+            builder.AddChild(DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort.ElementType, static () => new DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort());
             builder.AddElement<CustomDocumentProperty>()
                 .AddAttribute("fmtid", a => a.FormatId, aBuilder =>
                 {
@@ -277,40 +290,40 @@ namespace DocumentFormat.OpenXml.CustomProperties
                 .AddAttribute("linkTarget", a => a.LinkTarget);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTVector), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTArray), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTBlob), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTOBlob), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTEmpty), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTNull), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTByte), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTShort), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTInt32), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTInt64), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTInteger), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTFloat), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTDouble), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTDecimal), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTLPSTR), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTLPWSTR), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTBString), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTDate), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTFileTime), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTBool), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTCurrency), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTError), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTStreamData), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTOStreamData), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTStorage), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTOStorage), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTVStreamData), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTClassId), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.VariantTypes.VTClipboardData), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTArray.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTOBlob.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTEmpty.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTNull.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTByte.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTShort.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTInt32.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTInt64.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTInteger.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTFloat.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTDouble.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTDecimal.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTLPSTR.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTLPWSTR.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTBString.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTDate.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTFileTime.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTBool.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTCurrency.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTError.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTStreamData.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTOStreamData.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTStorage.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTOStorage.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTVStreamData.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTClassId.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.VariantTypes.VTClipboardData.ElementType, 1, 1)
             };
             builder.AddConstraint(new AttributeValueRangeConstraint(builder.CreateQName("op:pid"), true, 2, true, double.PositiveInfinity, true));
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName("op:name"), false, null));
@@ -320,442 +333,442 @@ namespace DocumentFormat.OpenXml.CustomProperties
         /// <para>Vector.</para>
         /// <para>Represents the following element tag in the schema: vt:vector.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTVector? VTVector
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTVector>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTVector;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTVector.ElementType);
         }
 
         /// <summary>
         /// <para>Array.</para>
         /// <para>Represents the following element tag in the schema: vt:array.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTArray? VTArray
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTArray>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTArray.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTArray;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTArray.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Blob.</para>
         /// <para>Represents the following element tag in the schema: vt:blob.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTBlob? VTBlob
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTBlob>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTBlob;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTBlob.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Blob Object.</para>
         /// <para>Represents the following element tag in the schema: vt:oblob.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTOBlob? VTOBlob
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTOBlob>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTOBlob.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTOBlob;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTOBlob.ElementType);
         }
 
         /// <summary>
         /// <para>Empty.</para>
         /// <para>Represents the following element tag in the schema: vt:empty.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTEmpty? VTEmpty
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTEmpty>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTEmpty.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTEmpty;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTEmpty.ElementType);
         }
 
         /// <summary>
         /// <para>Null.</para>
         /// <para>Represents the following element tag in the schema: vt:null.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTNull? VTNull
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTNull>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTNull.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTNull;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTNull.ElementType);
         }
 
         /// <summary>
         /// <para>1-Byte Signed Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:i1.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTByte? VTByte
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTByte>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTByte.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTByte;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTByte.ElementType);
         }
 
         /// <summary>
         /// <para>2-Byte Signed Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:i2.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTShort? VTShort
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTShort>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTShort.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTShort;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTShort.ElementType);
         }
 
         /// <summary>
         /// <para>4-Byte Signed Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:i4.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTInt32? VTInt32
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTInt32>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTInt32.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTInt32;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTInt32.ElementType);
         }
 
         /// <summary>
         /// <para>8-Byte Signed Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:i8.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTInt64? VTInt64
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTInt64>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTInt64.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTInt64;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTInt64.ElementType);
         }
 
         /// <summary>
         /// <para>Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:int.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTInteger? VTInteger
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTInteger>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTInteger.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTInteger;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTInteger.ElementType);
         }
 
         /// <summary>
         /// <para>1-Byte Unsigned Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:ui1.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte? VTUnsignedByte
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTUnsignedByte.ElementType);
         }
 
         /// <summary>
         /// <para>2-Byte Unsigned Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:ui2.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort? VTUnsignedShort
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTUnsignedShort.ElementType);
         }
 
         /// <summary>
         /// <para>4-Byte Unsigned Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:ui4.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32? VTUnsignedInt32
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt32.ElementType);
         }
 
         /// <summary>
         /// <para>8-Byte Unsigned Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:ui8.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64? VTUnsignedInt64
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTUnsignedInt64.ElementType);
         }
 
         /// <summary>
         /// <para>Unsigned Integer.</para>
         /// <para>Represents the following element tag in the schema: vt:uint.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger? VTUnsignedInteger
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTUnsignedInteger.ElementType);
         }
 
         /// <summary>
         /// <para>4-Byte Real Number.</para>
         /// <para>Represents the following element tag in the schema: vt:r4.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTFloat? VTFloat
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTFloat>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTFloat.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTFloat;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTFloat.ElementType);
         }
 
         /// <summary>
         /// <para>8-Byte Real Number.</para>
         /// <para>Represents the following element tag in the schema: vt:r8.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTDouble? VTDouble
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTDouble>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTDouble.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTDouble;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTDouble.ElementType);
         }
 
         /// <summary>
         /// <para>Decimal.</para>
         /// <para>Represents the following element tag in the schema: vt:decimal.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTDecimal? VTDecimal
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTDecimal>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTDecimal.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTDecimal;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTDecimal.ElementType);
         }
 
         /// <summary>
         /// <para>LPSTR.</para>
         /// <para>Represents the following element tag in the schema: vt:lpstr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTLPSTR? VTLPSTR
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTLPSTR>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTLPSTR.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTLPSTR;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTLPSTR.ElementType);
         }
 
         /// <summary>
         /// <para>LPWSTR.</para>
         /// <para>Represents the following element tag in the schema: vt:lpwstr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTLPWSTR? VTLPWSTR
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTLPWSTR>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTLPWSTR.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTLPWSTR;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTLPWSTR.ElementType);
         }
 
         /// <summary>
         /// <para>Basic String.</para>
         /// <para>Represents the following element tag in the schema: vt:bstr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTBString? VTBString
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTBString>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTBString.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTBString;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTBString.ElementType);
         }
 
         /// <summary>
         /// <para>Date and Time.</para>
         /// <para>Represents the following element tag in the schema: vt:date.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTDate? VTDate
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTDate>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTDate.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTDate;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTDate.ElementType);
         }
 
         /// <summary>
         /// <para>File Time.</para>
         /// <para>Represents the following element tag in the schema: vt:filetime.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTFileTime? VTFileTime
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTFileTime>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTFileTime.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTFileTime;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTFileTime.ElementType);
         }
 
         /// <summary>
         /// <para>Boolean.</para>
         /// <para>Represents the following element tag in the schema: vt:bool.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTBool? VTBool
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTBool>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTBool.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTBool;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTBool.ElementType);
         }
 
         /// <summary>
         /// <para>Currency.</para>
         /// <para>Represents the following element tag in the schema: vt:cy.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTCurrency? VTCurrency
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTCurrency>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTCurrency.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTCurrency;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTCurrency.ElementType);
         }
 
         /// <summary>
         /// <para>Error Status Code.</para>
         /// <para>Represents the following element tag in the schema: vt:error.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTError? VTError
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTError>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTError.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTError;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTError.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Stream.</para>
         /// <para>Represents the following element tag in the schema: vt:stream.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTStreamData? VTStreamData
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTStreamData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTStreamData.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTStreamData;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTStreamData.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Stream Object.</para>
         /// <para>Represents the following element tag in the schema: vt:ostream.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTOStreamData? VTOStreamData
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTOStreamData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTOStreamData.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTOStreamData;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTOStreamData.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Storage.</para>
         /// <para>Represents the following element tag in the schema: vt:storage.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTStorage? VTStorage
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTStorage>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTStorage.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTStorage;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTStorage.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Storage Object.</para>
         /// <para>Represents the following element tag in the schema: vt:ostorage.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTOStorage? VTOStorage
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTOStorage>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTOStorage.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTOStorage;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTOStorage.ElementType);
         }
 
         /// <summary>
         /// <para>Binary Versioned Stream.</para>
         /// <para>Represents the following element tag in the schema: vt:vstream.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTVStreamData? VTVStreamData
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTVStreamData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTVStreamData.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTVStreamData;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTVStreamData.ElementType);
         }
 
         /// <summary>
         /// <para>Class ID.</para>
         /// <para>Represents the following element tag in the schema: vt:clsid.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTClassId? VTClassId
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTClassId>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTClassId.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTClassId;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTClassId.ElementType);
         }
 
         /// <summary>
         /// <para>Clipboard Data.</para>
         /// <para>Represents the following element tag in the schema: vt:cf.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:vt = http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.VariantTypes.VTClipboardData? VTClipboardData
         {
-            get => GetElement<DocumentFormat.OpenXml.VariantTypes.VTClipboardData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.VariantTypes.VTClipboardData.ElementType) as DocumentFormat.OpenXml.VariantTypes.VTClipboardData;
+            set => SetElement(value, DocumentFormat.OpenXml.VariantTypes.VTClipboardData.ElementType);
         }
 
         /// <inheritdoc/>

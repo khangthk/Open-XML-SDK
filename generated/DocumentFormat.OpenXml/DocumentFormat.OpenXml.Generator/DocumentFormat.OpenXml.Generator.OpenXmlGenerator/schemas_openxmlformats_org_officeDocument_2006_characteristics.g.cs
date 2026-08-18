@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -21,14 +22,20 @@ namespace DocumentFormat.OpenXml.AdditionalCharacteristics
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is ac:additionalCharacteristics.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic" /> <c>&lt;ac:characteristic></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AdditionalCharacteristicsInfo : OpenXmlPartRootElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/characteristics", "additionalCharacteristics");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/characteristics", "CT_AdditionalCharacteristics");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AdditionalCharacteristicsInfo class.
         /// </summary>
@@ -63,11 +70,11 @@ namespace DocumentFormat.OpenXml.AdditionalCharacteristics
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ac:additionalCharacteristics");
-            builder.AddChild<DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic.ElementType, static () => new DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.AdditionalCharacteristics.Characteristic.ElementType, 0, 0)
             };
         }
 
@@ -82,6 +89,12 @@ namespace DocumentFormat.OpenXml.AdditionalCharacteristics
     /// </summary>
     public partial class Characteristic : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/officeDocument/2006/characteristics", "characteristic");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/officeDocument/2006/characteristics", "CT_Characteristic");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Characteristic class.
         /// </summary>
@@ -132,7 +145,7 @@ namespace DocumentFormat.OpenXml.AdditionalCharacteristics
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("ac:characteristic");
+            builder.SetSchema(ElementType);
             builder.AddElement<Characteristic>()
                 .AddAttribute("name", a => a.Name, aBuilder =>
                 {

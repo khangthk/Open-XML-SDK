@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -26,7 +27,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:conflictIns.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Math.Accent" /> <c>&lt;m:acc></c></description></item>
@@ -86,9 +87,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart" /> <c>&lt;w14:customXmlConflictInsRangeStart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart" /> <c>&lt;w14:customXmlConflictDelRangeStart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RunConflictInsertion : RunTrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "conflictIns");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_RunTrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RunConflictInsertion class.
         /// </summary>
@@ -123,7 +130,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:conflictIns");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
@@ -137,7 +144,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.SdtRun), 1, 1),
+                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.SdtRun.ElementType, 1, 1),
                                     new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                                     {
                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
@@ -150,9 +157,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.ProofError), 0, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.PermStart), 0, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.PermEnd), 0, 1)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.ProofError.ElementType, 0, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.PermStart.ElementType, 0, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.PermEnd.ElementType, 0, 1)
                                                         }
                                                     },
                                                     new CompositeParticle.Builder(ParticleType.Group, 0, 0)
@@ -163,47 +170,47 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BookmarkStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BookmarkStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd.ElementType, 1, 1)
                                                                 }
                                                             },
                                                             new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd.ElementType, 1, 1)
                                                                 }
                                                             },
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd), 0, 1, version: FileFormatVersions.Office2010)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                                                         }
                                                     },
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.InsertedRun), 0, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.DeletedRun), 0, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRun), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRun), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.ContentPart), 0, 0, version: FileFormatVersions.Office2010),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.InsertedRun.ElementType, 0, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.DeletedRun.ElementType, 0, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRun.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRun.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.ContentPart.ElementType, 0, 0, version: FileFormatVersions.Office2010),
                                                     new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion), 0, 1, version: FileFormatVersions.Office2010)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                                                         }
                                                     }
                                                 }
@@ -212,36 +219,36 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                             {
                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                 {
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Paragraph), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.OfficeMath), 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Math.Paragraph.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Math.OfficeMath.ElementType, 1, 1),
                                                     new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Accent), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Bar), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Box), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.BorderBox), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Delimiter), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.EquationArray), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Fraction), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.MathFunction), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.GroupChar), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.LimitLower), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.LimitUpper), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Matrix), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Nary), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Phantom), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Radical), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.PreSubSuper), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Subscript), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.SubSuperscript), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Superscript), 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Accent.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Bar.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Box.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.BorderBox.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Delimiter.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.EquationArray.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Fraction.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.MathFunction.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.GroupChar.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.LimitLower.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.LimitUpper.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Matrix.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Nary.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Phantom.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Radical.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.PreSubSuper.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Subscript.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.SubSuperscript.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Superscript.ElementType, 1, 1),
                                                             new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Run), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Math.Run.ElementType, 1, 1)
                                                                 }
                                                             }
                                                         }
@@ -256,11 +263,11 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.Run), 1, 1)
+                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.Run.ElementType, 1, 1)
                                 }
                             },
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride), 0, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding), 0, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -276,7 +283,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:conflictDel.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Math.Accent" /> <c>&lt;m:acc></c></description></item>
@@ -336,9 +343,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart" /> <c>&lt;w14:customXmlConflictInsRangeStart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart" /> <c>&lt;w14:customXmlConflictDelRangeStart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RunConflictDeletion : RunTrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "conflictDel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_RunTrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RunConflictDeletion class.
         /// </summary>
@@ -373,7 +386,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:conflictDel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
@@ -387,7 +400,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.SdtRun), 1, 1),
+                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.SdtRun.ElementType, 1, 1),
                                     new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                                     {
                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
@@ -400,9 +413,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.ProofError), 0, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.PermStart), 0, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.PermEnd), 0, 1)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.ProofError.ElementType, 0, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.PermStart.ElementType, 0, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.PermEnd.ElementType, 0, 1)
                                                         }
                                                     },
                                                     new CompositeParticle.Builder(ParticleType.Group, 0, 0)
@@ -413,47 +426,47 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BookmarkStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BookmarkStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd.ElementType, 1, 1)
                                                                 }
                                                             },
                                                             new CompositeParticle.Builder(ParticleType.Group, 0, 0)
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart), 1, 1),
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart.ElementType, 1, 1),
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd.ElementType, 1, 1)
                                                                 }
                                                             },
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd), 0, 1, version: FileFormatVersions.Office2010)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                                                         }
                                                     },
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.InsertedRun), 0, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.DeletedRun), 0, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveFromRun), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.MoveToRun), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.ContentPart), 0, 0, version: FileFormatVersions.Office2010),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.InsertedRun.ElementType, 0, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.DeletedRun.ElementType, 0, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveFromRun.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.MoveToRun.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.ContentPart.ElementType, 0, 0, version: FileFormatVersions.Office2010),
                                                     new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion), 0, 1, version: FileFormatVersions.Office2010),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion), 0, 1, version: FileFormatVersions.Office2010)
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                                                         }
                                                     }
                                                 }
@@ -462,36 +475,36 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                                             {
                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                 {
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Paragraph), 1, 1),
-                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.OfficeMath), 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Math.Paragraph.ElementType, 1, 1),
+                                                    new ElementParticle(DocumentFormat.OpenXml.Math.OfficeMath.ElementType, 1, 1),
                                                     new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                                                     {
                                                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                         {
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Accent), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Bar), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Box), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.BorderBox), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Delimiter), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.EquationArray), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Fraction), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.MathFunction), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.GroupChar), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.LimitLower), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.LimitUpper), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Matrix), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Nary), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Phantom), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Radical), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.PreSubSuper), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Subscript), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.SubSuperscript), 1, 1),
-                                                            new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Superscript), 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Accent.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Bar.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Box.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.BorderBox.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Delimiter.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.EquationArray.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Fraction.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.MathFunction.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.GroupChar.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.LimitLower.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.LimitUpper.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Matrix.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Nary.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Phantom.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Radical.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.PreSubSuper.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Subscript.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.SubSuperscript.ElementType, 1, 1),
+                                                            new ElementParticle(DocumentFormat.OpenXml.Math.Superscript.ElementType, 1, 1),
                                                             new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                                                             {
                                                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                                                 {
-                                                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Math.Run), 1, 1)
+                                                                    new ElementParticle(DocumentFormat.OpenXml.Math.Run.ElementType, 1, 1)
                                                                 }
                                                             }
                                                         }
@@ -506,11 +519,11 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                             {
                                 new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                                 {
-                                    new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.Run), 1, 1)
+                                    new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.Run.ElementType, 1, 1)
                                 }
                             },
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride), 0, 1, version: FileFormatVersions.Office2010),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding), 0, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                            new ElementParticle(DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding.ElementType, 0, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -526,7 +539,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Math.Accent" /> <c>&lt;m:acc></c></description></item>
@@ -586,9 +599,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart" /> <c>&lt;w14:customXmlConflictInsRangeStart></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart" /> <c>&lt;w14:customXmlConflictDelRangeStart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class RunTrackChangeType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_RunTrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RunTrackChangeType class.
         /// </summary>
@@ -624,9 +643,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>author</para>
         /// <para>Represents the following attribute in the schema: w:author</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Author
         {
             get => GetAttribute<StringValue>();
@@ -637,9 +656,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>date</para>
         /// <para>Represents the following attribute in the schema: w:date</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DateTimeValue? Date
         {
             get => GetAttribute<DateTimeValue>();
@@ -650,9 +669,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dateUtc, this property is only available in Microsoft365 and later.</para>
         /// <para>Represents the following attribute in the schema: w16du:dateUtc</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w16du=http://schemas.microsoft.com/office/word/2023/wordml/word16du
-        /// </remark>
+        /// </remarks>
         public DateTimeValue? DateUtc
         {
             get => GetAttribute<DateTimeValue>();
@@ -663,9 +682,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Annotation Identifier</para>
         /// <para>Represents the following attribute in the schema: w:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -675,62 +694,62 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Math.Accent>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Bar>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.BorderBox>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Box>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Delimiter>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.EquationArray>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Fraction>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.MathFunction>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.GroupChar>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.LimitLower>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.LimitUpper>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Matrix>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Nary>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.OfficeMath>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Paragraph>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Phantom>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Run>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Radical>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.PreSubSuper>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Subscript>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.SubSuperscript>();
-            builder.AddChild<DocumentFormat.OpenXml.Math.Superscript>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.BookmarkStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.ContentPart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.PermEnd>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.PermStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.ProofError>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.Run>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.InsertedRun>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.DeletedRun>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveFromRun>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.MoveToRun>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.SdtRun>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart>();
+            builder.AddChild(DocumentFormat.OpenXml.Math.Accent.ElementType, static () => new DocumentFormat.OpenXml.Math.Accent());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Bar.ElementType, static () => new DocumentFormat.OpenXml.Math.Bar());
+            builder.AddChild(DocumentFormat.OpenXml.Math.BorderBox.ElementType, static () => new DocumentFormat.OpenXml.Math.BorderBox());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Box.ElementType, static () => new DocumentFormat.OpenXml.Math.Box());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Delimiter.ElementType, static () => new DocumentFormat.OpenXml.Math.Delimiter());
+            builder.AddChild(DocumentFormat.OpenXml.Math.EquationArray.ElementType, static () => new DocumentFormat.OpenXml.Math.EquationArray());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Fraction.ElementType, static () => new DocumentFormat.OpenXml.Math.Fraction());
+            builder.AddChild(DocumentFormat.OpenXml.Math.MathFunction.ElementType, static () => new DocumentFormat.OpenXml.Math.MathFunction());
+            builder.AddChild(DocumentFormat.OpenXml.Math.GroupChar.ElementType, static () => new DocumentFormat.OpenXml.Math.GroupChar());
+            builder.AddChild(DocumentFormat.OpenXml.Math.LimitLower.ElementType, static () => new DocumentFormat.OpenXml.Math.LimitLower());
+            builder.AddChild(DocumentFormat.OpenXml.Math.LimitUpper.ElementType, static () => new DocumentFormat.OpenXml.Math.LimitUpper());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Matrix.ElementType, static () => new DocumentFormat.OpenXml.Math.Matrix());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Nary.ElementType, static () => new DocumentFormat.OpenXml.Math.Nary());
+            builder.AddChild(DocumentFormat.OpenXml.Math.OfficeMath.ElementType, static () => new DocumentFormat.OpenXml.Math.OfficeMath());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Paragraph.ElementType, static () => new DocumentFormat.OpenXml.Math.Paragraph());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Phantom.ElementType, static () => new DocumentFormat.OpenXml.Math.Phantom());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Run.ElementType, static () => new DocumentFormat.OpenXml.Math.Run());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Radical.ElementType, static () => new DocumentFormat.OpenXml.Math.Radical());
+            builder.AddChild(DocumentFormat.OpenXml.Math.PreSubSuper.ElementType, static () => new DocumentFormat.OpenXml.Math.PreSubSuper());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Subscript.ElementType, static () => new DocumentFormat.OpenXml.Math.Subscript());
+            builder.AddChild(DocumentFormat.OpenXml.Math.SubSuperscript.ElementType, static () => new DocumentFormat.OpenXml.Math.SubSuperscript());
+            builder.AddChild(DocumentFormat.OpenXml.Math.Superscript.ElementType, static () => new DocumentFormat.OpenXml.Math.Superscript());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.BidirectionalOverride());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.BookmarkStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.BookmarkStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.ContentPart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.ContentPart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.BidirectionalEmbedding());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.BookmarkEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CommentRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CommentRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveToRangeEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveFromRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveToRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.PermEnd.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.PermEnd());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.PermStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.PermStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.ProofError.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.ProofError());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.Run.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.Run());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.InsertedRun.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.InsertedRun());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.DeletedRun.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.DeletedRun());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveFromRun.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveFromRun());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.MoveToRun.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.MoveToRun());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RunConflictInsertion());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RunConflictDeletion());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.SdtRun.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.SdtRun());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlInsRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlDelRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveFromRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Wordprocessing.CustomXmlMoveToRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictInsertionRangeStart());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.CustomXmlConflictDeletionRangeStart());
             builder.AddElement<RunTrackChangeType>()
                 .AddAttribute("w:author", a => a.Author, aBuilder =>
                 {
@@ -761,6 +780,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class ConflictInsertion : TrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "conflictIns");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_TrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ConflictInsertion class.
         /// </summary>
@@ -771,7 +796,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:conflictIns");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -786,6 +811,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class ConflictDeletion : TrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "conflictDel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_TrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ConflictDeletion class.
         /// </summary>
@@ -796,7 +827,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:conflictDel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -811,6 +842,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class CustomXmlConflictInsertionRangeStart : TrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "customXmlConflictInsRangeStart");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_TrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomXmlConflictInsertionRangeStart class.
         /// </summary>
@@ -821,7 +858,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:customXmlConflictInsRangeStart");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -836,6 +873,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class CustomXmlConflictDeletionRangeStart : TrackChangeType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "customXmlConflictDelRangeStart");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_TrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomXmlConflictDeletionRangeStart class.
         /// </summary>
@@ -846,7 +889,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:customXmlConflictDelRangeStart");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -861,6 +904,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class TrackChangeType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_TrackChange");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TrackChangeType class.
         /// </summary>
@@ -872,9 +921,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>author</para>
         /// <para>Represents the following attribute in the schema: w:author</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Author
         {
             get => GetAttribute<StringValue>();
@@ -885,9 +934,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>date</para>
         /// <para>Represents the following attribute in the schema: w:date</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DateTimeValue? Date
         {
             get => GetAttribute<DateTimeValue>();
@@ -898,9 +947,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dateUtc, this property is only available in Microsoft365 and later.</para>
         /// <para>Represents the following attribute in the schema: w16du:dateUtc</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w16du=http://schemas.microsoft.com/office/word/2023/wordml/word16du
-        /// </remark>
+        /// </remarks>
         public DateTimeValue? DateUtc
         {
             get => GetAttribute<DateTimeValue>();
@@ -911,9 +960,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Annotation Identifier</para>
         /// <para>Represents the following attribute in the schema: w:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -953,6 +1002,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Tint : PositiveFixedPercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "tint");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PositiveFixedPercentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Tint class.
         /// </summary>
@@ -963,7 +1018,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:tint");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -978,6 +1033,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Shade : PositiveFixedPercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "shade");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PositiveFixedPercentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Shade class.
         /// </summary>
@@ -988,7 +1049,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:shade");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1003,6 +1064,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Alpha : PositiveFixedPercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "alpha");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PositiveFixedPercentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Alpha class.
         /// </summary>
@@ -1013,7 +1080,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:alpha");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1028,6 +1095,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class PositiveFixedPercentageType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PositiveFixedPercentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PositiveFixedPercentageType class.
         /// </summary>
@@ -1039,9 +1112,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Val
         {
             get => GetAttribute<Int32Value>();
@@ -1068,6 +1141,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class HueModulation : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "hueMod");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PositivePercentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the HueModulation class.
         /// </summary>
@@ -1079,9 +1158,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Val
         {
             get => GetAttribute<Int32Value>();
@@ -1091,7 +1170,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:hueMod");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<HueModulation>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -1113,6 +1192,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Saturation : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "sat");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Saturation class.
         /// </summary>
@@ -1123,7 +1208,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:sat");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1138,6 +1223,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class SaturationOffset : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "satOff");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SaturationOffset class.
         /// </summary>
@@ -1148,7 +1239,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:satOff");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1163,6 +1254,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class SaturationModulation : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "satMod");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SaturationModulation class.
         /// </summary>
@@ -1173,7 +1270,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:satMod");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1188,6 +1285,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Luminance : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "lum");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Luminance class.
         /// </summary>
@@ -1198,7 +1301,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:lum");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1213,6 +1316,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class LuminanceOffset : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "lumOff");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LuminanceOffset class.
         /// </summary>
@@ -1223,7 +1332,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:lumOff");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1238,6 +1347,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class LuminanceModulation : PercentageType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "lumMod");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LuminanceModulation class.
         /// </summary>
@@ -1248,7 +1363,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:lumMod");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1263,6 +1378,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class PercentageType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Percentage");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PercentageType class.
         /// </summary>
@@ -1274,9 +1395,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Val
         {
             get => GetAttribute<Int32Value>();
@@ -1300,7 +1421,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:srgbClr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Saturation" /> <c>&lt;w14:sat></c></description></item>
@@ -1314,9 +1435,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Alpha" /> <c>&lt;w14:alpha></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.HueModulation" /> <c>&lt;w14:hueMod></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RgbColorModelHex : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "srgbClr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SRgbColor");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RgbColorModelHex class.
         /// </summary>
@@ -1352,9 +1479,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Val
         {
             get => GetAttribute<HexBinaryValue>();
@@ -1364,18 +1491,18 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:srgbClr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Saturation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SaturationOffset>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SaturationModulation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Luminance>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Tint>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Shade>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Alpha>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.HueModulation>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Saturation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Saturation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SaturationOffset());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SaturationModulation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Luminance.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Luminance());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Tint.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Tint());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Shade.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Shade());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Alpha.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Alpha());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.HueModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.HueModulation());
             builder.AddElement<RgbColorModelHex>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
                 {
@@ -1389,16 +1516,16 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Tint), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Shade), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Alpha), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.HueModulation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Saturation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Luminance), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Tint.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Shade.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Alpha.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.HueModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Saturation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Luminance.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -1413,7 +1540,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:schemeClr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Saturation" /> <c>&lt;w14:sat></c></description></item>
@@ -1427,9 +1554,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Alpha" /> <c>&lt;w14:alpha></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.HueModulation" /> <c>&lt;w14:hueMod></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SchemeColor : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "schemeClr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SchemeColor");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SchemeColor class.
         /// </summary>
@@ -1465,9 +1598,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.SchemeColorValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.SchemeColorValues>>();
@@ -1477,18 +1610,18 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:schemeClr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Saturation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SaturationOffset>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SaturationModulation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Luminance>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Tint>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Shade>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Alpha>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.HueModulation>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Saturation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Saturation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SaturationOffset());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SaturationModulation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Luminance.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Luminance());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Tint.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Tint());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Shade.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Shade());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Alpha.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Alpha());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.HueModulation.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.HueModulation());
             builder.AddElement<SchemeColor>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
                 {
@@ -1501,16 +1634,16 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Tint), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Shade), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Alpha), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.HueModulation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Saturation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Luminance), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Tint.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Shade.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Alpha.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.HueModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Saturation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SaturationOffset.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SaturationModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Luminance.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LuminanceOffset.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LuminanceModulation.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -1527,6 +1660,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class LinearShadeProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "lin");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_LinearShadeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LinearShadeProperties class.
         /// </summary>
@@ -1538,9 +1677,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>ang, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:ang</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Angle
         {
             get => GetAttribute<Int32Value>();
@@ -1551,9 +1690,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>scaled, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:scaled</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>? Scaled
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>>();
@@ -1563,7 +1702,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:lin");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<LinearShadeProperties>()
                 .AddAttribute("w14:ang", a => a.Angle, aBuilder =>
@@ -1586,14 +1725,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:path.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.FillToRectangle" /> <c>&lt;w14:fillToRect></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class PathShadeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "path");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PathShadeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PathShadeProperties class.
         /// </summary>
@@ -1629,9 +1774,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>path, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:path</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.PathShadeTypeValues>? Path
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.PathShadeTypeValues>>();
@@ -1641,9 +1786,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:path");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.FillToRectangle>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.FillToRectangle.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.FillToRectangle());
             builder.AddElement<PathShadeProperties>()
                 .AddAttribute("w14:path", a => a.Path, aBuilder =>
                 {
@@ -1651,7 +1796,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.FillToRectangle), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.FillToRectangle.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -1659,13 +1804,13 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>FillToRectangle.</para>
         /// <para>Represents the following element tag in the schema: w14:fillToRect.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.FillToRectangle? FillToRectangle
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.FillToRectangle>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.FillToRectangle.ElementType) as DocumentFormat.OpenXml.Office2010.Word.FillToRectangle;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.FillToRectangle.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1679,6 +1824,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class NoFillEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "noFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NoFillEmpty class.
         /// </summary>
@@ -1689,7 +1840,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:noFill");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1704,6 +1855,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class RoundEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "round");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RoundEmpty class.
         /// </summary>
@@ -1714,7 +1871,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:round");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1729,6 +1886,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class BevelEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "bevel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BevelEmpty class.
         /// </summary>
@@ -1739,7 +1902,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:bevel");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1754,6 +1917,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class EntityPickerEmpty : EmptyType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "entityPicker");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EntityPickerEmpty class.
         /// </summary>
@@ -1764,7 +1933,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:entityPicker");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -1779,6 +1948,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class EmptyType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Empty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the EmptyType class.
         /// </summary>
@@ -1797,15 +1972,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:solidFill.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SolidColorFillProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "solidFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SolidColorFillProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SolidColorFillProperties class.
         /// </summary>
@@ -1840,18 +2021,18 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:solidFill");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -1861,26 +2042,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>RgbColorModelHex.</para>
         /// <para>Represents the following element tag in the schema: w14:srgbClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex? RgbColorModelHex
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType) as DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType);
         }
 
         /// <summary>
         /// <para>SchemeColor.</para>
         /// <para>Represents the following element tag in the schema: w14:schemeClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SchemeColor? SchemeColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SchemeColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1892,16 +2073,22 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:gradFill.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.GradientStopList" /> <c>&lt;w14:gsLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties" /> <c>&lt;w14:lin></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties" /> <c>&lt;w14:path></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GradientFillProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "gradFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_GradientFillProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GradientFillProperties class.
         /// </summary>
@@ -1936,20 +2123,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:gradFill");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.GradientStopList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.GradientStopList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.GradientStopList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.GradientStopList), 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.GradientStopList.ElementType, 0, 1, version: FileFormatVersions.Office2010),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LinearShadeProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.PathShadeProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -1959,13 +2146,13 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>GradientStopList.</para>
         /// <para>Represents the following element tag in the schema: w14:gsLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.GradientStopList? GradientStopList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.GradientStopList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.GradientStopList.ElementType) as DocumentFormat.OpenXml.Office2010.Word.GradientStopList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.GradientStopList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1979,6 +2166,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class PresetLineDashProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "prstDash");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_PresetLineDashProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the PresetLineDashProperties class.
         /// </summary>
@@ -1990,9 +2183,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetLineDashValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetLineDashValues>>();
@@ -2002,7 +2195,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:prstDash");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<PresetLineDashProperties>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -2022,6 +2215,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class LineJoinMiterProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "miter");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_LineJoinMiterProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LineJoinMiterProperties class.
         /// </summary>
@@ -2033,9 +2232,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>lim, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:lim</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Limit
         {
             get => GetAttribute<Int32Value>();
@@ -2045,7 +2244,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:miter");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<LineJoinMiterProperties>()
                 .AddAttribute("w14:lim", a => a.Limit, aBuilder =>
@@ -2064,15 +2263,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:glow.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Glow : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "glow");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Glow");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Glow class.
         /// </summary>
@@ -2108,9 +2313,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>rad, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:rad</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? GlowRadius
         {
             get => GetAttribute<Int64Value>();
@@ -2120,10 +2325,10 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:glow");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex());
             builder.AddElement<Glow>()
                 .AddAttribute("w14:rad", a => a.GlowRadius, aBuilder =>
                 {
@@ -2136,8 +2341,8 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -2147,26 +2352,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>RgbColorModelHex.</para>
         /// <para>Represents the following element tag in the schema: w14:srgbClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex? RgbColorModelHex
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType) as DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType);
         }
 
         /// <summary>
         /// <para>SchemeColor.</para>
         /// <para>Represents the following element tag in the schema: w14:schemeClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SchemeColor? SchemeColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SchemeColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2178,15 +2383,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:shadow.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Shadow : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "shadow");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Shadow");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Shadow class.
         /// </summary>
@@ -2222,9 +2433,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>blurRad, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:blurRad</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? BlurRadius
         {
             get => GetAttribute<Int64Value>();
@@ -2235,9 +2446,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dist, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:dist</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? DistanceFromText
         {
             get => GetAttribute<Int64Value>();
@@ -2248,9 +2459,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dir, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:dir</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? DirectionAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2261,9 +2472,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>sx, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:sx</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? HorizontalScalingFactor
         {
             get => GetAttribute<Int32Value>();
@@ -2274,9 +2485,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>sy, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:sy</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? VerticalScalingFactor
         {
             get => GetAttribute<Int32Value>();
@@ -2287,9 +2498,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>kx, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:kx</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? HorizontalSkewAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2300,9 +2511,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>ky, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:ky</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? VerticalSkewAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2313,9 +2524,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>algn, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:algn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.RectangleAlignmentValues>? Alignment
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.RectangleAlignmentValues>>();
@@ -2325,10 +2536,10 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:shadow");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex());
             builder.AddElement<Shadow>()
                 .AddAttribute("w14:blurRad", a => a.BlurRadius, aBuilder =>
                 {
@@ -2373,8 +2584,8 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -2384,26 +2595,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>RgbColorModelHex.</para>
         /// <para>Represents the following element tag in the schema: w14:srgbClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex? RgbColorModelHex
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType) as DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType);
         }
 
         /// <summary>
         /// <para>SchemeColor.</para>
         /// <para>Represents the following element tag in the schema: w14:schemeClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SchemeColor? SchemeColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SchemeColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2417,6 +2628,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Reflection : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "reflection");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Reflection");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Reflection class.
         /// </summary>
@@ -2428,9 +2645,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>blurRad, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:blurRad</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? BlurRadius
         {
             get => GetAttribute<Int64Value>();
@@ -2441,9 +2658,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>stA, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:stA</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? StartingOpacity
         {
             get => GetAttribute<Int32Value>();
@@ -2454,9 +2671,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>stPos, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:stPos</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? StartPosition
         {
             get => GetAttribute<Int32Value>();
@@ -2467,9 +2684,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>endA, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:endA</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? EndingOpacity
         {
             get => GetAttribute<Int32Value>();
@@ -2480,9 +2697,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>endPos, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:endPos</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? EndPosition
         {
             get => GetAttribute<Int32Value>();
@@ -2493,9 +2710,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dist, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:dist</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? DistanceFromText
         {
             get => GetAttribute<Int64Value>();
@@ -2506,9 +2723,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dir, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:dir</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? DirectionAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2519,9 +2736,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>fadeDir, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:fadeDir</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? FadeDirection
         {
             get => GetAttribute<Int32Value>();
@@ -2532,9 +2749,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>sx, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:sx</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? HorizontalScalingFactor
         {
             get => GetAttribute<Int32Value>();
@@ -2545,9 +2762,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>sy, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:sy</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? VerticalScalingFactor
         {
             get => GetAttribute<Int32Value>();
@@ -2558,9 +2775,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>kx, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:kx</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? HorizontalSkewAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2571,9 +2788,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>ky, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:ky</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? VerticalSkewAngle
         {
             get => GetAttribute<Int32Value>();
@@ -2584,9 +2801,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>algn, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:algn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.RectangleAlignmentValues>? Alignment
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.RectangleAlignmentValues>>();
@@ -2596,7 +2813,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:reflection");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Reflection>()
                 .AddAttribute("w14:blurRad", a => a.BlurRadius, aBuilder =>
@@ -2672,7 +2889,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:textOutline.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty" /> <c>&lt;w14:noFill></c></description></item>
@@ -2683,9 +2900,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties" /> <c>&lt;w14:prstDash></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties" /> <c>&lt;w14:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextOutlineEffect : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "textOutline");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_TextOutlineEffect");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextOutlineEffect class.
         /// </summary>
@@ -2721,9 +2944,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>w, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:w</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? LineWidth
         {
             get => GetAttribute<Int32Value>();
@@ -2734,9 +2957,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>cap, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:cap</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.LineCapValues>? CapType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.LineCapValues>>();
@@ -2747,9 +2970,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>cmpd, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:cmpd</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.CompoundLineValues>? Compound
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.CompoundLineValues>>();
@@ -2760,9 +2983,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>algn, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:algn</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.PenAlignmentValues>? Alignment
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.PenAlignmentValues>>();
@@ -2772,15 +2995,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:textOutline");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RoundEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.BevelEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LineJoinMiterProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RoundEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RoundEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.BevelEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.BevelEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LineJoinMiterProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LineJoinMiterProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties());
             builder.AddElement<TextOutlineEffect>()
                 .AddAttribute("w14:w", a => a.LineWidth, aBuilder =>
                 {
@@ -2805,25 +3028,25 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.PresetLineDashProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RoundEmpty), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.BevelEmpty), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LineJoinMiterProperties), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RoundEmpty.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.BevelEmpty.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LineJoinMiterProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -2838,16 +3061,22 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:textFill.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty" /> <c>&lt;w14:noFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties" /> <c>&lt;w14:gradFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties" /> <c>&lt;w14:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FillTextEffect : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "textFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_FillTextEffect");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FillTextEffect class.
         /// </summary>
@@ -2882,20 +3111,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:textFill");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1, version: FileFormatVersions.Office2010)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -2905,39 +3134,39 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>NoFillEmpty.</para>
         /// <para>Represents the following element tag in the schema: w14:noFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty? NoFillEmpty
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType) as DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.NoFillEmpty.ElementType);
         }
 
         /// <summary>
         /// <para>SolidColorFillProperties.</para>
         /// <para>Represents the following element tag in the schema: w14:solidFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties? SolidColorFillProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SolidColorFillProperties.ElementType);
         }
 
         /// <summary>
         /// <para>GradientFillProperties.</para>
         /// <para>Represents the following element tag in the schema: w14:gradFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties? GradientFillProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.GradientFillProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2949,15 +3178,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:scene3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Camera" /> <c>&lt;w14:camera></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.LightRig" /> <c>&lt;w14:lightRig></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Scene3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "scene3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Scene3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Scene3D class.
         /// </summary>
@@ -2992,14 +3227,14 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:scene3d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Camera>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.LightRig>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Camera.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Camera());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.LightRig.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.LightRig());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Camera), 1, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.LightRig), 1, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Camera.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.LightRig.ElementType, 1, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3007,26 +3242,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Camera.</para>
         /// <para>Represents the following element tag in the schema: w14:camera.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.Camera? Camera
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.Camera>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.Camera.ElementType) as DocumentFormat.OpenXml.Office2010.Word.Camera;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.Camera.ElementType);
         }
 
         /// <summary>
         /// <para>LightRig.</para>
         /// <para>Represents the following element tag in the schema: w14:lightRig.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.LightRig? LightRig
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.LightRig>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.LightRig.ElementType) as DocumentFormat.OpenXml.Office2010.Word.LightRig;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.LightRig.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3038,7 +3273,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:props3d.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.BevelTop" /> <c>&lt;w14:bevelT></c></description></item>
@@ -3046,9 +3281,15 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor" /> <c>&lt;w14:extrusionClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.ContourColor" /> <c>&lt;w14:contourClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Properties3D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "props3d");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Props3D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Properties3D class.
         /// </summary>
@@ -3084,9 +3325,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>extrusionH, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:extrusionH</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? ExtrusionHeight
         {
             get => GetAttribute<Int64Value>();
@@ -3097,9 +3338,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>contourW, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:contourW</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? ContourWidth
         {
             get => GetAttribute<Int64Value>();
@@ -3110,9 +3351,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>prstMaterial, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:prstMaterial</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetMaterialTypeValues>? PresetMaterialType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetMaterialTypeValues>>();
@@ -3122,12 +3363,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:props3d");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.BevelTop>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.BevelBottom>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.ContourColor>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.BevelTop.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.BevelTop());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.BevelBottom.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.BevelBottom());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.ContourColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.ContourColor());
             builder.AddElement<Properties3D>()
                 .AddAttribute("w14:extrusionH", a => a.ExtrusionHeight, aBuilder =>
                 {
@@ -3146,10 +3387,10 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.BevelTop), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.BevelBottom), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.ContourColor), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.BevelTop.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.BevelBottom.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.ContourColor.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3157,52 +3398,52 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>BevelTop.</para>
         /// <para>Represents the following element tag in the schema: w14:bevelT.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.BevelTop? BevelTop
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.BevelTop>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.BevelTop.ElementType) as DocumentFormat.OpenXml.Office2010.Word.BevelTop;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.BevelTop.ElementType);
         }
 
         /// <summary>
         /// <para>BevelBottom.</para>
         /// <para>Represents the following element tag in the schema: w14:bevelB.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.BevelBottom? BevelBottom
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.BevelBottom>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.BevelBottom.ElementType) as DocumentFormat.OpenXml.Office2010.Word.BevelBottom;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.BevelBottom.ElementType);
         }
 
         /// <summary>
         /// <para>ExtrusionColor.</para>
         /// <para>Represents the following element tag in the schema: w14:extrusionClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor? ExtrusionColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.ExtrusionColor.ElementType);
         }
 
         /// <summary>
         /// <para>ContourColor.</para>
         /// <para>Represents the following element tag in the schema: w14:contourClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.ContourColor? ContourColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.ContourColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.ContourColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.ContourColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.ContourColor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3216,6 +3457,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Ligatures : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "ligatures");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Ligatures");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Ligatures class.
         /// </summary>
@@ -3227,9 +3474,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.LigaturesValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.LigaturesValues>>();
@@ -3239,7 +3486,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:ligatures");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Ligatures>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -3260,6 +3507,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class NumberingFormat : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "numForm");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_NumForm");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NumberingFormat class.
         /// </summary>
@@ -3271,9 +3524,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.NumberFormValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.NumberFormValues>>();
@@ -3283,7 +3536,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:numForm");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<NumberingFormat>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -3304,6 +3557,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class NumberSpacing : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "numSpacing");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_NumSpacing");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NumberSpacing class.
         /// </summary>
@@ -3315,9 +3574,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.NumberSpacingValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.NumberSpacingValues>>();
@@ -3327,7 +3586,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:numSpacing");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<NumberSpacing>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -3346,14 +3605,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:stylisticSets.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.StyleSet" /> <c>&lt;w14:styleSet></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class StylisticSets : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "stylisticSets");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_StylisticSets");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StylisticSets class.
         /// </summary>
@@ -3388,12 +3653,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:stylisticSets");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.StyleSet>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.StyleSet.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.StyleSet());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 0, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.StyleSet), 0, 0, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.StyleSet.ElementType, 0, 0, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3408,6 +3673,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class ContextualAlternatives : OnOffType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "cntxtAlts");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContextualAlternatives class.
         /// </summary>
@@ -3418,7 +3689,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:cntxtAlts");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3433,6 +3704,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class ConflictMode : OnOffType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "conflictMode");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ConflictMode class.
         /// </summary>
@@ -3443,7 +3720,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:conflictMode");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3458,6 +3735,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class DiscardImageEditingData : OnOffType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "discardImageEditingData");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DiscardImageEditingData class.
         /// </summary>
@@ -3468,7 +3751,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:discardImageEditingData");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3483,6 +3766,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Checked : OnOffType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "checked");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Checked class.
         /// </summary>
@@ -3493,7 +3782,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:checked");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3508,6 +3797,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class OnOffType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_OnOff");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OnOffType class.
         /// </summary>
@@ -3519,9 +3814,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>>();
@@ -3544,16 +3839,22 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:contentPart.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList" /> <c>&lt;w14:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Transform2D" /> <c>&lt;w14:xfrm></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties" /> <c>&lt;w14:nvContentPartPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContentPart : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "contentPart");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_WordContentPart");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContentPart class.
         /// </summary>
@@ -3589,9 +3890,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>bwMode, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:bwMode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Drawing.BlackWhiteModeValues>? BlackWhiteMode
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Drawing.BlackWhiteModeValues>>();
@@ -3602,9 +3903,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>id, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? RelationshipId
         {
             get => GetAttribute<StringValue>();
@@ -3614,11 +3915,11 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:contentPart");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Transform2D>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Transform2D.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Transform2D());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties());
             builder.AddElement<ContentPart>()
                 .AddAttribute("w14:bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -3631,9 +3932,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Transform2D), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Transform2D.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3641,39 +3942,39 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>WordNonVisualContentPartShapeProperties.</para>
         /// <para>Represents the following element tag in the schema: w14:nvContentPartPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties? WordNonVisualContentPartShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.WordNonVisualContentPartShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Transform2D.</para>
         /// <para>Represents the following element tag in the schema: w14:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.Transform2D? Transform2D
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.Transform2D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.Transform2D.ElementType) as DocumentFormat.OpenXml.Office2010.Word.Transform2D;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.Transform2D.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: w14:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3687,6 +3988,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class DocumentId : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "docId");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_LongHexNumber");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DocumentId class.
         /// </summary>
@@ -3698,9 +4005,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Val
         {
             get => GetAttribute<HexBinaryValue>();
@@ -3710,7 +4017,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:docId");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<DocumentId>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -3733,6 +4040,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class CustomXmlConflictInsertionRangeEnd : MarkupType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "customXmlConflictInsRangeEnd");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Markup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomXmlConflictInsertionRangeEnd class.
         /// </summary>
@@ -3743,7 +4056,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:customXmlConflictInsRangeEnd");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3758,6 +4071,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class CustomXmlConflictDeletionRangeEnd : MarkupType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "customXmlConflictDelRangeEnd");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Markup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CustomXmlConflictDeletionRangeEnd class.
         /// </summary>
@@ -3768,7 +4087,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:customXmlConflictDelRangeEnd");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -3783,6 +4102,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class MarkupType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "CT_Markup");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MarkupType class.
         /// </summary>
@@ -3794,9 +4119,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Annotation Identifier</para>
         /// <para>Represents the following attribute in the schema: w:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w=http://schemas.openxmlformats.org/wordprocessingml/2006/main
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -3826,6 +4151,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class DefaultImageDpi : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "defaultImageDpi");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_DefaultImageDpi");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the DefaultImageDpi class.
         /// </summary>
@@ -3837,9 +4168,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Val
         {
             get => GetAttribute<Int32Value>();
@@ -3849,7 +4180,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:defaultImageDpi");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<DefaultImageDpi>()
                 .AddAttribute("w14:val", a => a.Val, aBuilder =>
@@ -3868,16 +4199,22 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:checkbox.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.Checked" /> <c>&lt;w14:checked></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.CheckedState" /> <c>&lt;w14:checkedState></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.UncheckedState" /> <c>&lt;w14:uncheckedState></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class SdtContentCheckBox : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "checkbox");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SdtCheckbox");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SdtContentCheckBox class.
         /// </summary>
@@ -3912,16 +4249,16 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:checkbox");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.Checked>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.CheckedState>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.UncheckedState>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.Checked.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.Checked());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.CheckedState.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.CheckedState());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.UncheckedState.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.UncheckedState());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.Checked), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.CheckedState), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.UncheckedState), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.Checked.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.CheckedState.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.UncheckedState.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -3929,39 +4266,39 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Checked.</para>
         /// <para>Represents the following element tag in the schema: w14:checked.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.Checked? Checked
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.Checked>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.Checked.ElementType) as DocumentFormat.OpenXml.Office2010.Word.Checked;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.Checked.ElementType);
         }
 
         /// <summary>
         /// <para>CheckedState.</para>
         /// <para>Represents the following element tag in the schema: w14:checkedState.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.CheckedState? CheckedState
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.CheckedState>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.CheckedState.ElementType) as DocumentFormat.OpenXml.Office2010.Word.CheckedState;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.CheckedState.ElementType);
         }
 
         /// <summary>
         /// <para>UncheckedState.</para>
         /// <para>Represents the following element tag in the schema: w14:uncheckedState.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.UncheckedState? UncheckedState
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.UncheckedState>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.UncheckedState.ElementType) as DocumentFormat.OpenXml.Office2010.Word.UncheckedState;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.UncheckedState.ElementType);
         }
 
         /// <inheritdoc/>
@@ -3973,15 +4310,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:gs.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GradientStop : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "gs");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_GradientStop");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GradientStop class.
         /// </summary>
@@ -4017,9 +4360,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>pos, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:pos</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? StopPosition
         {
             get => GetAttribute<Int32Value>();
@@ -4029,10 +4372,10 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:gs");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex());
             builder.AddElement<GradientStop>()
                 .AddAttribute("w14:pos", a => a.StopPosition, aBuilder =>
                 {
@@ -4046,8 +4389,8 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -4057,26 +4400,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>RgbColorModelHex.</para>
         /// <para>Represents the following element tag in the schema: w14:srgbClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex? RgbColorModelHex
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType) as DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType);
         }
 
         /// <summary>
         /// <para>SchemeColor.</para>
         /// <para>Represents the following element tag in the schema: w14:schemeClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SchemeColor? SchemeColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SchemeColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4090,6 +4433,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class FillToRectangle : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "fillToRect");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_RelativeRect");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FillToRectangle class.
         /// </summary>
@@ -4101,9 +4450,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>l, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:l</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Left
         {
             get => GetAttribute<Int32Value>();
@@ -4114,9 +4463,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>t, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:t</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Top
         {
             get => GetAttribute<Int32Value>();
@@ -4127,9 +4476,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>r, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:r</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Right
         {
             get => GetAttribute<Int32Value>();
@@ -4140,9 +4489,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>b, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:b</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Bottom
         {
             get => GetAttribute<Int32Value>();
@@ -4152,7 +4501,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:fillToRect");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<FillToRectangle>()
                 .AddAttribute("w14:l", a => a.Left, aBuilder =>
@@ -4182,14 +4531,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:gsLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.GradientStop" /> <c>&lt;w14:gs></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GradientStopList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "gsLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_GradientStopList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GradientStopList class.
         /// </summary>
@@ -4224,12 +4579,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:gsLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.GradientStop>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.GradientStop.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.GradientStop());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.GradientStop), 2, 10, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.GradientStop.ElementType, 2, 10, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -4244,6 +4599,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class SphereCoordinates : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "rot");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SphereCoords");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SphereCoordinates class.
         /// </summary>
@@ -4255,9 +4616,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>lat, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:lat</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Lattitude
         {
             get => GetAttribute<Int32Value>();
@@ -4268,9 +4629,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>lon, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:lon</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Longitude
         {
             get => GetAttribute<Int32Value>();
@@ -4281,9 +4642,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>rev, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:rev</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int32Value? Revolution
         {
             get => GetAttribute<Int32Value>();
@@ -4293,7 +4654,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:rot");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<SphereCoordinates>()
                 .AddAttribute("w14:lat", a => a.Lattitude, aBuilder =>
@@ -4327,6 +4688,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class Camera : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "camera");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Camera");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Camera class.
         /// </summary>
@@ -4338,9 +4705,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>prst, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:prst</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetCameraTypeValues>? PresetCameraType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.PresetCameraTypeValues>>();
@@ -4350,7 +4717,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:camera");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<Camera>()
                 .AddAttribute("w14:prst", a => a.PresetCameraType, aBuilder =>
@@ -4370,14 +4737,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:lightRig.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates" /> <c>&lt;w14:rot></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class LightRig : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "lightRig");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_LightRig");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LightRig class.
         /// </summary>
@@ -4413,9 +4786,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>rig, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:rig</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.LightRigTypeValues>? LightRigType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.LightRigTypeValues>>();
@@ -4426,9 +4799,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>dir, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:dir</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.LightRigDirectionValues>? LightDirectionType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.LightRigDirectionValues>>();
@@ -4438,9 +4811,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:lightRig");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates());
             builder.AddElement<LightRig>()
                 .AddAttribute("w14:rig", a => a.LightRigType, aBuilder =>
                 {
@@ -4456,7 +4829,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -4464,13 +4837,13 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>SphereCoordinates.</para>
         /// <para>Represents the following element tag in the schema: w14:rot.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates? SphereCoordinates
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SphereCoordinates.ElementType);
         }
 
         /// <inheritdoc/>
@@ -4484,6 +4857,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class BevelTop : BevelType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "bevelT");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Bevel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BevelTop class.
         /// </summary>
@@ -4494,7 +4873,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:bevelT");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -4509,6 +4888,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class BevelBottom : BevelType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "bevelB");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Bevel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BevelBottom class.
         /// </summary>
@@ -4519,7 +4904,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:bevelB");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -4534,6 +4919,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class BevelType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Bevel");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BevelType class.
         /// </summary>
@@ -4545,9 +4936,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>w, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:w</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? Width
         {
             get => GetAttribute<Int64Value>();
@@ -4558,9 +4949,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>h, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:h</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public Int64Value? Height
         {
             get => GetAttribute<Int64Value>();
@@ -4571,9 +4962,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>prst, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:prst</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.BevelPresetTypeValues>? PresetProfileType
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.BevelPresetTypeValues>>();
@@ -4607,15 +4998,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:extrusionClr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ExtrusionColor : ColorType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "extrusionClr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Color");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ExtrusionColor class.
         /// </summary>
@@ -4650,7 +5047,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:extrusionClr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
@@ -4658,8 +5055,8 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -4674,15 +5071,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:contourClr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ContourColor : ColorType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "contourClr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Color");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ContourColor class.
         /// </summary>
@@ -4717,7 +5120,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:contourClr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
@@ -4725,8 +5128,8 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex), 1, 1, version: FileFormatVersions.Office2010),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.SchemeColor), 1, 1, version: FileFormatVersions.Office2010)
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, 1, 1, version: FileFormatVersions.Office2010),
+                        new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                     }
                 }
             };
@@ -4741,15 +5144,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.SchemeColor" /> <c>&lt;w14:schemeClr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex" /> <c>&lt;w14:srgbClr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class ColorType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_Color");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorType class.
         /// </summary>
@@ -4784,34 +5193,34 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.SchemeColor());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex());
         }
 
         /// <summary>
         /// <para>RgbColorModelHex.</para>
         /// <para>Represents the following element tag in the schema: w14:srgbClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex? RgbColorModelHex
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType) as DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.RgbColorModelHex.ElementType);
         }
 
         /// <summary>
         /// <para>SchemeColor.</para>
         /// <para>Represents the following element tag in the schema: w14:schemeClr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.SchemeColor? SchemeColor
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.SchemeColor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType) as DocumentFormat.OpenXml.Office2010.Word.SchemeColor;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.SchemeColor.ElementType);
         }
     }
 
@@ -4822,6 +5231,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class StyleSet : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "styleSet");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_StyleSet");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StyleSet class.
         /// </summary>
@@ -4833,9 +5248,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>id, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public UInt32Value? Id
         {
             get => GetAttribute<UInt32Value>();
@@ -4846,9 +5261,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>? Val
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Office2010.Word.OnOffValues>>();
@@ -4858,7 +5273,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:styleSet");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
             builder.AddElement<StyleSet>()
                 .AddAttribute("w14:id", a => a.Id, aBuilder =>
@@ -4884,6 +5299,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class CheckedState : CheckBoxSymbolType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "checkedState");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SdtCheckboxSymbol");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CheckedState class.
         /// </summary>
@@ -4894,7 +5315,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:checkedState");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -4909,6 +5330,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public partial class UncheckedState : CheckBoxSymbolType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "uncheckedState");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SdtCheckboxSymbol");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the UncheckedState class.
         /// </summary>
@@ -4919,7 +5346,7 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:uncheckedState");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
         }
 
@@ -4934,6 +5361,12 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// </summary>
     public abstract partial class CheckBoxSymbolType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_SdtCheckboxSymbol");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the CheckBoxSymbolType class.
         /// </summary>
@@ -4945,9 +5378,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>font, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:font</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public StringValue? Font
         {
             get => GetAttribute<StringValue>();
@@ -4958,9 +5391,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>val, this property is only available in Office 2010 and later.</para>
         /// <para>Represents the following attribute in the schema: w14:val</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14=http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public HexBinaryValue? Val
         {
             get => GetAttribute<HexBinaryValue>();
@@ -4988,16 +5421,22 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:cNvPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnClick" /> <c>&lt;a:hlinkClick></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnHover" /> <c>&lt;a:hlinkHover></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "cNvPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualDrawingProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualDrawingProperties class.
         /// </summary>
@@ -5082,11 +5521,11 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:cNvPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnClick());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnHover());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList());
             builder.AddElement<NonVisualDrawingProperties>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -5101,9 +5540,9 @@ namespace DocumentFormat.OpenXml.Office2010.Word
                 .AddAttribute("title", a => a.Title);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -5111,39 +5550,39 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Hyperlink associated with clicking or selecting the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkClick.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnClick? HyperlinkOnClick
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnClick;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType);
         }
 
         /// <summary>
         /// <para>Hyperlink associated with hovering over the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkHover.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnHover? HyperlinkOnHover
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnHover;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType);
         }
 
         /// <summary>
         /// <para>Future extension.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList? NonVisualDrawingPropertiesExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5155,15 +5594,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:cNvContentPartPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList" /> <c>&lt;a14:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks" /> <c>&lt;a14:cpLocks></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualInkContentPartProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "cNvContentPartPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/drawing/2010/main", "CT_NonVisualInkContentPartProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualInkContentPartProperties class.
         /// </summary>
@@ -5208,16 +5653,16 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:cNvContentPartPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks());
             builder.AddElement<NonVisualInkContentPartProperties>()
                 .AddAttribute("isComment", a => a.IsComment);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -5225,26 +5670,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>ContentPartLocks.</para>
         /// <para>Represents the following element tag in the schema: a14:cpLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks? ContentPartLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.ContentPartLocks.ElementType);
         }
 
         /// <summary>
         /// <para>OfficeArtExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a14:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a14 = http://schemas.microsoft.com/office/drawing/2010/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList? OfficeArtExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType) as DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Drawing.OfficeArtExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5256,15 +5701,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:nvContentPartPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties" /> <c>&lt;w14:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties" /> <c>&lt;w14:cNvContentPartPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class WordNonVisualContentPartShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "nvContentPartPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/word/2010/wordml", "CT_WordContentPartNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the WordNonVisualContentPartShapeProperties class.
         /// </summary>
@@ -5299,14 +5750,14 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:nvContentPartPr");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties), 0, 1, version: FileFormatVersions.Office2010),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties), 0, 1, version: FileFormatVersions.Office2010)
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties.ElementType, 0, 1, version: FileFormatVersions.Office2010),
+                new ElementParticle(DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties.ElementType, 0, 1, version: FileFormatVersions.Office2010)
             };
         }
 
@@ -5314,26 +5765,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>NonVisualDrawingProperties.</para>
         /// <para>Represents the following element tag in the schema: w14:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>NonVisualInkContentPartProperties.</para>
         /// <para>Represents the following element tag in the schema: w14:cNvContentPartPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:w14 = http://schemas.microsoft.com/office/word/2010/wordml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties? NonVisualInkContentPartProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties.ElementType) as DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2010.Word.NonVisualInkContentPartProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5345,15 +5796,21 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:xfrm.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Offset" /> <c>&lt;a:off></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extents" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Transform2D : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "xfrm");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Transform2D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Transform2D class.
         /// </summary>
@@ -5418,18 +5875,18 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:xfrm");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Offset>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extents>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Offset.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Offset());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extents.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extents());
             builder.AddElement<Transform2D>()
                 .AddAttribute("rot", a => a.Rotation)
                 .AddAttribute("flipH", a => a.HorizontalFlip)
                 .AddAttribute("flipV", a => a.VerticalFlip);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Offset), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extents), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Offset.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Extents.ElementType, 0, 1)
             };
         }
 
@@ -5437,26 +5894,26 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         /// <para>Offset.</para>
         /// <para>Represents the following element tag in the schema: a:off.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Offset? Offset
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Offset>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Offset.ElementType) as DocumentFormat.OpenXml.Drawing.Offset;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Offset.ElementType);
         }
 
         /// <summary>
         /// <para>Extents.</para>
         /// <para>Represents the following element tag in the schema: a:ext.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Extents? Extents
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Extents>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Extents.ElementType) as DocumentFormat.OpenXml.Drawing.Extents;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Extents.ElementType);
         }
 
         /// <inheritdoc/>
@@ -5468,14 +5925,20 @@ namespace DocumentFormat.OpenXml.Office2010.Word
     /// <para>This class is available in Office 2010 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is w14:extLst.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extension" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OfficeArtExtensionList : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/word/2010/wordml", "extLst");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_OfficeArtExtensionList");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OfficeArtExtensionList class.
         /// </summary>
@@ -5510,16 +5973,16 @@ namespace DocumentFormat.OpenXml.Office2010.Word
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("w14:extLst");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2010;
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extension>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extension.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extension());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extension), 0, 0)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Extension.ElementType, 0, 0)
                     }
                 }
             };

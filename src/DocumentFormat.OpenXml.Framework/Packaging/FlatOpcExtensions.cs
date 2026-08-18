@@ -26,7 +26,6 @@ public static class FlatOpcExtensions
         "http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk";
 
     private static readonly XNamespace Pkg = "http://schemas.microsoft.com/office/2006/xmlPackage";
-    private static readonly XNamespace Rel = "http://schemas.openxmlformats.org/package/2006/relationships";
 
     /// <summary>
     /// Converts an OpenXml package in OPC format to string in Flat OPC format.
@@ -142,33 +141,16 @@ public static class FlatOpcExtensions
     }
 
     private static string ToChunkedBase64String(byte[] byteArray)
+        => Convert.ToBase64String(byteArray, Base64FormattingOptions.InsertLineBreaks);
+
+    internal static IPackageFactory<TPackage> WithFlatOpcTemplate<TPackage>(this IPackageFactory<TPackage> builder, string text, bool? isEditable = default)
+        where TPackage : OpenXmlPackage
+        => builder.WithFlatOpcTemplate(XDocument.Parse(text), isEditable);
+
+    internal static IPackageFactory<TPackage> WithFlatOpcTemplate<TPackage>(this IPackageFactory<TPackage> builder, XDocument document, bool? isEditable = default)
+        where TPackage : OpenXmlPackage
     {
-        // The MIME specification defines a maximum line length of 76 characters
-        // for a Base64-encoded string. Therefore, we need to break down the
-        // Base64 string into chunks of up to 76 characters each.
-        const int maxLineLength = 76;
-
-        return Convert.ToBase64String(byteArray)
-            .Select((@char, index) => new { Character = @char, Chunk = index / maxLineLength })
-            .GroupBy(charAndChunk => charAndChunk.Chunk)
-            .Aggregate(
-                new StringBuilder(),
-                (sb, grouping) => sb
-                    .Append(grouping.Aggregate(
-                        new StringBuilder(),
-                        (chunkSb, charAndChunk) => chunkSb.Append(charAndChunk.Character),
-                        chunkSb => chunkSb.ToString()))
-                    .Append(Environment.NewLine),
-                sb => sb.ToString());
-    }
-
-    internal static IPackageBuilder<TPackage> UseFlatOpcTemplate<TPackage>(this IPackageBuilder<TPackage> builder, string text, bool? isEditable = default)
-        where TPackage : OpenXmlPackage
-        => builder.UseFlatOpcTemplate(XDocument.Parse(text), isEditable);
-
-    internal static IPackageBuilder<TPackage> UseFlatOpcTemplate<TPackage>(this IPackageBuilder<TPackage> builder, XDocument document, bool? isEditable = default)
-        where TPackage : OpenXmlPackage
-        => builder.Use((package, next) =>
+        builder.Template += package =>
         {
             var p = package.Features.GetRequired<IPackageFeature>().Package;
 
@@ -179,9 +161,7 @@ public static class FlatOpcExtensions
 
             if (document.Root is not null)
             {
-                // Add package parts and relationships.
                 AddPackageParts(document.Root, p);
-                AddPackageRelationships(document.Root, p);
             }
 
 #if NETFRAMEWORK
@@ -195,17 +175,14 @@ public static class FlatOpcExtensions
             {
                 package.Reload(isEditable);
             }
+        };
 
-            next(package);
-        });
+        return builder;
+    }
 
     private static void AddPackageParts(XElement flatOpcPackage, IPackage package)
     {
-        var flatOpcParts = flatOpcPackage
-            .Elements()
-            .Where(p => p.Attribute(Pkg + "contentType")?.Value != RelationshipContentType);
-
-        foreach (var flatOpcPart in flatOpcParts)
+        foreach (var flatOpcPart in flatOpcPackage.Elements())
         {
             if (flatOpcPart.Elements(Pkg + "xmlData").Any())
             {
@@ -229,7 +206,7 @@ public static class FlatOpcExtensions
         var part = CreatePackagePart(flatOpcPart, package);
 
         using var stream = part.GetStream(FileMode.Create);
-        using var xmlWriter = XmlWriter.Create(stream);
+        using var xmlWriter = new XmlDOMTextWriter(stream);
 
         XElement rootElement = flatOpcPart.Elements(Pkg + "xmlData").Elements().First();
         rootElement.WriteTo(xmlWriter);
@@ -243,7 +220,7 @@ public static class FlatOpcExtensions
         using var binaryWriter = new BinaryWriter(stream);
 
         var chunkedBase64String = flatOpcPart.Element(Pkg + "binaryData")?.Value;
-        byte[] byteArray = FromChunkedBase64String(chunkedBase64String);
+        var byteArray = FromChunkedBase64String(chunkedBase64String);
         binaryWriter.Write(byteArray);
     }
 
@@ -268,95 +245,6 @@ public static class FlatOpcExtensions
             return Cached.Array<byte>();
         }
 
-        char[] base64CharArray = chunkedBase64String.Where(c => c != '\r' && c != '\n').ToArray();
-        return Convert.FromBase64CharArray(base64CharArray, 0, base64CharArray.Length);
-    }
-
-    private static void AddPackageRelationships(XElement flatOpcPackage, IPackage package)
-    {
-        var flatOpcRelationshipParts = flatOpcPackage
-            .Elements()
-            .Where(p => p.Attribute(Pkg + "contentType")?.Value == RelationshipContentType);
-
-        foreach (var flatOpcRelationshipPart in flatOpcRelationshipParts)
-        {
-            var name = flatOpcRelationshipPart.Attribute(Pkg + "name")?.Value;
-            if (name == "/_rels/.rels")
-            {
-                AddPackageLevelRelationships(flatOpcRelationshipPart, package);
-            }
-            else
-            {
-                AddPartLevelRelationships(flatOpcRelationshipPart, package);
-            }
-        }
-    }
-
-    private static void AddPackageLevelRelationships(XElement flatOpcRelationshipPart, IPackage package)
-    {
-        foreach (var relationship in flatOpcRelationshipPart.Descendants(Rel + "Relationship"))
-        {
-            var id = relationship.Attribute("Id")?.Value;
-            var type = relationship.Attribute("Type")?.Value;
-            var target = relationship.Attribute("Target")?.Value;
-            var targetMode = relationship.Attribute("TargetMode")?.Value;
-
-            if (target is null || type is null)
-            {
-                continue;
-            }
-
-            if (targetMode == "External")
-            {
-                package.Relationships.Create(new Uri(target, UriKind.Absolute), TargetMode.External, type, id);
-            }
-            else
-            {
-                package.Relationships.Create(new Uri(target, UriKind.Relative), TargetMode.Internal, type, id);
-            }
-        }
-    }
-
-    private static void AddPartLevelRelationships(XElement flatOpcRelationshipPart, IPackage package)
-    {
-        var sourcePart = GetSourcePart(flatOpcRelationshipPart, package);
-
-        foreach (var relationship in flatOpcRelationshipPart.Descendants(Rel + "Relationship"))
-        {
-            var id = relationship.Attribute("Id")?.Value;
-            var type = relationship.Attribute("Type")?.Value;
-            var target = relationship.Attribute("Target")?.Value;
-            var targetMode = relationship.Attribute("TargetMode")?.Value;
-
-            if (target is null || type is null)
-            {
-                continue;
-            }
-
-            if (targetMode == "External")
-            {
-                sourcePart.Relationships.Create(new Uri(target, UriKind.Absolute), TargetMode.External, type, id);
-            }
-            else
-            {
-                sourcePart.Relationships.Create(new Uri(target, UriKind.Relative), TargetMode.Internal, type, id);
-            }
-        }
-    }
-
-    private static IPackagePart GetSourcePart(XElement flatOpcRelationshipPart, IPackage package)
-    {
-        var name = flatOpcRelationshipPart.Attribute(Pkg + "name")?.Value;
-
-        if (name is null)
-        {
-            throw new InvalidDataException();
-        }
-
-        var directory = name.Substring(0, name.IndexOf("/_rels", StringComparison.Ordinal));
-        var relsFilename = name.Substring(name.LastIndexOf('/'));
-        var filename = relsFilename.Substring(0, relsFilename.IndexOf(".rels", StringComparison.Ordinal));
-
-        return package.GetPart(new Uri(directory + filename, UriKind.Relative));
+        return Convert.FromBase64String(chunkedBase64String);
     }
 }

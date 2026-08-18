@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,6 +24,12 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
     /// </summary>
     public partial class Key : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings", "key");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Key class.
         /// </summary>
@@ -46,7 +53,7 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pRoam:key");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
         }
 
@@ -61,6 +68,12 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
     /// </summary>
     public partial class Value : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings", "value");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Value class.
         /// </summary>
@@ -84,7 +97,7 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pRoam:value");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
         }
 
@@ -97,15 +110,21 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
     /// <para>This class is available in Office 2013 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is pRoam:props.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key" /> <c>&lt;pRoam:key></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value" /> <c>&lt;pRoam:value></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RoamingProperty : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings", "props");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings", "CT_RoamingProperty");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RoamingProperty class.
         /// </summary>
@@ -140,14 +159,14 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("pRoam:props");
+            builder.SetSchema(ElementType);
             builder.Availability = FileFormatVersions.Office2013;
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value>();
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key.ElementType, static () => new DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key());
+            builder.AddChild(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value.ElementType, static () => new DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key), 1, 1, version: FileFormatVersions.Office2013),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value), 1, 1, version: FileFormatVersions.Office2013)
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key.ElementType, 1, 1, version: FileFormatVersions.Office2013),
+                new ElementParticle(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value.ElementType, 1, 1, version: FileFormatVersions.Office2013)
             };
         }
 
@@ -155,26 +174,26 @@ namespace DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming
         /// <para>Key.</para>
         /// <para>Represents the following element tag in the schema: pRoam:key.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pRoam = http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key? Key
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key.ElementType) as DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Key.ElementType);
         }
 
         /// <summary>
         /// <para>Value.</para>
         /// <para>Represents the following element tag in the schema: pRoam:value.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:pRoam = http://schemas.microsoft.com/office/powerpoint/2012/roamingSettings
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value? Value
         {
-            get => GetElement<DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value.ElementType) as DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value;
+            set => SetElement(value, DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming.Value.ElementType);
         }
 
         /// <inheritdoc/>

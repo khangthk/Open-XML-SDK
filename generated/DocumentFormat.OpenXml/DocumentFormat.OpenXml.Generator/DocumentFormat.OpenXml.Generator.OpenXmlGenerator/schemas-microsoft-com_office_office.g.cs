@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Framework;
@@ -23,7 +24,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:shapedefaults.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Callout" /> <c>&lt;o:callout></c></description></item>
@@ -38,9 +39,15 @@ namespace DocumentFormat.OpenXml.Vml.Office
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Stroke" /> <c>&lt;v:stroke></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.TextBox" /> <c>&lt;v:textbox></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ShapeDefaults : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "shapedefaults");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_ShapeDefaults");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeDefaults class.
         /// </summary>
@@ -76,9 +83,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -149,9 +156,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Allow in Table Cell</para>
         /// <para>Represents the following attribute in the schema: o:allowincell</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public TrueFalseValue? AllowInCell
         {
             get => GetAttribute<TrueFalseValue>();
@@ -162,9 +169,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>allowoverlap</para>
         /// <para>Represents the following attribute in the schema: o:allowoverlap</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public TrueFalseValue? AllowOverlap
         {
             get => GetAttribute<TrueFalseValue>();
@@ -175,9 +182,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>insetmode</para>
         /// <para>Represents the following attribute in the schema: o:insetmode</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.Office.InsetMarginValues>? InsetMode
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.Office.InsetMarginValues>>();
@@ -187,18 +194,18 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:shapedefaults");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Callout>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.ColorMenu>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Extrusion>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Lock>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Skew>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Fill>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.ImageData>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Shadow>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Stroke>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.TextBox>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Callout.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Callout());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.ColorMenu.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.ColorMenu());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Extrusion.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Extrusion());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Lock.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Lock());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Skew.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Skew());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Fill.ElementType, static () => new DocumentFormat.OpenXml.Vml.Fill());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.ImageData.ElementType, static () => new DocumentFormat.OpenXml.Vml.ImageData());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Shadow.ElementType, static () => new DocumentFormat.OpenXml.Vml.Shadow());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Stroke.ElementType, static () => new DocumentFormat.OpenXml.Vml.Stroke());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.TextBox.ElementType, static () => new DocumentFormat.OpenXml.Vml.TextBox());
             builder.AddElement<ShapeDefaults>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("spidmax", a => a.MaxShapeId)
@@ -212,17 +219,17 @@ namespace DocumentFormat.OpenXml.Vml.Office
                 .AddAttribute("o:insetmode", a => a.InsetMode);
             builder.Particle = new CompositeParticle.Builder(ParticleType.All, 0, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Fill), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.ImageData), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Stroke), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.TextBox), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Shadow), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Skew), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Extrusion), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Callout), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Lock), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.ColorMenu), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Fill.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.ImageData.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Stroke.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.TextBox.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Shadow.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Skew.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Extrusion.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Callout.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Lock.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.ColorMenu.ElementType, 0, 1)
             };
         }
 
@@ -230,143 +237,143 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Fill.</para>
         /// <para>Represents the following element tag in the schema: v:fill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v = urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Fill? Fill
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Fill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Fill.ElementType) as DocumentFormat.OpenXml.Vml.Fill;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Fill.ElementType);
         }
 
         /// <summary>
         /// <para>ImageData.</para>
         /// <para>Represents the following element tag in the schema: v:imagedata.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v = urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.ImageData? ImageData
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.ImageData>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.ImageData.ElementType) as DocumentFormat.OpenXml.Vml.ImageData;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.ImageData.ElementType);
         }
 
         /// <summary>
         /// <para>Stroke.</para>
         /// <para>Represents the following element tag in the schema: v:stroke.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v = urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Stroke? Stroke
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Stroke>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Stroke.ElementType) as DocumentFormat.OpenXml.Vml.Stroke;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Stroke.ElementType);
         }
 
         /// <summary>
         /// <para>TextBox.</para>
         /// <para>Represents the following element tag in the schema: v:textbox.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v = urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.TextBox? TextBox
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.TextBox>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.TextBox.ElementType) as DocumentFormat.OpenXml.Vml.TextBox;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.TextBox.ElementType);
         }
 
         /// <summary>
         /// <para>Shadow.</para>
         /// <para>Represents the following element tag in the schema: v:shadow.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v = urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Shadow? Shadow
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Shadow>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Shadow.ElementType) as DocumentFormat.OpenXml.Vml.Shadow;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Shadow.ElementType);
         }
 
         /// <summary>
         /// <para>Skew.</para>
         /// <para>Represents the following element tag in the schema: o:skew.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.Skew? Skew
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.Skew>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.Skew.ElementType) as DocumentFormat.OpenXml.Vml.Office.Skew;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.Skew.ElementType);
         }
 
         /// <summary>
         /// <para>Extrusion.</para>
         /// <para>Represents the following element tag in the schema: o:extrusion.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.Extrusion? Extrusion
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.Extrusion>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.Extrusion.ElementType) as DocumentFormat.OpenXml.Vml.Office.Extrusion;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.Extrusion.ElementType);
         }
 
         /// <summary>
         /// <para>Callout.</para>
         /// <para>Represents the following element tag in the schema: o:callout.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.Callout? Callout
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.Callout>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.Callout.ElementType) as DocumentFormat.OpenXml.Vml.Office.Callout;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.Callout.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Protections.</para>
         /// <para>Represents the following element tag in the schema: o:lock.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.Lock? Lock
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.Lock>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.Lock.ElementType) as DocumentFormat.OpenXml.Vml.Office.Lock;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.Lock.ElementType);
         }
 
         /// <summary>
         /// <para>Most Recently Used Colors.</para>
         /// <para>Represents the following element tag in the schema: o:colormru.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed? ColorMostRecentlyUsed
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed.ElementType) as DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.ColorMostRecentlyUsed.ElementType);
         }
 
         /// <summary>
         /// <para>UI Default Colors.</para>
         /// <para>Represents the following element tag in the schema: o:colormenu.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.ColorMenu? ColorMenu
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.ColorMenu>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.ColorMenu.ElementType) as DocumentFormat.OpenXml.Vml.Office.ColorMenu;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.ColorMenu.ElementType);
         }
 
         /// <inheritdoc/>
@@ -378,16 +385,22 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:shapelayout.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.ShapeIdMap" /> <c>&lt;o:idmap></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.RegroupTable" /> <c>&lt;o:regrouptable></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Rules" /> <c>&lt;o:rules></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ShapeLayout : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "shapelayout");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_ShapeLayout");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeLayout class.
         /// </summary>
@@ -423,9 +436,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -435,17 +448,17 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:shapelayout");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.ShapeIdMap>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.RegroupTable>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Rules>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.ShapeIdMap.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.ShapeIdMap());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.RegroupTable.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.RegroupTable());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Rules.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Rules());
             builder.AddElement<ShapeLayout>()
                 .AddAttribute("v:ext", a => a.Extension);
             builder.Particle = new CompositeParticle.Builder(ParticleType.All, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.ShapeIdMap), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.RegroupTable), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Rules), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.ShapeIdMap.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.RegroupTable.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Rules.ElementType, 0, 1)
             };
         }
 
@@ -453,39 +466,39 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Shape ID Map.</para>
         /// <para>Represents the following element tag in the schema: o:idmap.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.ShapeIdMap? ShapeIdMap
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.ShapeIdMap>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.ShapeIdMap.ElementType) as DocumentFormat.OpenXml.Vml.Office.ShapeIdMap;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.ShapeIdMap.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Grouping History.</para>
         /// <para>Represents the following element tag in the schema: o:regrouptable.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.RegroupTable? RegroupTable
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.RegroupTable>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.RegroupTable.ElementType) as DocumentFormat.OpenXml.Vml.Office.RegroupTable;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.RegroupTable.ElementType);
         }
 
         /// <summary>
         /// <para>Rule Set.</para>
         /// <para>Represents the following element tag in the schema: o:rules.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.Rules? Rules
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.Rules>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.Rules.ElementType) as DocumentFormat.OpenXml.Vml.Office.Rules;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.Rules.ElementType);
         }
 
         /// <inheritdoc/>
@@ -499,6 +512,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class SignatureLine : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "signatureline");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_SignatureLine");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the SignatureLine class.
         /// </summary>
@@ -510,9 +529,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -583,9 +602,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Suggested Signer Line 1</para>
         /// <para>Represents the following attribute in the schema: o:suggestedsigner</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? SuggestedSigner
         {
             get => GetAttribute<StringValue>();
@@ -596,9 +615,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Suggested Signer Line 2</para>
         /// <para>Represents the following attribute in the schema: o:suggestedsigner2</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? SuggestedSigner2
         {
             get => GetAttribute<StringValue>();
@@ -609,9 +628,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Suggested Signer E-mail Address</para>
         /// <para>Represents the following attribute in the schema: o:suggestedsigneremail</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? SuggestedSignerEmail
         {
             get => GetAttribute<StringValue>();
@@ -651,7 +670,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:signatureline");
+            builder.SetSchema(ElementType);
             builder.AddElement<SignatureLine>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("issignatureline", a => a.IsSignatureLine)
@@ -686,6 +705,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Ink : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "ink");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Ink");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Ink class.
         /// </summary>
@@ -716,7 +741,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:ink");
+            builder.SetSchema(ElementType);
             builder.AddElement<Ink>()
                 .AddAttribute("i", a => a.InkData)
                 .AddAttribute("annotation", a => a.AnnotationFlag);
@@ -731,14 +756,20 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:diagram.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.RelationTable" /> <c>&lt;o:relationtable></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Diagram : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "diagram");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Diagram");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Diagram class.
         /// </summary>
@@ -774,9 +805,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -876,8 +907,8 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:diagram");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.RelationTable>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.RelationTable.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.RelationTable());
             builder.AddElement<Diagram>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("dgmstyle", a => a.Style)
@@ -891,7 +922,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
                 .AddAttribute("dgmbasetextscale", a => a.BaseTextScale);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.RelationTable), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.RelationTable.ElementType, 0, 1)
             };
         }
 
@@ -899,13 +930,13 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Diagram Relationship Table.</para>
         /// <para>Represents the following element tag in the schema: o:relationtable.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.RelationTable? RelationTable
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.RelationTable>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.RelationTable.ElementType) as DocumentFormat.OpenXml.Vml.Office.RelationTable;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.RelationTable.ElementType);
         }
 
         /// <inheritdoc/>
@@ -919,6 +950,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Skew : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "skew");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Skew");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Skew class.
         /// </summary>
@@ -930,9 +967,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -992,7 +1029,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:skew");
+            builder.SetSchema(ElementType);
             builder.AddElement<Skew>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("id", a => a.Id)
@@ -1013,6 +1050,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Extrusion : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "extrusion");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Extrusion");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Extrusion class.
         /// </summary>
@@ -1024,9 +1067,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -1336,7 +1379,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:extrusion");
+            builder.SetSchema(ElementType);
             builder.AddElement<Extrusion>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("on", a => a.On)
@@ -1386,6 +1429,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Callout : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "callout");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Callout");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Callout class.
         /// </summary>
@@ -1397,9 +1446,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -1539,7 +1588,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:callout");
+            builder.SetSchema(ElementType);
             builder.AddElement<Callout>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("on", a => a.On)
@@ -1569,6 +1618,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Lock : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "lock");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Lock");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Lock class.
         /// </summary>
@@ -1580,9 +1635,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -1702,7 +1757,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:lock");
+            builder.SetSchema(ElementType);
             builder.AddElement<Lock>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("position", a => a.Position)
@@ -1727,16 +1782,22 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:OLEObject.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.LinkType" /> <c>&lt;o:LinkType></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.LockedField" /> <c>&lt;o:LockedField></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.FieldCodes" /> <c>&lt;o:FieldCodes></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class OleObject : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "OLEObject");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_OLEObject");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the OleObject class.
         /// </summary>
@@ -1822,9 +1883,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Relationship</para>
         /// <para>Represents the following attribute in the schema: r:id</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:r=http://schemas.openxmlformats.org/officeDocument/2006/relationships
-        /// </remark>
+        /// </remarks>
         public StringValue? Id
         {
             get => GetAttribute<StringValue>();
@@ -1844,10 +1905,10 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:OLEObject");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.LinkType>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.LockedField>();
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.FieldCodes>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.LinkType.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.LinkType());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.LockedField.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.LockedField());
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.FieldCodes.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.FieldCodes());
             builder.AddElement<OleObject>()
                 .AddAttribute("Type", a => a.Type)
                 .AddAttribute("ProgID", a => a.ProgId)
@@ -1858,9 +1919,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
                 .AddAttribute("UpdateMode", a => a.UpdateMode);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.LinkType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.LockedField), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.FieldCodes), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.LinkType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.LockedField.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.FieldCodes.ElementType, 0, 1)
             };
             builder.AddConstraint(new AttributeValuePatternConstraint(builder.CreateQName("ovml:ObjectID"), @"_(\d{1,9}|1\d{9}|20\d{8}|21[0-3]\d{7}|214[0-6]\d{6}|2147[0-3]\d{5}|21474[0-7]\d{4}|214748[0-2]\d{3}|2147483[0-5]\d{2}|21474836[0-3]\d|214748364[0-7])"));
             builder.AddConstraint(new ReferenceExistConstraint(builder.CreateQName(":ShapeID"), ".", builder.CreateQName("v:shape"), "v:shape", builder.CreateQName(":id")));
@@ -1870,39 +1931,39 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Embedded Object Alternate Image Request.</para>
         /// <para>Represents the following element tag in the schema: o:LinkType.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.LinkType? LinkType
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.LinkType>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.LinkType.ElementType) as DocumentFormat.OpenXml.Vml.Office.LinkType;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.LinkType.ElementType);
         }
 
         /// <summary>
         /// <para>Embedded Object Cannot Be Refreshed.</para>
         /// <para>Represents the following element tag in the schema: o:LockedField.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.LockedField? LockedField
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.LockedField>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.LockedField.ElementType) as DocumentFormat.OpenXml.Vml.Office.LockedField;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.LockedField.ElementType);
         }
 
         /// <summary>
         /// <para>WordprocessingML Field Switches.</para>
         /// <para>Represents the following element tag in the schema: o:FieldCodes.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o = urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Vml.Office.FieldCodes? FieldCodes
         {
-            get => GetElement<DocumentFormat.OpenXml.Vml.Office.FieldCodes>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Vml.Office.FieldCodes.ElementType) as DocumentFormat.OpenXml.Vml.Office.FieldCodes;
+            set => SetElement(value, DocumentFormat.OpenXml.Vml.Office.FieldCodes.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1916,6 +1977,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Complex : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "complex");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Complex");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Complex class.
         /// </summary>
@@ -1927,9 +1994,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -1939,7 +2006,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:complex");
+            builder.SetSchema(ElementType);
             builder.AddElement<Complex>()
                 .AddAttribute("v:ext", a => a.Extension);
         }
@@ -1955,6 +2022,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class LeftStroke : StrokeChildType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "left");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LeftStroke class.
         /// </summary>
@@ -1965,7 +2038,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:left");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -1979,6 +2052,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class TopStroke : StrokeChildType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "top");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TopStroke class.
         /// </summary>
@@ -1989,7 +2068,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:top");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -2003,6 +2082,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class RightStroke : StrokeChildType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "right");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RightStroke class.
         /// </summary>
@@ -2013,7 +2098,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:right");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -2027,6 +2112,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class BottomStroke : StrokeChildType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "bottom");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BottomStroke class.
         /// </summary>
@@ -2037,7 +2128,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:bottom");
+            builder.SetSchema(ElementType);
             builder.AddConstraint(new AttributeValueRangeConstraint(builder.CreateQName("ovml:weight"), true, 0, true, 20116800, true));
             builder.AddConstraint(new AttributeValueRangeConstraint(builder.CreateQName("ovml:miterlimit"), true, double.NegativeInfinity, true, 32767, true));
         }
@@ -2053,6 +2144,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class ColumnStroke : StrokeChildType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "column");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColumnStroke class.
         /// </summary>
@@ -2063,7 +2160,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:column");
+            builder.SetSchema(ElementType);
             builder.AddConstraint(new AttributeValueSetConstraint(builder.CreateQName("ovml:dashstyle"), true, new string[] { "solid", "shortdash", "shortdot", "shortdashdot", "shortdashdotdot", "dot", "dash", "longdash", "longdashdotdot", "dashdot" }));
         }
 
@@ -2078,6 +2175,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public abstract partial class StrokeChildType : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_StrokeChild");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the StrokeChildType class.
         /// </summary>
@@ -2089,9 +2192,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2322,9 +2425,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Original Image Reference</para>
         /// <para>Represents the following attribute in the schema: o:href</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? Href
         {
             get => GetAttribute<StringValue>();
@@ -2335,9 +2438,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Alternate Image Reference</para>
         /// <para>Represents the following attribute in the schema: o:althref</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? AlternateImageReference
         {
             get => GetAttribute<StringValue>();
@@ -2348,9 +2451,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Stroke Title</para>
         /// <para>Represents the following attribute in the schema: o:title</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? Title
         {
             get => GetAttribute<StringValue>();
@@ -2361,9 +2464,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Force Dashed Outline</para>
         /// <para>Represents the following attribute in the schema: o:forcedash</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public TrueFalseValue? ForceDash
         {
             get => GetAttribute<TrueFalseValue>();
@@ -2411,6 +2514,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class ClipPath : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "clippath");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_ClipPath");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ClipPath class.
         /// </summary>
@@ -2422,9 +2531,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>Path Definition</para>
         /// <para>Represents the following attribute in the schema: o:v</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:o=urn:schemas-microsoft-com:office:office
-        /// </remark>
+        /// </remarks>
         public StringValue? Value
         {
             get => GetAttribute<StringValue>();
@@ -2434,7 +2543,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:clippath");
+            builder.SetSchema(ElementType);
             builder.AddElement<ClipPath>()
                 .AddAttribute("o:v", a => a.Value, aBuilder =>
                 {
@@ -2453,6 +2562,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class FillExtendedProperties : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "fill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Fill");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FillExtendedProperties class.
         /// </summary>
@@ -2464,9 +2579,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2486,7 +2601,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:fill");
+            builder.SetSchema(ElementType);
             builder.AddElement<FillExtendedProperties>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("type", a => a.Type);
@@ -2503,6 +2618,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class ShapeIdMap : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "idmap");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_IdMap");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeIdMap class.
         /// </summary>
@@ -2514,9 +2635,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2536,7 +2657,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:idmap");
+            builder.SetSchema(ElementType);
             builder.AddElement<ShapeIdMap>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("data", a => a.Data);
@@ -2551,14 +2672,20 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:regrouptable.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Entry" /> <c>&lt;o:entry></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RegroupTable : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "regrouptable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_RegroupTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RegroupTable class.
         /// </summary>
@@ -2594,9 +2721,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2606,13 +2733,13 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:regrouptable");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Entry>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Entry.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Entry());
             builder.AddElement<RegroupTable>()
                 .AddAttribute("v:ext", a => a.Extension);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Entry), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Entry.ElementType, 0, 0)
             };
         }
 
@@ -2625,14 +2752,20 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:rules.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Rule" /> <c>&lt;o:r></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Rules : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "rules");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Rules");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Rules class.
         /// </summary>
@@ -2668,9 +2801,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2680,13 +2813,13 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:rules");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Rule>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Rule.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Rule());
             builder.AddElement<Rules>()
                 .AddAttribute("v:ext", a => a.Extension);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Rule), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Rule.ElementType, 0, 0)
             };
         }
 
@@ -2701,6 +2834,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Entry : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "entry");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Entry");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Entry class.
         /// </summary>
@@ -2731,7 +2870,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:entry");
+            builder.SetSchema(ElementType);
             builder.AddElement<Entry>()
                 .AddAttribute("new", a => a.New)
                 .AddAttribute("old", a => a.Old);
@@ -2746,14 +2885,20 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:r.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Proxy" /> <c>&lt;o:proxy></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Rule : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "r");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_R");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Rule class.
         /// </summary>
@@ -2828,8 +2973,8 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:r");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Proxy>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Proxy.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Proxy());
             builder.AddElement<Rule>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -2843,7 +2988,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Proxy), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Proxy.ElementType, 0, 0)
             };
         }
 
@@ -2856,14 +3001,20 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is o:relationtable.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Vml.Office.Relation" /> <c>&lt;o:rel></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RelationTable : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "relationtable");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_RelationTable");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RelationTable class.
         /// </summary>
@@ -2899,9 +3050,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2911,13 +3062,13 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:relationtable");
-            builder.AddChild<DocumentFormat.OpenXml.Vml.Office.Relation>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Vml.Office.Relation.ElementType, static () => new DocumentFormat.OpenXml.Vml.Office.Relation());
             builder.AddElement<RelationTable>()
                 .AddAttribute("v:ext", a => a.Extension);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Vml.Office.Relation), 0, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Vml.Office.Relation.ElementType, 0, 0)
             };
         }
 
@@ -2932,6 +3083,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Relation : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "rel");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Relation");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Relation class.
         /// </summary>
@@ -2943,9 +3100,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -2985,7 +3142,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:rel");
+            builder.SetSchema(ElementType);
             builder.AddElement<Relation>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("idsrc", a => a.SourceId, aBuilder =>
@@ -3013,6 +3170,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class LinkType : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "LinkType");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "ST_OLELinkType");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LinkType class.
         /// </summary>
@@ -3037,7 +3200,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<EnumValue<DocumentFormat.OpenXml.Vml.Office.OleLinkValues>>(EnumValidator.Instance);
-            builder.SetSchema("o:LinkType");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -3051,6 +3214,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class LockedField : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "LockedField");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "ST_TrueFalseBlank");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the LockedField class.
         /// </summary>
@@ -3075,7 +3244,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<TrueFalseBlankValue>(NumberValidator.Instance);
-            builder.SetSchema("o:LockedField");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -3089,6 +3258,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class FieldCodes : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "FieldCodes");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://www.w3.org/2001/XMLSchema", "string");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FieldCodes class.
         /// </summary>
@@ -3112,7 +3287,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:FieldCodes");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -3126,6 +3301,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class Proxy : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "proxy");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_Proxy");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Proxy class.
         /// </summary>
@@ -3176,7 +3357,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:proxy");
+            builder.SetSchema(ElementType);
             builder.AddElement<Proxy>()
                 .AddAttribute("start", a => a.Start)
                 .AddAttribute("end", a => a.End)
@@ -3202,6 +3383,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class ColorMostRecentlyUsed : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "colormru");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_ColorMru");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorMostRecentlyUsed class.
         /// </summary>
@@ -3213,9 +3400,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -3235,7 +3422,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:colormru");
+            builder.SetSchema(ElementType);
             builder.AddElement<ColorMostRecentlyUsed>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("colors", a => a.Colors);
@@ -3252,6 +3439,12 @@ namespace DocumentFormat.OpenXml.Vml.Office
     /// </summary>
     public partial class ColorMenu : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("urn:schemas-microsoft-com:office:office", "colormenu");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("urn:schemas-microsoft-com:office:office", "CT_ColorMenu");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ColorMenu class.
         /// </summary>
@@ -3263,9 +3456,9 @@ namespace DocumentFormat.OpenXml.Vml.Office
         /// <para>VML Extension Handling Behavior</para>
         /// <para>Represents the following attribute in the schema: v:ext</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:v=urn:schemas-microsoft-com:vml
-        /// </remark>
+        /// </remarks>
         public EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>? Extension
         {
             get => GetAttribute<EnumValue<DocumentFormat.OpenXml.Vml.ExtensionHandlingBehaviorValues>>();
@@ -3315,7 +3508,7 @@ namespace DocumentFormat.OpenXml.Vml.Office
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("o:colormenu");
+            builder.SetSchema(ElementType);
             builder.AddElement<ColorMenu>()
                 .AddAttribute("v:ext", a => a.Extension)
                 .AddAttribute("strokecolor", a => a.StrokeColor)

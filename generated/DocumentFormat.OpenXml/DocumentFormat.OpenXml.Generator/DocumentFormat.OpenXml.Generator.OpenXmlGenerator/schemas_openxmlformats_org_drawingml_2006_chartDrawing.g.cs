@@ -4,6 +4,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #nullable enable
+#pragma warning disable CS0618
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing;
@@ -24,7 +25,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:relSizeAnchor.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape" /> <c>&lt;cdr:cxnSp></c></description></item>
@@ -36,9 +37,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape" /> <c>&lt;cdr:sp></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart" /> <c>&lt;cdr14:contentPart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class RelativeAnchorSize : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "relSizeAnchor");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_RelSizeAnchor");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the RelativeAnchorSize class.
         /// </summary>
@@ -73,31 +80,31 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:relSizeAnchor");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor), 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor.ElementType, 1, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -108,26 +115,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Starting Anchor Point.</para>
         /// <para>Represents the following element tag in the schema: cdr:from.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor? FromAnchor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType);
         }
 
         /// <summary>
         /// <para>Ending Anchor Point.</para>
         /// <para>Represents the following element tag in the schema: cdr:to.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor? ToAnchor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.ToAnchor.ElementType);
         }
 
         /// <inheritdoc/>
@@ -139,7 +146,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:absSizeAnchor.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent" /> <c>&lt;cdr:ext></c></description></item>
@@ -151,9 +158,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape" /> <c>&lt;cdr:sp></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart" /> <c>&lt;cdr14:contentPart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class AbsoluteAnchorSize : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "absSizeAnchor");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_AbsSizeAnchor");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the AbsoluteAnchorSize class.
         /// </summary>
@@ -188,31 +201,31 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:absSizeAnchor");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent), 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent.ElementType, 1, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 1, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
                     {
                         new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                         {
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture), 1, 1),
-                            new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart), 1, 1, version: FileFormatVersions.Office2010)
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, 1, 1),
+                            new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                         }
                     }
                 }
@@ -223,26 +236,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>FromAnchor.</para>
         /// <para>Represents the following element tag in the schema: cdr:from.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor? FromAnchor
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.FromAnchor.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Extent.</para>
         /// <para>Represents the following element tag in the schema: cdr:ext.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent? Extent
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.Extent.ElementType);
         }
 
         /// <inheritdoc/>
@@ -254,7 +267,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:sp.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties" /> <c>&lt;cdr:spPr></c></description></item>
@@ -262,9 +275,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody" /> <c>&lt;cdr:txBody></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties" /> <c>&lt;cdr:nvSpPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Shape : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "sp");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Shape");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Shape class.
         /// </summary>
@@ -339,11 +358,11 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:sp");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Style());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties());
             builder.AddElement<Shape>()
                 .AddAttribute("macro", a => a.Macro)
                 .AddAttribute("textlink", a => a.TextLink)
@@ -351,10 +370,10 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
                 .AddAttribute("fPublished", a => a.Published);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody.ElementType, 0, 1)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("cdr:macro"), 0, 256));
         }
@@ -363,52 +382,52 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Non-Visual Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:nvSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties? NonVisualShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:spPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties? ShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Style.</para>
         /// <para>Represents the following element tag in the schema: cdr:style.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.Style? Style
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.Style;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Text Body.</para>
         /// <para>Represents the following element tag in the schema: cdr:txBody.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody? TextBody
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.TextBody.ElementType);
         }
 
         /// <inheritdoc/>
@@ -420,7 +439,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:grpSp.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties" /> <c>&lt;cdr:grpSpPr></c></description></item>
@@ -432,9 +451,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape" /> <c>&lt;cdr:sp></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart" /> <c>&lt;cdr14:contentPart></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GroupShape : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "grpSp");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_GroupShape");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GroupShape class.
         /// </summary>
@@ -469,27 +494,27 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:grpSp");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape>();
-            builder.AddChild<DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape());
+            builder.AddChild(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, static () => new DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties), 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties.ElementType, 1, 1),
                 new CompositeParticle.Builder(ParticleType.Choice, 0, 0)
                 {
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture), 1, 1),
-                    new ElementParticle(typeof(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart), 1, 1, version: FileFormatVersions.Office2010)
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Shape.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShape.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.GraphicFrame.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ConnectionShape.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Picture.ElementType, 1, 1),
+                    new ElementParticle(DocumentFormat.OpenXml.Office2010.Drawing.ChartDrawing.ContentPart.ElementType, 1, 1, version: FileFormatVersions.Office2010)
                 }
             };
         }
@@ -498,26 +523,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Non-Visual Group Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:nvGrpSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties? NonVisualGroupShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Group Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:grpSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties? GroupShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.GroupShapeProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -529,16 +554,22 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:graphicFrame.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Graphic" /> <c>&lt;a:graphic></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform" /> <c>&lt;cdr:xfrm></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties" /> <c>&lt;cdr:nvGraphicFramePr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GraphicFrame : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "graphicFrame");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_GraphicFrame");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GraphicFrame class.
         /// </summary>
@@ -593,18 +624,18 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:graphicFrame");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Graphic>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Graphic.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Graphic());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties());
             builder.AddElement<GraphicFrame>()
                 .AddAttribute("macro", a => a.Macro)
                 .AddAttribute("fPublished", a => a.Published);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Graphic), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Graphic.ElementType, 1, 1)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("cdr:macro"), 0, 256));
         }
@@ -613,39 +644,39 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Non-Visual Graphic Frame Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:nvGraphicFramePr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties? NonVisualGraphicFrameProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Graphic Frame Transform.</para>
         /// <para>Represents the following element tag in the schema: cdr:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform? Transform
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.Transform.ElementType);
         }
 
         /// <summary>
         /// <para>Graphical Object.</para>
         /// <para>Represents the following element tag in the schema: a:graphic.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Graphic? Graphic
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Graphic>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Graphic.ElementType) as DocumentFormat.OpenXml.Drawing.Graphic;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Graphic.ElementType);
         }
 
         /// <inheritdoc/>
@@ -657,16 +688,22 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cxnSp.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties" /> <c>&lt;cdr:spPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Style" /> <c>&lt;cdr:style></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties" /> <c>&lt;cdr:nvCxnSpPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ConnectionShape : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cxnSp");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Connector");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ConnectionShape class.
         /// </summary>
@@ -721,18 +758,18 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cxnSp");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Style());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties());
             builder.AddElement<ConnectionShape>()
                 .AddAttribute("macro", a => a.Macro)
                 .AddAttribute("fPublished", a => a.Published);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, 0, 1)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("cdr:macro"), 0, 256));
         }
@@ -741,39 +778,39 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Connector Non Visual Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:nvCxnSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties? NonVisualConnectorShapeDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectorShapeDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Shape Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:spPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties? ShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Connection Shape Style.</para>
         /// <para>Represents the following element tag in the schema: cdr:style.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.Style? Style
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.Style;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType);
         }
 
         /// <inheritdoc/>
@@ -785,7 +822,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:pic.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill" /> <c>&lt;cdr:blipFill></c></description></item>
@@ -793,9 +830,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.Style" /> <c>&lt;cdr:style></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties" /> <c>&lt;cdr:nvPicPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Picture : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "pic");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Picture");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Picture class.
         /// </summary>
@@ -850,20 +893,20 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:pic");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.Style());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties());
             builder.AddElement<Picture>()
                 .AddAttribute("macro", a => a.Macro)
                 .AddAttribute("fPublished", a => a.Published);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType, 0, 1)
             };
             builder.AddConstraint(new AttributeValueLengthConstraint(builder.CreateQName("cdr:macro"), 0, 256));
         }
@@ -872,52 +915,52 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Non-Visual Picture Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:nvPicPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties? NonVisualPictureProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Picture Fill.</para>
         /// <para>Represents the following element tag in the schema: cdr:blipFill.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill? BlipFill
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.BlipFill.ElementType);
         }
 
         /// <summary>
         /// <para>ShapeProperties.</para>
         /// <para>Represents the following element tag in the schema: cdr:spPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties? ShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.ShapeProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Style.</para>
         /// <para>Represents the following element tag in the schema: cdr:style.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.Style? Style
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.Style>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.Style;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.Style.ElementType);
         }
 
         /// <inheritdoc/>
@@ -929,16 +972,22 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnClick" /> <c>&lt;a:hlinkClick></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.HyperlinkOnHover" /> <c>&lt;a:hlinkHover></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualDrawingProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualDrawingProperties class.
         /// </summary>
@@ -1023,10 +1072,10 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnClick());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, static () => new DocumentFormat.OpenXml.Drawing.HyperlinkOnHover());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList());
             builder.AddElement<NonVisualDrawingProperties>()
                 .AddAttribute("id", a => a.Id, aBuilder =>
                 {
@@ -1041,9 +1090,9 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
                 .AddAttribute("title", a => a.Title);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType, 0, 1)
             };
             builder.AddConstraint(new UniqueAttributeValueConstraint(builder.CreateQName(":id"), true, null));
         }
@@ -1052,39 +1101,39 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Hyperlink associated with clicking or selecting the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkClick.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnClick? HyperlinkOnClick
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnClick>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnClick;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnClick.ElementType);
         }
 
         /// <summary>
         /// <para>Hyperlink associated with hovering over the element..</para>
         /// <para>Represents the following element tag in the schema: a:hlinkHover.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.HyperlinkOnHover? HyperlinkOnHover
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.HyperlinkOnHover>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType) as DocumentFormat.OpenXml.Drawing.HyperlinkOnHover;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.HyperlinkOnHover.ElementType);
         }
 
         /// <summary>
         /// <para>Future extension.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList? NonVisualDrawingPropertiesExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NonVisualDrawingPropertiesExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1096,15 +1145,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ShapeLocks" /> <c>&lt;a:spLocks></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualShapeDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualDrawingShapeProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualShapeDrawingProperties class.
         /// </summary>
@@ -1149,15 +1204,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ShapeLocks>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ShapeLocks.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ShapeLocks());
             builder.AddElement<NonVisualShapeDrawingProperties>()
                 .AddAttribute("txBox", a => a.TextBox);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ShapeLocks), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ShapeLocks.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1165,26 +1220,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Shape Locks.</para>
         /// <para>Represents the following element tag in the schema: a:spLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ShapeLocks? ShapeLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ShapeLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ShapeLocks.ElementType) as DocumentFormat.OpenXml.Drawing.ShapeLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ShapeLocks.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1196,15 +1251,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:nvSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties" /> <c>&lt;cdr:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties" /> <c>&lt;cdr:cNvSpPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "nvSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_ShapeNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualShapeProperties class.
         /// </summary>
@@ -1239,13 +1300,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:nvSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties.ElementType, 1, 1)
             };
         }
 
@@ -1253,26 +1314,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Chart Non Visual Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Non-Visual Shape Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties? NonVisualShapeDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualShapeDrawingProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1284,7 +1345,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:spPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -1303,9 +1364,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Transform2D" /> <c>&lt;a:xfrm></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "spPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_ShapeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ShapeProperties class.
         /// </summary>
@@ -1350,22 +1417,22 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:spPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.CustomGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Outline>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PresetGeometry>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Scene3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Shape3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Transform2D>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.CustomGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Outline.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Outline());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PresetGeometry());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Scene3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Shape3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Transform2D());
             builder.AddElement<ShapeProperties>()
                 .AddAttribute("bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -1373,39 +1440,39 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Transform2D), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.CustomGeometry), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PresetGeometry), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.CustomGeometry.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PresetGeometry.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Outline), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Outline.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Scene3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Shape3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Shape3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ShapePropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1413,13 +1480,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>2D Transform for Individual Objects.</para>
         /// <para>Represents the following element tag in the schema: a:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Transform2D? Transform2D
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Transform2D>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Transform2D.ElementType) as DocumentFormat.OpenXml.Drawing.Transform2D;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Transform2D.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1431,7 +1498,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:style.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.FontReference" /> <c>&lt;a:fontRef></c></description></item>
@@ -1439,9 +1506,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.FillReference" /> <c>&lt;a:fillRef></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.EffectReference" /> <c>&lt;a:effectRef></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Style : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "style");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_ShapeStyle");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Style class.
         /// </summary>
@@ -1476,17 +1549,17 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:style");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FontReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.LineReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.FillReference>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectReference>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FontReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FontReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.LineReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.LineReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.FillReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.FillReference());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectReference());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.LineReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FillReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectReference), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.FontReference), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.LineReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.FillReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.FontReference.ElementType, 1, 1)
             };
         }
 
@@ -1494,52 +1567,52 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>LineReference.</para>
         /// <para>Represents the following element tag in the schema: a:lnRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.LineReference? LineReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.LineReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.LineReference.ElementType) as DocumentFormat.OpenXml.Drawing.LineReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.LineReference.ElementType);
         }
 
         /// <summary>
         /// <para>FillReference.</para>
         /// <para>Represents the following element tag in the schema: a:fillRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.FillReference? FillReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.FillReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.FillReference.ElementType) as DocumentFormat.OpenXml.Drawing.FillReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.FillReference.ElementType);
         }
 
         /// <summary>
         /// <para>EffectReference.</para>
         /// <para>Represents the following element tag in the schema: a:effectRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.EffectReference? EffectReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.EffectReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.EffectReference.ElementType) as DocumentFormat.OpenXml.Drawing.EffectReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.EffectReference.ElementType);
         }
 
         /// <summary>
         /// <para>Font Reference.</para>
         /// <para>Represents the following element tag in the schema: a:fontRef.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.FontReference? FontReference
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.FontReference>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.FontReference.ElementType) as DocumentFormat.OpenXml.Drawing.FontReference;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.FontReference.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1551,16 +1624,22 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:txBody.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BodyProperties" /> <c>&lt;a:bodyPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ListStyle" /> <c>&lt;a:lstStyle></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Paragraph" /> <c>&lt;a:p></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class TextBody : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "txBody");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_TextBody");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the TextBody class.
         /// </summary>
@@ -1595,15 +1674,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:txBody");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BodyProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ListStyle>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Paragraph>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BodyProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ListStyle());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Paragraph.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Paragraph());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BodyProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ListStyle), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Paragraph), 1, 0)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Paragraph.ElementType, 1, 0)
             };
         }
 
@@ -1611,26 +1690,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Body Properties.</para>
         /// <para>Represents the following element tag in the schema: a:bodyPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.BodyProperties? BodyProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.BodyProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType) as DocumentFormat.OpenXml.Drawing.BodyProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.BodyProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Text List Styles.</para>
         /// <para>Represents the following element tag in the schema: a:lstStyle.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ListStyle? ListStyle
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ListStyle>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ListStyle.ElementType) as DocumentFormat.OpenXml.Drawing.ListStyle;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ListStyle.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1642,7 +1721,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvCxnSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.StartConnection" /> <c>&lt;a:stCxn></c></description></item>
@@ -1650,9 +1729,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks" /> <c>&lt;a:cxnSpLocks></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualConnectionShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvCxnSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualConnectorProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualConnectionShapeProperties class.
         /// </summary>
@@ -1687,17 +1772,17 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvCxnSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.StartConnection>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EndConnection>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.StartConnection.ElementType, static () => new DocumentFormat.OpenXml.Drawing.StartConnection());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EndConnection.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EndConnection());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.StartConnection), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EndConnection), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.StartConnection.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.EndConnection.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1705,52 +1790,52 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Connection Shape Locks.</para>
         /// <para>Represents the following element tag in the schema: a:cxnSpLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks? ConnectionShapeLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks.ElementType) as DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ConnectionShapeLocks.ElementType);
         }
 
         /// <summary>
         /// <para>Connection Start.</para>
         /// <para>Represents the following element tag in the schema: a:stCxn.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.StartConnection? StartConnection
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.StartConnection>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.StartConnection.ElementType) as DocumentFormat.OpenXml.Drawing.StartConnection;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.StartConnection.ElementType);
         }
 
         /// <summary>
         /// <para>Connection End.</para>
         /// <para>Represents the following element tag in the schema: a:endCxn.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.EndConnection? EndConnection
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.EndConnection>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.EndConnection.ElementType) as DocumentFormat.OpenXml.Drawing.EndConnection;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.EndConnection.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1762,15 +1847,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:nvCxnSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties" /> <c>&lt;cdr:cNvCxnSpPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties" /> <c>&lt;cdr:cNvPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualConnectorShapeDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "nvCxnSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_ConnectorNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualConnectorShapeDrawingProperties class.
         /// </summary>
@@ -1805,13 +1896,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:nvCxnSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties.ElementType, 1, 1)
             };
         }
 
@@ -1819,26 +1910,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Chart Non Visual Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Non-Visual Connection Shape Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvCxnSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties? NonVisualConnectionShapeProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualConnectionShapeProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1850,15 +1941,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvPicPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList" /> <c>&lt;a:extLst></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.PictureLocks" /> <c>&lt;a:picLocks></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualPictureDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvPicPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualPictureProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualPictureDrawingProperties class.
         /// </summary>
@@ -1903,15 +2000,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvPicPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PictureLocks>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PictureLocks.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PictureLocks());
             builder.AddElement<NonVisualPictureDrawingProperties>()
                 .AddAttribute("preferRelativeResize", a => a.PreferRelativeResize);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PictureLocks), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.PictureLocks.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -1919,26 +2016,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>PictureLocks.</para>
         /// <para>Represents the following element tag in the schema: a:picLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.PictureLocks? PictureLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.PictureLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.PictureLocks.ElementType) as DocumentFormat.OpenXml.Drawing.PictureLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.PictureLocks.ElementType);
         }
 
         /// <summary>
         /// <para>NonVisualPicturePropertiesExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList? NonVisualPicturePropertiesExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NonVisualPicturePropertiesExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -1950,15 +2047,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:nvPicPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties" /> <c>&lt;cdr:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties" /> <c>&lt;cdr:cNvPicPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualPictureProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "nvPicPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_PictureNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualPictureProperties class.
         /// </summary>
@@ -1993,13 +2096,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:nvPicPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties.ElementType, 1, 1)
             };
         }
 
@@ -2007,26 +2110,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>NonVisualDrawingProperties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Non-Visual Picture Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPicPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties? NonVisualPictureDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualPictureDrawingProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2038,7 +2141,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:blipFill.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Blip" /> <c>&lt;a:blip></c></description></item>
@@ -2046,9 +2149,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Stretch" /> <c>&lt;a:stretch></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Tile" /> <c>&lt;a:tile></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class BlipFill : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "blipFill");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_BlipFillProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the BlipFill class.
         /// </summary>
@@ -2103,24 +2212,24 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:blipFill");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Blip>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SourceRectangle>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Stretch>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Tile>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Blip.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Blip());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SourceRectangle.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SourceRectangle());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Stretch.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Stretch());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Tile.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Tile());
             builder.AddElement<BlipFill>()
                 .AddAttribute("dpi", a => a.Dpi)
                 .AddAttribute("rotWithShape", a => a.RotateWithShape);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Blip), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SourceRectangle), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Blip.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.SourceRectangle.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Tile), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Stretch), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Tile.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.Stretch.ElementType, 1, 1)
                     }
                 }
             };
@@ -2130,26 +2239,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Blip.</para>
         /// <para>Represents the following element tag in the schema: a:blip.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Blip? Blip
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Blip>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Blip.ElementType) as DocumentFormat.OpenXml.Drawing.Blip;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Blip.ElementType);
         }
 
         /// <summary>
         /// <para>Source Rectangle.</para>
         /// <para>Represents the following element tag in the schema: a:srcRect.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.SourceRectangle? SourceRectangle
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.SourceRectangle>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.SourceRectangle.ElementType) as DocumentFormat.OpenXml.Drawing.SourceRectangle;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.SourceRectangle.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2161,15 +2270,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvGraphicFramePr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.GraphicFrameLocks" /> <c>&lt;a:graphicFrameLocks></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualGraphicFrameDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvGraphicFramePr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualGraphicFrameProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualGraphicFrameDrawingProperties class.
         /// </summary>
@@ -2204,13 +2319,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvGraphicFramePr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GraphicFrameLocks>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GraphicFrameLocks.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GraphicFrameLocks());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GraphicFrameLocks), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.GraphicFrameLocks.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2218,26 +2333,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Graphic Frame Locks.</para>
         /// <para>Represents the following element tag in the schema: a:graphicFrameLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.GraphicFrameLocks? GraphicFrameLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.GraphicFrameLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.GraphicFrameLocks.ElementType) as DocumentFormat.OpenXml.Drawing.GraphicFrameLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.GraphicFrameLocks.ElementType);
         }
 
         /// <summary>
         /// <para>ExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ExtensionList? ExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.ExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2249,15 +2364,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:nvGraphicFramePr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties" /> <c>&lt;cdr:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties" /> <c>&lt;cdr:cNvGraphicFramePr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualGraphicFrameProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "nvGraphicFramePr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_GraphicFrameNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualGraphicFrameProperties class.
         /// </summary>
@@ -2292,13 +2413,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:nvGraphicFramePr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties.ElementType, 1, 1)
             };
         }
 
@@ -2306,26 +2427,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Non-Visual Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Non-Visual Graphic Frame Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvGraphicFramePr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties? NonVisualGraphicFrameDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGraphicFrameDrawingProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2337,15 +2458,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:xfrm.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Offset" /> <c>&lt;a:off></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Extents" /> <c>&lt;a:ext></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class Transform : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "xfrm");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_Transform2D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Transform class.
         /// </summary>
@@ -2410,17 +2537,17 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:xfrm");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Offset>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Extents>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Offset.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Offset());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Extents.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Extents());
             builder.AddElement<Transform>()
                 .AddAttribute("rot", a => a.Rotation)
                 .AddAttribute("flipH", a => a.HorizontalFlip)
                 .AddAttribute("flipV", a => a.VerticalFlip);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Offset), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Extents), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Offset.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Extents.ElementType, 0, 1)
             };
         }
 
@@ -2428,26 +2555,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Offset.</para>
         /// <para>Represents the following element tag in the schema: a:off.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Offset? Offset
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Offset>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Offset.ElementType) as DocumentFormat.OpenXml.Drawing.Offset;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Offset.ElementType);
         }
 
         /// <summary>
         /// <para>Extents.</para>
         /// <para>Represents the following element tag in the schema: a:ext.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.Extents? Extents
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.Extents>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.Extents.ElementType) as DocumentFormat.OpenXml.Drawing.Extents;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.Extents.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2459,15 +2586,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:cNvGrpSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.GroupShapeLocks" /> <c>&lt;a:grpSpLocks></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList" /> <c>&lt;a:extLst></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualGroupShapeDrawingProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "cNvGrpSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_NonVisualGroupDrawingShapeProps");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualGroupShapeDrawingProperties class.
         /// </summary>
@@ -2502,13 +2635,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:cNvGrpSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupShapeLocks>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupShapeLocks.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupShapeLocks());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupShapeLocks), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupShapeLocks.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -2516,26 +2649,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>GroupShapeLocks.</para>
         /// <para>Represents the following element tag in the schema: a:grpSpLocks.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.GroupShapeLocks? GroupShapeLocks
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.GroupShapeLocks>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.GroupShapeLocks.ElementType) as DocumentFormat.OpenXml.Drawing.GroupShapeLocks;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.GroupShapeLocks.ElementType);
         }
 
         /// <summary>
         /// <para>NonVisualGroupDrawingShapePropsExtensionList.</para>
         /// <para>Represents the following element tag in the schema: a:extLst.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList? NonVisualGroupDrawingShapePropsExtensionList
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList.ElementType) as DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.NonVisualGroupDrawingShapePropsExtensionList.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2549,6 +2682,12 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// </summary>
     public partial class XPosition : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "x");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "ST_MarkerCoordinate");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the XPosition class.
         /// </summary>
@@ -2573,7 +2712,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<DoubleValue>(new NumberValidator() { MinInclusive = (0L), MaxInclusive = (1L) });
-            builder.SetSchema("cdr:x");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -2587,6 +2726,12 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// </summary>
     public partial class YPosition : OpenXmlLeafTextElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "y");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "ST_MarkerCoordinate");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the YPosition class.
         /// </summary>
@@ -2611,7 +2756,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         {
             base.ConfigureMetadata(builder);
             builder.AddValidator<DoubleValue>(new NumberValidator() { MinInclusive = (0L), MaxInclusive = (1L) });
-            builder.SetSchema("cdr:y");
+            builder.SetSchema(ElementType);
         }
 
         /// <inheritdoc/>
@@ -2623,15 +2768,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:from.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition" /> <c>&lt;cdr:x></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition" /> <c>&lt;cdr:y></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class FromAnchor : MarkerType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "from");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Marker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the FromAnchor class.
         /// </summary>
@@ -2666,11 +2817,11 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:from");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition.ElementType, 1, 1)
             };
         }
 
@@ -2683,15 +2834,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:to.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition" /> <c>&lt;cdr:x></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition" /> <c>&lt;cdr:y></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class ToAnchor : MarkerType
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "to");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Marker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the ToAnchor class.
         /// </summary>
@@ -2726,11 +2883,11 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:to");
+            builder.SetSchema(ElementType);
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition.ElementType, 1, 1)
             };
         }
 
@@ -2743,15 +2900,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is :.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition" /> <c>&lt;cdr:x></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition" /> <c>&lt;cdr:y></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public abstract partial class MarkerType : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new(string.Empty, string.Empty);
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_Marker");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the MarkerType class.
         /// </summary>
@@ -2786,34 +2949,34 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition>();
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition());
         }
 
         /// <summary>
         /// <para>Relative X Coordinate.</para>
         /// <para>Represents the following element tag in the schema: cdr:x.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition? XPosition
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.XPosition.ElementType);
         }
 
         /// <summary>
         /// <para>Relative Y Coordinate.</para>
         /// <para>Represents the following element tag in the schema: cdr:y.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition? YPosition
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.YPosition.ElementType);
         }
     }
 
@@ -2824,6 +2987,12 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// </summary>
     public partial class Extent : OpenXmlLeafElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "ext");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_PositiveSize2D");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the Extent class.
         /// </summary>
@@ -2854,7 +3023,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:ext");
+            builder.SetSchema(ElementType);
             builder.AddElement<Extent>()
                 .AddAttribute("cx", a => a.Cx, aBuilder =>
                 {
@@ -2877,15 +3046,21 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:nvGrpSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties" /> <c>&lt;cdr:cNvPr></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties" /> <c>&lt;cdr:cNvGrpSpPr></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class NonVisualGroupShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "nvGrpSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "CT_GroupShapeNonVisual");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the NonVisualGroupShapeProperties class.
         /// </summary>
@@ -2920,13 +3095,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:nvGrpSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties());
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties), 1, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties), 1, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType, 1, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties.ElementType, 1, 1)
             };
         }
 
@@ -2934,26 +3109,26 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>Chart Non Visual Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties? NonVisualDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualDrawingProperties.ElementType);
         }
 
         /// <summary>
         /// <para>Non-Visual Group Shape Drawing Properties.</para>
         /// <para>Represents the following element tag in the schema: cdr:cNvGrpSpPr.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:cdr = http://schemas.openxmlformats.org/drawingml/2006/chartDrawing
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties? NonVisualGroupShapeDrawingProperties
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties.ElementType) as DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.ChartDrawing.NonVisualGroupShapeDrawingProperties.ElementType);
         }
 
         /// <inheritdoc/>
@@ -2965,7 +3140,7 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     /// <para>This class is available in Office 2007 and above.</para>
     /// <para>When the object is serialized out as xml, it's qualified name is cdr:grpSpPr.</para>
     /// </summary>
-    /// <remark>
+    /// <remarks>
     /// <para>The following table lists the possible child types:</para>
     /// <list type="bullet">
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.BlipFill" /> <c>&lt;a:blipFill></c></description></item>
@@ -2980,9 +3155,15 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.Scene3DType" /> <c>&lt;a:scene3d></c></description></item>
     ///   <item><description><see cref="DocumentFormat.OpenXml.Drawing.SolidFill" /> <c>&lt;a:solidFill></c></description></item>
     /// </list>
-    /// </remark>
+    /// </remarks>
     public partial class GroupShapeProperties : OpenXmlCompositeElement
     {
+        #pragma warning disable CS0109
+        internal static readonly new OpenXmlQualifiedName ElementQName = new("http://schemas.openxmlformats.org/drawingml/2006/chartDrawing", "grpSpPr");
+        internal static readonly new OpenXmlQualifiedName ElementTypeName = new("http://schemas.openxmlformats.org/drawingml/2006/main", "CT_GroupShapeProperties");
+        internal static readonly new OpenXmlSchemaType ElementType = new(ElementQName, ElementTypeName);
+        #pragma warning restore CS0109
+
         /// <summary>
         /// Initializes a new instance of the GroupShapeProperties class.
         /// </summary>
@@ -3027,18 +3208,18 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         internal override void ConfigureMetadata(ElementMetadata.Builder builder)
         {
             base.ConfigureMetadata(builder);
-            builder.SetSchema("cdr:grpSpPr");
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.BlipFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectDag>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.EffectList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GradientFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.GroupFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.TransformGroup>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.NoFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.ExtensionList>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.PatternFill>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.Scene3DType>();
-            builder.AddChild<DocumentFormat.OpenXml.Drawing.SolidFill>();
+            builder.SetSchema(ElementType);
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.BlipFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectDag());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.EffectList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GradientFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.GroupFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.TransformGroup.ElementType, static () => new DocumentFormat.OpenXml.Drawing.TransformGroup());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.NoFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, static () => new DocumentFormat.OpenXml.Drawing.ExtensionList());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.PatternFill());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, static () => new DocumentFormat.OpenXml.Drawing.Scene3DType());
+            builder.AddChild(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, static () => new DocumentFormat.OpenXml.Drawing.SolidFill());
             builder.AddElement<GroupShapeProperties>()
                 .AddAttribute("bwMode", a => a.BlackWhiteMode, aBuilder =>
                 {
@@ -3046,29 +3227,29 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
                 });
             builder.Particle = new CompositeParticle.Builder(ParticleType.Sequence, 1, 1)
             {
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.TransformGroup), 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.TransformGroup.ElementType, 0, 1),
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.NoFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.SolidFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GradientFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.BlipFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.PatternFill), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.GroupFill), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.NoFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.SolidFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GradientFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.BlipFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.PatternFill.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.GroupFill.ElementType, 1, 1)
                     }
                 },
                 new CompositeParticle.Builder(ParticleType.Group, 0, 1)
                 {
                     new CompositeParticle.Builder(ParticleType.Choice, 1, 1)
                     {
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectList), 1, 1),
-                        new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.EffectDag), 1, 1)
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectList.ElementType, 1, 1),
+                        new ElementParticle(DocumentFormat.OpenXml.Drawing.EffectDag.ElementType, 1, 1)
                     }
                 },
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.Scene3DType), 0, 1),
-                new ElementParticle(typeof(DocumentFormat.OpenXml.Drawing.ExtensionList), 0, 1)
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.Scene3DType.ElementType, 0, 1),
+                new ElementParticle(DocumentFormat.OpenXml.Drawing.ExtensionList.ElementType, 0, 1)
             };
         }
 
@@ -3076,13 +3257,13 @@ namespace DocumentFormat.OpenXml.Drawing.ChartDrawing
         /// <para>2D Transform for Grouped Objects.</para>
         /// <para>Represents the following element tag in the schema: a:xfrm.</para>
         /// </summary>
-        /// <remark>
+        /// <remarks>
         /// xmlns:a = http://schemas.openxmlformats.org/drawingml/2006/main
-        /// </remark>
+        /// </remarks>
         public DocumentFormat.OpenXml.Drawing.TransformGroup? TransformGroup
         {
-            get => GetElement<DocumentFormat.OpenXml.Drawing.TransformGroup>();
-            set => SetElement(value);
+            get => GetElement(DocumentFormat.OpenXml.Drawing.TransformGroup.ElementType) as DocumentFormat.OpenXml.Drawing.TransformGroup;
+            set => SetElement(value, DocumentFormat.OpenXml.Drawing.TransformGroup.ElementType);
         }
 
         /// <inheritdoc/>
